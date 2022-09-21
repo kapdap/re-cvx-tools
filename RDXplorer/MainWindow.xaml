@@ -1,0 +1,48 @@
+﻿<Window x:Class="RDXplorer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RDXplorer"
+        mc:Ignorable="d"
+        Title="RDXplorer" Height="550" Width="800" Closing="Window_Closing">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem x:Name="FileOpenMenu" Header="Open..." Click="FileOpenMenu_Click"/>
+                <MenuItem x:Name="FileCloseMenu" Header="Close" Click="FileCloseMenu_Click" IsEnabled="{Binding RDXLoaded}"/>
+                <Separator/>
+                <MenuItem x:Name="FileExitMenu" Header="Exit" Click="FileExitMenu_Click"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem x:Name="EditCopyMenu" Header="Copy"/>
+            </MenuItem>
+            <MenuItem Header="Tools">
+                <MenuItem x:Name="ToolsHexEditorMenu" Header="Hex Editor" Click="ToolsHexEditorMenu_Click"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem x:Name="HelpAboutMenu" Header="About" Click="HelpAboutMenu_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="lblStatusBar" Text="{Binding RDXPathInfo.FullName}" />
+            </StatusBarItem>
+        </StatusBar>
+
+        <Grid Margin="5,5,5,5">
+            <TabControl>
+                <TabItem Header="Sections">
+                    <Frame Source="Views/SectionView.xaml"/>
+                </TabItem>
+                <TabItem Header="Enemy">
+                    <Frame Source="Views/EnemyView.xaml"/>
+                </TabItem>
+                <TabItem Header="Player">
+                    <Frame Source="Views/PlayerView.xaml"/>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </DockPanel>
+</Window>

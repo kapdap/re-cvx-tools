@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RDXplorer", "RDXplorer\RDXplorer.csproj", "{9DF06D15-E64F-4290-91EB-8177DAA5B69D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RECVXFlagTool", "RECVXFlagTool\RECVXFlagTool.csproj", "{64A5CD49-0DA2-4D25-8610-23983AF60333}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DF06D15-E64F-4290-91EB-8177DAA5B69D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DF06D15-E64F-4290-91EB-8177DAA5B69D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DF06D15-E64F-4290-91EB-8177DAA5B69D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DF06D15-E64F-4290-91EB-8177DAA5B69D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64A5CD49-0DA2-4D25-8610-23983AF60333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64A5CD49-0DA2-4D25-8610-23983AF60333}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64A5CD49-0DA2-4D25-8610-23983AF60333}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64A5CD49-0DA2-4D25-8610-23983AF60333}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A50508B8-D99F-41BF-9171-7B34EE209A7B}
+	EndGlobalSection
+EndGlobal

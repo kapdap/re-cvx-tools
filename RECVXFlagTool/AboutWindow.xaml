@@ -1,0 +1,23 @@
+﻿<Window x:Class="RECVXFlagTool.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RECVXFlagTool"
+        mc:Ignorable="d"
+        Title="About" Height="150" Width="280" ResizeMode="NoResize" Closing="Window_Closing">
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Top" Text="RECVXTool" TextAlignment="Center"/>
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Margin="10,0,5,10" x:Name="WebsiteButton" Grid.Column="0" Content="Website" Click="WebsiteButton_Click"/>
+            <Button Margin="5,0,5,10" x:Name="GitHubButton" Grid.Column="1" Content="GitHub" Click="GitHubButton_Click"/>
+            <Button Margin="5,0,10,10" x:Name="CloseButton" Grid.Column="2" Content="Close" Click="CloseButton_Click"/>
+        </Grid>
+        <TextBlock DockPanel.Dock="Top" TextAlignment="Center">© 2022 Kapdap</TextBlock>
+    </DockPanel>
+</Window>
