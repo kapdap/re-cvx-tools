@@ -4,9 +4,9 @@ using System.Windows.Input;
 
 namespace RDXplorer.Views
 {
-    public partial class PlayerView : View<PlayerViewModel, PlayerViewModelEntry>
+    public partial class ItemView : View<ItemViewModel, ItemViewModelEntry>
     {
-        public PlayerView()
+        public ItemView()
         {
             InitializeComponent();
             LoadModel();
@@ -22,7 +22,7 @@ namespace RDXplorer.Views
             if (string.IsNullOrEmpty(column))
                 return;
 
-            PlayerViewModelEntry entry = (PlayerViewModelEntry)grid.SelectedItem;
+            ItemViewModelEntry entry = (ItemViewModelEntry)grid.SelectedItem;
 
             Program.Windows.HexEditor.ShowFile(AppViewModel.RDXDocument.PathInfo);
             Program.Windows.HexEditor.SetPosition((long)entry.Model.Offset);

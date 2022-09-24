@@ -18,6 +18,6 @@
             <Button Margin="5,0,5,10" x:Name="GitHubButton" Grid.Column="1" Content="GitHub" Click="GitHubButton_Click"/>
             <Button Margin="5,0,10,10" x:Name="CloseButton" Grid.Column="2" Content="Close" Click="CloseButton_Click"/>
         </Grid>
-        <TextBlock DockPanel.Dock="Top" TextAlignment="Center">© 2020 Kapdap</TextBlock>
+        <TextBlock DockPanel.Dock="Top" TextAlignment="Center">© 2022 Kapdap</TextBlock>
     </DockPanel>
 </Window>

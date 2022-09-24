@@ -1,7 +1,9 @@
 ﻿using RDXplorer.ViewModels;
 using RDXplorer.Views;
 using System.ComponentModel;
+using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace RDXplorer
 {
@@ -28,12 +30,15 @@ namespace RDXplorer
             Close();
 
         private void ToolsHexEditorMenu_Click(object sender, RoutedEventArgs e) =>
-            Program.Windows.HexEditor.ShowFile(AppViewModel.RDXPathInfo);
+            Program.Windows.HexEditor.ShowFile(AppViewModel.RDXFileInfo);
 
         private void HelpAboutMenu_Click(object sender, RoutedEventArgs e) =>
             Program.Windows.About.Show();
 
         private void Window_Closing(object sender, CancelEventArgs e) =>
             Program.CloseApp();
+
+        private void FileList_SelectionChanged(object sender, SelectionChangedEventArgs e) =>
+            Program.LoadRDX((FileInfo)((ComboBox)sender).SelectedItem);
     }
 }

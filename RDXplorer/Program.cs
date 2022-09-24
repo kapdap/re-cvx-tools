@@ -65,12 +65,10 @@ namespace RDXplorer.Views
             }
         }
 
-        public static void OpenRDX()
+        public static void LoadRDX(FileInfo file)
         {
             try
             {
-                FileInfo file = SelectFile();
-
                 if (file == null)
                     return;
 
@@ -78,6 +76,18 @@ namespace RDXplorer.Views
 
                 if (Windows.HexEditor.IsVisible)
                     Windows.HexEditor.ShowFile(file);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Application Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        public static void OpenRDX()
+        {
+            try
+            {
+                LoadRDX(SelectFile());
             }
             catch (Exception ex)
             {

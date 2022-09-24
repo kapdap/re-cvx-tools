@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace RDXplorer.Views
 {
-    public partial class EnemyView : View<EnemyViewModel>
+    public partial class EnemyView : View<EnemyViewModel, EnemyViewModelEntry>
     {
         public EnemyView()
         {
@@ -16,23 +16,16 @@ namespace RDXplorer.Views
 
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (AppViewModel.RDXDocument == null)
-                return;
-
             DataGrid grid = (DataGrid)sender;
+            string column = GetDataGridColumnName(grid);
 
-            if (grid.CurrentColumn == null)
+            if (string.IsNullOrEmpty(column))
                 return;
 
-            string column = grid.CurrentColumn.Header.ToString().Trim();
-
-            if (column == "Name")
-                return;
-
-            EnemyViewModel.Entry entry = (EnemyViewModel.Entry)grid.SelectedItem;
+            EnemyViewModelEntry entry = (EnemyViewModelEntry)grid.SelectedItem;
 
             Program.Windows.HexEditor.ShowFile(AppViewModel.RDXDocument.PathInfo);
-            Program.Windows.HexEditor.SetPosition(entry.Model.Offset);
+            Program.Windows.HexEditor.SetPosition((long)entry.Model.Offset);
         }
     }
 }

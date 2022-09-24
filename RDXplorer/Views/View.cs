@@ -5,8 +5,8 @@ using System.Windows.Controls;
 
 namespace RDXplorer.Views
 {
-    public class View<T> : Page
-        where T : PageViewModel, new()
+    public class View<T, TEntry> : Page
+        where T : PageViewModel<TEntry>, new()
     {
         public T Model;
         public AppViewModel AppViewModel;
@@ -24,10 +24,14 @@ namespace RDXplorer.Views
             if (e.PropertyName != "RDXDocument")
                 return;
 
-            if (AppViewModel.RDXDocument != null)
-                AppViewModel.RDXDocument.PropertyChanged += Model.UpdateData;
-
             Model.LoadData();
+        }
+
+        protected string GetDataGridColumnName(DataGrid grid)
+        {
+            if (AppViewModel.RDXDocument == null || grid.CurrentColumn == null)
+                return string.Empty;
+            return grid.CurrentColumn.Header.ToString().Trim();
         }
     }
 }

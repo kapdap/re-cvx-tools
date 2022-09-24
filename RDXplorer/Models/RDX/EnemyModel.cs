@@ -1,8 +1,10 @@
-﻿namespace RDXplorer.Models.RDX
+﻿using System;
+
+namespace RDXplorer.Models.RDX
 {
     public class EnemyModel
     {
-        public long Offset;
+        public IntPtr Offset { get; set; }
 
         public DataEntryModel<int> Unknown0 { get; set; } = new DataEntryModel<int>();
         public DataEntryModel<short> Type { get; set; } = new DataEntryModel<short>();

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RDXplorer"
+        xmlns:local="clr-namespace:RDXplorer" xmlns:viewmodels="clr-namespace:RDXplorer.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:AppViewModel}"
         mc:Ignorable="d"
         Title="RDXplorer" Height="550" Width="800" Closing="Window_Closing">
     <DockPanel>
@@ -27,12 +27,17 @@
 
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
-                <TextBlock Name="lblStatusBar" Text="{Binding RDXPathInfo.FullName}" />
+                <TextBlock Name="lblStatusBar" Text="{Binding RDXFileInfo.FullName}" />
             </StatusBarItem>
         </StatusBar>
 
         <Grid Margin="5,5,5,5">
-            <TabControl>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <ComboBox  Grid.Row="0" Name="FileList" ItemsSource="{Binding RDXFileList}" DisplayMemberPath="Name" SelectionChanged="FileList_SelectionChanged"/>
+            <TabControl Grid.Row="1">
                 <TabItem Header="Sections">
                     <Frame Source="Views/SectionView.xaml"/>
                 </TabItem>
@@ -41,6 +46,9 @@
                 </TabItem>
                 <TabItem Header="Player">
                     <Frame Source="Views/PlayerView.xaml"/>
+                </TabItem>
+                <TabItem Header="Item">
+                    <Frame Source="Views/ItemView.xaml"/>
                 </TabItem>
             </TabControl>
         </Grid>

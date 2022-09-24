@@ -1,17 +1,24 @@
 ﻿using RDXplorer.ViewModels;
 using RDXplorer.Views;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace RDXplorer.Models
 {
-    public abstract class PageViewModel : BaseNotifyModel
+    public abstract class PageViewModel<T> : BaseNotifyModel
     {
-        public AppViewModel AppViewModel { get; set; }
+        private ObservableCollection<T> _entries;
+        public ObservableCollection<T> Entries
+        {
+            get => _entries;
+            protected set => SetField(ref _entries, value);
+        }
+
+        public AppViewModel AppViewModel { get; private set; }
 
         public PageViewModel()
         {
             AppViewModel = Program.Models.AppView;
-            LoadData();
         }
 
         public abstract void LoadData();
