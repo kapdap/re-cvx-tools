@@ -1,0 +1,127 @@
+{
+	"T1207M": {
+		"Room": "0x01215030",
+		"DocumentFlags": "0x01214EE4",
+		"KilledFlags": "0x0121490C",
+		"EventFlags": "0x0121480C",
+		"ItemFlags": "0x0121488C",
+		"MapFlags": "0x012149CC",
+	},
+	
+	"T1210M": {
+		"Room": "0x01215030",
+		"DocumentFlags": "0x01214EE4",
+		"KilledFlags": "0x0121490C",
+		"EventFlags": "0x0121480C",
+		"ItemFlags": "0x0121488C",
+		"MapFlags": "0x012149CC",
+	},
+
+	"T1204N": {
+		"Room": "0x01216790",
+		"DocumentFlags": "0x01216644",
+		"KilledFlags": "0x0121606C",
+		"EventFlags": "0x01215F6C",
+		"ItemFlags": "0x01215FEC",
+		"MapFlags": "0x0121612C",
+	},
+
+	"T36806D": {
+		"Room": "0x01216CB0",
+		"DocumentFlags": "0x01216B64",
+		"KilledFlags": "0x0121658C",
+		"EventFlags": "0x0121648C",
+		"ItemFlags": "0x0121650C",
+		"MapFlags": "0x0121664C",
+	},
+
+	"T1240M": {
+		"Room": "0x0121A210",
+		"DocumentFlags": "0x0121A0C4",
+		"KilledFlags": "0x01219AEC",
+		"EventFlags": "0x012199EC",
+		"ItemFlags": "0x01219A6C",
+		"MapFlags": "0x01219BAC",
+	},
+
+	"GCDJ08": {
+		"Room": "0x00438BB0",
+		"DocumentFlags": "0x00438B68",
+		"KilledFlags": "0x0043848C",
+		"EventFlags": "0x0043838C",
+		"ItemFlags": "0x0043840C",
+		"MapFlags": "0x0043854C",
+	},
+
+	"GCDE08": {
+		"Room": "0x004345D0",
+		"DocumentFlags": "0x00434588",
+		"KilledFlags": "0x00433EAC",
+		"EventFlags": "0x00433DAC",
+		"ItemFlags": "0x00433E2C",
+		"MapFlags": "0x00433F6C",
+	},
+
+	"GCDP08": {
+		"Room": "0x00438B70",
+		"DocumentFlags": "0x00438B28",
+		"KilledFlags": "0x0043844C",
+		"EventFlags": "0x0043834C",
+		"ItemFlags": "0x004383CC",
+		"MapFlags": "0x0043850C",
+	},
+
+	"SLPM_650.22": {
+		"Room": "0x004314B4",
+		"DocumentFlags": "0x0043146C",
+		"KilledFlags": "0x00430D90",
+		"EventFlags": "0x00430C90",
+		"ItemFlags": "0x00430D10",
+		"MapFlags": "0x00430E50",
+	},
+
+	"SLUS_201.84": {
+		"Room": "0x004339B4",
+		"DocumentFlags": "0x0043396C",
+		"KilledFlags": "0x00433290",
+		"EventFlags": "0x00433190",
+		"ItemFlags": "0x00433210",
+		"MapFlags": "0x00433350",
+	},
+
+	"SLES_503.06": {
+		"Room": "0x0044A1E4",
+		"DocumentFlags": "0x0044A19C",
+		"KilledFlags": "0x00449AC0",
+		"EventFlags": "0x004499C0",
+		"ItemFlags": "0x00449A40",
+		"MapFlags": "0x00449B80",
+	},
+
+	"NPUB30467": {
+		"Room": "0x00BB3DCC",
+		"DocumentFlags": "0x00BB3D84",
+		"KilledFlags": "0x00BB36A8",
+		"EventFlags": "0x00BB35A8",
+		"ItemFlags": "0x00BB3628",
+		"MapFlags": "0x00BB3768",
+	},
+
+	"NPEB00553": {
+		"Room": "0x00BC40CC",
+		"DocumentFlags": "0x00BC4084",
+		"KilledFlags": "0x00BC39A8",
+		"EventFlags": "0x00BC38A8",
+		"ItemFlags": "0x00BC3928",
+		"MapFlags": "0x00BC3A68",
+	},
+
+	"NPJB00135": {
+		"Room": "0x00BB3E4C",
+		"DocumentFlags": "0x00BB3E04",
+		"KilledFlags": "0x00BB3728",
+		"EventFlags": "0x00BB3628",
+		"ItemFlags": "0x00BB36A8",
+		"MapFlags": "0x00BB37E8",
+	}
+}
