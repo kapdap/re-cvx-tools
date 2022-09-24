@@ -256,10 +256,11 @@ namespace RDXplorer.Models.RDX
 
                     model.Visible.SetValue(stream.Position, br.ReadBytes(1));
                     model.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
-                    model.Unknown2.SetValue(stream.Position, br.ReadBytes(2));
-                    model.Unknown3.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
                     model.Unknown4.SetValue(stream.Position, br.ReadBytes(2));
-                    model.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown5.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Unknown6.SetValue(stream.Position, br.ReadBytes(4));
                     model.X.SetValue(stream.Position, br.ReadBytes(4));
                     model.Y.SetValue(stream.Position, br.ReadBytes(4));
                     model.Z.SetValue(stream.Position, br.ReadBytes(4));

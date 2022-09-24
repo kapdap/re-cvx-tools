@@ -26,10 +26,11 @@
             <DataGridTextColumn Header="Y Rot." Binding="{Binding Model.YRot}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Z Rot." Binding="{Binding Model.ZRot}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown1" Binding="{Binding Model.Unknown1.Value, StringFormat=X2}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown2" Binding="{Binding Model.Unknown2.Value, StringFormat=X4}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown3" Binding="{Binding Model.Unknown3.Value, StringFormat=X4}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown2" Binding="{Binding Model.Unknown2.Value, StringFormat=X2}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown3" Binding="{Binding Model.Unknown3.Value, StringFormat=X2}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown4" Binding="{Binding Model.Unknown4.Value, StringFormat=X4}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown5" Binding="{Binding Model.Unknown5.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown5" Binding="{Binding Model.Unknown5.Value, StringFormat=X4}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown6" Binding="{Binding Model.Unknown6.Value, StringFormat=X8}" FontFamily="Consolas"/>
         </DataGrid.Columns>
     </DataGrid>
 </local:View>
