@@ -14,7 +14,7 @@ namespace RDXplorer.ViewModels
                 return;
 
             foreach (EnemyModel item in AppViewModel.RDXDocument.Enemy)
-                Entries.Add(new EnemyViewModelEntry(item));
+                Entries.Add(new(item));
         }
     }
 

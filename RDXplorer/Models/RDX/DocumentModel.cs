@@ -59,6 +59,19 @@ namespace RDXplorer.Models.RDX
             private set => SetField(ref _item, value);
         }
 
+        private List<ObjectModel> _object;
+        public List<ObjectModel> Object
+        {
+            get
+            {
+                if (_object == null)
+                    SetField(ref _object, ReadObject(PathInfo.OpenRead(), Header));
+                return _object;
+            }
+
+            private set => SetField(ref _object, value);
+        }
+
         public DocumentModel(FileInfo file)
         {
             PathInfo = file;
@@ -67,9 +80,9 @@ namespace RDXplorer.Models.RDX
 
         public static HeaderModel ReadHeader(Stream stream)
         {
-            HeaderModel header = new HeaderModel();
+            HeaderModel header = new();
 
-            using (BinaryReader br = new BinaryReader(stream))
+            using (BinaryReader br = new(stream))
             {
                 header.Version.SetValue(stream.Position, br.ReadBytes(4));
 
@@ -130,15 +143,15 @@ namespace RDXplorer.Models.RDX
 
         public static List<EnemyModel> ReadEnemy(Stream stream, HeaderModel header)
         {
-            List<EnemyModel> list = new List<EnemyModel>();
+            List<EnemyModel> list = new();
 
-            using (BinaryReader br = new BinaryReader(stream))
+            using (BinaryReader br = new(stream))
             {
                 stream.Seek(header.Enemy.Value, SeekOrigin.Begin);
 
                 for (int i = 0; i < header.Enemy.Count.Value; i++)
                 {
-                    EnemyModel model = new EnemyModel();
+                    EnemyModel model = new();
 
                     model.Offset = (IntPtr)stream.Position;
 
@@ -168,15 +181,15 @@ namespace RDXplorer.Models.RDX
 
         public static List<PlayerModel> ReadPlayer(Stream stream, HeaderModel header)
         {
-            List<PlayerModel> list = new List<PlayerModel>();
+            List<PlayerModel> list = new();
 
-            using (BinaryReader br = new BinaryReader(stream))
+            using (BinaryReader br = new(stream))
             {
                 stream.Seek(header.Player.Value, SeekOrigin.Begin);
 
                 for (int i = 0; i < header.Player.Count.Value; i++)
                 {
-                    PlayerModel model = new PlayerModel();
+                    PlayerModel model = new();
 
                     model.Offset = (IntPtr)stream.Position;
 
@@ -196,15 +209,15 @@ namespace RDXplorer.Models.RDX
 
         public static List<ItemModel> ReadItem(Stream stream, HeaderModel header)
         {
-            List<ItemModel> list = new List<ItemModel>();
+            List<ItemModel> list = new();
 
-            using (BinaryReader br = new BinaryReader(stream))
+            using (BinaryReader br = new(stream))
             {
                 stream.Seek(header.Unknown1.Value, SeekOrigin.Begin);
 
                 for (int i = 0; i < header.Unknown1.Count.Value; i++)
                 {
-                    ItemModel model = new ItemModel();
+                    ItemModel model = new();
 
                     model.Offset = (IntPtr)stream.Position;
 
@@ -227,6 +240,40 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
+        public static List<ObjectModel> ReadObject(Stream stream, HeaderModel header)
+        {
+            List<ObjectModel> list = new();
+
+            using (BinaryReader br = new(stream))
+            {
+                stream.Seek(header.Object.Value, SeekOrigin.Begin);
+
+                for (int i = 0; i < header.Object.Count.Value; i++)
+                {
+                    ObjectModel model = new();
+
+                    model.Offset = (IntPtr)stream.Position;
+
+                    model.Visible.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown2.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Unknown3.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Unknown4.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
+                    model.X.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Y.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Z.SetValue(stream.Position, br.ReadBytes(4));
+                    model.XRot.SetValue(stream.Position, br.ReadBytes(4));
+                    model.YRot.SetValue(stream.Position, br.ReadBytes(4));
+                    model.ZRot.SetValue(stream.Position, br.ReadBytes(4));
+
+                    list.Add(model);
+                }
+            }
+
+            return list;
+        }
+
         public void LoadHeader() =>
             Header = ReadHeader(PathInfo.OpenRead());
 
@@ -238,5 +285,8 @@ namespace RDXplorer.Models.RDX
 
         public void LoadItem() =>
             Item = ReadItem(PathInfo.OpenRead(), Header);
+
+        public void LoadObject() =>
+            Object = ReadObject(PathInfo.OpenRead(), Header);
     }
 }

@@ -3,7 +3,6 @@ using RDXplorer.Models.RDX;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using static System.Net.WebRequestMethods;
 
 namespace RDXplorer.ViewModels
 {
@@ -47,7 +46,7 @@ namespace RDXplorer.ViewModels
         public void LoadRDX(FileInfo file)
         {
             RDXFileInfo = file;
-            RDXDocument = new DocumentModel(RDXFileInfo);
+            RDXDocument = new(RDXFileInfo);
             RDXLoaded = true;
 
             LoadFileList();
@@ -64,7 +63,7 @@ namespace RDXplorer.ViewModels
         {
             if (RDXFileList == null || (RDXFolderInfo != null && RDXFolderInfo.FullName != RDXFileInfo.Directory.FullName))
             {
-                RDXFolderInfo = new DirectoryInfo(RDXFileInfo.Directory.FullName);
+                RDXFolderInfo = new(RDXFileInfo.Directory.FullName);
                 RDXFileList = RDXFolderInfo.GetFiles("*.rdx").ToList();
             }
         }

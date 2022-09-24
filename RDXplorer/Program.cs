@@ -16,7 +16,7 @@ namespace RDXplorer.Views
         {
             Windows.Main = main;
 
-            Models.AppView = new AppViewModel();
+            Models.AppView = new();
             main.AppViewModel = Models.AppView;
             main.DataContext = Models.AppView;
         }
@@ -33,7 +33,7 @@ namespace RDXplorer.Views
             {
                 Multiselect = false,
                 CheckFileExists = true,
-                FileName = path != null && path.Exists ? path.FullName : String.Empty
+                FileName = path != null && path.Exists ? path.FullName : string.Empty
             };
 
             if (dialog.ShowDialog() == null || !File.Exists(dialog.FileName))
@@ -126,7 +126,7 @@ namespace RDXplorer.Views
                 get
                 {
                     if (_hexEditor == null)
-                        _hexEditor = new HexEditorWindow();
+                        _hexEditor = new();
 
                     return _hexEditor;
                 }
@@ -143,7 +143,7 @@ namespace RDXplorer.Views
                 get
                 {
                     if (_about == null)
-                        _about = new AboutWindow();
+                        _about = new();
 
                     return _about;
                 }

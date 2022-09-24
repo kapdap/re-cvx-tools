@@ -13,7 +13,7 @@ namespace RDXplorer.ViewModels
                 return;
 
             foreach (PlayerModel item in AppViewModel.RDXDocument.Player)
-                Entries.Add(new PlayerViewModelEntry(item));
+                Entries.Add(new(item));
         }
     }
 

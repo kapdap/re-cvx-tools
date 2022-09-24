@@ -14,7 +14,7 @@ namespace RDXplorer.ViewModels
                 return;
 
             foreach (ItemModel item in AppViewModel.RDXDocument.Item)
-                Entries.Add(new ItemViewModelEntry(item));
+                Entries.Add(new(item));
         }
     }
 

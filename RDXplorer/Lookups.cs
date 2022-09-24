@@ -5,7 +5,7 @@ namespace RDXplorer
 {
     public static class Lookups
     {
-        private static Dictionary<ItemEnumeration, string> _items = new Dictionary<ItemEnumeration, string>();
+        private static Dictionary<ItemEnumeration, string> _items = new();
         public static Dictionary<ItemEnumeration, string> Items
         {
             get
@@ -173,7 +173,7 @@ namespace RDXplorer
             }
         }
 
-        private static Dictionary<EnemyEnumeration, string> _enemies = new Dictionary<EnemyEnumeration, string>();
+        private static Dictionary<EnemyEnumeration, string> _enemies = new();
         public static Dictionary<EnemyEnumeration, string> Enemies
         {
             get

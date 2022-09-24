@@ -50,6 +50,9 @@
                 <TabItem Header="Item">
                     <Frame Source="Views/ItemView.xaml"/>
                 </TabItem>
+                <TabItem Header="Object">
+                    <Frame Source="Views/ObjectView.xaml"/>
+                </TabItem>
             </TabControl>
         </Grid>
     </DockPanel>
