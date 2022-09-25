@@ -101,7 +101,7 @@ namespace RDXplorer.Models.RDX
 
                 // TODO: Detect if file is in PRS format
                 // TODO: Implement C# PRS library https://github.com/Sewer56/dlang-prs
-                if (header.Version.Value == 1092616192)
+                if (header.Version.Value == 1092616192 || header.Version.Value == 1074077368)
                 {
                     stream.Seek(16, SeekOrigin.Begin);
                     header.Scripts.SetValue(stream.Position, br.ReadBytes(4));
