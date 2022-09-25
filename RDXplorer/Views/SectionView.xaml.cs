@@ -26,12 +26,12 @@ namespace RDXplorer.Views
 
             Program.Windows.HexEditor.ShowFile(AppViewModel.RDXDocument.PathInfo);
 
-            if (column == "Count")
-                Program.Windows.HexEditor.SetPosition((long)entry.Model.Count.Offset, entry.Model.Count.Size);
-            else if (column == "Offset" || !entry.Model.IsPointer)
-                Program.Windows.HexEditor.SetPosition((long)entry.Model.Offset, entry.Model.Size);
-            else if (column == "Value")
+            if (column == "Value" && entry.Model.IsPointer)
                 Program.Windows.HexEditor.SetPosition(entry.Model.Value);
+            else if (column == "Count" && entry.Model.HasCount)
+                Program.Windows.HexEditor.SetPosition((long)entry.Model.Count.Offset, entry.Model.Count.Size);
+            else
+                Program.Windows.HexEditor.SetPosition((long)entry.Model.Offset, entry.Model.Size);
         }
     }
 }
