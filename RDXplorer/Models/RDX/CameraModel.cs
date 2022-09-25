@@ -16,5 +16,15 @@ namespace RDXplorer.Models.RDX
         public DataEntryModel<float> Unknown8 { get; set; } = new();
         public DataEntryModel<float> Unknown9 { get; set; } = new();
         public DataEntryModel<float> Unknown10 { get; set; } = new();
+        public DataEntryModel<float> Unknown11 { get; set; } = new();
+        public DataEntryModel<int> Unknown12 { get; set; } = new();
+        public DataEntryModel<float> Unknown13 { get; set; } = new();
+        public DataEntryModel<float> Unknown14 { get; set; } = new();
+        public DataEntryModel<float> Unknown15 { get; set; } = new();
+        public DataEntryModel<float> Unknown16 { get; set; } = new();
+        public DataEntryModel<float> Unknown17 { get; set; } = new();
+        public DataEntryModel<float> Unknown18 { get; set; } = new();
+        public DataEntryModel<float> Unknown19 { get; set; } = new();
+        public DataEntryModel<float> Unknown20 { get; set; } = new();
     }
 }
