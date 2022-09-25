@@ -44,6 +44,9 @@
                 <TabItem Header="Camera">
                     <Frame Source="Views/CameraView.xaml"/>
                 </TabItem>
+                <TabItem Header="Lighting">
+                    <Frame Source="Views/LightingView.xaml"/>
+                </TabItem>
                 <TabItem Header="Enemy">
                     <Frame Source="Views/EnemyView.xaml"/>
                 </TabItem>
@@ -52,6 +55,9 @@
                 </TabItem>
                 <TabItem Header="Item">
                     <Frame Source="Views/ItemView.xaml"/>
+                </TabItem>
+                <TabItem Header="Effect">
+                    <Frame Source="Views/EffectView.xaml"/>
                 </TabItem>
                 <TabItem Header="Player">
                     <Frame Source="Views/PlayerView.xaml"/>
