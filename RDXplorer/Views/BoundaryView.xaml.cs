@@ -7,9 +7,9 @@ using System.Windows.Input;
 
 namespace RDXplorer.Views
 {
-    public partial class BoundryView : View<BoundryViewModel, BoundryViewModelEntry>
+    public partial class BoundaryView : View<BoundaryViewModel, BoundaryViewModelEntry>
     {
-        public BoundryView()
+        public BoundaryView()
         {
             InitializeComponent();
             LoadModel();
@@ -25,7 +25,7 @@ namespace RDXplorer.Views
             if (string.IsNullOrEmpty(binding))
                 return;
 
-            BoundryViewModelEntry entry = (BoundryViewModelEntry)grid.SelectedItem;
+            BoundaryViewModelEntry entry = (BoundaryViewModelEntry)grid.SelectedItem;
 
             IntPtr offset = entry.Model.Offset;
             long length = 4;

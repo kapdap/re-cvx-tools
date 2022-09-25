@@ -2,7 +2,7 @@
 
 namespace RDXplorer.Models.RDX
 {
-    public class BoundryModel
+    public class BoundaryModel
     {
         public IntPtr Offset { get; set; }
 

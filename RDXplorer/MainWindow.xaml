@@ -59,8 +59,20 @@
                 <TabItem Header="Effect">
                     <Frame Source="Views/EffectView.xaml"/>
                 </TabItem>
+                <TabItem Header="Boundary">
+                    <Frame Source="Views/BoundaryView.xaml"/>
+                </TabItem>
+                <TabItem Header="Door">
+                    <Frame Source="Views/DoorView.xaml"/>
+                </TabItem>
+                <TabItem Header="Trigger">
+                    <Frame Source="Views/TriggerView.xaml"/>
+                </TabItem>
                 <TabItem Header="Player">
                     <Frame Source="Views/PlayerView.xaml"/>
+                </TabItem>
+                <TabItem Header="Event">
+                    <Frame Source="Views/EventView.xaml"/>
                 </TabItem>
             </TabControl>
         </Grid>

@@ -13,16 +13,16 @@
         public HeaderEntryModel Lighting { get; set; } = new("Lighting");
         public HeaderEntryModel Enemy { get; set; } = new("Enemy");
         public HeaderEntryModel Object { get; set; } = new("Object");
-        public HeaderEntryModel Unknown1 { get; set; } = new("Item");
-        public HeaderEntryModel Unknown2 { get; set; } = new("Effect");
-        public HeaderEntryModel SCA { get; set; } = new("Boundary");
-        public HeaderEntryModel AOT { get; set; } = new("Door");
-        public HeaderEntryModel Unknown3 { get; set; } = new("Trigger");
+        public HeaderEntryModel Item { get; set; } = new("Item");
+        public HeaderEntryModel Effect { get; set; } = new("Effect");
+        public HeaderEntryModel Boundary { get; set; } = new("Boundary");
+        public HeaderEntryModel Door { get; set; } = new("Door");
+        public HeaderEntryModel Trigger { get; set; } = new("Trigger");
         public HeaderEntryModel Player { get; set; } = new("Player");
-        public HeaderEntryModel Unknown4 { get; set; } = new("Event");
-        public HeaderEntryModel Unknown5 { get; set; } = new("Unknown5");
-        public HeaderEntryModel Unknown6 { get; set; } = new("Unknown6");
-        public HeaderEntryModel Event { get; set; } = new("Action");
+        public HeaderEntryModel Event { get; set; } = new("Event");
+        public HeaderEntryModel Unknown1 { get; set; } = new("Unknown1");
+        public HeaderEntryModel Unknown2 { get; set; } = new("Unknown2");
+        public HeaderEntryModel Action { get; set; } = new("Action");
         public HeaderEntryModel Text { get; set; } = new("Text");
         public HeaderEntryModel Sysmes { get; set; } = new("Sysmes");
 
@@ -30,8 +30,8 @@
         {
             Version.IsPointer = false;
             Author.IsPointer = false;
-            Unknown5.IsPointer = false;
-            Unknown6.IsPointer = false;
+            Unknown1.IsPointer = false;
+            Unknown2.IsPointer = false;
 
             Author.IsText = true;
 
@@ -42,6 +42,8 @@
             Motion.HasCount = false;
             Flags.HasCount = false;
             Texture.HasCount = false;
+            Text.HasCount = false;
+            Sysmes.HasCount = false;
         }
     }
 }

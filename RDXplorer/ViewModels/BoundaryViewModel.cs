@@ -3,7 +3,7 @@ using RDXplorer.Models.RDX;
 
 namespace RDXplorer.ViewModels
 {
-    public class BoundryViewModel : PageViewModel<BoundryViewModelEntry>
+    public class BoundaryViewModel : PageViewModel<BoundaryViewModelEntry>
     {
         public override void LoadData()
         {
@@ -12,16 +12,16 @@ namespace RDXplorer.ViewModels
             if (AppViewModel.RDXDocument == null)
                 return;
 
-            foreach (BoundryModel item in AppViewModel.RDXDocument.Boundry)
+            foreach (BoundaryModel item in AppViewModel.RDXDocument.Boundary)
                 Entries.Add(new(item));
         }
     }
 
-    public class BoundryViewModelEntry
+    public class BoundaryViewModelEntry
     {
-        public BoundryModel Model { get; set; }
+        public BoundaryModel Model { get; set; }
 
-        public BoundryViewModelEntry(BoundryModel model)
+        public BoundaryViewModelEntry(BoundaryModel model)
         {
             Model = model;
         }

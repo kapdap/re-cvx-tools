@@ -30,7 +30,7 @@ namespace RDXplorer.ViewModels
                 new(header.Object),
                 new(header.Item),
                 new(header.Effect),
-                new(header.Boundry),
+                new(header.Boundary),
                 new(header.Door),
                 new(header.Trigger),
                 new(header.Player),

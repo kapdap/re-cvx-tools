@@ -98,6 +98,45 @@ namespace RDXplorer.Models.RDX
             private set => SetField(ref _effect, value);
         }
 
+        private List<BoundaryModel> _boundary;
+        public List<BoundaryModel> Boundary
+        {
+            get
+            {
+                if (_boundary == null)
+                    SetField(ref _boundary, ReadBoundary(PathInfo.OpenRead(), Header));
+                return _boundary;
+            }
+
+            private set => SetField(ref _boundary, value);
+        }
+
+        private List<DoorModel> _door;
+        public List<DoorModel> Door
+        {
+            get
+            {
+                if (_door == null)
+                    SetField(ref _door, ReadDoor(PathInfo.OpenRead(), Header));
+                return _door;
+            }
+
+            private set => SetField(ref _door, value);
+        }
+
+        private List<TriggerModel> _trigger;
+        public List<TriggerModel> Trigger
+        {
+            get
+            {
+                if (_trigger == null)
+                    SetField(ref _trigger, ReadTrigger(PathInfo.OpenRead(), Header));
+                return _trigger;
+            }
+
+            private set => SetField(ref _trigger, value);
+        }
+
         private List<PlayerModel> _player;
         public List<PlayerModel> Player
         {
@@ -109,6 +148,19 @@ namespace RDXplorer.Models.RDX
             }
 
             private set => SetField(ref _player, value);
+        }
+
+        private List<EventModel> _event;
+        public List<EventModel> Event
+        {
+            get
+            {
+                if (_event == null)
+                    SetField(ref _event, ReadEvent(PathInfo.OpenRead(), Header));
+                return _event;
+            }
+
+            private set => SetField(ref _event, value);
         }
 
         public DocumentModel(FileInfo file)
@@ -144,16 +196,16 @@ namespace RDXplorer.Models.RDX
                     header.Lighting.SetValue(stream.Position, br.ReadBytes(4));
                     header.Enemy.SetValue(stream.Position, br.ReadBytes(4));
                     header.Object.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Item.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Effect.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Boundary.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Door.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Trigger.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Player.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Event.SetValue(stream.Position, br.ReadBytes(4));
                     header.Unknown1.SetValue(stream.Position, br.ReadBytes(4));
                     header.Unknown2.SetValue(stream.Position, br.ReadBytes(4));
-                    header.SCA.SetValue(stream.Position, br.ReadBytes(4));
-                    header.AOT.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Unknown3.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Player.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Unknown4.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Unknown6.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Event.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Action.SetValue(stream.Position, br.ReadBytes(4));
                     header.Text.SetValue(stream.Position, br.ReadBytes(4));
                     header.Sysmes.SetValue(stream.Position, br.ReadBytes(4));
 
@@ -162,16 +214,16 @@ namespace RDXplorer.Models.RDX
                     header.Lighting.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Enemy.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Object.Count.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Item.Count.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Effect.Count.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Boundary.Count.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Door.Count.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Trigger.Count.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Player.Count.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Event.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Unknown1.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Unknown2.Count.SetValue(stream.Position, br.ReadBytes(4));
-                    header.SCA.Count.SetValue(stream.Position, br.ReadBytes(4));
-                    header.AOT.Count.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Unknown3.Count.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Player.Count.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Unknown4.Count.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Unknown5.Count.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Unknown6.Count.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Event.Count.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Action.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Text.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Sysmes.Count.SetValue(stream.Position, br.ReadBytes(4));
                 }
@@ -350,9 +402,9 @@ namespace RDXplorer.Models.RDX
 
             using (BinaryReader br = new(stream))
             {
-                stream.Seek(header.Unknown1.Value, SeekOrigin.Begin);
+                stream.Seek(header.Item.Value, SeekOrigin.Begin);
 
-                for (int i = 0; i < header.Unknown1.Count.Value; i++)
+                for (int i = 0; i < header.Item.Count.Value; i++)
                 {
                     ItemModel model = new();
 
@@ -390,9 +442,9 @@ namespace RDXplorer.Models.RDX
 
             using (BinaryReader br = new(stream))
             {
-                stream.Seek(header.Unknown2.Value, SeekOrigin.Begin);
+                stream.Seek(header.Effect.Value, SeekOrigin.Begin);
 
-                for (int i = 0; i < header.Unknown2.Count.Value; i++)
+                for (int i = 0; i < header.Effect.Count.Value; i++)
                 {
                     EffectModel model = new();
 
@@ -424,6 +476,117 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
+        public static List<BoundaryModel> ReadBoundary(Stream stream, HeaderModel header)
+        {
+            List<BoundaryModel> list = new();
+
+            using (BinaryReader br = new(stream))
+            {
+                stream.Seek(header.Boundary.Value, SeekOrigin.Begin);
+
+                for (int i = 0; i < header.Boundary.Count.Value; i++)
+                {
+                    BoundaryModel model = new();
+
+                    model.Offset = (IntPtr)stream.Position;
+
+                    model.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown6.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown7.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown8.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown9.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown10.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown11.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown12.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown13.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown14.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown15.SetValue(stream.Position, br.ReadBytes(1));
+
+                    list.Add(model);
+                }
+            }
+
+            return list;
+        }
+
+        public static List<DoorModel> ReadDoor(Stream stream, HeaderModel header)
+        {
+            List<DoorModel> list = new();
+
+            using (BinaryReader br = new(stream))
+            {
+                stream.Seek(header.Door.Value, SeekOrigin.Begin);
+
+                for (int i = 0; i < header.Door.Count.Value; i++)
+                {
+                    DoorModel model = new();
+
+                    model.Offset = (IntPtr)stream.Position;
+
+                    model.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown6.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown7.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown8.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown9.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown10.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown11.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown12.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown13.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown14.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown15.SetValue(stream.Position, br.ReadBytes(1));
+
+                    list.Add(model);
+                }
+            }
+
+            return list;
+        }
+
+        public static List<TriggerModel> ReadTrigger(Stream stream, HeaderModel header)
+        {
+            List<TriggerModel> list = new();
+
+            using (BinaryReader br = new(stream))
+            {
+                stream.Seek(header.Trigger.Value, SeekOrigin.Begin);
+
+                for (int i = 0; i < header.Trigger.Count.Value; i++)
+                {
+                    TriggerModel model = new();
+
+                    model.Offset = (IntPtr)stream.Position;
+
+                    model.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown6.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown7.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown8.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown9.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown10.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown11.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown12.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown13.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown14.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown15.SetValue(stream.Position, br.ReadBytes(1));
+
+                    list.Add(model);
+                }
+            }
+
+            return list;
+        }
+
         public static List<PlayerModel> ReadPlayer(Stream stream, HeaderModel header)
         {
             List<PlayerModel> list = new();
@@ -447,6 +610,43 @@ namespace RDXplorer.Models.RDX
                 }
 
                 stream.Close();
+            }
+
+            return list;
+        }
+
+        public static List<EventModel> ReadEvent(Stream stream, HeaderModel header)
+        {
+            List<EventModel> list = new();
+
+            using (BinaryReader br = new(stream))
+            {
+                stream.Seek(header.Event.Value, SeekOrigin.Begin);
+
+                for (int i = 0; i < header.Event.Count.Value; i++)
+                {
+                    EventModel model = new();
+
+                    model.Offset = (IntPtr)stream.Position;
+
+                    model.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown6.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown7.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown8.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown9.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown10.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown11.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown12.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown13.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown14.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown15.SetValue(stream.Position, br.ReadBytes(1));
+
+                    list.Add(model);
+                }
             }
 
             return list;
