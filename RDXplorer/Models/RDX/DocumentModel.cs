@@ -271,15 +271,24 @@ namespace RDXplorer.Models.RDX
                     model.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
                     model.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
                     model.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
-                    model.Unknown4.SetValue(stream.Position, br.ReadBytes(2));
-                    model.Unknown5.SetValue(stream.Position, br.ReadBytes(2));
-                    model.Unknown6.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Type.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown5.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown6.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown7.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown8.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown9.SetValue(stream.Position, br.ReadBytes(1));
                     model.X.SetValue(stream.Position, br.ReadBytes(4));
                     model.Y.SetValue(stream.Position, br.ReadBytes(4));
                     model.Z.SetValue(stream.Position, br.ReadBytes(4));
-                    model.XRot.SetValue(stream.Position, br.ReadBytes(4));
-                    model.YRot.SetValue(stream.Position, br.ReadBytes(4));
-                    model.ZRot.SetValue(stream.Position, br.ReadBytes(4));
+                    model.XRot.SetValue(stream.Position, br.ReadBytes(2));
+                    model.YRot.SetValue(stream.Position, br.ReadBytes(2));
+                    model.ZRot.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Unknown10.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Unknown11.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown12.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown13.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown14.SetValue(stream.Position, br.ReadBytes(1));
 
                     list.Add(model);
                 }
