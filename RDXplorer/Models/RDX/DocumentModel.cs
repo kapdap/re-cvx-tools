@@ -234,16 +234,23 @@ namespace RDXplorer.Models.RDX
 
                     model.Offset = (IntPtr)stream.Position;
 
-                    model.Unknown1.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
                     model.Type.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Unknown3.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
                     model.X.SetValue(stream.Position, br.ReadBytes(4));
                     model.Y.SetValue(stream.Position, br.ReadBytes(4));
                     model.Z.SetValue(stream.Position, br.ReadBytes(4));
                     model.XRot.SetValue(stream.Position, br.ReadBytes(2));
                     model.YRot.SetValue(stream.Position, br.ReadBytes(2));
-                    model.ZRot.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Unknown7.SetValue(stream.Position, br.ReadBytes(4));
+                    model.ZRot.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Unknown6.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Unknown7.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown8.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown9.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown10.SetValue(stream.Position, br.ReadBytes(1));
 
                     list.Add(model);
                 }
