@@ -1,4 +1,5 @@
-﻿using RDXplorer.Models;
+﻿using RDXplorer.Extensions;
+using RDXplorer.Models;
 using RDXplorer.ViewModels;
 using System.ComponentModel;
 using System.Windows.Controls;
@@ -40,7 +41,7 @@ namespace RDXplorer.Views
             if (AppViewModel.RDXDocument == null || grid.CurrentColumn == null)
                 return string.Empty;
 
-            return ((Binding)((DataGridBoundColumn)grid.CurrentColumn).Binding)?.Path.Path ?? string.Empty;
+            return ((Binding)((DataGridBoundColumn)grid.CurrentColumn).Binding)?.Path.Path.RemoveEnd(".Value") ?? string.Empty;
         }
     }
 }
