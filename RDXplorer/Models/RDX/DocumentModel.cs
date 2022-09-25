@@ -72,6 +72,19 @@ namespace RDXplorer.Models.RDX
             private set => SetField(ref _object, value);
         }
 
+        private List<CameraModel> _camera;
+        public List<CameraModel> Camera
+        {
+            get
+            {
+                if (_camera == null)
+                    SetField(ref _camera, ReadCamera(PathInfo.OpenRead(), Header));
+                return _camera;
+            }
+
+            private set => SetField(ref _camera, value);
+        }
+
         public DocumentModel(FileInfo file)
         {
             PathInfo = file;
@@ -275,6 +288,38 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
+        public static List<CameraModel> ReadCamera(Stream stream, HeaderModel header)
+        {
+            List<CameraModel> list = new();
+
+            using (BinaryReader br = new(stream))
+            {
+                stream.Seek(header.Camera.Value, SeekOrigin.Begin);
+
+                for (int i = 0; i < header.Camera.Count.Value; i++)
+                {
+                    CameraModel model = new();
+
+                    model.Offset = (IntPtr)stream.Position;
+
+                    model.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown6.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown7.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown8.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown9.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown10.SetValue(stream.Position, br.ReadBytes(0x290));
+
+                    list.Add(model);
+                }
+            }
+
+            return list;
+        }
+
         public void LoadHeader() =>
             Header = ReadHeader(PathInfo.OpenRead());
 
@@ -289,5 +334,8 @@ namespace RDXplorer.Models.RDX
 
         public void LoadObject() =>
             Object = ReadObject(PathInfo.OpenRead(), Header);
+
+        public void LoadCamera() =>
+            Camera = ReadCamera(PathInfo.OpenRead(), Header);
     }
 }

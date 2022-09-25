@@ -41,17 +41,20 @@
                 <TabItem Header="Sections">
                     <Frame Source="Views/SectionView.xaml"/>
                 </TabItem>
+                <TabItem Header="Camera">
+                    <Frame Source="Views/CameraView.xaml"/>
+                </TabItem>
                 <TabItem Header="Enemy">
                     <Frame Source="Views/EnemyView.xaml"/>
                 </TabItem>
-                <TabItem Header="Player">
-                    <Frame Source="Views/PlayerView.xaml"/>
+                <TabItem Header="Object">
+                    <Frame Source="Views/ObjectView.xaml"/>
                 </TabItem>
                 <TabItem Header="Item">
                     <Frame Source="Views/ItemView.xaml"/>
                 </TabItem>
-                <TabItem Header="Object">
-                    <Frame Source="Views/ObjectView.xaml"/>
+                <TabItem Header="Player">
+                    <Frame Source="Views/PlayerView.xaml"/>
                 </TabItem>
             </TabControl>
         </Grid>
