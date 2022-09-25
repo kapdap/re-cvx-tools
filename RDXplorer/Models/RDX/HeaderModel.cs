@@ -31,6 +31,7 @@
             Version.IsPointer = false;
             Author.IsPointer = false;
             Unknown5.IsPointer = false;
+            Unknown6.IsPointer = false;
 
             Author.IsText = true;
 

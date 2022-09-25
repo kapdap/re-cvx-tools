@@ -2,6 +2,7 @@
 using RDXplorer.ViewModels;
 using System.ComponentModel;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace RDXplorer.Views
 {
@@ -32,6 +33,14 @@ namespace RDXplorer.Views
             if (AppViewModel.RDXDocument == null || grid.CurrentColumn == null)
                 return string.Empty;
             return grid.CurrentColumn.Header.ToString().Trim();
+        }
+
+        protected string GetDataGridColumnBinding(DataGrid grid)
+        {
+            if (AppViewModel.RDXDocument == null || grid.CurrentColumn == null)
+                return string.Empty;
+
+            return ((Binding)((DataGridBoundColumn)grid.CurrentColumn).Binding)?.Path.Path ?? string.Empty;
         }
     }
 }
