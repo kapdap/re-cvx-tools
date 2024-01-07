@@ -111,17 +111,17 @@ namespace RDXplorer.Models.RDX
             private set => SetField(ref _boundary, value);
         }
 
-        private List<DoorModel> _door;
-        public List<DoorModel> Door
+        private List<AOTModel> _aot;
+        public List<AOTModel> AOT
         {
             get
             {
-                if (_door == null)
-                    SetField(ref _door, ReadDoor(PathInfo.OpenRead(), Header));
-                return _door;
+                if (_aot == null)
+                    SetField(ref _aot, ReadAOT(PathInfo.OpenRead(), Header));
+                return _aot;
             }
 
-            private set => SetField(ref _door, value);
+            private set => SetField(ref _aot, value);
         }
 
         private List<TriggerModel> _trigger;
@@ -199,7 +199,7 @@ namespace RDXplorer.Models.RDX
                     header.Item.SetValue(stream.Position, br.ReadBytes(4));
                     header.Effect.SetValue(stream.Position, br.ReadBytes(4));
                     header.Boundary.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Door.SetValue(stream.Position, br.ReadBytes(4));
+                    header.AOT.SetValue(stream.Position, br.ReadBytes(4));
                     header.Trigger.SetValue(stream.Position, br.ReadBytes(4));
                     header.Player.SetValue(stream.Position, br.ReadBytes(4));
                     header.Event.SetValue(stream.Position, br.ReadBytes(4));
@@ -217,7 +217,7 @@ namespace RDXplorer.Models.RDX
                     header.Item.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Effect.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Boundary.Count.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Door.Count.SetValue(stream.Position, br.ReadBytes(4));
+                    header.AOT.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Trigger.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Player.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Event.Count.SetValue(stream.Position, br.ReadBytes(4));
@@ -513,17 +513,17 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public static List<DoorModel> ReadDoor(Stream stream, HeaderModel header)
+        public static List<AOTModel> ReadAOT(Stream stream, HeaderModel header)
         {
-            List<DoorModel> list = new();
+            List<AOTModel> list = new();
 
             using (BinaryReader br = new(stream))
             {
-                stream.Seek(header.Door.Value, SeekOrigin.Begin);
+                stream.Seek(header.AOT.Value, SeekOrigin.Begin);
 
-                for (int i = 0; i < header.Door.Count.Value; i++)
+                for (int i = 0; i < header.AOT.Count.Value; i++)
                 {
-                    DoorModel model = new();
+                    AOTModel model = new();
 
                     model.Offset = (IntPtr)stream.Position;
 

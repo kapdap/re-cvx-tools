@@ -7,9 +7,9 @@ using System.Windows.Input;
 
 namespace RDXplorer.Views
 {
-    public partial class DoorView : View<DoorViewModel, DoorViewModelEntry>
+    public partial class AOTView : View<AOTViewModel, AOTViewModelEntry>
     {
-        public DoorView()
+        public AOTView()
         {
             InitializeComponent();
             LoadModel();
@@ -25,7 +25,7 @@ namespace RDXplorer.Views
             if (string.IsNullOrEmpty(binding))
                 return;
 
-            DoorViewModelEntry entry = (DoorViewModelEntry)grid.SelectedItem;
+            AOTViewModelEntry entry = (AOTViewModelEntry)grid.SelectedItem;
 
             IntPtr offset = entry.Model.Offset;
             long length = 4;

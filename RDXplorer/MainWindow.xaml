@@ -62,8 +62,8 @@
                 <TabItem Header="Boundary">
                     <Frame Source="Views/BoundaryView.xaml"/>
                 </TabItem>
-                <TabItem Header="Door">
-                    <Frame Source="Views/DoorView.xaml"/>
+                <TabItem Header="AOT">
+                    <Frame Source="Views/AOTView.xaml"/>
                 </TabItem>
                 <TabItem Header="Trigger">
                     <Frame Source="Views/TriggerView.xaml"/>

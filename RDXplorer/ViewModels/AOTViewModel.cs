@@ -3,7 +3,7 @@ using RDXplorer.Models.RDX;
 
 namespace RDXplorer.ViewModels
 {
-    public class DoorViewModel : PageViewModel<DoorViewModelEntry>
+    public class AOTViewModel : PageViewModel<AOTViewModelEntry>
     {
         public override void LoadData()
         {
@@ -12,16 +12,16 @@ namespace RDXplorer.ViewModels
             if (AppViewModel.RDXDocument == null)
                 return;
 
-            foreach (DoorModel item in AppViewModel.RDXDocument.Door)
+            foreach (AOTModel item in AppViewModel.RDXDocument.AOT)
                 Entries.Add(new(item));
         }
     }
 
-    public class DoorViewModelEntry
+    public class AOTViewModelEntry
     {
-        public DoorModel Model { get; set; }
+        public AOTModel Model { get; set; }
 
-        public DoorViewModelEntry(DoorModel model)
+        public AOTViewModelEntry(AOTModel model)
         {
             Model = model;
         }

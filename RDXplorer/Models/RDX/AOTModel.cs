@@ -2,7 +2,7 @@
 
 namespace RDXplorer.Models.RDX
 {
-    public class DoorModel
+    public class AOTModel
     {
         public IntPtr Offset { get; set; }
 

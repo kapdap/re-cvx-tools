@@ -16,7 +16,7 @@
         public HeaderEntryModel Item { get; set; } = new("Item");
         public HeaderEntryModel Effect { get; set; } = new("Effect");
         public HeaderEntryModel Boundary { get; set; } = new("Boundary");
-        public HeaderEntryModel Door { get; set; } = new("Door");
+        public HeaderEntryModel AOT { get; set; } = new("AOT");
         public HeaderEntryModel Trigger { get; set; } = new("Trigger");
         public HeaderEntryModel Player { get; set; } = new("Player");
         public HeaderEntryModel Event { get; set; } = new("Event");
