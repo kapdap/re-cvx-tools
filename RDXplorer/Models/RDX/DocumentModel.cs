@@ -182,16 +182,16 @@ namespace RDXplorer.Models.RDX
                 if (header.Version.Value == 1092616192 || header.Version.Value == 1074077368)
                 {
                     stream.Seek(16, SeekOrigin.Begin);
-                    header.Scripts.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Tables.SetValue(stream.Position, br.ReadBytes(4));
                     header.Model.SetValue(stream.Position, br.ReadBytes(4));
                     header.Motion.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Flags.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Script.SetValue(stream.Position, br.ReadBytes(4));
                     header.Texture.SetValue(stream.Position, br.ReadBytes(4));
 
                     stream.Seek(96, SeekOrigin.Begin);
                     header.Author.SetValue(stream.Position, br.ReadBytes(32));
 
-                    stream.Seek(header.Scripts.Value, SeekOrigin.Begin);
+                    stream.Seek(header.Tables.Value, SeekOrigin.Begin);
                     header.Camera.SetValue(stream.Position, br.ReadBytes(4));
                     header.Lighting.SetValue(stream.Position, br.ReadBytes(4));
                     header.Actor.SetValue(stream.Position, br.ReadBytes(4));

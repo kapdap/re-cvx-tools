@@ -18,12 +18,15 @@ namespace RDXplorer.ViewModels
             Entries = new()
             {
                 new(header.Version),
-                new(header.Scripts),
+
+                new(header.Tables),
                 new(header.Model),
                 new(header.Motion),
-                new(header.Flags),
+                new(header.Script),
                 new(header.Texture),
+
                 new(header.Author),
+
                 new(header.Camera),
                 new(header.Lighting),
                 new(header.Actor),

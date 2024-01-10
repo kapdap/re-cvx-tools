@@ -4,10 +4,10 @@
     {
         public HeaderEntryModel Version { get; set; } = new("Version");
         public HeaderEntryModel Author { get; set; } = new("Author");
-        public HeaderEntryModel Scripts { get; set; } = new("Scripts");
+        public HeaderEntryModel Tables { get; set; } = new("Tables");
         public HeaderEntryModel Model { get; set; } = new("Model");
         public HeaderEntryModel Motion { get; set; } = new("Motion");
-        public HeaderEntryModel Flags { get; set; } = new("Flags");
+        public HeaderEntryModel Script { get; set; } = new("Script");
         public HeaderEntryModel Texture { get; set; } = new("Texture");
         public HeaderEntryModel Camera { get; set; } = new("Camera");
         public HeaderEntryModel Lighting { get; set; } = new("Lighting");
@@ -20,8 +20,8 @@
         public HeaderEntryModel Trigger { get; set; } = new("Trigger");
         public HeaderEntryModel Player { get; set; } = new("Player");
         public HeaderEntryModel Event { get; set; } = new("Event");
-        public HeaderEntryModel Unknown1 { get; set; } = new("Unknown1");
-        public HeaderEntryModel Unknown2 { get; set; } = new("Unknown2");
+        public HeaderEntryModel Unknown1 { get; set; } = new("Unknown 1");
+        public HeaderEntryModel Unknown2 { get; set; } = new("Unknown 2");
         public HeaderEntryModel Action { get; set; } = new("Action");
         public HeaderEntryModel Text { get; set; } = new("Text");
         public HeaderEntryModel Sysmes { get; set; } = new("Sysmes");
@@ -37,10 +37,10 @@
 
             Version.HasCount = false;
             Author.HasCount = false;
-            Scripts.HasCount = false;
+            Tables.HasCount = false;
             Model.HasCount = false;
             Motion.HasCount = false;
-            Flags.HasCount = false;
+            Script.HasCount = false;
             Texture.HasCount = false;
             Text.HasCount = false;
             Sysmes.HasCount = false;
