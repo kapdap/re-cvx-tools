@@ -173,99 +173,99 @@ namespace RDXplorer
             }
         }
 
-        private static Dictionary<EnemyEnumeration, string> _enemies = new();
-        public static Dictionary<EnemyEnumeration, string> Enemies
+        private static Dictionary<ActorEnumeration, string> _enemies = new();
+        public static Dictionary<ActorEnumeration, string> Enemies
         {
             get
             {
                 if (_enemies.Count == 0)
                 {
-                    _enemies.Add(EnemyEnumeration.None, "None");
-                    _enemies.Add(EnemyEnumeration.Zombie, "Zombie");
-                    _enemies.Add(EnemyEnumeration.GlupWorm, "Glup Worm");
-                    _enemies.Add(EnemyEnumeration.BlackWidow, "Black Widow");
-                    _enemies.Add(EnemyEnumeration.ZombieDog, "Zombie Dog");
-                    _enemies.Add(EnemyEnumeration.Hunter, "Hunter");
-                    _enemies.Add(EnemyEnumeration.Moth, "Moth");
-                    _enemies.Add(EnemyEnumeration.Bat, "Bat");
-                    _enemies.Add(EnemyEnumeration.Bandersnatch, "Bandersnatch");
-                    _enemies.Add(EnemyEnumeration.AlexiaAshford, "Alexia Ashford");
-                    _enemies.Add(EnemyEnumeration.AlexiaAshfordB, "Alexia Ashford Second Stage");
-                    _enemies.Add(EnemyEnumeration.AlexiaAshfordC, "Alexia Ashford Final Stage");
-                    _enemies.Add(EnemyEnumeration.Nosferatu, "Nosferatu");
-                    _enemies.Add(EnemyEnumeration.MutatedSteve, "Mutated Steve");
-                    _enemies.Add(EnemyEnumeration.Tyrant, "Tyrant");
-                    _enemies.Add(EnemyEnumeration.AlbinoidInfant, "Albinoid Infant");
-                    _enemies.Add(EnemyEnumeration.AlbinoidAdult, "Albinoid Adult");
-                    _enemies.Add(EnemyEnumeration.GiantBlackWidow, "Giant Black Widow");
-                    _enemies.Add(EnemyEnumeration.AnatomistZombie, "Anatomist Zombie");
-                    _enemies.Add(EnemyEnumeration.Tenticle, "Tenticle");
-                    _enemies.Add(EnemyEnumeration.AlexiaBaby, "Alexia Baby");
+                    _enemies.Add(ActorEnumeration.None, "None");
+                    _enemies.Add(ActorEnumeration.Zombie, "Zombie");
+                    _enemies.Add(ActorEnumeration.GlupWorm, "Glup Worm");
+                    _enemies.Add(ActorEnumeration.BlackWidow, "Black Widow");
+                    _enemies.Add(ActorEnumeration.ZombieDog, "Zombie Dog");
+                    _enemies.Add(ActorEnumeration.Hunter, "Hunter");
+                    _enemies.Add(ActorEnumeration.Moth, "Moth");
+                    _enemies.Add(ActorEnumeration.Bat, "Bat");
+                    _enemies.Add(ActorEnumeration.Bandersnatch, "Bandersnatch");
+                    _enemies.Add(ActorEnumeration.AlexiaAshford, "Alexia Ashford");
+                    _enemies.Add(ActorEnumeration.AlexiaAshfordB, "Alexia Ashford Second Stage");
+                    _enemies.Add(ActorEnumeration.AlexiaAshfordC, "Alexia Ashford Final Stage");
+                    _enemies.Add(ActorEnumeration.Nosferatu, "Nosferatu");
+                    _enemies.Add(ActorEnumeration.MutatedSteve, "Mutated Steve");
+                    _enemies.Add(ActorEnumeration.Tyrant, "Tyrant");
+                    _enemies.Add(ActorEnumeration.AlbinoidInfant, "Albinoid Infant");
+                    _enemies.Add(ActorEnumeration.AlbinoidAdult, "Albinoid Adult");
+                    _enemies.Add(ActorEnumeration.GiantBlackWidow, "Giant Black Widow");
+                    _enemies.Add(ActorEnumeration.AnatomistZombie, "Anatomist Zombie");
+                    _enemies.Add(ActorEnumeration.Tenticle, "Tenticle");
+                    _enemies.Add(ActorEnumeration.AlexiaBaby, "Alexia Baby");
 
                     // TODO: Label Unknown Enemies/Cinematic models
-                    _enemies.Add(EnemyEnumeration.Unknown0, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown8, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown10, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown11, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown16, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown20, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown24, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown25, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown0, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown8, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown10, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown11, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown16, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown20, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown24, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown25, "Unknown");
 
-                    _enemies.Add(EnemyEnumeration.Unknown42, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown43, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown44, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown47, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown42, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown43, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown44, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown47, "Unknown");
 
-                    _enemies.Add(EnemyEnumeration.Unknown51, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown52, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown53, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown54, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown55, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown56, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown58, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown59, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown51, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown52, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown53, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown54, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown55, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown56, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown58, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown59, "Unknown");
 
-                    _enemies.Add(EnemyEnumeration.Unknown60, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown61, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown62, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown63, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown65, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown66, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown67, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown68, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown69, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown60, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown61, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown62, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown63, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown65, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown66, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown67, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown68, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown69, "Unknown");
 
-                    _enemies.Add(EnemyEnumeration.Unknown70, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown71, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown72, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown73, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown74, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown75, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown76, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown77, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown78, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown79, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown70, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown71, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown72, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown73, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown74, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown75, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown76, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown77, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown78, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown79, "Unknown");
 
-                    _enemies.Add(EnemyEnumeration.Unknown81, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown82, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown83, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown84, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown85, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown87, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown88, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown89, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown81, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown82, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown83, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown84, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown85, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown87, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown88, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown89, "Unknown");
 
-                    _enemies.Add(EnemyEnumeration.Unknown90, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown91, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown92, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown93, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown94, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown95, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown96, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown97, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown98, "Unknown");
-                    _enemies.Add(EnemyEnumeration.Unknown99, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown90, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown91, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown92, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown93, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown94, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown95, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown96, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown97, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown98, "Unknown");
+                    _enemies.Add(ActorEnumeration.Unknown99, "Unknown");
                 }
 
                 return _enemies;

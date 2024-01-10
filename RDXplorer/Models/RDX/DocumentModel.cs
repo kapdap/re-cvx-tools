@@ -46,17 +46,17 @@ namespace RDXplorer.Models.RDX
             private set => SetField(ref _lighting, value);
         }
 
-        private List<EnemyModel> _enemy;
-        public List<EnemyModel> Enemy
+        private List<ActorModel> _actor;
+        public List<ActorModel> Actor
         {
             get
             {
-                if (_enemy == null)
-                    SetField(ref _enemy, ReadEnemy(PathInfo.OpenRead(), Header));
-                return _enemy;
+                if (_actor == null)
+                    SetField(ref _actor, ReadActor(PathInfo.OpenRead(), Header));
+                return _actor;
             }
 
-            private set => SetField(ref _enemy, value);
+            private set => SetField(ref _actor, value);
         }
 
         private List<ObjectModel> _object;
@@ -194,7 +194,7 @@ namespace RDXplorer.Models.RDX
                     stream.Seek(header.Scripts.Value, SeekOrigin.Begin);
                     header.Camera.SetValue(stream.Position, br.ReadBytes(4));
                     header.Lighting.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Enemy.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Actor.SetValue(stream.Position, br.ReadBytes(4));
                     header.Object.SetValue(stream.Position, br.ReadBytes(4));
                     header.Item.SetValue(stream.Position, br.ReadBytes(4));
                     header.Effect.SetValue(stream.Position, br.ReadBytes(4));
@@ -212,7 +212,7 @@ namespace RDXplorer.Models.RDX
                     stream.Seek(256, SeekOrigin.Begin);
                     header.Camera.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Lighting.Count.SetValue(stream.Position, br.ReadBytes(4));
-                    header.Enemy.Count.SetValue(stream.Position, br.ReadBytes(4));
+                    header.Actor.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Object.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Item.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Effect.Count.SetValue(stream.Position, br.ReadBytes(4));
@@ -314,17 +314,17 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public static List<EnemyModel> ReadEnemy(Stream stream, HeaderModel header)
+        public static List<ActorModel> ReadActor(Stream stream, HeaderModel header)
         {
-            List<EnemyModel> list = new();
+            List<ActorModel> list = new();
 
             using (BinaryReader br = new(stream))
             {
-                stream.Seek(header.Enemy.Value, SeekOrigin.Begin);
+                stream.Seek(header.Actor.Value, SeekOrigin.Begin);
 
-                for (int i = 0; i < header.Enemy.Count.Value; i++)
+                for (int i = 0; i < header.Actor.Count.Value; i++)
                 {
-                    EnemyModel model = new();
+                    ActorModel model = new();
 
                     model.Offset = (IntPtr)stream.Position;
 

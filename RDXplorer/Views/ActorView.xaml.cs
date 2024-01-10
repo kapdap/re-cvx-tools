@@ -7,9 +7,9 @@ using System.Windows.Input;
 
 namespace RDXplorer.Views
 {
-    public partial class EnemyView : View<EnemyViewModel, EnemyViewModelEntry>
+    public partial class ActorView : View<ActorViewModel, ActorViewModelEntry>
     {
-        public EnemyView()
+        public ActorView()
         {
             InitializeComponent();
             LoadModel();
@@ -25,7 +25,7 @@ namespace RDXplorer.Views
             if (string.IsNullOrEmpty(binding))
                 return;
 
-            EnemyViewModelEntry entry = (EnemyViewModelEntry)grid.SelectedItem;
+            ActorViewModelEntry entry = (ActorViewModelEntry)grid.SelectedItem;
 
             IntPtr offset = entry.Model.Offset;
             long length = 4;

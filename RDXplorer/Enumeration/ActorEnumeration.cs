@@ -1,6 +1,6 @@
 ﻿namespace RDXplorer.Enumerations
 {
-    public enum EnemyEnumeration : short
+    public enum ActorEnumeration : short
     {
         Unknown = -2,
         None = -1,

@@ -2,7 +2,7 @@
 
 namespace RDXplorer.Models.RDX
 {
-    public class EnemyModel
+    public class ActorModel
     {
         public IntPtr Offset { get; set; }
 
