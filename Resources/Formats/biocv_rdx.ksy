@@ -284,13 +284,13 @@ types:
         type: f4
       - id: length
         type: f4
-      - id: unknown_2
-        type: s1
       - id: unknown_3
         type: s1
       - id: unknown_4
         type: s1
       - id: unknown_5
+        type: s1
+      - id: unknown_6
         type: s1
 instances:
   header:
