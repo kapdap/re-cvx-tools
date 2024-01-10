@@ -24,12 +24,12 @@
             <DataGridTextColumn Header="Unknown3" Binding="{Binding Model.Unknown3}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown4" Binding="{Binding Model.Unknown4}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown5" Binding="{Binding Model.Unknown5}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown6" Binding="{Binding Model.Unknown6}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown7" Binding="{Binding Model.Unknown7}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown8" Binding="{Binding Model.Unknown8}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown9" Binding="{Binding Model.Unknown9}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown10" Binding="{Binding Model.Unknown10}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown11" Binding="{Binding Model.Unknown11}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="X" Binding="{Binding Model.X}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Y" Binding="{Binding Model.Y}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Z" Binding="{Binding Model.Z}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Width" Binding="{Binding Model.Width}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Height" Binding="{Binding Model.Height}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Length" Binding="{Binding Model.Length}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Index" Binding="{Binding Model.Unknown12}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown13" Binding="{Binding Model.Unknown13}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown14" Binding="{Binding Model.Unknown14}" FontFamily="Consolas"/>
