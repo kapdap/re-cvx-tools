@@ -10,7 +10,29 @@ meta:
 seq:
   - id: magic
     type: s4
+  - id: dummy_1
+    size: 12
+  - id: ofs_sections
+    type: s4
+    repeat: expr
+    repeat-expr: 8
+  - id: dummy_2
+    size: 48
+  - id: author
+    size: 32
+    type: str
+    encoding: ASCII
 types:
+  model:
+    params:
+      - id: i
+        type: s4
+    instances:
+      ofs_end:
+        value: 'i < _parent.ofs_models.size - 2 ? _parent.ofs_models[i + 1] : _parent.ofs_sections[2]'
+      data:
+        pos: _parent.ofs_models[i]
+        size: ofs_end - _parent.ofs_models[i]
   camera:
     seq:
       - id: type
@@ -64,7 +86,7 @@ types:
         type: s2
       - id: unknown_4
         type: s4
-  objectx:
+  obj:
     seq:
       - id: head
         type: s1
@@ -293,113 +315,113 @@ types:
       - id: unknown_6
         type: s1
 instances:
-  sections:
-    pos: 16
-    type: s4
-    repeat: expr
-    repeat-expr: 8
-  author:
-    pos: 96
-    size: 32
-    type: str
-    encoding: ASCII
-  tables:
-    pos: sections[0]
+  ofs_tables:
+    pos: ofs_sections[0]
     type: s4
     repeat: expr
     repeat-expr: 16
-  tables_nums:
-    pos: sections[0] + 128
+  num_tables:
+    pos: ofs_sections[0] + 128
     type: s4
     repeat: expr
     repeat-expr: 16
+  ofs_models:
+    pos: ofs_sections[1]
+    type: s4
+    repeat: until
+    repeat-until: _ == 0
+  models:
+    pos: ofs_models[0]
+    type: model(_index)
+    repeat: expr
+    repeat-expr: ofs_models.size - 1
   cameras:
-    pos: tables[0]
+    pos: ofs_tables[0]
     size: 680
     type: camera
     repeat: expr
-    repeat-expr: tables_nums[0]
+    repeat-expr: num_tables[0]
   lights:
-    pos: tables[1]
+    pos: ofs_tables[1]
     size: 224
     type: lighting
     repeat: expr
-    repeat-expr: tables_nums[1]
+    repeat-expr: num_tables[1]
   actors:
-    pos: tables[2]
+    pos: ofs_tables[2]
     size: 36
     type: actor
     repeat: expr
-    repeat-expr: tables_nums[2]
-  objects:
-    pos: tables[3]
+    repeat-expr: num_tables[2]
+  objs:
+    pos: ofs_tables[3]
     size: 36
-    type: objectx
+    type: obj
     repeat: expr
-    repeat-expr: tables_nums[3]
+    repeat-expr: num_tables[3]
   items:
-    pos: sections[4]
+    pos: ofs_tables[4]
     size: 36
     type: item
     repeat: expr
-    repeat-expr: tables_nums[4]
+    repeat-expr: num_tables[4]
   effects:
-    pos: sections[5]
+    pos: ofs_tables[5]
     size: 68
     type: effect
     repeat: expr
-    repeat-expr: tables_nums[5]
+    repeat-expr: num_tables[5]
   boundaries:
-    pos: tables[6]
+    pos: ofs_tables[6]
     size: 36
     type: boundry
     repeat: expr
-    repeat-expr: tables_nums[6]
+    repeat-expr: num_tables[6]
   aots:
-    pos: tables[7]
+    pos: ofs_tables[7]
     size: 36
     type: aot
     repeat: expr
-    repeat-expr: tables_nums[7]
+    repeat-expr: num_tables[7]
   triggers:
-    pos: tables[8]
+    pos: ofs_tables[8]
     size: 36
     type: trigger
     repeat: expr
-    repeat-expr: tables_nums[8]
+    repeat-expr: num_tables[8]
   player:
-    pos: tables[9]
+    pos: ofs_tables[9]
     size: 16
     type: player
     repeat: expr
-    repeat-expr: tables_nums[9]
+    repeat-expr: num_tables[9]
   events:
-    pos: tables[10]
+    pos: ofs_tables[10]
     size: 36
     type: event
     repeat: expr
-    repeat-expr: tables_nums[10]
+    repeat-expr: num_tables[10]
   #unknowns_0:
-  #  pos: tables[11]
+  #  pos: ofs_tables[11]
   #  size: 0
   #  type: unknown_0
   #  repeat: expr
-  #  repeat-expr: tables_nums[11]
+  #  repeat-expr: num_tables[11]
   #unknowns_1:
-  #  pos: tables[12]
+  #  pos: ofs_tables[12]
   #  size: 0
   #  type: unknown_1
   #  repeat: expr
-  #  repeat-expr: tables_nums[12]
+  #  repeat-expr: num_tables[12]
   #actions:
-  #  pos: tables[13]
+  #  pos: ofs_tables[13]
   #  size: 2056
   #  type: actor
   #  repeat: expr
-  #  repeat-expr: tables_nums[13]
+  #  repeat-expr: num_tables[13]
   #texts:
-  #  pos: tables[14]
+  #  pos: ofs_tables[14]
   #  type: text
   #sysmes:
-  #  pos: tables[15]
+  #  pos: ofs_tables[15]
   #  type: mes
