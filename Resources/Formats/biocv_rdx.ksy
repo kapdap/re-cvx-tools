@@ -29,7 +29,7 @@ types:
         type: s4
     instances:
       ofs_end:
-        value: 'i < _parent.ofs_models.size - 2 ? _parent.ofs_models[i + 1] : _parent.ofs_sections[2]'
+        value: 'i < _parent.num_models - 1 ? _parent.ofs_models[i + 1] : _parent.ofs_sections[2]'
       data:
         pos: _parent.ofs_models[i]
         size: ofs_end - _parent.ofs_models[i]
