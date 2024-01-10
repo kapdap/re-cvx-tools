@@ -7,7 +7,7 @@ namespace RDXplorer.Models.RDX
         public IntPtr Offset { get; set; }
 
         public DataEntryModel<byte> Unknown1 { get; set; } = new();
-        public DataEntryModel<byte> Unknown2 { get; set; } = new();
+        public DataEntryModel<byte> Type { get; set; } = new();
         public DataEntryModel<byte> Unknown3 { get; set; } = new();
         public DataEntryModel<byte> Unknown4 { get; set; } = new();
         public DataEntryModel<int> Unknown5 { get; set; } = new();

@@ -271,5 +271,23 @@ namespace RDXplorer
                 return _enemies;
             }
         }
+
+        private static Dictionary<AOTTypeEnumeration, string> _aottypes = new();
+        public static Dictionary<AOTTypeEnumeration, string> AOTTypes
+        {
+            get
+            {
+                if (_aottypes.Count == 0)
+                {
+                    _aottypes.Add(AOTTypeEnumeration.Door, "Door");
+                    _aottypes.Add(AOTTypeEnumeration.Unknown1, "Unknown1");
+                    _aottypes.Add(AOTTypeEnumeration.Unknown2, "Unknown2");
+                    _aottypes.Add(AOTTypeEnumeration.Message, "Message");
+                    _aottypes.Add(AOTTypeEnumeration.Item, "Item");
+                }
+
+                return _aottypes;
+            }
+        }
     }
 }

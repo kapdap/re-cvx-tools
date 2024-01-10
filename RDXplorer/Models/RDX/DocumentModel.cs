@@ -528,7 +528,7 @@ namespace RDXplorer.Models.RDX
                     model.Offset = (IntPtr)stream.Position;
 
                     model.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
-                    model.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Type.SetValue(stream.Position, br.ReadBytes(1));
                     model.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
                     model.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
                     model.Unknown5.SetValue(stream.Position, br.ReadBytes(4));

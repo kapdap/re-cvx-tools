@@ -18,8 +18,9 @@
               ItemsSource="{Binding Entries}" MouseDoubleClick="DataGrid_MouseDoubleClick">
         <DataGrid.Columns>
             <DataGridTextColumn Header="Offset" Binding="{Binding Model.Offset, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Name" Binding="{Binding AOTType}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Type" Binding="{Binding Model.Type}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown1" Binding="{Binding Model.Unknown1}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown2" Binding="{Binding Model.Unknown2}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown3" Binding="{Binding Model.Unknown3}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown4" Binding="{Binding Model.Unknown4}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown5" Binding="{Binding Model.Unknown5}" FontFamily="Consolas"/>
@@ -29,7 +30,7 @@
             <DataGridTextColumn Header="Unknown9" Binding="{Binding Model.Unknown9}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown10" Binding="{Binding Model.Unknown10}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown11" Binding="{Binding Model.Unknown11}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown12" Binding="{Binding Model.Unknown12}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Index" Binding="{Binding Model.Unknown12}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown13" Binding="{Binding Model.Unknown13}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown14" Binding="{Binding Model.Unknown14}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown15" Binding="{Binding Model.Unknown15}" FontFamily="Consolas"/>

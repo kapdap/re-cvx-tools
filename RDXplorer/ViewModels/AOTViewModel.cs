@@ -1,4 +1,5 @@
-﻿using RDXplorer.Models;
+﻿using RDXplorer.Enumerations;
+using RDXplorer.Models;
 using RDXplorer.Models.RDX;
 
 namespace RDXplorer.ViewModels
@@ -21,9 +22,17 @@ namespace RDXplorer.ViewModels
     {
         public AOTModel Model { get; set; }
 
+        public string _aottype;
+        public string AOTType
+        {
+            get => _aottype;
+        }
+
         public AOTViewModelEntry(AOTModel model)
         {
             Model = model;
+
+            Lookups.AOTTypes.TryGetValue((AOTTypeEnumeration)model.Type.Value, out _aottype);
         }
     }
 }
