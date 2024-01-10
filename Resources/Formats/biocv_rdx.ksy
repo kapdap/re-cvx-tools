@@ -330,11 +330,13 @@ instances:
     type: s4
     repeat: until
     repeat-until: _ == 0
+  num_models:
+    value: ofs_models.size - 1
   models:
     pos: ofs_models[0]
     type: model(_index)
     repeat: expr
-    repeat-expr: ofs_models.size - 1
+    repeat-expr: num_models
   cameras:
     pos: ofs_tables[0]
     size: 680
