@@ -391,7 +391,7 @@ instances:
     type: trigger
     repeat: expr
     repeat-expr: num_tables[8]
-  player:
+  players:
     pos: ofs_tables[9]
     size: 16
     type: player
