@@ -293,7 +293,7 @@ types:
       - id: unknown_6
         type: s1
 instances:
-  header:
+  sections:
     pos: 16
     type: s4
     repeat: expr
@@ -303,103 +303,103 @@ instances:
     size: 32
     type: str
     encoding: ASCII
-  index:
-    pos: header[0]
+  tables:
+    pos: sections[0]
     type: s4
     repeat: expr
     repeat-expr: 16
-  index_count:
-    pos: header[0] + 128
+  tables_nums:
+    pos: sections[0] + 128
     type: s4
     repeat: expr
     repeat-expr: 16
   cameras:
-    pos: index[0]
+    pos: tables[0]
     size: 680
     type: camera
     repeat: expr
-    repeat-expr: index_count[0]
+    repeat-expr: tables_nums[0]
   lights:
-    pos: index[1]
+    pos: tables[1]
     size: 224
     type: lighting
     repeat: expr
-    repeat-expr: index_count[1]
+    repeat-expr: tables_nums[1]
   actors:
-    pos: index[2]
+    pos: tables[2]
     size: 36
     type: actor
     repeat: expr
-    repeat-expr: index_count[2]
+    repeat-expr: tables_nums[2]
   objects:
-    pos: index[3]
+    pos: tables[3]
     size: 36
     type: objectx
     repeat: expr
-    repeat-expr: index_count[3]
+    repeat-expr: tables_nums[3]
   items:
-    pos: index[4]
+    pos: sections[4]
     size: 36
     type: item
     repeat: expr
-    repeat-expr: index_count[4]
+    repeat-expr: tables_nums[4]
   effects:
-    pos: index[5]
+    pos: sections[5]
     size: 68
     type: effect
     repeat: expr
-    repeat-expr: index_count[5]
+    repeat-expr: tables_nums[5]
   boundaries:
-    pos: index[6]
+    pos: tables[6]
     size: 36
     type: boundry
     repeat: expr
-    repeat-expr: index_count[6]
+    repeat-expr: tables_nums[6]
   aots:
-    pos: index[7]
+    pos: tables[7]
     size: 36
     type: aot
     repeat: expr
-    repeat-expr: index_count[7]
+    repeat-expr: tables_nums[7]
   triggers:
-    pos: index[8]
+    pos: tables[8]
     size: 36
     type: trigger
     repeat: expr
-    repeat-expr: index_count[8]
+    repeat-expr: tables_nums[8]
   player:
-    pos: index[9]
+    pos: tables[9]
     size: 16
     type: player
     repeat: expr
-    repeat-expr: index_count[9]
+    repeat-expr: tables_nums[9]
   events:
-    pos: index[10]
+    pos: tables[10]
     size: 36
     type: event
     repeat: expr
-    repeat-expr: index_count[10]
+    repeat-expr: tables_nums[10]
   #unknowns_0:
-  #  pos: index[11]
+  #  pos: tables[11]
   #  size: 0
   #  type: unknown_0
   #  repeat: expr
-  #  repeat-expr: index_count[11]
+  #  repeat-expr: tables_nums[11]
   #unknowns_1:
-  #  pos: index[12]
+  #  pos: tables[12]
   #  size: 0
   #  type: unknown_1
   #  repeat: expr
-  #  repeat-expr: index_count[12]
+  #  repeat-expr: tables_nums[12]
   #actions:
-  #  pos: index[13]
+  #  pos: tables[13]
   #  size: 2056
   #  type: actor
   #  repeat: expr
-  #  repeat-expr: index_count[13]
+  #  repeat-expr: tables_nums[13]
   #texts:
-  #  pos: index[14]
+  #  pos: tables[14]
   #  type: text
   #sysmes:
-  #  pos: index[15]
+  #  pos: tables[15]
   #  type: mes
