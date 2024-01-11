@@ -33,6 +33,25 @@ types:
       data:
         pos: _parent.ofs_models[i]
         size: ofs_end - _parent.ofs_models[i]
+  motion:
+    instances:
+      ofs_end:
+        value: _parent.ofs_sections[3]
+      data:
+        pos: _parent.ofs_sections[2]
+        size: ofs_end - _parent.ofs_sections[2]
+  script:
+    instances:
+      ofs_end:
+        value: _parent.ofs_sections[4]
+      data:
+        pos: _parent.ofs_sections[3]
+        size: ofs_end - _parent.ofs_sections[3]
+  texture:
+    instances:
+      data:
+        pos: _parent.ofs_sections[4]
+        size-eos: true
   camera:
     seq:
       - id: type
@@ -337,6 +356,15 @@ instances:
     type: model(_index)
     repeat: expr
     repeat-expr: num_models
+  motions:
+    pos: ofs_sections[2]
+    type: motion
+  scripts:
+    pos: ofs_sections[3]
+    type: script
+  textures:
+    pos: ofs_sections[4]
+    type: texture
   cameras:
     pos: ofs_tables[0]
     size: 680
