@@ -250,24 +250,38 @@ namespace RDXplorer.Models.RDX
                     model.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
                     model.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
                     model.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
-                    model.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Offset1.SetValue(stream.Position, br.ReadBytes(4));
                     model.Unknown6.SetValue(stream.Position, br.ReadBytes(4));
                     model.Unknown7.SetValue(stream.Position, br.ReadBytes(4));
                     model.Unknown8.SetValue(stream.Position, br.ReadBytes(4));
                     model.Unknown9.SetValue(stream.Position, br.ReadBytes(4));
-
                     model.Unknown10.SetValue(stream.Position, br.ReadBytes(4));
                     model.Unknown11.SetValue(stream.Position, br.ReadBytes(4));
                     model.Unknown12.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Unknown13.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Unknown14.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Unknown15.SetValue(stream.Position, br.ReadBytes(4));
+                    model.X.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Y.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Z.SetValue(stream.Position, br.ReadBytes(4));
                     model.Unknown16.SetValue(stream.Position, br.ReadBytes(4));
                     model.Unknown17.SetValue(stream.Position, br.ReadBytes(4));
                     model.Unknown18.SetValue(stream.Position, br.ReadBytes(4));
                     model.Unknown19.SetValue(stream.Position, br.ReadBytes(4));
-
-                    model.Unknown20.SetValue(stream.Position, br.ReadBytes(0x268));
+                    model.Unknown20.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown21.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown22.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown23.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown24.SetValue(stream.Position, br.ReadBytes(4));
+                    model.XRotation.SetValue(stream.Position, br.ReadBytes(4));
+                    model.YRotation.SetValue(stream.Position, br.ReadBytes(4));
+                    model.ZRotation.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown28.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown29.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown30.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown31.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown32.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Perspective.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown34.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown35.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Unknown36.SetValue(stream.Position, br.ReadBytes(0x228));
 
                     list.Add(model);
                 }

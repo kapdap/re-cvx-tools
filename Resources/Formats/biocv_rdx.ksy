@@ -54,8 +54,96 @@ types:
         size-eos: true
   camera:
     seq:
-      - id: type
-        type: s2
+      - id: head
+        type: s4
+      - id: ofs_unknown
+        type: s4
+      - id: unknown_0
+        type: f4
+      - id: unknown_1
+        type: f4
+      - id: unknown_2
+        type: f4
+      - id: unknown_3
+        type: f4
+      - id: unknown_4
+        type: f4
+      - id: unknown_5
+        type: f4
+      - id: unknown_6
+        type: f4
+      - id: x
+        type: f4
+      - id: y
+        type: f4
+      - id: z
+        type: f4
+      - id: unknown_10
+        type: f4
+      - id: unknown_11
+        type: f4
+      - id: unknown_12
+        type: f4
+      - id: unknown_13
+        type: f4
+      - id: unknown_14
+        type: f4
+      - id: unknown_15
+        type: f4
+      - id: unknown_16
+        type: f4
+      - id: unknown_17
+        type: f4
+      - id: unknown_18
+        type: f4
+      - id: x_rotation
+        type: s4
+      - id: y_rotation
+        type: s4
+      - id: z_rotation
+        type: s4
+      - id: unknown_22
+        type: s4
+      - id: unknown_23
+        type: s4
+      - id: unknown_24
+        type: f4
+      - id: unknown_25
+        type: f4
+      - id: unknown_26
+        type: s4
+      - id: perspective
+        type: s4
+      - id: unknown_28
+        type: f4
+      - id: unknown_29
+        type: f4
+      - id: unknown_30
+        type: f4
+  camera_unknown:
+    seq:
+      - id: unknown_0
+        size: 1
+      - id: unknown_1
+        size: 1
+      - id: unknown_2
+        size: 1
+      - id: unknown_3
+        size: 1
+      - id: unknown_4
+        type: s4
+      - id: unknown_5
+        type: s4
+      - id: unknown_6
+        type: s4
+      - id: unknown_7
+        type: f4
+      - id: unknown_8
+        type: f4
+      - id: unknown_9
+        type: f4
+      - id: unknown_10
+        type: f4
   lighting:
     seq:
       - id: type
@@ -371,6 +459,12 @@ instances:
     type: camera
     repeat: expr
     repeat-expr: num_tables[0]
+  cameras_unknowns:
+    pos: cameras[0].ofs_unknown
+    size: 32
+    type: camera_unknown
+    repeat: expr
+    repeat-expr: cameras.size
   lights:
     pos: ofs_tables[1]
     size: 224
