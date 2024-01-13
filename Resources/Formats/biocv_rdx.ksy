@@ -479,6 +479,7 @@ instances:
     type: camera
     repeat: expr
     repeat-expr: num_tables[0]
+    if: ofs_tables[0] != 0
   cameras_unknowns:
     pos: cameras[0].ofs_unknown
     size: 32
@@ -491,77 +492,90 @@ instances:
     type: lighting
     repeat: expr
     repeat-expr: num_tables[1]
+    if: ofs_tables[1] != 0
   actors:
     pos: ofs_tables[2]
     size: 36
     type: actor
     repeat: expr
     repeat-expr: num_tables[2]
+    if: ofs_tables[2] != 0
   objs:
     pos: ofs_tables[3]
     size: 36
     type: obj
     repeat: expr
     repeat-expr: num_tables[3]
+    if: ofs_tables[3] != 0
   items:
     pos: ofs_tables[4]
     size: 36
     type: item
     repeat: expr
     repeat-expr: num_tables[4]
+    if: ofs_tables[4] != 0
   effects:
     pos: ofs_tables[5]
     size: 68
     type: effect
     repeat: expr
     repeat-expr: num_tables[5]
+    if: ofs_tables[5] != 0
   boundaries:
     pos: ofs_tables[6]
     size: 36
     type: boundry
     repeat: expr
     repeat-expr: num_tables[6]
+    if: ofs_tables[6] != 0
   aots:
     pos: ofs_tables[7]
     size: 36
     type: aot
     repeat: expr
     repeat-expr: num_tables[7]
+    if: ofs_tables[7] != 0
   triggers:
     pos: ofs_tables[8]
     size: 36
     type: trigger
     repeat: expr
     repeat-expr: num_tables[8]
+    if: ofs_tables[8] != 0
   players:
     pos: ofs_tables[9]
     size: 16
     type: player
     repeat: expr
     repeat-expr: num_tables[9]
+    if: ofs_tables[9] != 0
   events:
     pos: ofs_tables[10]
     size: 36
     type: event
     repeat: expr
     repeat-expr: num_tables[10]
+    if: ofs_tables[10] != 0
   #unknowns_0:
   #  pos: ofs_tables[11]
   #  size: 0
-  #  type: unknown_0
+  #  type: unknown_type_1
   #  repeat: expr
   #  repeat-expr: num_tables[11]
+  #  if: ofs_tables[11] != 0
   #unknowns_1:
   #  pos: ofs_tables[12]
   #  size: 0
-  #  type: unknown_1
+  #  type: unknown_type_2
   #  repeat: expr
   #  repeat-expr: num_tables[12]
+  #  if: ofs_tables[12] != 0
   actions:
     pos: ofs_tables[13]
     size: 2056
     repeat: expr
     repeat-expr: num_tables[13]
+    if: ofs_tables[13] != 0
   texts:
     pos: ofs_tables[14]
     size: (ofs_tables[15] != 0 ? ofs_tables[15] : ofs_sections[1]) - ofs_tables[14]
