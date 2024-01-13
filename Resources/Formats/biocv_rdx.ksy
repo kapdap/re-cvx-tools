@@ -22,6 +22,36 @@ seq:
     size: 32
     type: str
     encoding: ASCII
+  - id: ofs_tables
+    type: s4
+    repeat: expr
+    repeat-expr: 16
+  - id: dummy_3
+    size: 64
+  - id: num_tables
+    type: s4
+    repeat: expr
+    repeat-expr: 16
+  - id: dummy_4
+    size: 64
+  - id: unknown_1
+    type: f4
+    repeat: expr
+    repeat-expr: 16
+  - id: dummy_5
+    size: 632
+  - id: unknown_2
+    size: 1
+  - id: unknown_3
+    size: 1
+  - id: unknown_4
+    size: 1
+  - id: unknown_5
+    size: 1
+  - id: unknown_6
+    type: f4
+    repeat: expr
+    repeat-expr: 12
 types:
   model:
     params:
@@ -422,16 +452,6 @@ types:
       - id: unknown_6
         type: s1
 instances:
-  ofs_tables:
-    pos: ofs_sections[0]
-    type: s4
-    repeat: expr
-    repeat-expr: 16
-  num_tables:
-    pos: ofs_sections[0] + 128
-    type: s4
-    repeat: expr
-    repeat-expr: 16
   ofs_models:
     pos: ofs_sections[1]
     type: s4
@@ -537,15 +557,16 @@ instances:
   #  type: unknown_1
   #  repeat: expr
   #  repeat-expr: num_tables[12]
-  #actions:
-  #  pos: ofs_tables[13]
-  #  size: 2056
-  #  type: actor
-  #  repeat: expr
-  #  repeat-expr: num_tables[13]
-  #texts:
-  #  pos: ofs_tables[14]
-  #  type: text
-  #sysmes:
-  #  pos: ofs_tables[15]
-  #  type: mes
+  actions:
+    pos: ofs_tables[13]
+    size: 2056
+    repeat: expr
+    repeat-expr: num_tables[13]
+  texts:
+    pos: ofs_tables[14]
+    size: (ofs_tables[15] != 0 ? ofs_tables[15] : ofs_sections[1]) - ofs_tables[14]
+    if: ofs_tables[14] != 0
+  sysmes:
+    pos: ofs_tables[15]
+    size: ofs_sections[1] - ofs_tables[15]
+    if: ofs_tables[15] != 0
