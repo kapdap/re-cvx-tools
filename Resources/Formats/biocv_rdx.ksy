@@ -84,10 +84,24 @@ types:
         size-eos: true
   camera:
     seq:
-      - id: head
-        type: s4
+      - id: flag_1
+        size: 1
+      - id: flag_2
+        size: 1
+      - id: flag_3
+        size: 1
+      - id: flag_4
+        size: 1
       - id: ofs_unknown
         type: s4
+    instances:
+      info:
+        size: 196
+        type: camera_info
+        repeat: expr
+        repeat-expr: 3
+  camera_info:
+    seq:
       - id: unknown_0
         type: f4
       - id: unknown_1
@@ -126,16 +140,16 @@ types:
         type: f4
       - id: unknown_18
         type: f4
-      - id: x_rotation
-        type: s4
-      - id: y_rotation
-        type: s4
-      - id: z_rotation
-        type: s4
+      - id: unknown_19
+        type: f4
+      - id: unknown_20
+        type: f4
+      - id: unknown_21
+        type: f4
       - id: unknown_22
-        type: s4
+        type: f4
       - id: unknown_23
-        type: s4
+        type: f4
       - id: unknown_24
         type: f4
       - id: unknown_25
@@ -144,12 +158,6 @@ types:
         type: s4
       - id: perspective
         type: s4
-      - id: unknown_28
-        type: f4
-      - id: unknown_29
-        type: f4
-      - id: unknown_30
-        type: f4
   camera_unknown:
     seq:
       - id: unknown_0
