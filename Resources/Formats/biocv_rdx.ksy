@@ -54,33 +54,33 @@ seq:
     repeat-expr: 12
 types:
   model:
-    params:
-      - id: i
+    seq:
+      - id: head_1
         type: s4
+      - id: head_2
+        type: s4
+        if: has_size
+      - id: data
+        size-eos: true
     instances:
-      ofs_end:
-        value: 'i < _parent.num_models - 1 ? _parent.ofs_models[i + 1] : _parent.ofs_sections[2]'
-      data:
-        pos: _parent.ofs_models[i]
-        size: ofs_end - _parent.ofs_models[i]
+      has_size:
+        value: head_1 << 8 != 0x4C444D00 and head_1 != 0x4E494B53
+      size:
+        value: head_1
+        if: has_size
+      type:
+        value: has_size ? head_2 : head_1
   motion:
-    instances:
-      ofs_end:
-        value: _parent.ofs_sections[3]
-      data:
-        pos: _parent.ofs_sections[2]
-        size: ofs_end - _parent.ofs_sections[2]
+    seq:
+      - id: data
+        size-eos: true
   script:
-    instances:
-      ofs_end:
-        value: _parent.ofs_sections[4]
-      data:
-        pos: _parent.ofs_sections[3]
-        size: ofs_end - _parent.ofs_sections[3]
+    seq:
+      - id: data
+        size-eos: true
   texture:
-    instances:
-      data:
-        pos: _parent.ofs_sections[4]
+    seq:
+      - id: data
         size-eos: true
   camera:
     seq:
@@ -475,14 +475,17 @@ instances:
     value: ofs_models.size - 1
   models:
     pos: ofs_models[0]
-    type: model(_index)
+    type: model
+    size: (_index < num_models - 1 ? ofs_models[_index + 1] : ofs_sections[2]) - ofs_models[_index]
     repeat: expr
     repeat-expr: num_models
   motions:
     pos: ofs_sections[2]
+    size: ofs_sections[3] - ofs_sections[2]
     type: motion
   scripts:
     pos: ofs_sections[3]
+    size: ofs_sections[4] - ofs_sections[3]
     type: script
   textures:
     pos: ofs_sections[4]
