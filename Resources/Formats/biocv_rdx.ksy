@@ -327,8 +327,14 @@ types:
         type: s4
   boundry:
     seq:
-      - id: head
-        type: s4
+      - id: flag1
+        size: 1
+      - id: flag2
+        size: 1
+      - id: flag3
+        size: 1
+      - id: flag4
+        size: 1
       - id: type
         type: s2
       - id: unknown_0
