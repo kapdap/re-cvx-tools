@@ -17,6 +17,9 @@ Script block is split into 4 sections:
 USA PS2 release, the Scenario Jump Table is found at 0x00304FA0.<br />
 Opcodes are read by the Scenario Check function located at 0x00171750.
 
+TODO: Determine function arguments<br />
+TODO: Update function descriptions
+
 |Description|Function|Arg 0|Arg 1|Arg 2|Arg 3|Arg 4|Arg 5|
 |-|-|-|-|-|-|-|-|
 |End|00| | | | | | |
