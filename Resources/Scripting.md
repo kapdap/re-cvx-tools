@@ -9,6 +9,11 @@ Script block is split into 4 sections:
 
 ## Opcodes
 
+- First byte of an opcode is an index into the Scenario Jump Table
+- Scenario Jump Table entries are 4 byte pointers to functions
+- Some functions appear in the jump table mutiple times
+- Scenario Jump Table has 256 entries
+
 USA PS2 release, the Scenario Jump Table is found at 0x00304FA0.<br />
 Opcodes are read by the Scenario Check function located at 0x00171750.
 
