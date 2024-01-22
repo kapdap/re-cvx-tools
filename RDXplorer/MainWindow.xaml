@@ -41,6 +41,9 @@
                 <TabItem Header="Sections">
                     <Frame Source="Views/SectionView.xaml"/>
                 </TabItem>
+                <TabItem Header="Models">
+                    <Frame Source="Views/ModelHeaderView.xaml"/>
+                </TabItem>
                 <TabItem Header="Cameras">
                     <Frame Source="Views/CameraView.xaml"/>
                 </TabItem>

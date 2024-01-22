@@ -20,6 +20,19 @@ namespace RDXplorer.Models.RDX
             private set => SetField(ref _header, value);
         }
 
+        private List<ModelHeaderModel> _model;
+        public List<ModelHeaderModel> Model
+        {
+            get
+            {
+                if (_model == null)
+                    SetField(ref _model, ReadModels(PathInfo.OpenRead(), Header));
+                return _model;
+            }
+
+            private set => SetField(ref _model, value);
+        }
+
         private List<CameraModel> _camera;
         public List<CameraModel> Camera
         {
@@ -230,6 +243,64 @@ namespace RDXplorer.Models.RDX
             }
 
             return header;
+        }
+
+        public static List<ModelHeaderModel> ReadModels(Stream stream, HeaderModel header)
+        {
+            List<ModelHeaderModel> list = new();
+
+            using (BinaryReader br = new(stream))
+            {
+                stream.Seek(header.Model.Value, SeekOrigin.Begin);
+
+                for (int i = 0; i < 256; i++)
+                {
+                    ModelHeaderModel model = new();
+
+                    model.Offset = (IntPtr)stream.Position;
+                    model.Pointer.SetValue(stream.Position, br.ReadBytes(4));
+
+                    if (model.Pointer.Value == 0 ||
+                        model.Pointer.Text == "SKIN" ||
+                        model.Pointer.Text.StartsWith("MDL"))
+                        break;
+
+                    list.Add(model);
+                }
+
+                // TODO: Read all model sections (MDL, SKIN, BONE etc)
+                for (int i = 0; i < list.Count; i++)
+                {
+                    ModelHeaderModel headerModel = list[i];
+                    headerModel.Size = (i < list.Count - 1 ? list[i + 1].Pointer.Value : (uint)header.Motion.Offset) - headerModel.Pointer.Value;
+
+                    stream.Seek(headerModel.Pointer.Value, SeekOrigin.Begin);
+
+                    ModelEntryModel entryModel = new();
+                    entryModel.Offset = (IntPtr)stream.Position;
+
+                    DataEntryModel<uint> dataModelA = new();
+                    dataModelA.SetValue(stream.Position, br.ReadBytes(4));
+
+                    DataEntryModel<uint> dataModelB = new();
+                    dataModelB.SetValue(stream.Position, br.ReadBytes(4));
+
+                    if (dataModelA.Text == "SKIN" || dataModelA.Text.StartsWith("MDL"))
+                    {
+                        entryModel.Type = dataModelA;
+                    }
+                    else
+                    {
+                        entryModel.Type = dataModelB;
+                        entryModel.Size = dataModelA;
+                        entryModel.HasSize = true;
+                    }
+
+                    headerModel.Entry.Add(entryModel);
+                }
+            }
+
+            return list;
         }
 
         public static List<CameraModel> ReadCamera(Stream stream, HeaderModel header)
