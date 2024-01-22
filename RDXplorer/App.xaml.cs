@@ -19,7 +19,7 @@ namespace RDXplorer
         {
             Program.Windows.Main.Show();
 
-            for (int i = 0; i <= e.Args.Length; ++i)
+            for (int i = 0; i < e.Args.Length; ++i)
             {
                 if ((e.Args[i] == "--file" || e.Args[i] == "-f") && i < e.Args.Length)
                 {
