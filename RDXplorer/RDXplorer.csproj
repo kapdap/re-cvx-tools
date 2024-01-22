@@ -5,8 +5,16 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <Authors>Kapdap</Authors>
+    <Company>Kapdap</Company>
+    <Product>RDXplorer</Product>
+    <Description>A simple tool to browse Resident Evil/Biohazard: Code: Veronica RDX files.</Description>
+    <Copyright>Copyright © 2024 Kapdap</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/kapdap/re-cvx-tools</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <AssemblyVersion>0.1.0.0</AssemblyVersion>
     <FileVersion>0.1.0.0</FileVersion>
+    <Version>0.1.0.0</Version>
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
