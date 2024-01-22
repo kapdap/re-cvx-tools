@@ -41,7 +41,7 @@ namespace RDXplorer.Views
             if (AppViewModel.RDXDocument == null || grid.CurrentColumn == null)
                 return string.Empty;
 
-            return ((Binding)((DataGridBoundColumn)grid.CurrentColumn).Binding)?.Path.Path.RemoveEnd(".Value") ?? string.Empty;
+            return ((Binding)((DataGridBoundColumn)grid.CurrentColumn).Binding)?.Path.Path.RemoveEnd(".Value").RemoveEnd(".Text") ?? string.Empty;
         }
     }
 }
