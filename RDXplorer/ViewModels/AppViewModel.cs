@@ -48,8 +48,6 @@ namespace RDXplorer.ViewModels
             RDXFileInfo = file;
             RDXDocument = new(RDXFileInfo);
             RDXLoaded = true;
-
-            LoadFileList();
         }
 
         public void UnloadRDX()
@@ -59,13 +57,15 @@ namespace RDXplorer.ViewModels
             RDXLoaded = false;
         }
 
-        private void LoadFileList()
+        public void LoadFileList(FileInfo file)
         {
-            if (RDXFileList == null || (RDXFolderInfo != null && RDXFolderInfo.FullName != RDXFileInfo.Directory.FullName))
-            {
-                RDXFolderInfo = new(RDXFileInfo.Directory.FullName);
-                RDXFileList = RDXFolderInfo.GetFiles("*.rdx").ToList();
-            }
+            LoadFileList((DirectoryInfo)new(file.Directory.FullName));
+        }
+
+        public void LoadFileList(DirectoryInfo folder)
+        {
+            RDXFolderInfo = folder;
+            RDXFileList = RDXFolderInfo.GetFiles("*.rdx").ToList();
         }
     }
 }

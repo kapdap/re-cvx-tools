@@ -36,7 +36,7 @@
                 <RowDefinition Height="24"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <ComboBox  Grid.Row="0" Name="FileList" ItemsSource="{Binding RDXFileList}" DisplayMemberPath="Name" SelectionChanged="FileList_SelectionChanged"/>
+            <ComboBox  Grid.Row="0" Name="FileList" ItemsSource="{Binding RDXFileList}" DisplayMemberPath="Name" SelectedValuePath="FullName" SelectionChanged="FileList_SelectionChanged"/>
             <TabControl Grid.Row="1">
                 <TabItem Header="Sections">
                     <Frame Source="Views/SectionView.xaml"/>

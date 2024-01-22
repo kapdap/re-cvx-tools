@@ -75,7 +75,10 @@ namespace RDXplorer.Views
                 Models.AppView.LoadRDX(file);
 
                 if (Windows.HexEditor.IsVisible)
+                {
                     Windows.HexEditor.ShowFile(file);
+                    Windows.Main.Focus();
+                }
             }
             catch (Exception ex)
             {
@@ -87,7 +90,12 @@ namespace RDXplorer.Views
         {
             try
             {
-                LoadRDX(SelectFile());
+                FileInfo file = SelectFile();
+
+                Models.AppView.LoadFileList(file);
+
+                // Fires Event MainWindow.FileList_SelectionChanged() > Programs.LoadRDX()
+                Windows.Main.FileList.SelectedValue = file.FullName;
             }
             catch (Exception ex)
             {
