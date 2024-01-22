@@ -250,7 +250,7 @@ namespace RDXplorer.Models.RDX
                     model.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
                     model.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
                     model.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
-                    model.Offset1.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Pointer.SetValue(stream.Position, br.ReadBytes(4));
                     model.Unknown6.SetValue(stream.Position, br.ReadBytes(4));
                     model.Unknown7.SetValue(stream.Position, br.ReadBytes(4));
                     model.Unknown8.SetValue(stream.Position, br.ReadBytes(4));

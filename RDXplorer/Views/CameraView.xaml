@@ -22,7 +22,7 @@
             <DataGridTextColumn Header="Unknown2" Binding="{Binding Model.Unknown2}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown3" Binding="{Binding Model.Unknown3}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown4" Binding="{Binding Model.Unknown4}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Offset1" Binding="{Binding Model.Offset1.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Pointer" Binding="{Binding Model.Pointer.Value, StringFormat=X8}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown6" Binding="{Binding Model.Unknown6}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown7" Binding="{Binding Model.Unknown7}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown8" Binding="{Binding Model.Unknown8}" FontFamily="Consolas"/>

@@ -10,7 +10,7 @@ namespace RDXplorer.Models.RDX
         public DataEntryModel<byte> Unknown2 { get; set; } = new();
         public DataEntryModel<byte> Unknown3 { get; set; } = new();
         public DataEntryModel<byte> Unknown4 { get; set; } = new();
-        public DataEntryModel<int> Offset1 { get; set; } = new();
+        public DataEntryModel<uint> Pointer { get; set; } = new();
         public DataEntryModel<float> Unknown6 { get; set; } = new();
         public DataEntryModel<float> Unknown7 { get; set; } = new();
         public DataEntryModel<float> Unknown8 { get; set; } = new();
