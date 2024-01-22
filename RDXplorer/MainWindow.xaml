@@ -41,37 +41,37 @@
                 <TabItem Header="Sections">
                     <Frame Source="Views/SectionView.xaml"/>
                 </TabItem>
-                <TabItem Header="Camera">
+                <TabItem Header="Cameras">
                     <Frame Source="Views/CameraView.xaml"/>
                 </TabItem>
                 <TabItem Header="Lighting">
                     <Frame Source="Views/LightingView.xaml"/>
                 </TabItem>
-                <TabItem Header="Actor">
+                <TabItem Header="Actors">
                     <Frame Source="Views/ActorView.xaml"/>
                 </TabItem>
-                <TabItem Header="Object">
+                <TabItem Header="Objects">
                     <Frame Source="Views/ObjectView.xaml"/>
                 </TabItem>
-                <TabItem Header="Item">
+                <TabItem Header="Items">
                     <Frame Source="Views/ItemView.xaml"/>
                 </TabItem>
-                <TabItem Header="Effect">
+                <TabItem Header="Effects">
                     <Frame Source="Views/EffectView.xaml"/>
                 </TabItem>
-                <TabItem Header="Boundary">
+                <TabItem Header="Boundaries">
                     <Frame Source="Views/BoundaryView.xaml"/>
                 </TabItem>
-                <TabItem Header="AOT">
+                <TabItem Header="AOTs">
                     <Frame Source="Views/AOTView.xaml"/>
                 </TabItem>
-                <TabItem Header="Trigger">
+                <TabItem Header="Triggers">
                     <Frame Source="Views/TriggerView.xaml"/>
                 </TabItem>
-                <TabItem Header="Player">
+                <TabItem Header="Players">
                     <Frame Source="Views/PlayerView.xaml"/>
                 </TabItem>
-                <TabItem Header="Event">
+                <TabItem Header="Events">
                     <Frame Source="Views/EventView.xaml"/>
                 </TabItem>
             </TabControl>
