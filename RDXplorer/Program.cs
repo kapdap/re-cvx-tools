@@ -92,9 +92,12 @@ namespace RDXplorer.Views
             {
                 FileInfo file = SelectFile();
 
+                if (file == null)
+                    return;
+
                 Models.AppView.LoadFileList(file);
 
-                // Fires Event MainWindow.FileList_SelectionChanged() > Programs.LoadRDX()
+                // Fires Event MainWindow.FileList_SelectionChanged() > Program.LoadRDX()
                 Windows.Main.FileList.SelectedValue = file.FullName;
             }
             catch (Exception ex)
