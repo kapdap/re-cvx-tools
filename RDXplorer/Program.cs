@@ -126,7 +126,22 @@ namespace RDXplorer.Views
 
         public static class Windows
         {
-            public static MainWindow Main { get; set; }
+            private static MainWindow _main;
+            public static MainWindow Main
+            {
+                get
+                {
+                    if (_main == null)
+                        _main = new();
+
+                    return _main;
+                }
+
+                set
+                {
+                    _main = value;
+                }
+            }
 
             private static HexEditorWindow _hexEditor;
             public static HexEditorWindow HexEditor

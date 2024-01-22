@@ -4,7 +4,7 @@
              xmlns:conv="clr-namespace:WpfHexaEditor.Core.Converters;assembly=WPFHexaEditor"
              xmlns:local="clr-namespace:RDXplorer"
              DispatcherUnhandledException="Application_DispatcherUnhandledException"
-             StartupUri="MainWindow.xaml">
+             Startup="Application_Startup">
     <Application.Resources>
         <conv:PathToFilenameConverter x:Key="FilenameConverter" />
         <conv:VisibilityToBooleanConverter x:Key="VisibilityToBoolConverter" />
