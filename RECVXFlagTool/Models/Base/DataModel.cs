@@ -100,9 +100,6 @@ namespace RECVXFlagTool.Models.Base
             if (type == typeof(long))
                 return BitConverter.GetBytes(Convert.ToInt64(value));
 
-            if (type == typeof(sbyte))
-                return BitConverter.GetBytes(Convert.ToSByte(value));
-
             if (type == typeof(float))
                 return BitConverter.GetBytes(Convert.ToSingle(value));
 
