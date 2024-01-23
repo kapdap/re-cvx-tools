@@ -27,6 +27,14 @@ jobs:
       Asset_Name: rdxplorer-testing
       
     steps:
+    - name: Generate version
+      id: version
+      uses: amitsingh-007/next-release-tag@v4.0.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        tag_prefix: ''
+        tag_template: 'yyyy.mm.dd.i'
+
     - name: Checkout
       uses: actions/checkout@v3
       with:
@@ -53,8 +61,8 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         file: ./release.zip
-        asset_name: ${{ env.Asset_Name }}.zip
+        asset_name: ${{ env.Asset_Name }}-${{ steps.version.outputs.next_release_tag }}.zip
         release_name: ${{ env.Release_Name }}
         body: ${{ env.Release_Body }}
-        tag: ${{ env.Release_Tag }}
+        tag: ${{ env.Release_Tag }}-${{ steps.version.outputs.next_release_tag }}
         overwrite: true
