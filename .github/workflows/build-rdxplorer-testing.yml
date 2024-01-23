@@ -1,0 +1,59 @@
+name: build-rdxplorer-testing
+
+on:
+  push:
+    branches: [ "build" ]
+    paths:
+    - RDXplorer/**
+  pull_request:
+    branches: [ "build" ]
+    paths:
+    - RDXplorer/**
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        configuration: [Release]
+
+    runs-on: windows-latest
+
+    env:
+      Project_Name: RDXplorer
+      Release_Name: RDXplorer (Testing)
+      Release_Body: "RDXplorer test release"
+      Release_Tag: rdxplorer-testing
+      Asset_Name: rdxplorer-testing.zip
+      
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Install dependencies
+      run: dotnet restore ${{ env.Project_Name }}
+      
+    - name: Build release
+      run: dotnet build -c Release ${{ env.Project_Name }} --no-restore
+      
+    - name: Publish release
+      run: dotnet publish -c Release ${{ env.Project_Name }} -o .\publish --no-restore --no-build
+      
+    - name: Create zip
+      run: Compress-Archive -Path .\publish\* -Destination ${{ env.Asset_Name }}
+
+    - name: Upload zip to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        file: ./${{ env.Asset_Name }}
+        asset_name: ${{ env.Asset_Name }}
+        release_name: ${{ env.Release_Name }}
+        body: ${{ env.Release_Body }}
+        tag: ${{ env.Release_Tag }}
+        overwrite: true
