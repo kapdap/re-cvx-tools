@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
-using RECVXFlagTool.Utilities;
 
 namespace RECVXFlagTool
 {
-	public class GameEmulator : IDisposable
-	{
-		public const string RPCS3 = "rpcs3";
-		public const string PCSX2 = "pcsx2";
+    public class GameEmulator : IDisposable
+    {
+        public const string RPCS3 = "rpcs3";
+        public const string PCSX2 = "pcsx2";
         public const string Dolphin = "dolphin";
         public const string Flycast = "flycast";
         public const string Redream = "redream";
@@ -18,44 +17,44 @@ namespace RECVXFlagTool
 
         private Dolphin.Memory.Access.Dolphin _dolphin;
 
-		private static List<string> _emulatorList;
-		public static List<string> EmulatorList
-		{
-			get
-			{
-				if (_emulatorList == null)
-				{
-					_emulatorList = new List<string>();
+        private static List<string> _emulatorList;
+        public static List<string> EmulatorList
+        {
+            get
+            {
+                if (_emulatorList == null)
+                {
+                    _emulatorList = new List<string>();
 
-					foreach (FieldInfo field in typeof(GameEmulator).GetFields())
-						if (field.IsLiteral && !field.IsInitOnly)
-							_emulatorList.Add((string)field.GetValue(null));
-				}
+                    foreach (FieldInfo field in typeof(GameEmulator).GetFields())
+                        if (field.IsLiteral && !field.IsInitOnly)
+                            _emulatorList.Add((string)field.GetValue(null));
+                }
 
-				return _emulatorList;
-			}
-		}
+                return _emulatorList;
+            }
+        }
 
-		public Process Process { get; private set; }
+        public Process Process { get; private set; }
 
-		public IntPtr VirtualMemoryPointer { get; private set; }
-		public IntPtr ProductPointer { get; private set; }
-		public int ProductLength { get; private set; }
-		public bool IsBigEndian { get; private set; }
+        public IntPtr VirtualMemoryPointer { get; private set; }
+        public IntPtr ProductPointer { get; private set; }
+        public int ProductLength { get; private set; }
+        public bool IsBigEndian { get; private set; }
 
-		public GameEmulator(Process process)
-		{
-			if ((Process = process) == null)
-				return;
+        public GameEmulator(Process process)
+        {
+            if ((Process = process) == null)
+                return;
 
-			if (Process.HasExited)
-				return;
+            if (Process.HasExited)
+                return;
 
-			if (Process.ProcessName.ToLower() == Dolphin)
-			{
-				UpdateVirtualMemoryPointer();
-				ProductLength = 6;
-				IsBigEndian = true;
+            if (Process.ProcessName.ToLower() == Dolphin)
+            {
+                UpdateVirtualMemoryPointer();
+                ProductLength = 6;
+                IsBigEndian = true;
             }
             else if (Process.ProcessName.ToLower() == PCSX2)
             {
@@ -95,65 +94,65 @@ namespace RECVXFlagTool
             }
             else // RPCS3
             {
-				VirtualMemoryPointer = new IntPtr(0x300000000);
-				ProductPointer = IntPtr.Add(VirtualMemoryPointer, 0x20010251);
-				ProductLength = 9;
-				IsBigEndian = true;
-			}
-		}
+                VirtualMemoryPointer = new IntPtr(0x300000000);
+                ProductPointer = IntPtr.Add(VirtualMemoryPointer, 0x20010251);
+                ProductLength = 9;
+                IsBigEndian = true;
+            }
+        }
 
-		public void UpdateVirtualMemoryPointer()
-		{
-			if (Process == null)
-				return;
+        public void UpdateVirtualMemoryPointer()
+        {
+            if (Process == null)
+                return;
 
-			if (Process.HasExited)
-				return;
+            if (Process.HasExited)
+                return;
 
-			if (Process.ProcessName.ToLower() == Dolphin)
-			{
-				_dolphin ??= new Dolphin.Memory.Access.Dolphin(Process);
-				_dolphin.TryGetBaseAddress(out IntPtr pointer);
+            if (Process.ProcessName.ToLower() == Dolphin)
+            {
+                _dolphin ??= new Dolphin.Memory.Access.Dolphin(Process);
+                _dolphin.TryGetBaseAddress(out IntPtr pointer);
 
-				VirtualMemoryPointer = pointer;
-				ProductPointer = IntPtr.Add(VirtualMemoryPointer, 0x0);
-			}
-		}
+                VirtualMemoryPointer = pointer;
+                ProductPointer = IntPtr.Add(VirtualMemoryPointer, 0x0);
+            }
+        }
 
-		public static GameEmulator DetectEmulator()
-		{
-			foreach (string name in EmulatorList)
-			{
-				Process[] processes = Process.GetProcessesByName(name);
+        public static GameEmulator DetectEmulator()
+        {
+            foreach (string name in EmulatorList)
+            {
+                Process[] processes = Process.GetProcessesByName(name);
 
-				if (processes.Length <= 0)
-					continue;
+                if (processes.Length <= 0)
+                    continue;
 
-				return new GameEmulator(processes[0]);
-			}
+                return new GameEmulator(processes[0]);
+            }
 
-			return null;
-		}
+            return null;
+        }
 
-		private bool disposedValue;
-		protected virtual void Dispose(bool disposing)
-		{
-			if (!disposedValue)
-			{
-				if (disposing)
-				{
-					Process?.Dispose();
-					Process = null;
-				}
+        private bool disposedValue;
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    Process?.Dispose();
+                    Process = null;
+                }
 
-				disposedValue = true;
-			}
-		}
+                disposedValue = true;
+            }
+        }
 
-		public void Dispose()
-		{
-			Dispose(disposing: true);
-			GC.SuppressFinalize(this);
-		}
-	}
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+    }
 }

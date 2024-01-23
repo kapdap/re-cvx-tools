@@ -2,11 +2,11 @@
 
 namespace RECVXFlagTool.Views
 {
-	public partial class DocumentFlagsView : View<MemoryViewModel>
-	{
-		public DocumentFlagsView()
-		{
-			InitializeComponent();
-		}
-	}
+    public partial class DocumentFlagsView : View<MemoryViewModel>
+    {
+        public DocumentFlagsView()
+        {
+            InitializeComponent();
+        }
+    }
 }

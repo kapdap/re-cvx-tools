@@ -10,7 +10,6 @@
     xmlns:control="clr-namespace:WpfHexaEditor;assembly=WPFHexaEditor"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:properties="clr-namespace:RDXplorer.Properties"
     Title="Hex Editor"
     Width="900"
     Height="530"

@@ -8,7 +8,7 @@ namespace RDXplorer.Models.RDX
          where T : struct
     {
         public IntPtr Offset { get; private set; }
-        public long Size { get => Data != null ? Data.LongLength : 0; } 
+        public long Size { get => Data != null ? Data.LongLength : 0; }
         public byte[] Data { get; private set; }
         public T Value { get; private set; }
         public string Text { get; private set; }

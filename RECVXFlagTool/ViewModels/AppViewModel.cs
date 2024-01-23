@@ -2,15 +2,15 @@
 
 namespace RECVXFlagTool.ViewModels
 {
-	public class AppViewModel : BaseNotifyModel
-	{
-		public GameMemory Memory { get; } = Program.MemoryScanner.Memory;
+    public class AppViewModel : BaseNotifyModel
+    {
+        public GameMemory Memory { get; } = Program.MemoryScanner.Memory;
 
-		public string _statusBar;
-		public string StatusBar
-		{
-			set => SetField(ref _statusBar, value);
-			get => _statusBar ?? "Memory scanner is disabled";
-		}
-	}
+        public string _statusBar;
+        public string StatusBar
+        {
+            set => SetField(ref _statusBar, value);
+            get => _statusBar ?? "Memory scanner is disabled";
+        }
+    }
 }

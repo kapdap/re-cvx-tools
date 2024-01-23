@@ -2,11 +2,11 @@
 
 namespace RECVXFlagTool.Views
 {
-	public partial class ItemFlagsView : View<MemoryViewModel>
-	{
-		public ItemFlagsView()
-		{
-			InitializeComponent();
-		}
-	}
+    public partial class ItemFlagsView : View<MemoryViewModel>
+    {
+        public ItemFlagsView()
+        {
+            InitializeComponent();
+        }
+    }
 }

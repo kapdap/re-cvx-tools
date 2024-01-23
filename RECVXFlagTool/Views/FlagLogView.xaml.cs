@@ -2,11 +2,11 @@
 
 namespace RECVXFlagTool.Views
 {
-	public partial class FlagLogView : View<FlagLogViewModel>
-	{
-		public FlagLogView()
-		{
-			InitializeComponent();
-		}
-	}
+    public partial class FlagLogView : View<FlagLogViewModel>
+    {
+        public FlagLogView()
+        {
+            InitializeComponent();
+        }
+    }
 }

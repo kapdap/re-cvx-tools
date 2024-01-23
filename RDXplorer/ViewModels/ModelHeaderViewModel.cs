@@ -1,5 +1,4 @@
-﻿using RDXplorer.Enumerations;
-using RDXplorer.Models;
+﻿using RDXplorer.Models;
 using RDXplorer.Models.RDX;
 
 namespace RDXplorer.ViewModels
