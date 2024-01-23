@@ -29,7 +29,7 @@ jobs:
     steps:
     - name: Generate version
       id: version
-      uses: amitsingh-007/next-release-tag@v4.0.0
+      uses: amitsingh-007/next-release-tag@v4.2.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         tag_prefix: ''
