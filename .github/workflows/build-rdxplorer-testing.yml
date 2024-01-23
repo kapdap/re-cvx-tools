@@ -62,7 +62,7 @@ jobs:
       with:
         file: ./release.zip
         asset_name: ${{ env.Asset_Name }}-${{ steps.version.outputs.next_release_tag }}.zip
-        release_name: ${{ env.Release_Name }}
+        release_name: ${{ env.Release_Name }} (${{ steps.version.outputs.next_release_tag }})
         body: ${{ env.Release_Body }}
-        tag: ${{ env.Release_Tag }}-${{ steps.version.outputs.next_release_tag }}
+        tag: ${{ steps.version.outputs.next_release_tag }}
         overwrite: true
