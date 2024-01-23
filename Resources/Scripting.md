@@ -281,5 +281,5 @@ TODO: Update function descriptions
 
 ## Links
 
-[cbnj](https://www.dreamcast-talk.com/forum/memberlist.php?mode=viewprofile&u=16823) - [BH/RECV/X SCD SCRIPTING](https://www.dreamcast-talk.com/forum/viewtopic.php?f=52&t=17129)
-[@IntelOrca](https://github.com/IntelOrca] - [Scripting - Resident Evil Code Veronica](https://github.com/IntelOrca/biohazard-utils/wiki/Scripting-%E2%80%90-Resident-Evil-Code-Veronica)
+- [cbnj](https://www.dreamcast-talk.com/forum/memberlist.php?mode=viewprofile&u=16823) - [BH/RECV/X SCD SCRIPTING](https://www.dreamcast-talk.com/forum/viewtopic.php?f=52&t=17129)
+- [@IntelOrca](https://github.com/IntelOrca) - [Scripting - Resident Evil Code Veronica](https://github.com/IntelOrca/biohazard-utils/wiki/Scripting-%E2%80%90-Resident-Evil-Code-Veronica)
