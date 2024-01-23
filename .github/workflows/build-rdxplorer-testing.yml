@@ -24,7 +24,7 @@ jobs:
       Release_Name: RDXplorer (Testing)
       Release_Body: "RDXplorer test release"
       Release_Tag: rdxplorer-testing
-      Asset_Name: rdxplorer-testing.zip
+      Asset_Name: rdxplorer-testing
       
     steps:
     - name: Checkout
@@ -41,19 +41,19 @@ jobs:
       run: dotnet restore ${{ env.Project_Name }}
       
     - name: Build release
-      run: dotnet build -c Release ${{ env.Project_Name }} --no-restore
+      run: dotnet build ${{ env.Project_Name }} -c Release --no-restore
       
     - name: Publish release
-      run: dotnet publish -c Release ${{ env.Project_Name }} -o .\publish --no-restore --no-build
+      run: dotnet publish ${{ env.Project_Name }} -c Release -o .\publish --no-restore --no-build
       
     - name: Create zip
-      run: Compress-Archive -Path .\publish\* -Destination ${{ env.Asset_Name }}
+      run: Compress-Archive -Path .\publish\* -Destination release.zip
 
     - name: Upload zip to release
       uses: svenstaro/upload-release-action@v2
       with:
-        file: ./${{ env.Asset_Name }}
-        asset_name: ${{ env.Asset_Name }}
+        file: ./release.zip
+        asset_name: ${{ env.Asset_Name }}.zip
         release_name: ${{ env.Release_Name }}
         body: ${{ env.Release_Body }}
         tag: ${{ env.Release_Tag }}
