@@ -9,6 +9,7 @@ on:
     branches: [ "build" ]
     paths:
     - RDXplorer/**
+  workflow_dispatch:
 
 jobs:
   build:
