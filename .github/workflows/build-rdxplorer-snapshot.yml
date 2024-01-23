@@ -1,4 +1,4 @@
-name: build-rdxplorer-testing
+name: Build RDXplorer Snapshot
 
 on:
   push:
@@ -21,10 +21,9 @@ jobs:
 
     env:
       Project_Name: RDXplorer
-      Release_Name: RDXplorer (Testing)
-      Release_Body: "RDXplorer test release"
-      Release_Tag: rdxplorer-testing
-      Asset_Name: rdxplorer-testing
+      Release_Name: RDXplorer (Snapshot)
+      Release_Body: "RDXplorer snapshot release"
+      Asset_Name: rdxplorer-snapshot
       
     steps:
     - name: Generate version
@@ -63,6 +62,6 @@ jobs:
         file: ./release.zip
         asset_name: ${{ env.Asset_Name }}-${{ steps.version.outputs.next_release_tag }}.zip
         release_name: ${{ env.Release_Name }} (${{ steps.version.outputs.next_release_tag }})
-        body: ${{ env.Release_Body }}
+        body: ${{ env.Release_Body }} ${{ steps.version.outputs.next_release_tag }}
         tag: ${{ steps.version.outputs.next_release_tag }}
         overwrite: true
