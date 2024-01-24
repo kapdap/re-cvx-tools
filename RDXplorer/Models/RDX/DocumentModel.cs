@@ -20,8 +20,8 @@ namespace RDXplorer.Models.RDX
             private set => SetField(ref _header, value);
         }
 
-        private List<ModelHeaderModel> _model;
-        public List<ModelHeaderModel> Model
+        private List<ModelTableModel> _model;
+        public List<ModelTableModel> Model
         {
             get
             {
@@ -245,9 +245,9 @@ namespace RDXplorer.Models.RDX
             return header;
         }
 
-        public static List<ModelHeaderModel> ReadModels(Stream stream, HeaderModel header)
+        public static List<ModelTableModel> ReadModels(Stream stream, HeaderModel header)
         {
-            List<ModelHeaderModel> list = new();
+            List<ModelTableModel> list = new();
 
             using (BinaryReader br = new(stream))
             {
@@ -255,7 +255,7 @@ namespace RDXplorer.Models.RDX
 
                 for (int i = 0; i < 256; i++)
                 {
-                    ModelHeaderModel model = new();
+                    ModelTableModel model = new();
 
                     model.Offset = (IntPtr)stream.Position;
                     model.Pointer.SetValue(stream.Position, br.ReadBytes(4));
@@ -268,35 +268,63 @@ namespace RDXplorer.Models.RDX
                     list.Add(model);
                 }
 
-                // TODO: Read all model sections (MDL, SKIN, BONE etc)
                 for (int i = 0; i < list.Count; i++)
                 {
-                    ModelHeaderModel headerModel = list[i];
-                    headerModel.Size = (i < list.Count - 1 ? list[i + 1].Pointer.Value : (uint)header.Motion.Offset) - headerModel.Pointer.Value;
+                    uint nextOffset = i < list.Count - 1 ? list[i + 1].Pointer.Value : header.Motion.Value;
 
-                    stream.Seek(headerModel.Pointer.Value, SeekOrigin.Begin);
+                    ModelTableModel tableModel = list[i];
+                    tableModel.Size = nextOffset - tableModel.Pointer.Value;
 
-                    ModelEntryModel entryModel = new();
-                    entryModel.Offset = (IntPtr)stream.Position;
+                    stream.Seek(tableModel.Pointer.Value, SeekOrigin.Begin);
 
-                    DataEntryModel<uint> dataModelA = new();
-                    dataModelA.SetValue(stream.Position, br.ReadBytes(4));
-
-                    DataEntryModel<uint> dataModelB = new();
-                    dataModelB.SetValue(stream.Position, br.ReadBytes(4));
-
-                    if (dataModelA.Text == "SKIN" || dataModelA.Text.StartsWith("MDL"))
+                    while (stream.Position < nextOffset)
                     {
-                        entryModel.Type = dataModelA;
-                    }
-                    else
-                    {
-                        entryModel.Type = dataModelB;
-                        entryModel.Size = dataModelA;
-                        entryModel.HasSize = true;
-                    }
+                        ModelSectionModel entryModel = new();
 
-                    headerModel.Entry.Add(entryModel);
+                        entryModel.Table = tableModel;
+                        entryModel.Offset = (IntPtr)stream.Position;
+
+                        tableModel.Sections.Add(entryModel);
+
+                        DataEntryModel<uint> dataModelA = new();
+                        dataModelA.SetValue(stream.Position, br.ReadBytes(4));
+
+                        DataEntryModel<uint> dataModelB = new();
+                        dataModelB.SetValue(stream.Position, br.ReadBytes(4));
+
+                        if (dataModelA.Text == "SKIN" ||
+                            dataModelA.Text.StartsWith("MDL"))
+                        {
+                            entryModel.Type = dataModelA;
+                        }
+                        else
+                        {
+                            entryModel.Type = dataModelB;
+                            entryModel.Size = dataModelA;
+                            entryModel.HasSize = true;
+                        }
+
+                        if (entryModel.HasSize)
+                        {
+                            stream.Seek(entryModel.Size.Value, SeekOrigin.Current);
+
+                            while (stream.Position < nextOffset)
+                            {
+                                DataEntryModel<uint> dataModelV = new();
+                                dataModelV.SetValue(stream.Position, br.ReadBytes(4));
+
+                                if (dataModelV.Text == "SKIN" ||
+                                    dataModelV.Text == "MASK" ||
+                                    dataModelV.Text.StartsWith("MDL"))
+                                {
+                                    stream.Seek(-8, SeekOrigin.Current);
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                            break;
+                    }
                 }
             }
 
