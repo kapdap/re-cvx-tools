@@ -30,7 +30,6 @@
         {
             Version.IsPointer = false;
             Author.IsPointer = false;
-            Unknown1.IsPointer = false;
             Unknown2.IsPointer = false;
 
             Author.IsText = true;
