@@ -41,7 +41,6 @@
             Model.HasCount = false;
             Motion.HasCount = false;
             Script.HasCount = false;
-            Texture.HasCount = false;
             Text.HasCount = false;
             Sysmes.HasCount = false;
         }

@@ -10,7 +10,7 @@
       mc:Ignorable="d" 
       d:DataContext="{d:DesignInstance Type=models:ModelSectionViewModel}"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Model Sections">
+      Title="Models">
     <DataGrid AutoGenerateColumns="False"
               BorderThickness="0"
               CanUserAddRows="False"
@@ -18,7 +18,7 @@
               ItemsSource="{Binding Entries}" MouseDoubleClick="DataGrid_MouseDoubleClick">
         <DataGrid.Columns>
             <DataGridTextColumn Header="Offset" Binding="{Binding Model.Offset, StringFormat=X8}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Model" Binding="{Binding Model.Table.Pointer.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Group" Binding="{Binding Model.Table.Pointer.Value, StringFormat=X8}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Size" Binding="{Binding Model.Size}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Type" Binding="{Binding Model.Type.Text}" FontFamily="Consolas"/>
         </DataGrid.Columns>

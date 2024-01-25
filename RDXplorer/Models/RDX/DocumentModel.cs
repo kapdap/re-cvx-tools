@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Policy;
 
 namespace RDXplorer.Models.RDX
 {
@@ -31,6 +32,19 @@ namespace RDXplorer.Models.RDX
             }
 
             private set => SetField(ref _model, value);
+        }
+
+        private List<TextureTableModel> _texture;
+        public List<TextureTableModel> Texture
+        {
+            get
+            {
+                if (_texture == null)
+                    SetField(ref _texture, ReadTextures(PathInfo.OpenRead(), Header));
+                return _texture;
+            }
+
+            private set => SetField(ref _texture, value);
         }
 
         private List<CameraModel> _camera;
@@ -182,7 +196,7 @@ namespace RDXplorer.Models.RDX
             Header = ReadHeader(file.OpenRead());
         }
 
-        public static HeaderModel ReadHeader(Stream stream)
+        public HeaderModel ReadHeader(Stream stream)
         {
             HeaderModel header = new();
 
@@ -239,13 +253,16 @@ namespace RDXplorer.Models.RDX
                     header.Action.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Text.Count.SetValue(stream.Position, br.ReadBytes(4));
                     header.Sysmes.Count.SetValue(stream.Position, br.ReadBytes(4));
+
+                    stream.Seek(header.Texture.Value, SeekOrigin.Begin);
+                    header.Texture.Count.SetValue(stream.Position, br.ReadBytes(4));
                 }
             }
 
             return header;
         }
 
-        public static List<ModelTableModel> ReadModels(Stream stream, HeaderModel header)
+        public List<ModelTableModel> ReadModels(Stream stream, HeaderModel header)
         {
             List<ModelTableModel> list = new();
 
@@ -331,7 +348,62 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public static List<CameraModel> ReadCamera(Stream stream, HeaderModel header)
+        public List<TextureTableModel> ReadTextures(Stream stream, HeaderModel header)
+        {
+            List<TextureTableModel> list = new();
+
+            using (BinaryReader br = new(stream))
+            {
+                stream.Seek(header.Texture.Value + 4, SeekOrigin.Begin);
+
+                for (int i = 0; i < header.Texture.Count.Value; i++)
+                {
+                    TextureTableModel model = new();
+
+                    model.Offset = (IntPtr)stream.Position;
+                    model.Pointer.SetValue(stream.Position, br.ReadBytes(4));
+
+                    if (model.Pointer.Value == 0)
+                        break;
+
+                    list.Add(model);
+                }
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    uint nextOffset = i < list.Count - 1 ? list[i + 1].Pointer.Value : (uint)PathInfo.Length;
+
+                    TextureTableModel tableModel = list[i];
+                    tableModel.Size = nextOffset - tableModel.Pointer.Value;
+
+                    stream.Seek(tableModel.Pointer.Value, SeekOrigin.Begin);
+
+                    while (stream.Position < nextOffset)
+                    {
+                        TextureBlockModel blockModel = new();
+
+                        blockModel.Offset = (IntPtr)stream.Position;
+                        blockModel.Table = tableModel;
+
+                        blockModel.Type.SetValue(stream.Position, br.ReadBytes(4));
+
+                        if (blockModel.Type.Value == 0xFFFFFFFF)
+                            break;
+
+                        blockModel.Size.SetValue(stream.Position, br.ReadBytes(4));
+
+                        tableModel.Blocks.Add(blockModel);
+
+                        stream.Seek(24, SeekOrigin.Current);
+                        stream.Seek(blockModel.Size.Value, SeekOrigin.Current);
+                    }
+                }
+            }
+
+            return list;
+        }
+
+        public List<CameraModel> ReadCamera(Stream stream, HeaderModel header)
         {
             List<CameraModel> list = new();
 
@@ -389,7 +461,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public static List<LightingModel> ReadLighting(Stream stream, HeaderModel header)
+        public List<LightingModel> ReadLighting(Stream stream, HeaderModel header)
         {
             List<LightingModel> list = new();
 
@@ -427,7 +499,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public static List<ActorModel> ReadActor(Stream stream, HeaderModel header)
+        public List<ActorModel> ReadActor(Stream stream, HeaderModel header)
         {
             List<ActorModel> list = new();
 
@@ -465,7 +537,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public static List<ObjectModel> ReadObject(Stream stream, HeaderModel header)
+        public List<ObjectModel> ReadObject(Stream stream, HeaderModel header)
         {
             List<ObjectModel> list = new();
 
@@ -509,7 +581,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public static List<ItemModel> ReadItem(Stream stream, HeaderModel header)
+        public List<ItemModel> ReadItem(Stream stream, HeaderModel header)
         {
             List<ItemModel> list = new();
 
@@ -549,7 +621,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public static List<EffectModel> ReadEffect(Stream stream, HeaderModel header)
+        public List<EffectModel> ReadEffect(Stream stream, HeaderModel header)
         {
             List<EffectModel> list = new();
 
@@ -589,7 +661,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public static List<BoundaryModel> ReadBoundary(Stream stream, HeaderModel header)
+        public List<BoundaryModel> ReadBoundary(Stream stream, HeaderModel header)
         {
             List<BoundaryModel> list = new();
 
@@ -626,7 +698,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public static List<AOTModel> ReadAOT(Stream stream, HeaderModel header)
+        public List<AOTModel> ReadAOT(Stream stream, HeaderModel header)
         {
             List<AOTModel> list = new();
 
@@ -663,7 +735,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public static List<TriggerModel> ReadTrigger(Stream stream, HeaderModel header)
+        public List<TriggerModel> ReadTrigger(Stream stream, HeaderModel header)
         {
             List<TriggerModel> list = new();
 
@@ -700,7 +772,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public static List<PlayerModel> ReadPlayer(Stream stream, HeaderModel header)
+        public List<PlayerModel> ReadPlayer(Stream stream, HeaderModel header)
         {
             List<PlayerModel> list = new();
 
@@ -728,7 +800,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public static List<EventModel> ReadEvent(Stream stream, HeaderModel header)
+        public List<EventModel> ReadEvent(Stream stream, HeaderModel header)
         {
             List<EventModel> list = new();
 
