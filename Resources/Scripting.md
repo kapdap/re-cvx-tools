@@ -1,12 +1,5 @@
 # Scripting
 
-Script block is split into 4 sections:
-
-1. Script Offsets
-2. Init Script
-3. Main Script
-4. Event? Script
-
 ## Opcodes
 
 - First byte of an opcode is an index into the Scenario Jump Table
