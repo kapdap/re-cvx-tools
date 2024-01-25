@@ -7,9 +7,9 @@ using System.Windows.Input;
 
 namespace RDXplorer.Views
 {
-    public partial class TextureView : View<TextureViewModel, TextureViewModelEntry>
+    public partial class TextureBlockView : View<TextureBlockViewModel, TextureBlockViewModelEntry>
     {
-        public TextureView()
+        public TextureBlockView()
         {
             InitializeComponent();
             LoadModel();
@@ -25,7 +25,7 @@ namespace RDXplorer.Views
             if (string.IsNullOrEmpty(binding))
                 return;
 
-            TextureViewModelEntry entry = (TextureViewModelEntry)grid.SelectedItem;
+            TextureBlockViewModelEntry entry = (TextureBlockViewModelEntry)grid.SelectedItem;
 
             IntPtr offset = entry.Model.Offset;
             long length = 4;

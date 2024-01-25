@@ -13,8 +13,8 @@ namespace RDXplorer.ViewModels
                 return;
 
             foreach (ModelTableModel row in AppViewModel.RDXDocument.Model)
-                foreach (ModelBlockModel section in row.Blocks)
-                    Entries.Add(new ModelBlockViewModelEntry(section));
+                foreach (ModelBlockModel block in row.Blocks)
+                    Entries.Add(new ModelBlockViewModelEntry(block));
         }
     }
 

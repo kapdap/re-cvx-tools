@@ -3,7 +3,7 @@ using RDXplorer.Models.RDX;
 
 namespace RDXplorer.ViewModels
 {
-    public class TextureViewModel : PageViewModel<TextureViewModelEntry>
+    public class TextureBlockViewModel : PageViewModel<TextureBlockViewModelEntry>
     {
         public override void LoadData()
         {
@@ -14,15 +14,15 @@ namespace RDXplorer.ViewModels
 
             foreach (TextureTableModel row in AppViewModel.RDXDocument.Texture)
                 foreach (TextureBlockModel block in row.Blocks)
-                    Entries.Add(new TextureViewModelEntry(block));
+                    Entries.Add(new TextureBlockViewModelEntry(block));
         }
     }
 
-    public class TextureViewModelEntry
+    public class TextureBlockViewModelEntry
     {
         public TextureBlockModel Model { get; set; }
 
-        public TextureViewModelEntry(TextureBlockModel model)
+        public TextureBlockViewModelEntry(TextureBlockModel model)
         {
             Model = model;
         }
