@@ -34,6 +34,19 @@ namespace RDXplorer.Models.RDX
             private set => SetField(ref _model, value);
         }
 
+        private List<ScriptModel> _script;
+        public List<ScriptModel> Script
+        {
+            get
+            {
+                if (_script == null)
+                    SetField(ref _script, ReadScripts(PathInfo.OpenRead(), Header));
+                return _script;
+            }
+
+            private set => SetField(ref _script, value);
+        }
+
         private List<TextureTableModel> _texture;
         public List<TextureTableModel> Texture
         {
@@ -342,6 +355,42 @@ namespace RDXplorer.Models.RDX
                         else
                             break;
                     }
+                }
+            }
+
+            return list;
+        }
+
+        public List<ScriptModel> ReadScripts(Stream stream, HeaderModel header)
+        {
+            List<ScriptModel> list = new();
+
+            using (BinaryReader br = new(stream))
+            {
+                stream.Seek(header.Script.Value, SeekOrigin.Begin);
+
+                while (stream.Position < (list.Count > 0 ? list[0].Pointer.Value : stream.Position + 1))
+                {
+                    ScriptModel model = new();
+
+                    model.Offset = (IntPtr)stream.Position;
+
+                    model.Position.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Pointer.SetValue(model.Offset, BitConverter.GetBytes(header.Script.Value + model.Position.Value));
+
+                    list.Add(model);
+                }
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    uint nextOffset = i < list.Count - 1 ? list[i + 1].Pointer.Value : (uint)header.Texture.Value;
+
+                    ScriptModel model = list[i];
+
+                    stream.Seek(model.Pointer.Value, SeekOrigin.Begin);
+
+                    model.Size = nextOffset - model.Pointer.Value;
+                    model.Data.SetValue(stream.Position, br.ReadBytes((int)model.Size));
                 }
             }
 
