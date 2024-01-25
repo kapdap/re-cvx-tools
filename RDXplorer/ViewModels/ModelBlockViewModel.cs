@@ -3,7 +3,7 @@ using RDXplorer.Models.RDX;
 
 namespace RDXplorer.ViewModels
 {
-    public class ModelSectionViewModel : PageViewModel<ModelSectionViewModelEntry>
+    public class ModelBlockViewModel : PageViewModel<ModelBlockViewModelEntry>
     {
         public override void LoadData()
         {
@@ -13,16 +13,16 @@ namespace RDXplorer.ViewModels
                 return;
 
             foreach (ModelTableModel row in AppViewModel.RDXDocument.Model)
-                foreach (ModelSectionModel section in row.Sections)
-                    Entries.Add(new ModelSectionViewModelEntry(section));
+                foreach (ModelBlockModel section in row.Blocks)
+                    Entries.Add(new ModelBlockViewModelEntry(section));
         }
     }
 
-    public class ModelSectionViewModelEntry
+    public class ModelBlockViewModelEntry
     {
-        public ModelSectionModel Model { get; set; }
+        public ModelBlockModel Model { get; set; }
 
-        public ModelSectionViewModelEntry(ModelSectionModel model)
+        public ModelBlockViewModelEntry(ModelBlockModel model)
         {
             Model = model;
         }

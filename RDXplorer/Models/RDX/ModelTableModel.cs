@@ -8,7 +8,7 @@ namespace RDXplorer.Models.RDX
         public IntPtr Offset { get; set; }
 
         public DataEntryModel<uint> Pointer { get; set; } = new();
-        public List<ModelSectionModel> Sections { get; set; } = new();
+        public List<ModelBlockModel> Blocks { get; set; } = new();
         public uint Size { get; set; }
 
         public ModelTableModel()

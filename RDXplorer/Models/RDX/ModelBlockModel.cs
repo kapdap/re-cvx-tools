@@ -2,7 +2,7 @@
 
 namespace RDXplorer.Models.RDX
 {
-    public class ModelSectionModel
+    public class ModelBlockModel
     {
         public IntPtr Offset { get; set; }
 

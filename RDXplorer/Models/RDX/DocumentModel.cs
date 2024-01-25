@@ -296,12 +296,12 @@ namespace RDXplorer.Models.RDX
 
                     while (stream.Position < nextOffset)
                     {
-                        ModelSectionModel entryModel = new();
+                        ModelBlockModel blockModel = new();
 
-                        entryModel.Table = tableModel;
-                        entryModel.Offset = (IntPtr)stream.Position;
+                        blockModel.Table = tableModel;
+                        blockModel.Offset = (IntPtr)stream.Position;
 
-                        tableModel.Sections.Add(entryModel);
+                        tableModel.Blocks.Add(blockModel);
 
                         DataEntryModel<uint> dataModelA = new();
                         dataModelA.SetValue(stream.Position, br.ReadBytes(4));
@@ -312,18 +312,18 @@ namespace RDXplorer.Models.RDX
                         if (dataModelA.Text == "SKIN" ||
                             dataModelA.Text.StartsWith("MDL"))
                         {
-                            entryModel.Type = dataModelA;
+                            blockModel.Type = dataModelA;
                         }
                         else
                         {
-                            entryModel.Type = dataModelB;
-                            entryModel.Size = dataModelA;
-                            entryModel.HasSize = true;
+                            blockModel.Type = dataModelB;
+                            blockModel.Size = dataModelA;
+                            blockModel.HasSize = true;
                         }
 
-                        if (entryModel.HasSize)
+                        if (blockModel.HasSize)
                         {
-                            stream.Seek(entryModel.Size.Value, SeekOrigin.Current);
+                            stream.Seek(blockModel.Size.Value, SeekOrigin.Current);
 
                             while (stream.Position < nextOffset)
                             {

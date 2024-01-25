@@ -7,9 +7,9 @@ using System.Windows.Input;
 
 namespace RDXplorer.Views
 {
-    public partial class ModelSectionView : View<ModelSectionViewModel, ModelSectionViewModelEntry>
+    public partial class ModelBlockView : View<ModelBlockViewModel, ModelBlockViewModelEntry>
     {
-        public ModelSectionView()
+        public ModelBlockView()
         {
             InitializeComponent();
             LoadModel();
@@ -25,7 +25,7 @@ namespace RDXplorer.Views
             if (string.IsNullOrEmpty(binding))
                 return;
 
-            ModelSectionViewModelEntry entry = (ModelSectionViewModelEntry)grid.SelectedItem;
+            ModelBlockViewModelEntry entry = (ModelBlockViewModelEntry)grid.SelectedItem;
 
             IntPtr offset = entry.Model.Offset;
             long length = 4;

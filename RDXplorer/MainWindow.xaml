@@ -43,7 +43,7 @@
                     <Frame Source="Views/SectionView.xaml"/>
                 </TabItem>
                 <TabItem Header="Models">
-                    <Frame Source="Views/ModelSectionView.xaml"/>
+                    <Frame Source="Views/ModelBlockView.xaml"/>
                 </TabItem>
                 <TabItem Header="Textures">
                     <Frame Source="Views/TextureView.xaml"/>
