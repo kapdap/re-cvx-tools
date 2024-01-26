@@ -58,8 +58,10 @@ namespace RDXplorer
 
         public static string GetFileMD5(Stream stream)
         {
-            using MD5 md5 = MD5.Create();
-            return BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", "").ToLowerInvariant();
+            using MD5 crypt = MD5.Create();
+            string hash = BitConverter.ToString(crypt.ComputeHash(stream)).Replace("-", "").ToLowerInvariant();
+            stream.Seek(0, SeekOrigin.Begin);
+            return hash;
         }
     }
 }
