@@ -45,6 +45,9 @@
                 <TabItem Header="Models">
                     <Frame Source="Views/ModelBlockView.xaml"/>
                 </TabItem>
+                <TabItem Header="Motions">
+                    <Frame Source="Views/MotionBlockView.xaml"/>
+                </TabItem>
                 <TabItem Header="Scripts">
                     <Frame Source="Views/ScriptView.xaml"/>
                 </TabItem>

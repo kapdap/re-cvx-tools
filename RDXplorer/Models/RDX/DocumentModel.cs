@@ -34,6 +34,19 @@ namespace RDXplorer.Models.RDX
             private set => SetField(ref _model, value);
         }
 
+        private List<MotionTableModel> _motion;
+        public List<MotionTableModel> Motion
+        {
+            get
+            {
+                if (_motion == null)
+                    SetField(ref _motion, ReadMotions(PathInfo.OpenRead(), Header));
+                return _motion;
+            }
+
+            private set => SetField(ref _motion, value);
+        }
+
         private List<ScriptModel> _script;
         public List<ScriptModel> Script
         {
@@ -354,6 +367,78 @@ namespace RDXplorer.Models.RDX
                         }
                         else
                             break;
+                    }
+                }
+            }
+
+            return list;
+        }
+
+        public List<MotionTableModel> ReadMotions(Stream stream, HeaderModel header)
+        {
+            List<MotionTableModel> list = new();
+
+            using (BinaryReader br = new(stream))
+            {
+                stream.Seek(header.Motion.Value, SeekOrigin.Begin);
+
+                uint firstPosition = 0;
+
+                while (stream.Position < (firstPosition > 0 ? firstPosition : header.Script.Value))
+                {
+                    MotionTableModel tableModel = new();
+
+                    tableModel.Offset = (IntPtr)stream.Position;
+                    tableModel.Pointer.SetValue(stream.Position, br.ReadBytes(4));
+
+                    if (tableModel.Pointer.Value > header.Script.Value)
+                        break;
+
+                    if (firstPosition == 0)
+                        firstPosition = tableModel.Pointer.Value;
+
+                    if (tableModel.Pointer.Value != 0)
+                        list.Add(tableModel);
+                }
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    MotionTableModel tableModel = list[i];
+
+                    if (tableModel.Pointer.Value == 0)
+                        continue;
+
+                    stream.Seek(tableModel.Pointer.Value, SeekOrigin.Begin);
+
+                    uint nextOffset = i < list.Count - 1 ? list[i + 1].Pointer.Value : header.Script.Value;
+
+                    while (stream.Position < nextOffset)
+                    {
+                        MotionBlockModel blockModel = new();
+
+                        blockModel.Table = tableModel;
+                        blockModel.Offset = (IntPtr)stream.Position;
+
+                        tableModel.Blocks.Add(blockModel);
+
+                        blockModel.Size.SetValue(stream.Position, br.ReadBytes(4));
+                        blockModel.Type.SetValue(stream.Position, br.ReadBytes(4));
+
+                        stream.Seek(-4, SeekOrigin.Current);
+                        
+                        blockModel.Data.SetValue(stream.Position, br.ReadBytes((int)blockModel.Size.Value));
+
+                        while (stream.Position < nextOffset)
+                        {
+                            DataEntryModel<uint> dataModel = new();
+                            dataModel.SetValue(stream.Position, br.ReadBytes(4));
+
+                            if (dataModel.Value != 0 && dataModel.Value != 0xFFFFFFFF)
+                            {
+                                stream.Seek(-4, SeekOrigin.Current);
+                                break;
+                            }
+                        }
                     }
                 }
             }
