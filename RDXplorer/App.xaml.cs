@@ -1,4 +1,5 @@
 ﻿using RDXplorer.Views;
+using System;
 using System.IO;
 using System.Windows;
 
@@ -18,6 +19,8 @@ namespace RDXplorer
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             Program.Windows.Main.Show();
+
+            Program.SetTempPath();
 
             for (int i = 0; i < e.Args.Length; ++i)
             {

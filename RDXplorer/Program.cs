@@ -12,6 +12,8 @@ namespace RDXplorer.Views
     {
         public static bool IsClosing { get; set; }
 
+        public static DirectoryInfo TempPath { get; set; }
+
         public static void Initialize(MainWindow main)
         {
             Windows.Main = main;
@@ -40,6 +42,32 @@ namespace RDXplorer.Views
                 return null;
 
             return new FileInfo(dialog.FileName);
+        }
+
+        public static void SetTempPath()
+        {
+            try
+            {
+                DirectoryInfo tmp_path = new DirectoryInfo($"{Properties.Settings.Default.tmp_path}\\{Guid.NewGuid()}");
+
+                if (!tmp_path.Exists)
+                    tmp_path.Create();
+
+                TempPath = new DirectoryInfo(tmp_path.FullName);
+            }
+            catch { }
+        }
+
+        public static void DeleteTempPath()
+        {
+            try
+            {
+                DirectoryInfo tmp_path = new(TempPath.FullName);
+
+                if (tmp_path.Exists)
+                    tmp_path.Delete(true);
+            }
+            catch { }
         }
 
         public static void OpenURL(string url)
@@ -123,6 +151,7 @@ namespace RDXplorer.Views
         {
             IsClosing = true;
 
+            Program.DeleteTempPath();
             Program.CloseRDX();
             Windows.CloseAll();
         }
