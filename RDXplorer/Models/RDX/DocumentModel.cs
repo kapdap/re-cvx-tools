@@ -221,7 +221,7 @@ namespace RDXplorer.Models.RDX
             Header = ReadHeader(file);
         }
 
-        public HeaderModel ReadHeader(FileInfo file)
+        public static HeaderModel ReadHeader(FileInfo file)
         {
             HeaderModel header = new();
 
@@ -288,7 +288,7 @@ namespace RDXplorer.Models.RDX
             return header;
         }
 
-        public List<ModelTableModel> ReadModels(FileInfo file, HeaderModel header)
+        public static List<ModelTableModel> ReadModels(FileInfo file, HeaderModel header)
         {
             List<ModelTableModel> list = new();
 
@@ -376,7 +376,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<MotionTableModel> ReadMotions(FileInfo file, HeaderModel header)
+        public static List<MotionTableModel> ReadMotions(FileInfo file, HeaderModel header)
         {
             List<MotionTableModel> list = new();
 
@@ -450,7 +450,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<ScriptModel> ReadScripts(FileInfo file, HeaderModel header)
+        public static List<ScriptModel> ReadScripts(FileInfo file, HeaderModel header)
         {
             List<ScriptModel> list = new();
 
@@ -488,7 +488,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<TextureTableModel> ReadTextures(FileInfo file, HeaderModel header)
+        public static List<TextureTableModel> ReadTextures(FileInfo file, HeaderModel header)
         {
             List<TextureTableModel> list = new();
 
@@ -545,7 +545,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<CameraModel> ReadCamera(FileInfo file, HeaderModel header)
+        public static List<CameraModel> ReadCamera(FileInfo file, HeaderModel header)
         {
             List<CameraModel> list = new();
 
@@ -605,7 +605,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<LightingModel> ReadLighting(FileInfo file, HeaderModel header)
+        public static List<LightingModel> ReadLighting(FileInfo file, HeaderModel header)
         {
             List<LightingModel> list = new();
 
@@ -645,7 +645,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<ActorModel> ReadActor(FileInfo file, HeaderModel header)
+        public static List<ActorModel> ReadActor(FileInfo file, HeaderModel header)
         {
             List<ActorModel> list = new();
 
@@ -685,7 +685,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<ObjectModel> ReadObject(FileInfo file, HeaderModel header)
+        public static List<ObjectModel> ReadObject(FileInfo file, HeaderModel header)
         {
             List<ObjectModel> list = new();
 
@@ -731,7 +731,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<ItemModel> ReadItem(FileInfo file, HeaderModel header)
+        public static List<ItemModel> ReadItem(FileInfo file, HeaderModel header)
         {
             List<ItemModel> list = new();
 
@@ -773,7 +773,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<EffectModel> ReadEffect(FileInfo file, HeaderModel header)
+        public static List<EffectModel> ReadEffect(FileInfo file, HeaderModel header)
         {
             List<EffectModel> list = new();
 
@@ -815,7 +815,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<BoundaryModel> ReadBoundary(FileInfo file, HeaderModel header)
+        public static List<BoundaryModel> ReadBoundary(FileInfo file, HeaderModel header)
         {
             List<BoundaryModel> list = new();
 
@@ -854,7 +854,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<AOTModel> ReadAOT(FileInfo file, HeaderModel header)
+        public static List<AOTModel> ReadAOT(FileInfo file, HeaderModel header)
         {
             List<AOTModel> list = new();
 
@@ -893,7 +893,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<TriggerModel> ReadTrigger(FileInfo file, HeaderModel header)
+        public static List<TriggerModel> ReadTrigger(FileInfo file, HeaderModel header)
         {
             List<TriggerModel> list = new();
 
@@ -932,7 +932,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<PlayerModel> ReadPlayer(FileInfo file, HeaderModel header)
+        public static List<PlayerModel> ReadPlayer(FileInfo file, HeaderModel header)
         {
             List<PlayerModel> list = new();
 
@@ -962,7 +962,7 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<EventModel> ReadEvent(FileInfo file, HeaderModel header)
+        public static List<EventModel> ReadEvent(FileInfo file, HeaderModel header)
         {
             List<EventModel> list = new();
 
