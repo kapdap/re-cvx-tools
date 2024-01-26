@@ -285,17 +285,17 @@ namespace RDXplorer.Models.RDX
 
                 for (int i = 0; i < 256; i++)
                 {
-                    ModelTableModel model = new();
+                    ModelTableModel tableModel = new();
 
-                    model.Offset = (IntPtr)stream.Position;
-                    model.Pointer.SetValue(stream.Position, br.ReadBytes(4));
+                    tableModel.Offset = (IntPtr)stream.Position;
+                    tableModel.Pointer.SetValue(stream.Position, br.ReadBytes(4));
 
-                    if (model.Pointer.Value == 0 ||
-                        model.Pointer.Text == "SKIN" ||
-                        model.Pointer.Text.StartsWith("MDL"))
+                    if (tableModel.Pointer.Value == 0 ||
+                        tableModel.Pointer.Text == "SKIN" ||
+                        tableModel.Pointer.Text.StartsWith("MDL"))
                         break;
 
-                    list.Add(model);
+                    list.Add(tableModel);
                 }
 
                 for (int i = 0; i < list.Count; i++)
