@@ -8,7 +8,7 @@ namespace RDXplorer.Models.RDX
 
         public DataEntryModel<uint> Position { get; set; } = new();
         public DataEntryModel<uint> Pointer { get; set; } = new();
-        public DataEntryModel<uint> Data { get; set; } = new();
+        public DataEntryModel<byte> Data { get; set; } = new();
 
         public uint Size { get; set; }
 
