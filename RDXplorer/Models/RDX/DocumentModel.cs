@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Security.Policy;
 
 namespace RDXplorer.Models.RDX
 {
@@ -425,7 +424,7 @@ namespace RDXplorer.Models.RDX
                         blockModel.Type.SetValue(stream.Position, br.ReadBytes(4));
 
                         stream.Seek(-4, SeekOrigin.Current);
-                        
+
                         blockModel.Data.SetValue(stream.Position, br.ReadBytes((int)blockModel.Size.Value));
 
                         while (stream.Position < nextOffset)
@@ -468,7 +467,7 @@ namespace RDXplorer.Models.RDX
 
                 for (int i = 0; i < list.Count; i++)
                 {
-                    uint nextOffset = i < list.Count - 1 ? list[i + 1].Pointer.Value : (uint)header.Texture.Value;
+                    uint nextOffset = i < list.Count - 1 ? list[i + 1].Pointer.Value : header.Texture.Value;
 
                     ScriptModel model = list[i];
 

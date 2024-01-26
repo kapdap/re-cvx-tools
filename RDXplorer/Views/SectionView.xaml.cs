@@ -29,9 +29,9 @@ namespace RDXplorer.Views
             if (column == "Value" && entry.Model.IsPointer)
                 Program.Windows.HexEditor.SetPosition(entry.Model.Value);
             else if (column == "Count" && entry.Model.HasCount)
-                Program.Windows.HexEditor.SetPosition((long)entry.Model.Count.Offset, entry.Model.Count.Size);
+                Program.Windows.HexEditor.SetPosition(entry.Model.Count.Offset, entry.Model.Count.Size);
             else
-                Program.Windows.HexEditor.SetPosition((long)entry.Model.Offset, entry.Model.Size);
+                Program.Windows.HexEditor.SetPosition(entry.Model.Offset, entry.Model.Size);
         }
     }
 }
