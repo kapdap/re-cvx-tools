@@ -32,7 +32,7 @@ namespace RDXplorer.Views
 
         public static FileInfo SelectFile(FileInfo path)
         {
-            OpenFileDialog dialog = new OpenFileDialog
+            OpenFileDialog dialog = new()
             {
                 Multiselect = false,
                 CheckFileExists = true,
@@ -106,14 +106,14 @@ namespace RDXplorer.Views
                 using (Stream stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
                     BinaryReader br = new(stream);
-                    
+
                     int magic = br.ReadInt32();
 
                     if (magic == 0x200000DF)
                     {
                         stream.Seek(0, SeekOrigin.Begin);
 
-                        FileInfo tmp_file = new FileInfo($"{TempPath.FullName}\\{Utilities.GetFileMD5(stream)}");
+                        FileInfo tmp_file = new($"{TempPath.FullName}\\{Utilities.GetFileMD5(stream)}");
 
                         if (!tmp_file.Directory.Exists)
                             tmp_file.Directory.Create();

@@ -240,7 +240,7 @@ namespace RDXplorer.Models.RDX
                     header.Motion.SetValue(stream.Position, br.ReadBytes(4));
                     header.Script.SetValue(stream.Position, br.ReadBytes(4));
                     header.Texture.SetValue(stream.Position, br.ReadBytes(4));
-                    
+
                     stream.Seek(96, SeekOrigin.Begin);
                     header.Author.SetValue(stream.Position, br.ReadBytes(32));
 
