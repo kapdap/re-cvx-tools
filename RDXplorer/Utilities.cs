@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace RDXplorer
 {
@@ -40,6 +43,23 @@ namespace RDXplorer
                 return BitConverter.ToUInt64(bytes, 0);
 
             return new();
+        }
+
+        public static string GetFileMD5(string path)
+        {
+            return GetFileMD5((FileInfo)new(path));
+        }
+
+        public static string GetFileMD5(FileInfo file)
+        {
+            using Stream stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            return GetFileMD5(stream);
+        }
+
+        public static string GetFileMD5(Stream stream)
+        {
+            using MD5 md5 = MD5.Create();
+            return BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", "").ToLowerInvariant();
         }
     }
 }

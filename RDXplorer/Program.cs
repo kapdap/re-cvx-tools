@@ -111,12 +111,15 @@ namespace RDXplorer.Views
                     {
                         stream.Seek(0, SeekOrigin.Begin);
 
-                        FileInfo tmp_file = new FileInfo($"{TempPath.FullName}\\{file.Name}");
+                        FileInfo tmp_file = new FileInfo($"{TempPath.FullName}\\{Utilities.GetFileMD5(stream)}");
+
+                        stream.Seek(0, SeekOrigin.Begin);
 
                         if (!tmp_file.Directory.Exists)
                             tmp_file.Directory.Create();
 
-                        File.WriteAllBytes(tmp_file.FullName, PRS.Decompress(br.ReadBytes((int)file.Length)));
+                        if (!tmp_file.Exists)
+                            File.WriteAllBytes(tmp_file.FullName, PRS.Decompress(br.ReadBytes((int)file.Length)));
 
                         file = new(tmp_file.FullName);
                     }
