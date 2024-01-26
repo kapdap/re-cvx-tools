@@ -1,5 +1,5 @@
-﻿using csharp_prs;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
+using PSO.PRS;
 using RDXplorer.ViewModels;
 using System;
 using System.Diagnostics;
@@ -116,7 +116,7 @@ namespace RDXplorer.Views
                         if (!tmp_file.Directory.Exists)
                             tmp_file.Directory.Create();
 
-                        File.WriteAllBytes(tmp_file.FullName, Prs.Decompress(br.ReadBytes((int)file.Length)));
+                        File.WriteAllBytes(tmp_file.FullName, PRS.Decompress(br.ReadBytes((int)file.Length)));
 
                         file = new(tmp_file.FullName);
                     }
