@@ -8,6 +8,20 @@ namespace RDXplorer.ViewModels
 {
     public class AppViewModel : BaseNotifyModel
     {
+        private string _statusBarText;
+        public string StatusBarText
+        {
+            get => _statusBarText;
+            private set => SetField(ref _statusBarText, value);
+        }
+
+        private FileInfo _prsFileInfo;
+        public FileInfo PRSFileInfo
+        {
+            get => _prsFileInfo;
+            private set => SetField(ref _prsFileInfo, value);
+        }
+
         private FileInfo _rdxFileInfo;
         public FileInfo RDXFileInfo
         {
@@ -43,18 +57,33 @@ namespace RDXplorer.ViewModels
             private set => SetField(ref _rdxLoaded, value);
         }
 
+        public void LoadRDX(FileInfo file, FileInfo prs_file)
+        {
+            LoadRDX(file);
+
+            PRSFileInfo = prs_file;
+
+            StatusBarText = PRSFileInfo?.FullName ?? RDXFileInfo.FullName;
+        }
+
         public void LoadRDX(FileInfo file)
         {
+            PRSFileInfo = null;
             RDXFileInfo = file;
             RDXDocument = new(RDXFileInfo);
             RDXLoaded = true;
+
+            StatusBarText = RDXFileInfo.FullName;
         }
 
         public void UnloadRDX()
         {
+            PRSFileInfo = null;
             RDXDocument = null;
             RDXFileInfo = null;
             RDXLoaded = false;
+
+            StatusBarText = string.Empty;
         }
 
         public void LoadFileList(FileInfo file)

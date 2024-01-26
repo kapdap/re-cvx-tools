@@ -103,6 +103,8 @@ namespace RDXplorer.Views
                 if (file == null)
                     return;
 
+                FileInfo prs_file = null;
+
                 using (Stream stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
                     BinaryReader br = new(stream);
@@ -111,16 +113,18 @@ namespace RDXplorer.Views
 
                     if (magic == 0x200000DF)
                     {
-                        stream.Seek(0, SeekOrigin.Begin);
-
                         FileInfo tmp_file = new($"{TempPath.FullName}\\{Utilities.GetFileMD5(stream)}");
 
                         if (!tmp_file.Directory.Exists)
                             tmp_file.Directory.Create();
 
                         if (!tmp_file.Exists)
+                        {
+                            stream.Seek(0, SeekOrigin.Begin);
                             File.WriteAllBytes(tmp_file.FullName, PRS.Decompress(br.ReadBytes((int)file.Length)));
+                        }
 
+                        prs_file = new(file.FullName);
                         file = tmp_file;
                         file.Refresh();
                     }
@@ -136,7 +140,7 @@ namespace RDXplorer.Views
                 }
 
                 if (isValid)
-                    Models.AppView.LoadRDX(file);
+                    Models.AppView.LoadRDX(file, prs_file);
 
                 if (Windows.HexEditor.IsVisible)
                 {

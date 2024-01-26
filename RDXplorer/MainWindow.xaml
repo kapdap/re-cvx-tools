@@ -28,7 +28,7 @@
 
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
-                <TextBlock Name="lblStatusBar" Text="{Binding RDXFileInfo.FullName}" />
+                <TextBlock Name="lblStatusBar" Text="{Binding StatusBarText}" />
             </StatusBarItem>
         </StatusBar>
 
