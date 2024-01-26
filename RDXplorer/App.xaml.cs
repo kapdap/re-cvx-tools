@@ -25,7 +25,7 @@ namespace RDXplorer
                 {
                     FileInfo file = new(e.Args[++i]);
 
-                    if (file.Exists && file.Extension.ToLower() == ".rdx")
+                    if (file.Exists)
                     {
                         Program.Models.AppView.LoadFileList(file);
                         Program.Windows.Main.FileList.SelectedValue = file.FullName;

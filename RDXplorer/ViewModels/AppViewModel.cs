@@ -59,13 +59,13 @@ namespace RDXplorer.ViewModels
 
         public void LoadFileList(FileInfo file)
         {
-            LoadFileList((DirectoryInfo)new(file.Directory.FullName));
+            LoadFileList(new(file.Directory.FullName), $"*{file.Extension}");
         }
 
-        public void LoadFileList(DirectoryInfo folder)
+        public void LoadFileList(DirectoryInfo folder, string filter = "*")
         {
             RDXFolderInfo = folder;
-            RDXFileList = RDXFolderInfo.GetFiles("*.rdx").ToList();
+            RDXFileList = RDXFolderInfo.GetFiles(filter).ToList();
         }
     }
 }
