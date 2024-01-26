@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using csharp_prs;
+using Microsoft.Win32;
 using RDXplorer.ViewModels;
 using System;
 using System.Diagnostics;
@@ -100,7 +101,38 @@ namespace RDXplorer.Views
                 if (file == null)
                     return;
 
-                Models.AppView.LoadRDX(file);
+                using (Stream stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    BinaryReader br = new(stream);
+                    
+                    int magic = br.ReadInt32();
+
+                    if (magic == 0x200000DF)
+                    {
+                        stream.Seek(0, SeekOrigin.Begin);
+
+                        FileInfo tmp_file = new FileInfo($"{TempPath.FullName}\\{file.Name}");
+
+                        if (!tmp_file.Directory.Exists)
+                            tmp_file.Directory.Create();
+
+                        File.WriteAllBytes(tmp_file.FullName, Prs.Decompress(br.ReadBytes((int)file.Length)));
+
+                        file = new(tmp_file.FullName);
+                    }
+                }
+
+                bool isValid = false;
+
+                using (Stream stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    BinaryReader br = new(stream);
+                    int magic = br.ReadInt32();
+                    isValid = magic == 0x41200000 || magic == 0x40051EB8;
+                }
+
+                if (isValid)
+                    Models.AppView.LoadRDX(file);
 
                 if (Windows.HexEditor.IsVisible)
                 {

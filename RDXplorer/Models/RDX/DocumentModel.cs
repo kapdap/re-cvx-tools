@@ -231,7 +231,8 @@ namespace RDXplorer.Models.RDX
 
                 header.Version.SetValue(stream.Position, br.ReadBytes(4));
 
-                if (header.Version.Value == 1092616192 || header.Version.Value == 1074077368)
+                if (header.Version.Value == 0x41200000 ||
+                    header.Version.Value == 0x40051EB8)
                 {
                     stream.Seek(16, SeekOrigin.Begin);
                     header.Tables.SetValue(stream.Position, br.ReadBytes(4));
