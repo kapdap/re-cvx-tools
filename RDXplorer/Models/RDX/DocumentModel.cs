@@ -26,7 +26,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_model == null)
-                    SetField(ref _model, ReadModels(PathInfo.OpenRead(), Header));
+                    SetField(ref _model, ReadModels(PathInfo, Header));
                 return _model;
             }
 
@@ -39,7 +39,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_motion == null)
-                    SetField(ref _motion, ReadMotions(PathInfo.OpenRead(), Header));
+                    SetField(ref _motion, ReadMotions(PathInfo, Header));
                 return _motion;
             }
 
@@ -52,7 +52,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_script == null)
-                    SetField(ref _script, ReadScripts(PathInfo.OpenRead(), Header));
+                    SetField(ref _script, ReadScripts(PathInfo, Header));
                 return _script;
             }
 
@@ -65,7 +65,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_texture == null)
-                    SetField(ref _texture, ReadTextures(PathInfo.OpenRead(), Header));
+                    SetField(ref _texture, ReadTextures(PathInfo, Header));
                 return _texture;
             }
 
@@ -78,7 +78,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_camera == null)
-                    SetField(ref _camera, ReadCamera(PathInfo.OpenRead(), Header));
+                    SetField(ref _camera, ReadCamera(PathInfo, Header));
                 return _camera;
             }
 
@@ -91,7 +91,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_lighting == null)
-                    SetField(ref _lighting, ReadLighting(PathInfo.OpenRead(), Header));
+                    SetField(ref _lighting, ReadLighting(PathInfo, Header));
                 return _lighting;
             }
 
@@ -104,7 +104,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_actor == null)
-                    SetField(ref _actor, ReadActor(PathInfo.OpenRead(), Header));
+                    SetField(ref _actor, ReadActor(PathInfo, Header));
                 return _actor;
             }
 
@@ -117,7 +117,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_object == null)
-                    SetField(ref _object, ReadObject(PathInfo.OpenRead(), Header));
+                    SetField(ref _object, ReadObject(PathInfo, Header));
                 return _object;
             }
 
@@ -130,7 +130,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_item == null)
-                    SetField(ref _item, ReadItem(PathInfo.OpenRead(), Header));
+                    SetField(ref _item, ReadItem(PathInfo, Header));
                 return _item;
             }
 
@@ -143,7 +143,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_effect == null)
-                    SetField(ref _effect, ReadEffect(PathInfo.OpenRead(), Header));
+                    SetField(ref _effect, ReadEffect(PathInfo, Header));
                 return _effect;
             }
 
@@ -156,7 +156,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_boundary == null)
-                    SetField(ref _boundary, ReadBoundary(PathInfo.OpenRead(), Header));
+                    SetField(ref _boundary, ReadBoundary(PathInfo, Header));
                 return _boundary;
             }
 
@@ -169,7 +169,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_aot == null)
-                    SetField(ref _aot, ReadAOT(PathInfo.OpenRead(), Header));
+                    SetField(ref _aot, ReadAOT(PathInfo, Header));
                 return _aot;
             }
 
@@ -182,7 +182,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_trigger == null)
-                    SetField(ref _trigger, ReadTrigger(PathInfo.OpenRead(), Header));
+                    SetField(ref _trigger, ReadTrigger(PathInfo, Header));
                 return _trigger;
             }
 
@@ -195,7 +195,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_player == null)
-                    SetField(ref _player, ReadPlayer(PathInfo.OpenRead(), Header));
+                    SetField(ref _player, ReadPlayer(PathInfo, Header));
                 return _player;
             }
 
@@ -208,7 +208,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_event == null)
-                    SetField(ref _event, ReadEvent(PathInfo.OpenRead(), Header));
+                    SetField(ref _event, ReadEvent(PathInfo, Header));
                 return _event;
             }
 
@@ -218,19 +218,19 @@ namespace RDXplorer.Models.RDX
         public DocumentModel(FileInfo file)
         {
             PathInfo = file;
-            Header = ReadHeader(file.OpenRead());
+            Header = ReadHeader(file);
         }
 
-        public HeaderModel ReadHeader(Stream stream)
+        public HeaderModel ReadHeader(FileInfo file)
         {
             HeaderModel header = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 header.Version.SetValue(stream.Position, br.ReadBytes(4));
 
-                // TODO: Detect if file is in PRS format
-                // TODO: Implement C# PRS library https://github.com/Sewer56/dlang-prs
                 if (header.Version.Value == 1092616192 || header.Version.Value == 1074077368)
                 {
                     stream.Seek(16, SeekOrigin.Begin);
@@ -239,7 +239,7 @@ namespace RDXplorer.Models.RDX
                     header.Motion.SetValue(stream.Position, br.ReadBytes(4));
                     header.Script.SetValue(stream.Position, br.ReadBytes(4));
                     header.Texture.SetValue(stream.Position, br.ReadBytes(4));
-
+                    
                     stream.Seek(96, SeekOrigin.Begin);
                     header.Author.SetValue(stream.Position, br.ReadBytes(32));
 
@@ -287,12 +287,14 @@ namespace RDXplorer.Models.RDX
             return header;
         }
 
-        public List<ModelTableModel> ReadModels(Stream stream, HeaderModel header)
+        public List<ModelTableModel> ReadModels(FileInfo file, HeaderModel header)
         {
             List<ModelTableModel> list = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 stream.Seek(header.Model.Value, SeekOrigin.Begin);
 
                 for (int i = 0; i < 256; i++)
@@ -373,12 +375,14 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<MotionTableModel> ReadMotions(Stream stream, HeaderModel header)
+        public List<MotionTableModel> ReadMotions(FileInfo file, HeaderModel header)
         {
             List<MotionTableModel> list = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 stream.Seek(header.Motion.Value, SeekOrigin.Begin);
 
                 uint firstPosition = 0;
@@ -445,12 +449,14 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<ScriptModel> ReadScripts(Stream stream, HeaderModel header)
+        public List<ScriptModel> ReadScripts(FileInfo file, HeaderModel header)
         {
             List<ScriptModel> list = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 stream.Seek(header.Script.Value, SeekOrigin.Begin);
 
                 while (stream.Position < (list.Count > 0 ? list[0].Pointer.Value : stream.Position + 1))
@@ -481,12 +487,14 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<TextureTableModel> ReadTextures(Stream stream, HeaderModel header)
+        public List<TextureTableModel> ReadTextures(FileInfo file, HeaderModel header)
         {
             List<TextureTableModel> list = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 stream.Seek(header.Texture.Value + 4, SeekOrigin.Begin);
 
                 for (int i = 0; i < header.Texture.Count.Value; i++)
@@ -504,7 +512,7 @@ namespace RDXplorer.Models.RDX
 
                 for (int i = 0; i < list.Count; i++)
                 {
-                    uint nextOffset = i < list.Count - 1 ? list[i + 1].Pointer.Value : (uint)PathInfo.Length;
+                    uint nextOffset = i < list.Count - 1 ? list[i + 1].Pointer.Value : (uint)file.Length;
 
                     TextureTableModel tableModel = list[i];
                     tableModel.Size = nextOffset - tableModel.Pointer.Value;
@@ -536,12 +544,14 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<CameraModel> ReadCamera(Stream stream, HeaderModel header)
+        public List<CameraModel> ReadCamera(FileInfo file, HeaderModel header)
         {
             List<CameraModel> list = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 stream.Seek(header.Camera.Value, SeekOrigin.Begin);
 
                 for (int i = 0; i < header.Camera.Count.Value; i++)
@@ -594,12 +604,14 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<LightingModel> ReadLighting(Stream stream, HeaderModel header)
+        public List<LightingModel> ReadLighting(FileInfo file, HeaderModel header)
         {
             List<LightingModel> list = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 stream.Seek(header.Lighting.Value, SeekOrigin.Begin);
 
                 for (int i = 0; i < header.Lighting.Count.Value; i++)
@@ -632,12 +644,14 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<ActorModel> ReadActor(Stream stream, HeaderModel header)
+        public List<ActorModel> ReadActor(FileInfo file, HeaderModel header)
         {
             List<ActorModel> list = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 stream.Seek(header.Actor.Value, SeekOrigin.Begin);
 
                 for (int i = 0; i < header.Actor.Count.Value; i++)
@@ -670,12 +684,14 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<ObjectModel> ReadObject(Stream stream, HeaderModel header)
+        public List<ObjectModel> ReadObject(FileInfo file, HeaderModel header)
         {
             List<ObjectModel> list = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 stream.Seek(header.Object.Value, SeekOrigin.Begin);
 
                 for (int i = 0; i < header.Object.Count.Value; i++)
@@ -714,12 +730,14 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<ItemModel> ReadItem(Stream stream, HeaderModel header)
+        public List<ItemModel> ReadItem(FileInfo file, HeaderModel header)
         {
             List<ItemModel> list = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 stream.Seek(header.Item.Value, SeekOrigin.Begin);
 
                 for (int i = 0; i < header.Item.Count.Value; i++)
@@ -754,12 +772,14 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<EffectModel> ReadEffect(Stream stream, HeaderModel header)
+        public List<EffectModel> ReadEffect(FileInfo file, HeaderModel header)
         {
             List<EffectModel> list = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 stream.Seek(header.Effect.Value, SeekOrigin.Begin);
 
                 for (int i = 0; i < header.Effect.Count.Value; i++)
@@ -794,12 +814,14 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<BoundaryModel> ReadBoundary(Stream stream, HeaderModel header)
+        public List<BoundaryModel> ReadBoundary(FileInfo file, HeaderModel header)
         {
             List<BoundaryModel> list = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 stream.Seek(header.Boundary.Value, SeekOrigin.Begin);
 
                 for (int i = 0; i < header.Boundary.Count.Value; i++)
@@ -831,12 +853,14 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<AOTModel> ReadAOT(Stream stream, HeaderModel header)
+        public List<AOTModel> ReadAOT(FileInfo file, HeaderModel header)
         {
             List<AOTModel> list = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 stream.Seek(header.AOT.Value, SeekOrigin.Begin);
 
                 for (int i = 0; i < header.AOT.Count.Value; i++)
@@ -868,12 +892,14 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<TriggerModel> ReadTrigger(Stream stream, HeaderModel header)
+        public List<TriggerModel> ReadTrigger(FileInfo file, HeaderModel header)
         {
             List<TriggerModel> list = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 stream.Seek(header.Trigger.Value, SeekOrigin.Begin);
 
                 for (int i = 0; i < header.Trigger.Count.Value; i++)
@@ -905,12 +931,14 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<PlayerModel> ReadPlayer(Stream stream, HeaderModel header)
+        public List<PlayerModel> ReadPlayer(FileInfo file, HeaderModel header)
         {
             List<PlayerModel> list = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 stream.Seek(header.Player.Value, SeekOrigin.Begin);
 
                 for (int i = 0; i < header.Player.Count.Value; i++)
@@ -933,12 +961,14 @@ namespace RDXplorer.Models.RDX
             return list;
         }
 
-        public List<EventModel> ReadEvent(Stream stream, HeaderModel header)
+        public List<EventModel> ReadEvent(FileInfo file, HeaderModel header)
         {
             List<EventModel> list = new();
 
-            using (BinaryReader br = new(stream))
+            using (Stream stream = file.OpenRead())
             {
+                BinaryReader br = new(stream);
+
                 stream.Seek(header.Event.Value, SeekOrigin.Begin);
 
                 for (int i = 0; i < header.Event.Count.Value; i++)
