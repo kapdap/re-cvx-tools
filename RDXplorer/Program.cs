@@ -49,12 +49,12 @@ namespace RDXplorer.Views
         {
             try
             {
-                DirectoryInfo tmp_path = new DirectoryInfo($"{Properties.Settings.Default.tmp_path}\\{Guid.NewGuid()}");
+                TempPath = new DirectoryInfo($"{Properties.Settings.Default.tmp_path}\\{Guid.NewGuid()}");
 
-                if (!tmp_path.Exists)
-                    tmp_path.Create();
+                if (!TempPath.Exists)
+                    TempPath.Create();
 
-                TempPath = new DirectoryInfo(tmp_path.FullName);
+                TempPath.Refresh();
             }
             catch { }
         }
@@ -63,10 +63,12 @@ namespace RDXplorer.Views
         {
             try
             {
-                DirectoryInfo tmp_path = new(TempPath.FullName);
+                TempPath.Refresh();
 
-                if (tmp_path.Exists)
-                    tmp_path.Delete(true);
+                if (TempPath.Exists)
+                    TempPath.Delete(true);
+
+                TempPath.Refresh();
             }
             catch { }
         }
@@ -113,15 +115,14 @@ namespace RDXplorer.Views
 
                         FileInfo tmp_file = new FileInfo($"{TempPath.FullName}\\{Utilities.GetFileMD5(stream)}");
 
-                        stream.Seek(0, SeekOrigin.Begin);
-
                         if (!tmp_file.Directory.Exists)
                             tmp_file.Directory.Create();
 
                         if (!tmp_file.Exists)
                             File.WriteAllBytes(tmp_file.FullName, PRS.Decompress(br.ReadBytes((int)file.Length)));
 
-                        file = new(tmp_file.FullName);
+                        file = tmp_file;
+                        file.Refresh();
                     }
                 }
 
