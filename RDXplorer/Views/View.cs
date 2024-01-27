@@ -41,7 +41,7 @@ namespace RDXplorer.Views
             {
                 IDataEntryModel model = (IDataEntryModel)entry.GetPropertyValue(binding);
 
-                offset = model.Position;
+                offset = model.IsPointer ? (int)Utilities.GetValueType(model.Data, typeof(int)) : model.Position;
                 length = model.Size;
             }
             catch { }
