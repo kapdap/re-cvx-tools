@@ -18,13 +18,5 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class ModelBlockViewModelEntry
-    {
-        public ModelBlockModel Model { get; set; }
-
-        public ModelBlockViewModelEntry(ModelBlockModel model)
-        {
-            Model = model;
-        }
-    }
+    public class ModelBlockViewModelEntry(ModelBlockModel model) : PageViewModelEntry<ModelBlockModel>(model) { }
 }

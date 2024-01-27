@@ -17,13 +17,5 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class EffectViewModelEntry
-    {
-        public EffectModel Model { get; set; }
-
-        public EffectViewModelEntry(EffectModel model)
-        {
-            Model = model;
-        }
-    }
+    public class EffectViewModelEntry(EffectModel model) : PageViewModelEntry<EffectModel>(model) { }
 }

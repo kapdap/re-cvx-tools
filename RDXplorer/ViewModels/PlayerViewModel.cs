@@ -17,13 +17,5 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class PlayerViewModelEntry
-    {
-        public PlayerModel Model { get; set; }
-
-        public PlayerViewModelEntry(PlayerModel model)
-        {
-            Model = model;
-        }
-    }
+    public class PlayerViewModelEntry(PlayerModel model) : PageViewModelEntry<PlayerModel>(model) { }
 }

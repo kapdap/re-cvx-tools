@@ -17,13 +17,5 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class ObjectViewModelEntry
-    {
-        public ObjectModel Model { get; set; }
-
-        public ObjectViewModelEntry(ObjectModel model)
-        {
-            Model = model;
-        }
-    }
+    public class ObjectViewModelEntry(ObjectModel model) : PageViewModelEntry<ObjectModel>(model) { }
 }

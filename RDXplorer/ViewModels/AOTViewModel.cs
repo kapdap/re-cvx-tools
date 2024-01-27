@@ -18,21 +18,15 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class AOTViewModelEntry
+    public class AOTViewModelEntry : PageViewModelEntry<AOTModel>
     {
-        public AOTModel Model { get; set; }
-
-        public string _aottype;
+        private string _aottype;
         public string AOTType
         {
             get => _aottype;
         }
 
-        public AOTViewModelEntry(AOTModel model)
-        {
-            Model = model;
-
+        public AOTViewModelEntry(AOTModel model) : base(model) =>
             Lookups.AOTTypes.TryGetValue((AOTTypeEnumeration)model.Fields.Type.Value, out _aottype);
-        }
     }
 }

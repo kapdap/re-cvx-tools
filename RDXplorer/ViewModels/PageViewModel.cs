@@ -1,4 +1,5 @@
-﻿using RDXplorer.ViewModels;
+﻿using RDXplorer.Models.RDX;
+using RDXplorer.ViewModels;
 using RDXplorer.Views;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -25,5 +26,20 @@ namespace RDXplorer.Models
 
         public void UpdateData(object sender, PropertyChangedEventArgs e) =>
             LoadData();
+    }
+
+    public interface IPageViewModelEntry<T>
+    {
+        T Model { get; set; }
+    }
+
+    public abstract class PageViewModelEntry<T> : IPageViewModelEntry<T>
+    {
+        public virtual T Model { get; set; }
+
+        public PageViewModelEntry(T model)
+        {
+            Model = model;
+        }
     }
 }

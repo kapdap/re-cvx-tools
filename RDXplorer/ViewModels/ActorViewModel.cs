@@ -18,21 +18,15 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class ActorViewModelEntry
+    public class ActorViewModelEntry : PageViewModelEntry<ActorModel>
     {
-        public ActorModel Model { get; private set; }
-
         private string _name;
         public string Name
         {
             get => _name;
         }
 
-        public ActorViewModelEntry(ActorModel model)
-        {
-            Model = model;
-
+        public ActorViewModelEntry(ActorModel model) : base(model) =>
             Lookups.Enemies.TryGetValue((ActorEnumeration)model.Fields.Type.Value, out _name);
-        }
     }
 }

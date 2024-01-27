@@ -17,13 +17,5 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class TriggerViewModelEntry
-    {
-        public TriggerModel Model { get; set; }
-
-        public TriggerViewModelEntry(TriggerModel model)
-        {
-            Model = model;
-        }
-    }
+    public class TriggerViewModelEntry(TriggerModel model) : PageViewModelEntry<TriggerModel>(model) { }
 }

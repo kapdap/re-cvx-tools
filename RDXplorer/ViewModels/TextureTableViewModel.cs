@@ -17,13 +17,5 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class TextureTableViewModelEntry
-    {
-        public TextureTableModel Model { get; set; }
-
-        public TextureTableViewModelEntry(TextureTableModel model)
-        {
-            Model = model;
-        }
-    }
+    public class TextureTableViewModelEntry(TextureTableModel model) : PageViewModelEntry<TextureTableModel>(model) { }
 }

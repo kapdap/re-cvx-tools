@@ -17,13 +17,5 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class MotionTableViewModelEntry
-    {
-        public MotionTableModel Model { get; set; }
-
-        public MotionTableViewModelEntry(MotionTableModel model)
-        {
-            Model = model;
-        }
-    }
+    public class MotionTableViewModelEntry(MotionTableModel model) : PageViewModelEntry<MotionTableModel>(model) { }
 }

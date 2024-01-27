@@ -17,13 +17,5 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class ScriptViewModelEntry
-    {
-        public ScriptModel Model { get; set; }
-
-        public ScriptViewModelEntry(ScriptModel model)
-        {
-            Model = model;
-        }
-    }
+    public class ScriptViewModelEntry(ScriptModel model) : PageViewModelEntry<ScriptModel>(model) { }
 }

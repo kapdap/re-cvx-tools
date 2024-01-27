@@ -17,13 +17,5 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class CameraViewModelEntry
-    {
-        public CameraModel Model { get; set; }
-
-        public CameraViewModelEntry(CameraModel model)
-        {
-            Model = model;
-        }
-    }
+    public class CameraViewModelEntry(CameraModel model) : PageViewModelEntry<CameraModel>(model) { }
 }

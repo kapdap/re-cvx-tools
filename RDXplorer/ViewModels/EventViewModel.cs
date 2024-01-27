@@ -17,13 +17,5 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class EventViewModelEntry
-    {
-        public EventModel Model { get; set; }
-
-        public EventViewModelEntry(EventModel model)
-        {
-            Model = model;
-        }
-    }
+    public class EventViewModelEntry(EventModel model) : PageViewModelEntry<EventModel>(model) { }
 }

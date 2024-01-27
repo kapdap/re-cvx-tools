@@ -18,13 +18,5 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class TextureBlockViewModelEntry
-    {
-        public TextureBlockModel Model { get; set; }
-
-        public TextureBlockViewModelEntry(TextureBlockModel model)
-        {
-            Model = model;
-        }
-    }
+    public class TextureBlockViewModelEntry(TextureBlockModel model) : PageViewModelEntry<TextureBlockModel>(model) { }
 }

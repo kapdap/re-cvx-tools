@@ -17,19 +17,5 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class LightingViewModelEntry
-    {
-        public LightingModel Model { get; set; }
-
-        public string _name;
-        public string Name
-        {
-            get => _name;
-        }
-
-        public LightingViewModelEntry(LightingModel model)
-        {
-            Model = model;
-        }
-    }
+    public class LightingViewModelEntry(LightingModel model) : PageViewModelEntry<LightingModel>(model) { }
 }

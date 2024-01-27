@@ -17,13 +17,5 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class BoundaryViewModelEntry
-    {
-        public BoundaryModel Model { get; set; }
-
-        public BoundaryViewModelEntry(BoundaryModel model)
-        {
-            Model = model;
-        }
-    }
+    public class BoundaryViewModelEntry(BoundaryModel model) : PageViewModelEntry<BoundaryModel>(model) { }
 }

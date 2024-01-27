@@ -18,21 +18,15 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class ItemViewModelEntry
+    public class ItemViewModelEntry : PageViewModelEntry<ItemModel>
     {
-        public ItemModel Model { get; set; }
-
-        public string _name;
+        private string _name;
         public string Name
         {
             get => _name;
         }
 
-        public ItemViewModelEntry(ItemModel model)
-        {
-            Model = model;
-
+        public ItemViewModelEntry(ItemModel model) : base(model) =>
             Lookups.Items.TryGetValue((ItemEnumeration)model.Fields.Type.Value, out _name);
-        }
     }
 }

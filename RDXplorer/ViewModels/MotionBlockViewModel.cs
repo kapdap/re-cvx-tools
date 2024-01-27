@@ -18,13 +18,5 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class MotionBlockViewModelEntry
-    {
-        public MotionBlockModel Model { get; set; }
-
-        public MotionBlockViewModelEntry(MotionBlockModel model)
-        {
-            Model = model;
-        }
-    }
+    public class MotionBlockViewModelEntry(MotionBlockModel model) : PageViewModelEntry<MotionBlockModel>(model) { }
 }
