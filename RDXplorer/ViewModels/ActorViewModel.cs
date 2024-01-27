@@ -27,6 +27,6 @@ namespace RDXplorer.ViewModels
         }
 
         public ActorViewModelEntry(ActorModel model) : base(model) =>
-            Lookups.Enemies.TryGetValue((ActorEnumeration)model.Fields.Type.Value, out _name);
+            Lookups.Actors.TryGetValue((ActorEnumeration)model.Fields.Type.Value, out _name);
     }
 }
