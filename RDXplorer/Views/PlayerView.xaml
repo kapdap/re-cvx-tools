@@ -17,11 +17,11 @@
               IsReadOnly="True"
               ItemsSource="{Binding Entries}" MouseDoubleClick="DataGrid_MouseDoubleClick">
         <DataGrid.Columns>
-            <DataGridTextColumn Header="Offset" Binding="{Binding Model.Offset, StringFormat=X8}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="X" Binding="{Binding Model.X}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Y" Binding="{Binding Model.Y}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Z" Binding="{Binding Model.Z}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Rotation" Binding="{Binding Model.Rotation}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Position" Binding="{Binding Model.Position, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="X" Binding="{Binding Model.Fields.X}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Y" Binding="{Binding Model.Fields.Y}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Z" Binding="{Binding Model.Fields.Z}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Rotation" Binding="{Binding Model.Fields.Rotation}" FontFamily="Consolas"/>
         </DataGrid.Columns>
     </DataGrid>
 </local:View>

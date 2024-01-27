@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace RDXplorer.Models.RDX
+﻿namespace RDXplorer.Models.RDX
 {
-    public class AOTModel
-    {
-        public IntPtr Offset { get; set; }
+    public class AOTModel : DataModel<AOTModelFields> { }
 
+    public class AOTModelFields : IFieldsModel
+    {
         public DataEntryModel<byte> Unknown1 { get; set; } = new();
         public DataEntryModel<byte> Type { get; set; } = new();
         public DataEntryModel<byte> Unknown3 { get; set; } = new();

@@ -27,14 +27,14 @@ namespace RDXplorer.Views
 
             ObjectViewModelEntry entry = (ObjectViewModelEntry)grid.SelectedItem;
 
-            IntPtr offset = entry.Model.Offset;
-            long length = 4;
+            IntPtr offset = entry.Model.Position;
+            long length = entry.Model.Size != 0 ? entry.Model.Size : 4;
 
             try
             {
                 IDataEntryModel model = (IDataEntryModel)entry.GetPropertyValue(binding);
 
-                offset = model.Offset;
+                offset = model.Position;
                 length = model.Size;
             }
             catch { }

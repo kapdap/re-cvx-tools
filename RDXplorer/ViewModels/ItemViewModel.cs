@@ -32,7 +32,7 @@ namespace RDXplorer.ViewModels
         {
             Model = model;
 
-            Lookups.Items.TryGetValue((ItemEnumeration)model.Type.Value, out _name);
+            Lookups.Items.TryGetValue((ItemEnumeration)model.Fields.Type.Value, out _name);
         }
     }
 }

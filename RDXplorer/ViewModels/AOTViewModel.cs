@@ -32,7 +32,7 @@ namespace RDXplorer.ViewModels
         {
             Model = model;
 
-            Lookups.AOTTypes.TryGetValue((AOTTypeEnumeration)model.Type.Value, out _aottype);
+            Lookups.AOTTypes.TryGetValue((AOTTypeEnumeration)model.Fields.Type.Value, out _aottype);
         }
     }
 }

@@ -17,22 +17,22 @@
               IsReadOnly="True"
               ItemsSource="{Binding Entries}" MouseDoubleClick="DataGrid_MouseDoubleClick">
         <DataGrid.Columns>
-            <DataGridTextColumn Header="Offset" Binding="{Binding Model.Offset, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Position" Binding="{Binding Model.Position, StringFormat=X8}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Name" Binding="{Binding Name}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Type" Binding="{Binding Model.Type}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown 1" Binding="{Binding Model.Unknown1}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Slot" Binding="{Binding Model.Slot}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="X" Binding="{Binding Model.X}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Y" Binding="{Binding Model.Y}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Z" Binding="{Binding Model.Z}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Rotation" Binding="{Binding Model.Rotation}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown 6" Binding="{Binding Model.Unknown6}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown 0" Binding="{Binding Model.Unknown0}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown 2" Binding="{Binding Model.Unknown2}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown 3" Binding="{Binding Model.Unknown3}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown 4" Binding="{Binding Model.Unknown4}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown 5" Binding="{Binding Model.Unknown5}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown 7" Binding="{Binding Model.Unknown7}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Type" Binding="{Binding Model.Fields.Type}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown 1" Binding="{Binding Model.Fields.Unknown1}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Slot" Binding="{Binding Model.Fields.Slot}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="X" Binding="{Binding Model.Fields.X}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Y" Binding="{Binding Model.Fields.Y}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Z" Binding="{Binding Model.Fields.Z}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Rotation" Binding="{Binding Model.Fields.Rotation}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown 6" Binding="{Binding Model.Fields.Unknown6}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown 0" Binding="{Binding Model.Fields.Unknown0}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown 2" Binding="{Binding Model.Fields.Unknown2}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown 3" Binding="{Binding Model.Fields.Unknown3}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown 4" Binding="{Binding Model.Fields.Unknown4}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown 5" Binding="{Binding Model.Fields.Unknown5}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown 7" Binding="{Binding Model.Fields.Unknown7}" FontFamily="Consolas"/>
         </DataGrid.Columns>
     </DataGrid>
 </local:View>

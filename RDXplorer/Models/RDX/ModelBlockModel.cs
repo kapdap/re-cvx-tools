@@ -1,16 +1,15 @@
-﻿using System;
-
-namespace RDXplorer.Models.RDX
+﻿namespace RDXplorer.Models.RDX
 {
-    public class ModelBlockModel
+    public class ModelBlockModel : DataModel<ModelBlockFieldsModel>
     {
-        public IntPtr Offset { get; set; }
-
         public ModelTableModel Table { get; set; }
+        
+        public bool HasSize { get; set; } = false;
+    }
 
+    public class ModelBlockFieldsModel : IFieldsModel
+    {
         public DataEntryModel<uint> Type { get; set; } = new();
         public DataEntryModel<uint> Size { get; set; } = new();
-
-        public bool HasSize { get; set; } = false;
     }
 }

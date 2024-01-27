@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace RDXplorer.Models.RDX
+﻿namespace RDXplorer.Models.RDX
 {
-    public class BoundaryModel
-    {
-        public IntPtr Offset { get; set; }
+    public class BoundaryModel : DataModel<BoundaryModelFields> { }
 
+    public class BoundaryModelFields : IFieldsModel
+    {
         public DataEntryModel<byte> Unknown1 { get; set; } = new();
         public DataEntryModel<byte> Unknown2 { get; set; } = new();
         public DataEntryModel<byte> Unknown3 { get; set; } = new();

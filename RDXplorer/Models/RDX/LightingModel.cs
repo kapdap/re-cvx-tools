@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace RDXplorer.Models.RDX
+﻿namespace RDXplorer.Models.RDX
 {
-    public class LightingModel
-    {
-        public IntPtr Offset { get; set; }
+    public class LightingModel : DataModel<LightingModelFields> { }
 
+    public class LightingModelFields : IFieldsModel
+    {
         public DataEntryModel<short> Unknown1 { get; set; } = new();
         public DataEntryModel<short> Unknown2 { get; set; } = new();
         public DataEntryModel<int> Unknown3 { get; set; } = new();

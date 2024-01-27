@@ -7,7 +7,7 @@ namespace RDXplorer.Models.RDX
     public class DataEntryModel<T> : IValueEntryModel<T>
          where T : struct
     {
-        public IntPtr Offset { get; private set; }
+        public IntPtr Position { get; private set; }
         public long Size { get => Data != null ? Data.LongLength : 0; }
         public byte[] Data { get; private set; }
         public T Value { get; private set; }
@@ -19,13 +19,13 @@ namespace RDXplorer.Models.RDX
         public void SetValue(byte[] data) =>
             SetValue(IntPtr.Zero, data);
 
-        public void SetValue(long pointer, byte[] data) =>
-            SetValue((IntPtr)pointer, data);
+        public void SetValue(long position, byte[] data) =>
+            SetValue((IntPtr)position, data);
 
-        public void SetValue(IntPtr pointer, byte[] data)
+        public void SetValue(IntPtr position, byte[] data)
         {
             Data = data;
-            Offset = pointer;
+            Position = position;
             Value = (T)Utilities.GetValueType(data, typeof(T));
             Text = Encoding.ASCII.GetString(Data);
         }

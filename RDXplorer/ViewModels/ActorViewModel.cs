@@ -32,7 +32,7 @@ namespace RDXplorer.ViewModels
         {
             Model = model;
 
-            Lookups.Enemies.TryGetValue((ActorEnumeration)model.Type.Value, out _name);
+            Lookups.Enemies.TryGetValue((ActorEnumeration)model.Fields.Type.Value, out _name);
         }
     }
 }

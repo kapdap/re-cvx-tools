@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace RDXplorer.Models.RDX
+﻿namespace RDXplorer.Models.RDX
 {
-    public class EffectModel
-    {
-        public IntPtr Offset { get; set; }
+    public class EffectModel : DataModel<EffectModelFields> { }
 
+    public class EffectModelFields : IFieldsModel
+    {
         public DataEntryModel<int> Unknown1 { get; set; } = new();
         public DataEntryModel<short> Unknown2 { get; set; } = new();
         public DataEntryModel<short> Unknown3 { get; set; } = new();

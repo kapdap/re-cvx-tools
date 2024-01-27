@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace RDXplorer.Models.RDX
+﻿namespace RDXplorer.Models.RDX
 {
-    public class ActorModel
-    {
-        public IntPtr Offset { get; set; }
+    public class ActorModel : DataModel<ActorModelFields> { }
 
+    public class ActorModelFields : IFieldsModel
+    {
         public DataEntryModel<int> Unknown0 { get; set; } = new();
         public DataEntryModel<short> Type { get; set; } = new();
         public DataEntryModel<short> Unknown1 { get; set; } = new();

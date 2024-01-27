@@ -1,20 +1,13 @@
-﻿using System;
-
-namespace RDXplorer.Models.RDX
+﻿namespace RDXplorer.Models.RDX
 {
-    public class ScriptModel
+    public class ScriptModel : DataModel<ScriptModelFields>
     {
-        public IntPtr Offset { get; set; }
+        public DataEntryModel<uint> Pointer { get; set; } = new() { IsPointer = true };
+    }
 
-        public DataEntryModel<uint> Position { get; set; } = new();
-        public DataEntryModel<uint> Pointer { get; set; } = new();
+    public class ScriptModelFields : IFieldsModel
+    {
+        public DataEntryModel<int> Offset { get; set; } = new();
         public DataEntryModel<byte> Data { get; set; } = new();
-
-        public uint Size { get; set; }
-
-        public ScriptModel()
-        {
-            Pointer.IsPointer = true;
-        }
     }
 }

@@ -27,14 +27,14 @@ namespace RDXplorer.Views
 
             MotionTableViewModelEntry entry = (MotionTableViewModelEntry)grid.SelectedItem;
 
-            IntPtr offset = entry.Model.Offset;
-            long length = 4;
+            IntPtr offset = entry.Model.Position;
+            long length = entry.Model.Size != 0 ? entry.Model.Size : 4;
 
             try
             {
                 IDataEntryModel model = (IDataEntryModel)entry.GetPropertyValue(binding);
 
-                offset = model.IsPointer ? (int)Utilities.GetValueType(model.Data, typeof(int)) : model.Offset;
+                offset = model.IsPointer ? (int)Utilities.GetValueType(model.Data, typeof(int)) : model.Position;
                 length = model.Size;
             }
             catch { }

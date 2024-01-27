@@ -17,9 +17,10 @@
               IsReadOnly="True"
               ItemsSource="{Binding Entries}" MouseDoubleClick="DataGrid_MouseDoubleClick">
         <DataGrid.Columns>
-            <DataGridTextColumn Header="Offset" Binding="{Binding Model.Offset, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Position" Binding="{Binding Model.Position, StringFormat=X8}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Pointer" Binding="{Binding Model.Pointer.Value, StringFormat=X8}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Data" Binding="{Binding Model.Data.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Offset" Binding="{Binding Model.Fields.Offset.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Data" Binding="{Binding Model.Fields.Data.Value, StringFormat=X8}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Size" Binding="{Binding Model.Size}" FontFamily="Consolas"/>
         </DataGrid.Columns>
     </DataGrid>

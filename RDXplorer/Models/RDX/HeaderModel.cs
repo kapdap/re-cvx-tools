@@ -2,12 +2,12 @@
 {
     public class HeaderModel
     {
-        public HeaderEntryModel Version { get; set; } = new("Version");
-        public HeaderEntryModel Author { get; set; } = new("Author");
-        public HeaderEntryModel Tables { get; set; } = new("Tables");
-        public HeaderEntryModel Model { get; set; } = new("Model");
-        public HeaderEntryModel Motion { get; set; } = new("Motion");
-        public HeaderEntryModel Script { get; set; } = new("Script");
+        public HeaderEntryModel Version { get; set; } = new("Version") { HasCount = false, IsPointer = false};
+        public HeaderEntryModel Author { get; set; } = new("Author") { HasCount = false, IsPointer = false, IsText = true };
+        public HeaderEntryModel Tables { get; set; } = new("Tables") { HasCount = false };
+        public HeaderEntryModel Model { get; set; } = new("Model") { HasCount = false };
+        public HeaderEntryModel Motion { get; set; } = new("Motion") { HasCount = false };
+        public HeaderEntryModel Script { get; set; } = new("Script") { HasCount = false };
         public HeaderEntryModel Texture { get; set; } = new("Texture");
         public HeaderEntryModel Camera { get; set; } = new("Camera");
         public HeaderEntryModel Lighting { get; set; } = new("Lighting");
@@ -21,27 +21,9 @@
         public HeaderEntryModel Player { get; set; } = new("Player");
         public HeaderEntryModel Event { get; set; } = new("Event");
         public HeaderEntryModel Unknown1 { get; set; } = new("Unknown 1");
-        public HeaderEntryModel Unknown2 { get; set; } = new("Unknown 2");
+        public HeaderEntryModel Unknown2 { get; set; } = new("Unknown 2") { IsPointer = false };
         public HeaderEntryModel Action { get; set; } = new("Action");
-        public HeaderEntryModel Text { get; set; } = new("Text");
-        public HeaderEntryModel Sysmes { get; set; } = new("Sysmes");
-
-        public HeaderModel()
-        {
-            Version.IsPointer = false;
-            Author.IsPointer = false;
-            Unknown2.IsPointer = false;
-
-            Author.IsText = true;
-
-            Version.HasCount = false;
-            Author.HasCount = false;
-            Tables.HasCount = false;
-            Model.HasCount = false;
-            Motion.HasCount = false;
-            Script.HasCount = false;
-            Text.HasCount = false;
-            Sysmes.HasCount = false;
-        }
+        public HeaderEntryModel Text { get; set; } = new("Text") { HasCount = false };
+        public HeaderEntryModel Sysmes { get; set; } = new("Sysmes") { HasCount = false };
     }
 }
