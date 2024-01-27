@@ -555,7 +555,6 @@ namespace RDXplorer.Formats.RDX
                 }
             }
 
-
             return list;
         }
 

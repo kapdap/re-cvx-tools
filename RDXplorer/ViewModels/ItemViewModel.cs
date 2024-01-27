@@ -21,10 +21,7 @@ namespace RDXplorer.ViewModels
     public class ItemViewModelEntry : PageViewModelEntry<ItemModel>
     {
         private string _name;
-        public string Name
-        {
-            get => _name;
-        }
+        public string Name => _name;
 
         public ItemViewModelEntry(ItemModel model) : base(model) =>
             Lookups.Items.TryGetValue((ItemEnumeration)model.Fields.Type.Value, out _name);

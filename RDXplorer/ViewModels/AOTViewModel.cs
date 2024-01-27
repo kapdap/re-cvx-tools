@@ -21,10 +21,7 @@ namespace RDXplorer.ViewModels
     public class AOTViewModelEntry : PageViewModelEntry<AOTModel>
     {
         private string _aottype;
-        public string AOTType
-        {
-            get => _aottype;
-        }
+        public string AOTType => _aottype;
 
         public AOTViewModelEntry(AOTModel model) : base(model) =>
             Lookups.AOTTypes.TryGetValue((AOTTypeEnumeration)model.Fields.Type.Value, out _aottype);

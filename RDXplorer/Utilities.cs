@@ -44,10 +44,8 @@ namespace RDXplorer
             return new();
         }
 
-        public static string GetFileMD5(string path)
-        {
-            return GetFileMD5((FileInfo)new(path));
-        }
+        public static string GetFileMD5(string path) =>
+            GetFileMD5((FileInfo)new(path));
 
         public static string GetFileMD5(FileInfo file)
         {

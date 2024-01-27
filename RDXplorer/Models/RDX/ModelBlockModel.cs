@@ -3,7 +3,7 @@
     public class ModelBlockModel : DataModel<ModelBlockFieldsModel>
     {
         public ModelTableModel Table { get; set; }
-        
+
         public bool HasSize { get; set; } = false;
     }
 

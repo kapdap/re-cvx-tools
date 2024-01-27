@@ -21,10 +21,7 @@ namespace RDXplorer.ViewModels
     public class ActorViewModelEntry : PageViewModelEntry<ActorModel>
     {
         private string _name;
-        public string Name
-        {
-            get => _name;
-        }
+        public string Name => _name;
 
         public ActorViewModelEntry(ActorModel model) : base(model) =>
             Lookups.Actors.TryGetValue((ActorEnumeration)model.Fields.Type.Value, out _name);

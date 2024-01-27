@@ -86,15 +86,13 @@ namespace RDXplorer.ViewModels
             StatusBarText = string.Empty;
         }
 
-        public void LoadFileList(FileInfo file)
-        {
+        public void LoadFileList(FileInfo file) =>
             LoadFileList(new(file.Directory.FullName), $"*{file.Extension}");
-        }
 
         public void LoadFileList(DirectoryInfo folder, string filter = "*")
         {
             RDXFolderInfo = folder;
-            RDXFileList = RDXFolderInfo.GetFiles(filter).ToList();
+            RDXFileList = [.. RDXFolderInfo.GetFiles(filter)];
         }
     }
 }

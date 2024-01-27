@@ -1,5 +1,4 @@
-﻿using RDXplorer.Models.RDX;
-using RDXplorer.ViewModels;
+﻿using RDXplorer.ViewModels;
 using RDXplorer.Views;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -17,10 +16,8 @@ namespace RDXplorer.Models
 
         public AppViewModel AppViewModel { get; private set; }
 
-        public PageViewModel()
-        {
+        public PageViewModel() =>
             AppViewModel = Program.Models.AppView;
-        }
 
         public abstract void LoadData();
 
@@ -37,9 +34,7 @@ namespace RDXplorer.Models
     {
         public virtual T Model { get; set; }
 
-        public PageViewModelEntry(T model)
-        {
+        public PageViewModelEntry(T model) =>
             Model = model;
-        }
     }
 }

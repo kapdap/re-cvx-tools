@@ -6,7 +6,6 @@ using System;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Input;
 
 namespace RDXplorer.Views
 {
@@ -59,19 +58,11 @@ namespace RDXplorer.Views
             Model.LoadData();
         }
 
-        protected string GetDataGridColumnName(DataGrid grid)
-        {
-            if (AppViewModel.RDXDocument == null || grid.CurrentColumn == null)
-                return string.Empty;
-            return grid.CurrentColumn.Header.ToString().Trim();
-        }
+        protected string GetDataGridColumnName(DataGrid grid) =>
+            AppViewModel.RDXDocument == null || grid.CurrentColumn == null ? string.Empty : grid.CurrentColumn.Header.ToString().Trim();
 
-        protected string GetDataGridColumnBinding(DataGrid grid)
-        {
-            if (AppViewModel.RDXDocument == null || grid.CurrentColumn == null)
-                return string.Empty;
-
-            return ((Binding)((DataGridBoundColumn)grid.CurrentColumn).Binding)?.Path.Path.RemoveEnd(".Value").RemoveEnd(".Text") ?? string.Empty;
-        }
+        protected string GetDataGridColumnBinding(DataGrid grid) => AppViewModel.RDXDocument == null || grid.CurrentColumn == null
+                ? string.Empty
+                : ((Binding)((DataGridBoundColumn)grid.CurrentColumn).Binding)?.Path.Path.RemoveEnd(".Value").RemoveEnd(".Text") ?? string.Empty;
     }
 }

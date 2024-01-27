@@ -28,7 +28,7 @@ namespace RDXplorer
 
         private void GOPosition_Click(object sender, RoutedEventArgs e)
         {
-            if (long.TryParse(PositionText.Text, out var position))
+            if (long.TryParse(PositionText.Text, out long position))
                 HexEdit.SetPosition(position, 1);
             else
                 MessageBox.Show("Enter long value.");
@@ -37,7 +37,7 @@ namespace RDXplorer
         }
 
         private void PositionText_TextChanged(object sender, TextChangedEventArgs e) =>
-            GoPositionButton.IsEnabled = long.TryParse(PositionText.Text, out var _);
+            GoPositionButton.IsEnabled = long.TryParse(PositionText.Text, out long _);
 
         private void SetBookMarkButton_Click(object sender, RoutedEventArgs e) =>
             HexEdit.SetBookMark();
@@ -61,7 +61,7 @@ namespace RDXplorer
 
         private void CTableTBLButton_Click(object sender, RoutedEventArgs e)
         {
-            var fileDialog = new OpenFileDialog();
+            OpenFileDialog fileDialog = new();
 
             if (fileDialog.ShowDialog() == null) return;
             if (!File.Exists(fileDialog.FileName)) return;

@@ -2,7 +2,7 @@
 {
     public class HeaderModel
     {
-        public HeaderEntryModel Version { get; set; } = new("Version") { HasCount = false, IsPointer = false};
+        public HeaderEntryModel Version { get; set; } = new("Version") { HasCount = false, IsPointer = false };
         public HeaderEntryModel Author { get; set; } = new("Author") { HasCount = false, IsPointer = false, IsText = true };
         public HeaderEntryModel Tables { get; set; } = new("Tables") { HasCount = false };
         public HeaderEntryModel Model { get; set; } = new("Model") { HasCount = false };

@@ -8,7 +8,7 @@ namespace RDXplorer.Extensions
         {
             if (!string.IsNullOrEmpty(value))
                 while (!string.IsNullOrEmpty(input) && input.EndsWith(value, comparisonType))
-                    input = input.Substring(0, (input.Length - value.Length));
+                    input = input[..^value.Length];
             return input;
         }
     }

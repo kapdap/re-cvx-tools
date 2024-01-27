@@ -1,5 +1,4 @@
 ﻿using RDXplorer.Formats.RDX;
-using System;
 using System.Collections.Generic;
 using System.IO;
 

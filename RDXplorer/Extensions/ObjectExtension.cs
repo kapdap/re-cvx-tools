@@ -11,15 +11,11 @@ namespace RDXplorer.Extensions
 
             for (int i = 0; i < _propertyNames.Length; i++)
             {
-                if (obj != null)
-                {
-                    PropertyInfo _propertyInfo = obj.GetType().GetProperty(_propertyNames[i]);
+                if (obj == null)
+                    continue;
 
-                    if (_propertyInfo != null)
-                        obj = _propertyInfo.GetValue(obj);
-                    else
-                        obj = null;
-                }
+                PropertyInfo _propertyInfo = obj.GetType().GetProperty(_propertyNames[i]);
+                obj = _propertyInfo?.GetValue(obj);
             }
 
             return obj;

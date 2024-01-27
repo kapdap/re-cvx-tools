@@ -10,10 +10,8 @@
         public virtual bool HasCount { get; set; } = true;
         public DataEntryModel<uint> Count { get; set; } = new DataEntryModel<uint>();
 
-        public HeaderEntryModel(string name)
-        {
+        public HeaderEntryModel(string name) =>
             Name = name;
-        }
 
         public HeaderEntryModel(string name, string description)
         {

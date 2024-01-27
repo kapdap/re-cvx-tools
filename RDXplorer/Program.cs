@@ -39,10 +39,9 @@ namespace RDXplorer.Views
                 FileName = path != null && path.Exists ? path.FullName : string.Empty
             };
 
-            if (dialog.ShowDialog() == null || !File.Exists(dialog.FileName))
-                return null;
-
-            return new FileInfo(dialog.FileName);
+            return dialog.ShowDialog() == null || !File.Exists(dialog.FileName) 
+                ? null 
+                : new FileInfo(dialog.FileName);
         }
 
         public static void SetTempPath()
@@ -203,16 +202,11 @@ namespace RDXplorer.Views
             {
                 get
                 {
-                    if (_main == null)
-                        _main = new();
-
+                    _main ??= new();
                     return _main;
                 }
 
-                set
-                {
-                    _main = value;
-                }
+                set => _main = value;
             }
 
             private static HexEditorWindow _hexEditor;
@@ -220,16 +214,11 @@ namespace RDXplorer.Views
             {
                 get
                 {
-                    if (_hexEditor == null)
-                        _hexEditor = new();
-
+                    _hexEditor ??= new();
                     return _hexEditor;
                 }
 
-                set
-                {
-                    _hexEditor = value;
-                }
+                set => _hexEditor = value;
             }
 
             private static AboutWindow _about;
@@ -237,16 +226,11 @@ namespace RDXplorer.Views
             {
                 get
                 {
-                    if (_about == null)
-                        _about = new();
-
+                    _about ??= new();
                     return _about;
                 }
 
-                set
-                {
-                    _about = value;
-                }
+                set => _about = value;
             }
 
             public static void CloseAll()
