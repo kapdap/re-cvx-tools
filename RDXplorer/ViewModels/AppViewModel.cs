@@ -15,6 +15,8 @@ namespace RDXplorer.ViewModels
             private set => SetField(ref _statusBarText, value);
         }
 
+        public FileInfo CurrentDocument => PRSFileInfo ?? RDXFileInfo;
+
         private FileInfo _prsFileInfo;
         public FileInfo PRSFileInfo
         {
@@ -63,7 +65,7 @@ namespace RDXplorer.ViewModels
 
             PRSFileInfo = prs_file;
 
-            StatusBarText = PRSFileInfo?.FullName ?? RDXFileInfo.FullName;
+            StatusBarText = CurrentDocument?.FullName;
         }
 
         public void LoadRDX(FileInfo file)
