@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using PSO.PRS;
+using RDXplorer.Formats.RDX;
 using RDXplorer.ViewModels;
 using System;
 using System.Diagnostics;
@@ -44,6 +45,25 @@ namespace RDXplorer.Views
                 : new FileInfo(dialog.FileName);
         }
 
+        public static DirectoryInfo SelectFolder() =>
+            SelectFolder((DirectoryInfo)null);
+
+        public static DirectoryInfo SelectFolder(string path) =>
+            SelectFolder(new DirectoryInfo(path));
+
+        public static DirectoryInfo SelectFolder(DirectoryInfo path)
+        {
+            OpenFolderDialog dialog = new()
+            {
+                Multiselect = false,
+                FolderName = path != null && path.Exists ? path.FullName : string.Empty,
+            };
+
+            return dialog.ShowDialog() == null || !Directory.Exists(dialog.FolderName)
+                ? null
+                : new DirectoryInfo(dialog.FolderName);
+        }
+
         public static void SetTempPath()
         {
             try
@@ -70,6 +90,118 @@ namespace RDXplorer.Views
                 TempPath.Refresh();
             }
             catch { }
+        }
+
+        public static void ExportDocument(DirectoryInfo folder)
+        {
+            if (folder == null || Models.AppView.CurrentDocument == null)
+                return;
+
+            try
+            {
+                if (Models.AppView.RDXDocument != null)
+                    Export.Document(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentDocument.Name)));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Application Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        public static void ExportTables(DirectoryInfo folder)
+        {
+            if (folder == null || Models.AppView.CurrentDocument == null)
+                return;
+
+            try
+            {
+                if (Models.AppView.RDXDocument != null)
+                    Export.Tables(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentDocument.Name)));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Application Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        public static void ExportModels(DirectoryInfo folder)
+        {
+            if (folder == null || Models.AppView.CurrentDocument == null)
+                return;
+
+            try
+            {
+                if (Models.AppView.RDXDocument != null)
+                    Export.Models(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentDocument.Name)));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Application Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        public static void ExportMotions(DirectoryInfo folder)
+        {
+            if (folder == null || Models.AppView.CurrentDocument == null)
+                return;
+
+            try
+            {
+                if (Models.AppView.RDXDocument != null)
+                    Export.Motions(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentDocument.Name)));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Application Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        public static void ExportScripts(DirectoryInfo folder)
+        {
+            if (folder == null || Models.AppView.CurrentDocument == null)
+                return;
+
+            try
+            {
+                if (Models.AppView.RDXDocument != null)
+                    Export.Scripts(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentDocument.Name)));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Application Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        public static void ExportTextures(DirectoryInfo folder)
+        {
+            if (folder == null || Models.AppView.CurrentDocument == null)
+                return;
+
+            try
+            {
+                if (Models.AppView.RDXDocument != null)
+                    Export.Textures(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentDocument.Name)));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Application Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        public static void ExportHeader(DirectoryInfo folder)
+        {
+            if (folder == null || Models.AppView.CurrentDocument == null)
+                return;
+
+            try
+            {
+                if (Models.AppView.RDXDocument != null)
+                    Export.Header(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentDocument.Name)));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Application Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         public static void OpenURL(string url)

@@ -40,5 +40,26 @@ namespace RDXplorer
 
         private void FileList_SelectionChanged(object sender, SelectionChangedEventArgs e) =>
             Program.LoadRDX((FileInfo)((ComboBox)sender).SelectedItem);
+
+        private void ExportDocument_Click(object sender, RoutedEventArgs e) =>
+            Program.ExportDocument(Program.SelectFolder());
+
+        private void ExportTables_Click(object sender, RoutedEventArgs e) =>
+            Program.ExportTables(Program.SelectFolder());
+
+        private void ExportModels_Click(object sender, RoutedEventArgs e) =>
+            Program.ExportModels(Program.SelectFolder());
+
+        private void ExportMotions_Click(object sender, RoutedEventArgs e) =>
+            Program.ExportMotions(Program.SelectFolder());
+
+        private void ExportScripts_Click(object sender, RoutedEventArgs e) =>
+            Program.ExportScripts(Program.SelectFolder());
+
+        private void ExportTextures_Click(object sender, RoutedEventArgs e) =>
+            Program.ExportTextures(Program.SelectFolder());
+
+        private void ExportHeader_Click(object sender, RoutedEventArgs e) =>
+            Program.ExportHeader(Program.SelectFolder());
     }
 }

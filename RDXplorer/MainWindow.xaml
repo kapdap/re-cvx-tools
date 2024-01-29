@@ -13,6 +13,18 @@
                 <MenuItem x:Name="FileOpenMenu" Header="Open..." Click="FileOpenMenu_Click"/>
                 <MenuItem x:Name="FileCloseMenu" Header="Close" Click="FileCloseMenu_Click" IsEnabled="{Binding RDXLoaded}"/>
                 <Separator/>
+                <MenuItem Header="Export">
+                    <MenuItem x:Name="ExportDocument" Header="Everything" Click="ExportDocument_Click" IsEnabled="{Binding RDXLoaded}"/>
+                    <Separator/>
+                    <MenuItem x:Name="ExportHeader" Header="Header" Click="ExportHeader_Click" IsEnabled="{Binding RDXLoaded}"/>
+                    <Separator/>
+                    <MenuItem x:Name="ExportTables" Header="Tables" Click="ExportTables_Click" IsEnabled="{Binding RDXLoaded}"/>
+                    <MenuItem x:Name="ExportModels" Header="Models" Click="ExportModels_Click" IsEnabled="{Binding RDXLoaded}"/>
+                    <MenuItem x:Name="ExportMotions" Header="Motions" Click="ExportMotions_Click" IsEnabled="{Binding RDXLoaded}"/>
+                    <MenuItem x:Name="ExportScripts" Header="Scripts" Click="ExportScripts_Click" IsEnabled="{Binding RDXLoaded}"/>
+                    <MenuItem x:Name="ExportTextures" Header="Textures" Click="ExportTextures_Click" IsEnabled="{Binding RDXLoaded}"/>
+                </MenuItem>
+                <Separator/>
                 <MenuItem x:Name="FileExitMenu" Header="Exit" Click="FileExitMenu_Click"/>
             </MenuItem>
             <MenuItem Header="Edit">
