@@ -144,7 +144,7 @@ namespace RDXplorer.Formats.RDX
                         extension = ".pil";
                     else if (block.Fields.Type.Text.Contains("PVR"))
                         extension = ".pvr";
-                    else if (block.Fields.Type.Text == "PVPL")
+                    else if (block.Fields.Type.Text.Contains("PVP"))
                         extension = ".pvp";
 
                     WriteFile(br.ReadBytes((int)block.Fields.Size.Value),
