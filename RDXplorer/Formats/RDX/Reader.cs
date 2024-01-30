@@ -322,9 +322,9 @@ namespace RDXplorer.Formats.RDX
             return list;
         }
 
-        public static List<CameraModel> ReadCamera(FileInfo file, HeaderModel header)
+        public static List<CameraHeaderModel> ReadCamera(FileInfo file, HeaderModel header)
         {
-            List<CameraModel> list = new();
+            List<CameraHeaderModel> list = new();
 
             using FileStream fs = file.OpenReadShared();
             using BinaryReader br = new(fs);
@@ -333,48 +333,76 @@ namespace RDXplorer.Formats.RDX
 
             for (int i = 0; i < header.Camera.Count.Value; i++)
             {
-                CameraModel model = new();
+                CameraHeaderModel camera = new();
 
-                model.Position = (nint)fs.Position;
+                camera.Position = (nint)fs.Position;
 
-                model.Fields.Unknown1.SetValue(fs.Position, br.ReadBytes(1));
-                model.Fields.Unknown2.SetValue(fs.Position, br.ReadBytes(1));
-                model.Fields.Unknown3.SetValue(fs.Position, br.ReadBytes(1));
-                model.Fields.Unknown4.SetValue(fs.Position, br.ReadBytes(1));
-                model.Fields.Pointer.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown6.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown7.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown8.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown9.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown10.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown11.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown12.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.X.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Y.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Z.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown16.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown17.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown18.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown19.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown20.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown21.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown22.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown23.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown24.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.XRotation.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.YRotation.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.ZRotation.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown28.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown29.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown30.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown31.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown32.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Perspective.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown34.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown35.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown36.SetValue(fs.Position, br.ReadBytes(0x228));
+                camera.Fields.Flag1.SetValue(fs.Position, br.ReadBytes(1));
+                camera.Fields.Flag2.SetValue(fs.Position, br.ReadBytes(1));
+                camera.Fields.Flag3.SetValue(fs.Position, br.ReadBytes(1));
+                camera.Fields.Flag4.SetValue(fs.Position, br.ReadBytes(1));
+                camera.Fields.Pointer.SetValue(fs.Position, br.ReadBytes(4));
 
-                list.Add(model);
+                for (int j = 0; j < 3; j++)
+                {
+                    CameraBlockModel model = new();
+
+                    model.Fields.Unknown1.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown2.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown3.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown4.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown5.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown6.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown7.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.X.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Y.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Z.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown11.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown12.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown13.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown14.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown15.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown16.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown17.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown18.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown19.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.XRotation.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.YRotation.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.ZRotation.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown23.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown24.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown25.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown26.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown27.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Perspective.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown29.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown30.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown31.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown32.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown33.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown34.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown35.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown36.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown37.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown38.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown39.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown40.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown41.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown42.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown43.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown44.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown45.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown46.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown47.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown48.SetValue(fs.Position, br.ReadBytes(4));
+                    model.Fields.Unknown49.SetValue(fs.Position, br.ReadBytes(4));
+
+                    camera.Blocks.Add(model);
+
+                    fs.Seek(28, SeekOrigin.Current);
+                }
+
+                list.Add(camera);
             }
 
             return list;

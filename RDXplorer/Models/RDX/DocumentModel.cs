@@ -72,8 +72,8 @@ namespace RDXplorer.Models.RDX
             private set => SetField(ref _texture, value);
         }
 
-        private List<CameraModel> _camera;
-        public List<CameraModel> Camera
+        private List<CameraHeaderModel> _camera;
+        public List<CameraHeaderModel> Camera
         {
             get
             {

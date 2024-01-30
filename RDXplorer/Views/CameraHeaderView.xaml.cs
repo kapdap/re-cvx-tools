@@ -5,9 +5,9 @@ using System.Windows.Input;
 
 namespace RDXplorer.Views
 {
-    public partial class CameraView : View<CameraViewModel, CameraViewModelEntry>
+    public partial class CameraHeaderView : View<CameraHeaderViewModel, CameraHeaderViewModelEntry>
     {
-        public CameraView()
+        public CameraHeaderView()
         {
             InitializeComponent();
             LoadModel();
@@ -16,6 +16,6 @@ namespace RDXplorer.Views
         }
 
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e) =>
-            OpenHexEditorFromDataGrid<CameraViewModelEntry, CameraModel>((DataGrid)sender);
+            OpenHexEditorFromDataGrid<CameraHeaderViewModelEntry, CameraHeaderModel>((DataGrid)sender);
     }
 }

@@ -67,7 +67,7 @@
                     <Frame Source="Views/TextureBlockView.xaml"/>
                 </TabItem>
                 <TabItem Header="Cameras">
-                    <Frame Source="Views/CameraView.xaml"/>
+                    <Frame Source="Views/CameraHeaderView.xaml"/>
                 </TabItem>
                 <TabItem Header="Lighting">
                     <Frame Source="Views/LightingView.xaml"/>
