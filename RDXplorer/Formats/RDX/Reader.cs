@@ -347,6 +347,9 @@ namespace RDXplorer.Formats.RDX
                 {
                     CameraBlockModel model = new();
 
+                    model.Position = (nint)fs.Position;
+                    model.Header = camera;
+
                     model.Fields.Unknown1.SetValue(fs.Position, br.ReadBytes(4));
                     model.Fields.Unknown2.SetValue(fs.Position, br.ReadBytes(4));
                     model.Fields.Unknown3.SetValue(fs.Position, br.ReadBytes(4));

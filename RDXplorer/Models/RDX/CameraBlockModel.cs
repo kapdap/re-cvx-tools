@@ -1,6 +1,9 @@
 ﻿namespace RDXplorer.Models.RDX
 {
-    public class CameraBlockModel : DataModel<CameraModelFields> { }
+    public class CameraBlockModel : DataModel<CameraModelFields>
+    {
+        public CameraHeaderModel Header { get; set; }
+    }
 
     public class CameraModelFields : IFieldsModel
     {

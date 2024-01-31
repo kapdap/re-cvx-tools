@@ -23,14 +23,6 @@
             <DataGridTextColumn Header="Flag3" Binding="{Binding Model.Fields.Flag3}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Flag4" Binding="{Binding Model.Fields.Flag4}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Pointer" Binding="{Binding Model.Fields.Pointer.Value, StringFormat=X8}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown6" Binding="{Binding Model.Fields.Unknown6}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown7" Binding="{Binding Model.Fields.Unknown7}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown8" Binding="{Binding Model.Fields.Unknown8}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown9" Binding="{Binding Model.Fields.Unknown9}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown10" Binding="{Binding Model.Fields.Unknown10}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown11" Binding="{Binding Model.Fields.Unknown11}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown12" Binding="{Binding Model.Fields.Unknown12}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown13" Binding="{Binding Model.Fields.Unknown13}" FontFamily="Consolas"/>
         </DataGrid.Columns>
     </DataGrid>
 </local:View>
