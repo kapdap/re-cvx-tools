@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using PSO.PRS;
+using RDXplorer.Extensions;
 using RDXplorer.Formats.RDX;
 using RDXplorer.ViewModels;
 using System;
@@ -236,22 +237,22 @@ namespace RDXplorer.Views
 
                 FileInfo prs_file = null;
 
-                using (Stream stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                using (FileStream fs = file.OpenReadShared())
                 {
-                    BinaryReader br = new(stream);
+                    using BinaryReader br = new(fs);
 
                     int magic = br.ReadInt32();
 
                     if (magic == 0x200000DF)
                     {
-                        FileInfo tmp_file = new($"{TempPath.FullName}\\{Utilities.GetFileMD5(stream)}");
+                        FileInfo tmp_file = new($"{TempPath.FullName}\\{Utilities.GetFileMD5(fs)}");
 
                         if (!tmp_file.Directory.Exists)
                             tmp_file.Directory.Create();
 
                         if (!tmp_file.Exists)
                         {
-                            stream.Seek(0, SeekOrigin.Begin);
+                            fs.Seek(0, SeekOrigin.Begin);
                             File.WriteAllBytes(tmp_file.FullName, PRS.Decompress(br.ReadBytes((int)file.Length)));
                         }
 
@@ -263,9 +264,9 @@ namespace RDXplorer.Views
 
                 bool isValid = false;
 
-                using (Stream stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                using (FileStream fs = file.OpenReadShared())
                 {
-                    BinaryReader br = new(stream);
+                    using BinaryReader br = new(fs);
                     int magic = br.ReadInt32();
                     isValid = magic == 0x41200000 || magic == 0x40051EB8;
                 }
