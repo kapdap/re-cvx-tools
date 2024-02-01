@@ -21,9 +21,9 @@
         public HeaderEntryModel Player { get; set; } = new("Player");
         public HeaderEntryModel Event { get; set; } = new("Event");
         public HeaderEntryModel Unknown1 { get; set; } = new("Unknown 1");
-        public HeaderEntryModel Unknown2 { get; set; } = new("Unknown 2") { IsPointer = false };
+        public HeaderEntryModel Unknown2 { get; set; } = new("Unknown 2") { HasCount = false, IsPointer = false };
         public HeaderEntryModel Action { get; set; } = new("Action");
-        public HeaderEntryModel Text { get; set; } = new("Text") { HasCount = false };
-        public HeaderEntryModel Sysmes { get; set; } = new("Sysmes") { HasCount = false };
+        public HeaderEntryModel Text { get; set; } = new("Text");
+        public HeaderEntryModel Sysmes { get; set; } = new("Sysmes");
     }
 }
