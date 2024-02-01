@@ -62,11 +62,8 @@ namespace RDXplorer.Formats.RDX
                 header.Event.Count.SetValue(fs.Position, br.ReadBytes(4));
                 header.Unknown1.Count.SetValue(fs.Position, br.ReadBytes(4));
 
-                // Count for Unknown2 is Text count
                 header.Text.Count.SetValue(fs.Position, br.ReadBytes(4));
-
-                header.Action.Count.SetValue(fs.Position, br.ReadBytes(4)); // Need to confirm what this count belongs to
-                header.Sysmes.Count.SetValue(fs.Position, br.ReadBytes(4)); // Need to confirm what this count belongs to
+                header.Action.Count.SetValue(fs.Position, br.ReadBytes(4));
 
                 fs.Seek(header.Texture.Value, SeekOrigin.Begin);
                 header.Texture.Count.SetValue(fs.Position, br.ReadBytes(4));
