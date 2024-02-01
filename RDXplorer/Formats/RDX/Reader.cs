@@ -780,5 +780,46 @@ namespace RDXplorer.Formats.RDX
 
             return list;
         }
+
+        public static List<TextModel> ReadTexts(FileInfo file, HeaderModel header)
+        {
+            List<TextModel> list = new();
+
+            if (header.Text.Value == 0)
+                return list;
+
+            using FileStream fs = file.OpenReadShared();
+            using BinaryReader br = new(fs);
+
+            fs.Seek(header.Text.Value, SeekOrigin.Begin);
+
+            int count = br.ReadInt32();
+
+            for (int i = 0; i < count; i++)
+            {
+                TextModel model = new();
+
+                model.Position = (nint)fs.Position;
+
+                model.Fields.Offset.SetValue(fs.Position, br.ReadBytes(4));
+                model.Pointer.SetValue(model.Position, BitConverter.GetBytes(header.Text.Value + model.Fields.Offset.Value));
+
+                list.Add(model);
+            }
+
+            /*for (int i = 0; i < list.Count; i++)
+            {
+                uint nextOffset = i < list.Count - 1 ? list[i + 1].Pointer.Value : header.Sysmes.Value;
+
+                TextModel model = list[i];
+
+                fs.Seek(model.Pointer.Value, SeekOrigin.Begin);
+
+                model.Size = nextOffset - model.Pointer.Value;
+                model.Fields.Data.SetValue(fs.Position, br.ReadBytes((int)model.Size));
+            }*/
+
+            return list;
+        }
     }
 }

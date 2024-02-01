@@ -215,6 +215,19 @@ namespace RDXplorer.Models.RDX
             private set => SetField(ref _event, value);
         }
 
+        private List<TextModel> _text;
+        public List<TextModel> Text
+        {
+            get
+            {
+                if (_text == null)
+                    SetField(ref _text, Reader.ReadTexts(PathInfo, Header));
+                return _text;
+            }
+
+            private set => SetField(ref _text, value);
+        }
+
         public DocumentModel(FileInfo file)
         {
             PathInfo = file;

@@ -99,6 +99,9 @@
                 <TabItem Header="Events">
                     <Frame Source="Views/EventView.xaml"/>
                 </TabItem>
+                <TabItem Header="Texts">
+                    <Frame Source="Views/TextView.xaml"/>
+                </TabItem>
             </TabControl>
         </Grid>
     </DockPanel>
