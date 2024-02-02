@@ -60,5 +60,8 @@ namespace RDXplorer
             stream.Seek(0, SeekOrigin.Begin);
             return hash;
         }
+
+        public static ushort SwapBytes(ushort value) =>
+            (ushort)((ushort)((value & 0xff) << 8) | ((value >> 8) & 0xff));
     }
 }
