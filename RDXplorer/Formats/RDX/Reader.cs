@@ -3,6 +3,7 @@ using RDXplorer.Models.RDX;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace RDXplorer.Formats.RDX
 {
@@ -807,19 +808,78 @@ namespace RDXplorer.Formats.RDX
                 list.Add(model);
             }
 
-            /*for (int i = 0; i < list.Count; i++)
+            uint nextSection = header.Sysmes.Value != 0 ? header.Sysmes.Value : header.Model.Value;
+
+            for (int i = 0; i < list.Count; i++)
             {
-                uint nextOffset = i < list.Count - 1 ? list[i + 1].Pointer.Value : header.Sysmes.Value;
+                uint nextOffset = i < list.Count - 1 ? list[i + 1].Pointer.Value : nextSection;
 
                 TextModel model = list[i];
 
                 fs.Seek(model.Pointer.Value, SeekOrigin.Begin);
 
                 model.Size = nextOffset - model.Pointer.Value;
-                model.Fields.Data.SetValue(fs.Position, br.ReadBytes((int)model.Size));
-            }*/
+
+                StringBuilder message = new();
+
+                while (fs.Position < nextOffset)
+                {
+                    ushort text = br.ReadUInt16();
+
+                    if (text == 0xFF00)
+                        message.Append(Environment.NewLine);
+                    else if (text == 0xFF02)
+                        message.Append($"[WAIT:{br.ReadInt16()}]");
+                    else if (text == 0xFF03)
+                        message.Append($"[ITEM:{br.ReadInt16()}]");
+                    else if (text == 0xFFFF)
+                        break;
+                    else
+                        message.Append(DecodeText(text));
+                }
+
+                model.Message = message.ToString();
+            }
 
             return list;
+        }
+
+        private static Dictionary<string, string> _characterMap = new();
+        private static Dictionary<string, string> CharacterMap
+        {
+            get
+            {
+                if (_characterMap.Count == 0)
+                {
+                    // TODO: Create Tables for JPN and EUR releases
+                    FileInfo file = new("ASCII\\BIOCV_USA.tbl");
+
+                    if (file.Exists)
+                    {
+                        string[] lines = File.ReadAllLines(file.FullName);
+
+                        foreach (string line in lines)
+                        {
+                            string[] parts = line.Split("=");
+
+                            if (parts.Length >= 2)
+                                _characterMap.Add(parts[0], parts[1]);
+                        }
+                    }
+                }
+
+                return _characterMap;
+            }
+        }
+
+        private static string DecodeText(ushort value)
+        {
+            string key = Utilities.SwapBytes(value).ToString("X4");
+
+            if (CharacterMap.ContainsKey(key))
+                 return CharacterMap[key];
+
+            return $"[0x{key}]";
         }
     }
 }
