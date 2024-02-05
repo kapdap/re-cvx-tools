@@ -56,7 +56,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ASCII\BIOCV_USA.tbl">
+    <None Update="Data\ASCII\BIOCV_USA.tbl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Properties\Settings.settings">

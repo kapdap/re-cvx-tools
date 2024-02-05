@@ -852,7 +852,7 @@ namespace RDXplorer.Formats.RDX
                 if (_characterMap.Count == 0)
                 {
                     // TODO: Create Tables for JPN and EUR releases
-                    FileInfo file = new("ASCII\\BIOCV_USA.tbl");
+                    FileInfo file = new("Data\\ASCII\\BIOCV_USA.tbl");
 
                     if (file.Exists)
                     {
