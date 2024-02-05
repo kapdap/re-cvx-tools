@@ -39,12 +39,15 @@ namespace RDXplorer.Formats.RDX
                     int length = argument.Size / 8;
 
                     for (int j = 0; j < length; j++)
-                        builder.Append(data[++i].ToString("X2"));
+                        if (i < data.Length - 1)
+                            builder.Append(data[++i].ToString("X2"));
 
                     builder.Append(" ");
                 }
 
-                builder.Remove(builder.Length - 1, 1);
+                if (builder.Length > 1)
+                    builder.Remove(builder.Length - 1, 1);
+
                 builder.Append(Environment.NewLine);
             }
 
@@ -55,20 +58,33 @@ namespace RDXplorer.Formats.RDX
         {
             StringBuilder builder = new StringBuilder();
 
+            Stack<int> tabStack = new();
+            int tabSize = 0;
+
             for (int i = 0; i < data.Length; i++)
             {
                 OpCode opcode = Settings.OpCodes[data[i].ToString("X2")];
 
-                builder.Append($"{opcode.Name}(");
+                StringBuilder args = new StringBuilder();
+
+                if (tabStack.Count > 0 && i >= tabStack.Peek())
+                {
+                    tabStack.Pop();
+                    tabSize--;
+                }
+
+                for (int j = 0; j < tabSize; j++)
+                    builder.Append("\t");
+
+                byte[] bytes = null;
 
                 foreach (Argument argument in opcode.Arguments)
                 {
-                    int length = argument.Size / 8;
+                    bytes = new byte[argument.Size / 8];
 
-                    byte[] bytes = new byte[length];
-
-                    for (int j = 0; j < length; j++)
-                        bytes[j] = data[++i];
+                    for (int j = 0; j < bytes.Length; j++)
+                        if (i < data.Length - 1)
+                            bytes[j] = data[++i];
 
                     // TODO: Check if we need to determine endianness (PS3, GCN)
                     Array.Reverse(bytes);
@@ -76,35 +92,50 @@ namespace RDXplorer.Formats.RDX
                     switch (argument.Type)
                     {
                         case "float":
-                            builder.Append(BitConverter.ToHalf(bytes).ToString());
+                            args.Append(BitConverter.ToHalf(bytes).ToString());
                             break;
 
                         case "short":
-                            builder.Append(BitConverter.ToInt16(bytes).ToString());
+                            args.Append(BitConverter.ToInt16(bytes).ToString());
                             break;
 
                         case "ushort":
-                            builder.Append(BitConverter.ToUInt16(bytes).ToString());
+                            args.Append(BitConverter.ToUInt16(bytes).ToString());
                             break;
 
                         case "sbyte":
-                            builder.Append(((sbyte)bytes[0]).ToString());
+                            args.Append(((sbyte)bytes[0]).ToString());
                             break;
 
                         case "byte":
-                            builder.Append(bytes[0].ToString());
+                            args.Append(bytes[0].ToString());
                             break;
 
                         default:
-                            builder.Append(BitConverter.ToString(bytes));
+                            args.Append(BitConverter.ToString(bytes));
                             break;
                     }
 
-                    builder.Append(", ");
+                    args.Append(", ");
                 }
 
-                builder.Remove(builder.Length - 2, 2);
-                builder.Append($")");
+                if (args.Length > 2)
+                    args.Remove(args.Length - 2, 2);
+
+                if ((opcode.Name == "If" || 
+                    opcode.Name == "Else" || 
+                    opcode.Name == "While" || 
+                    opcode.Name == "For") &&
+                    bytes != null && bytes.Length > 0)
+                {
+                    tabStack.Push(i + bytes[0] - 1);
+                    tabSize++;
+                }
+
+                builder.Append(opcode.Name);
+                builder.Append("(");
+                builder.Append(args);
+                builder.Append(")");
                 builder.Append(Environment.NewLine);
             }
 

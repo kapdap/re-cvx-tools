@@ -1,987 +1,981 @@
 OpCodes:
   00:
     Name: End
-    Indent: -1
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   01:
     Name: If
-    Indent: 1
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   02:
     Name: Else
-    Indent: 0
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   03:
     Name: EndIf
-    Indent: -1
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   04:
     Name: Check
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   05:
     Name: Set
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   06:
-    Name: Set
+    Name: CompareValue
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   07:
     Name: CompareValueWord
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   08:
     Name: SetValue
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   09:
     Name: SetValueWord
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   0A:
     Name: SetWallAtari
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   0B:
     Name: SetEtcAtari
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   0C:
     Name: SetFloorAtari
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   0D:
     Name: CheckDeath
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   0E:
     Name: CheckItem
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   0F:
     Name: ClearUseItem
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   10:
     Name: CheckUseItem
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   11:
     Name: CheckPlayerItem
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   12:
     Name: SetCinematic
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   13:
     Name: SetCamera
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   14:
     Name: EventOn
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   15:
     Name: BGMOn
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   16:
-    Name: BGMOn
+    Name: BGMOff
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   17:
     Name: SEOn
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
   18:
     Name: SEOff
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   19:
     Name: VoiceOn
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   1A:
     Name: VoiceOff
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   1B:
     Name: CheckADX
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   1C:
     Name: BGSEOn
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   1D:
     Name: BGSEOff
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   1E:
     Name: CheckADXTime
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   1F:
     Name: SetMessage
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   20:
     Name: SetDisplayObject
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   21:
     Name: CheckDeathEvent
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   22:
     Name: SetCheckEnemy
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   23:
     Name: SetCheckItem
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   24:
     Name: SetInitModel
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   25:
     Name: SetEtcAtari2
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   26:
     Name: CheckUseItem
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   27:
     Name: ArmsItemChange
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   28:
     Name: SubStatus
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   29:
-    Name: SetCamera2
+    Name: SetCameraPause
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   2A:
     Name: SetCamera2
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   2B:
     Name: SetMotionPause
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   2C:
     Name: SetEffect
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   2D:
     Name: InitMotionPause
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   2E:
     Name: SetPlayerMotionPause
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   2F:
     Name: InitSetKage
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   30:
     Name: InitMotionPauseEx
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   31:
     Name: PlayerItemLost
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   32:
     Name: SetObjectLink
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   33:
     Name: SetDoorCall
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   34:
     Name: SetPlayerObjectLink
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   35:
     Name: SetLight
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   36:
     Name: SetFade
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   37:
     Name: RoomCaseNo
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   38:
     Name: CheckFrame
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   39:
     Name: SetCameraInfo
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   3A:
     Name: SetPlayerMuteki
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   3B:
     Name: SetDefaultModel
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   3C:
     Name: SetMask
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   3D:
     Name: SetLip
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   3E:
     Name: StartMask
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   3F:
     Name: StartLip
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   40:
     Name: SetPlayerStartLookG
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   41:
     Name: SetPlayerStopLookG
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   42:
     Name: SetItemAspd
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   43:
-    Name: SetItemAspd
+    Name: SetEffectDisplay
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   44:
     Name: SetEffectAmb
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   45:
     Name: DeleteObjectSE
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   46:
     Name: SetNextRoomBGM
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   47:
     Name: SetNextRoomBGSE
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   48:
     Name: CallFootSE
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   49:
     Name: SetLight
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   4A:
     Name: SetYakkyou
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   4B:
     Name: SetLightType
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   4C:
     Name: SetFogColor
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   4D:
     Name: CheckPlayerItemBlock
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   4E:
     Name: SetEffectBlood
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   4F:
     Name: SetCyoutenHenkei
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   50:
     Name: SetObjectMotion
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   51:
     Name: SetObjectEnemyLink
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   52:
     Name: SetObjectItemLink
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   53:
     Name: SetEnemyItemLink
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   54:
     Name: SetEnemyEnemyLink
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   55:
     Name: StartCyoutenHenkei
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   56:
     Name: SetEffectBloodPool
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   57:
     Name: FixEventCameraPlayer
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   58:
     Name: SetEffectBloodPool2
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   59:
     Name: SetObjectObjectLink
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   5A:
     Name: SetCameraYure
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   5B:
     Name: SetInitCamera
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   5C:
     Name: SetMessageDisplayEnd
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   5D:
     Name: CheckPad
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   5E:
     Name: StartMovie
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   5F:
     Name: StopMovie
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   60:
     Name: CheckTFrame
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   61:
     Name: ClearEventTimer
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   62:
     Name: CheckCamera
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   63:
     Name: SetRandom
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   64:
     Name: PlayerControl
   65:
     Name: LoadWork
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   66:
     Name: ObjectControl
   67:
@@ -989,1163 +983,1167 @@ OpCodes:
   68:
     Name: LoadWork2
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   69:
     Name: CommonControl
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   6A:
     Name: SetEventSkip
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   6B:
     Name: DeleteYakkyou
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   6C:
     Name: SetObjectAlpha
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   6D:
     Name: SetCyodan
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   6E:
     Name: SetHEffect
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   6F:
     Name: SetObjectPlayerLink
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   70:
     Name: EffectPush
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   71:
     Name: EffectPop
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   72:
     Name: AreaSearchObject
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   73:
     Name: SetLightParameterC
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   74:
     Name: StartLightParameter
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   75:
     Name: SetInitMidiSlot
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   76:
     Name: Set3DSoundFlag
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   77:
     Name: SetSoundVolume
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   78:
     Name: SetLightParameter
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   79:
     Name: EnemySEOn
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   7A:
     Name: EnemySEOff
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   7B:
     Name: SetWallAtari2
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   7C:
     Name: SetFloorAtari2
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   7D:
     Name: SetEnemyPlayerMotionPos
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   7E:
     Name: SetKageSw
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   7F:
     Name: SetSoundPan
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   80:
     Name: SetInitPony
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   81:
     Name: CheckSubMapBusy
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   82:
     Name: SetDebugLoopEx
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   83:
     Name: SoundFadeOut
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   84:
     Name: SetCyoutenHenkeiEx
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   85:
     Name: StartCyoutenHenkeiEx
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   86:
     Name: SetEasySE
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   87:
     Name: SetSoundFlagReset
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   88:
     Name: SetEffectUV
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   89:
     Name: SetPlayerChange
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   8A:
     Name: CheckPlayerPoison
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   8B:
     Name: AddObjectSE
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   8C:
     Name: RandomTest
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   8D:
     Name: SetEventCom
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   8E:
     Name: CheckZombieUpDeath
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   8F:
     Name: SetFacePause
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   90:
     Name: SetFaceRe
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   91:
     Name: SetEffectMode
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   92:
     Name: BGSEOff2
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   93:
     Name: BGMOff2
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   94:
     Name: BGSEOn2
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   95:
     Name: BGMOn2
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   96:
     Name: SetEffectSensya
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   97:
     Name: SetEffectKokuen
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   98:
     Name: SetEffectSand
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   99:
     Name: EnemyHPUp
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   9A:
     Name: FaceRep
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   9B:
     Name: CheckMovie
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   9C:
     Name: SetItemMotion
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   9D:
     Name: SetObjectAspd
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   9E:
     Name: SetVibrationFlag
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   9F:
     Name: StartVibration
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   A0:
     Name: MapSystemOn
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   A1:
-    Name: MapSystemOn
+    Name: TrapDamageSet
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   A2:
     Name: SetEventLighterFire
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   A3:
     Name: SetPlayerItemLink
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   A4:
     Name: PlayerKaidanMotion
   A5:
     Name: SetEnemyRender
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   A6:
     Name: BGMOnEx
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   A7:
     Name: BGMOn2Ex
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   A8:
     Name: SetFogParameterC
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   A9:
     Name: StartFogParameter
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   AA:
     Name: SetEffectUV2
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   AB:
     Name: SetBGColor
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   AC:
     Name: CheckMovieTime
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   AD:
     Name: SetEffectType
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   AE:
     Name: PlayerPoison2Cr
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   AF:
     Name: PlayerHandChange
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   B0:
     Name: SetHEffect2
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   B1:
     Name: CheckObjectDpos
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   B2:
     Name: GetItem
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   B3:
     Name: SetEtcAtariEnemyPos
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   B4:
     Name: SetEtcAtariEventPos
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   B5:
     Name: LoadWorkEx
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   B6:
     Name: RoomSoundCase
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   B7:
     Name: RoomSoundCase
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   B8:
     Name: ItemSBoxToIBox
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   B9:
     Name: SetGridPos
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   BA:
     Name: SetGridPosMoveC
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   BB:
     Name: StartGridPosMove
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   BC:
     Name: EventKill
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   BD:
     Name: SetReTryPoint
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   BE:
     Name: SetReTryPoint
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   BF:
     Name: CheckPlayerDPos
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   C0:
     Name: SetCyodanEx
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   C1:
     Name: SetArmsItem
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   C2:
     Name: GetItemEx
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   C3:
     Name: SetMatsumotoEffectSand
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   C4:
     Name: VoiceWait
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   C5:
     Name: StartVoice
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   C6:
     Name: SetGameOver
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   C7:
     Name: PlayerItemChangeM
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   C8:
     Name: SetEffectBakuDrm
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   C9:
-    Name: SetEffectBakuDrm
+    Name: SetPlayerItemTama
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   CA:
     Name: ClearEventEffect
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   CB:
     Name: SetEventTimer
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   CC:
     Name: SetEnemyLookFlag
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   CD:
     Name: ReturnTitleEvent
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   CE:
     Name: SetSyukanMode
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   CF:
     Name: ExGameItemInit
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   D0:
-    Name: ExGameItemInit
+    Name: SetEnemyLifeM
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   D1:
     Name: SetEffectSSize
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   D2:
-    Name: SetEffectSSize
+    Name: SetEffectLinkOffset
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   D3:
     Name: RankingCall
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   D4:
     Name: CallSysSE
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   D5:
     Name: Empty
   D6:
@@ -2219,40 +2217,34 @@ OpCodes:
   F8:
     Name: Sleep
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
   F9:
     Name: Sleeping
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   FA:
     Name: For
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   FB:
-    Name: For
+    Name: Next
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 16
-      Type: short
+    - Type: byte
+      Size: 8
   FC:
     Name: While
     Arguments:
-    - Size: 8
-      Type: byte
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
   FD:
     Name: EWhile
   FE:
@@ -2260,5 +2252,5 @@ OpCodes:
   FF:
     Name: EventEnd
     Arguments:
-    - Size: 8
-      Type: byte
+    - Type: byte
+      Size: 8
