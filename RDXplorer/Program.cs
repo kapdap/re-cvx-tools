@@ -354,6 +354,18 @@ namespace RDXplorer.Views
                 set => _hexEditor = value;
             }
 
+            private static ScriptingWindow _scripting;
+            public static ScriptingWindow Scripting
+            {
+                get
+                {
+                    _scripting ??= new();
+                    return _scripting;
+                }
+
+                set => _scripting = value;
+            }
+
             private static AboutWindow _about;
             public static AboutWindow About
             {
@@ -369,6 +381,7 @@ namespace RDXplorer.Views
             public static void CloseAll()
             {
                 _hexEditor?.Close();
+                _scripting?.Close();
                 _about?.Close();
             }
         }
