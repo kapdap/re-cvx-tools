@@ -130,12 +130,6 @@ OpCodes:
     Arguments:
     - Type: byte
       Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
   11:
     Name: CheckPlayerItem
     Arguments:
@@ -657,8 +651,20 @@ OpCodes:
     - Type: byte
       Size: 8
   49:
-    Name: SetLight
+    Name: CallWeaponSE
     Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
     - Type: byte
       Size: 8
     - Type: byte
@@ -1137,6 +1143,49 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
+  690F:
+    Name: CommonControl0F
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  6910:
+    Name: CommonControl10
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  6911:
+    Name: CommonControl11
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  6912:
+    Name: CommonControl12
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  6913:
+    Name: CommonControl13
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   6917:
     Name: CommonControl17
     Arguments:
@@ -1214,6 +1263,16 @@ OpCodes:
     Arguments:
     - Type: byte
       Size: 8
+  691F:
+    Name: CommonControl1F
+    Arguments:
+    - Type: byte
+      Size: 8
+  6921:
+    Name: CommonControl21
+    Arguments:
+    - Type: byte
+      Size: 8
   6922:
     Name: CommonControl22
     Arguments:
@@ -1235,8 +1294,28 @@ OpCodes:
       Size: 8
   6924:
     Name: CommonControl24
+  6926:
+    Name: CommonControl26
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: float
+      Size: 16
+    - Type: float
+      Size: 16
+    - Type: float
+      Size: 16
   6929:
     Name: CommonControl29
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  692A:
+    Name: CommonControl2A
     Arguments:
     - Type: byte
       Size: 8
@@ -1281,34 +1360,30 @@ OpCodes:
   6D:
     Name: SetCyodan
     Arguments:
+    - Type: float
+      Size: 32
     - Type: byte
       Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
     - Type: byte
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
-      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   6E:
     Name: SetHEffect
     Arguments:

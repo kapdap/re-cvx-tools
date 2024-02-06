@@ -111,12 +111,22 @@ namespace RDXplorer.Formats.RDX
                     switch (argument.Type)
                     {
                         case "float":
-                            if (bytes.Length == 2)
-                                args.Append(BitConverter.ToHalf(bytes).ToString());
+                            if (bytes.Length == 4)
+                                args.Append(BitConverter.ToSingle(bytes).ToString("0.########"));
+                            else if(bytes.Length == 2)
+                                args.Append(BitConverter.ToHalf(bytes).ToString("0.########"));
                             else if (bytes.Length == 1)
-                                args.Append(Convert.ToDecimal(bytes[0]).ToString());
+                                args.Append(Convert.ToDecimal(bytes[0]).ToString("0.########"));
                             else
                                 args.Append(BitConverter.ToString(bytes));
+                            break;
+
+                        case "int":
+                            args.Append(BitConverter.ToInt32(bytes).ToString());
+                            break;
+
+                        case "uint":
+                            args.Append(BitConverter.ToUInt32(bytes).ToString());
                             break;
 
                         case "short":
