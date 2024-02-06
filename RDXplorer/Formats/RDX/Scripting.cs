@@ -106,12 +106,17 @@ namespace RDXplorer.Formats.RDX
                             bytes[j] = data[++i];
 
                     // TODO: Check if we need to determine endianness (PS3, GCN)
-                    Array.Reverse(bytes);
+                    //Array.Reverse(bytes);
 
                     switch (argument.Type)
                     {
                         case "float":
-                            args.Append(BitConverter.ToHalf(bytes).ToString());
+                            if (bytes.Length == 2)
+                                args.Append(BitConverter.ToHalf(bytes).ToString());
+                            else if (bytes.Length == 1)
+                                args.Append(Convert.ToDecimal(bytes[0]).ToString());
+                            else
+                                args.Append(BitConverter.ToString(bytes));
                             break;
 
                         case "short":
@@ -143,8 +148,7 @@ namespace RDXplorer.Formats.RDX
 
                 if ((opcode.Name == "If" || 
                     opcode.Name == "Else" || 
-                    opcode.Name == "While" || 
-                    opcode.Name == "For") &&
+                    opcode.Name == "While") &&
                     bytes != null && bytes.Length > 0)
                 {
                     tabStack.Push(i + bytes[0] - 1);
