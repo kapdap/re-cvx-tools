@@ -29,9 +29,21 @@ namespace RDXplorer.Formats.RDX
 
             for (int i = 0; i < data.Length; i++)
             {
-                OpCode opcode = Settings.OpCodes[data[i].ToString("X2")];
+                OpCode opcode;
+                string key = string.Empty;
 
-                builder.Append(data[i].ToString("X2"));
+                if (i < data.Length - 2)
+                    key = data[i].ToString("X2") + data[i + 1].ToString("X2");
+
+                if (!Settings.OpCodes.ContainsKey(key))
+                    key = data[i].ToString("X2");
+
+                try { opcode = Settings.OpCodes[key]; }
+                catch { throw new Exception($"Unknown OpCode: {key}"); }
+
+                i += (key.Length / 2) - 1;
+
+                builder.Append(key);
                 builder.Append(" ");
 
                 foreach (Argument argument in opcode.Arguments)
@@ -44,9 +56,6 @@ namespace RDXplorer.Formats.RDX
 
                     builder.Append(" ");
                 }
-
-                if (builder.Length > 1)
-                    builder.Remove(builder.Length - 1, 1);
 
                 builder.Append(Environment.NewLine);
             }
@@ -63,9 +72,21 @@ namespace RDXplorer.Formats.RDX
 
             for (int i = 0; i < data.Length; i++)
             {
-                OpCode opcode = Settings.OpCodes[data[i].ToString("X2")];
-
                 StringBuilder args = new StringBuilder();
+                OpCode opcode;
+                byte[] bytes = null;
+                string key = string.Empty;
+
+                if (i < data.Length - 2)
+                    key = data[i].ToString("X2") + data[i + 1].ToString("X2");
+
+                if (!Settings.OpCodes.ContainsKey(key))
+                    key = data[i].ToString("X2");
+
+                try { opcode = Settings.OpCodes[key]; }
+                catch { throw new Exception($"Unknown OpCode: {key}"); }
+
+                i += (key.Length / 2) - 1;
 
                 if (tabStack.Count > 0 && i >= tabStack.Peek())
                 {
@@ -75,8 +96,6 @@ namespace RDXplorer.Formats.RDX
 
                 for (int j = 0; j < tabSize; j++)
                     builder.Append("\t");
-
-                byte[] bytes = null;
 
                 foreach (Argument argument in opcode.Arguments)
                 {

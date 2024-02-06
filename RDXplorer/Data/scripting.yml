@@ -263,6 +263,8 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
+    - Type: byte
+      Size: 8
   20:
     Name: SetDisplayObject
     Arguments:
@@ -947,6 +949,10 @@ OpCodes:
     Arguments:
     - Type: byte
       Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   62:
     Name: CheckCamera
     Arguments:
@@ -967,6 +973,9 @@ OpCodes:
       Size: 8
   64:
     Name: PlayerControl
+    Arguments:
+    - Type: byte
+      Size: 8
   65:
     Name: LoadWork
     Arguments:
@@ -978,8 +987,14 @@ OpCodes:
       Size: 8
   66:
     Name: ObjectControl
+    Arguments:
+    - Type: byte
+      Size: 8
   67:
     Name: SubControl
+    Arguments:
+    - Type: byte
+      Size: 8
   68:
     Name: LoadWork2
     Arguments:
@@ -1002,12 +1017,102 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
+  6907:
+    Name: CommonControl7
+    Arguments:
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
+  6909:
+    Name: CommonControl8
+    Arguments:
     - Type: byte
       Size: 8
     - Type: byte
       Size: 8
     - Type: byte
       Size: 8
+    - Type: byte
+      Size: 8
+  690B:
+    Name: CommonControl12
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  690C:
+    Name: CommonControl13
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  690D:
+    Name: CommonControl14
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  6917:
+    Name: CommonControl23
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  6918:
+    Name: CommonControl24
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  6922:
+    Name: CommonControl34
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  6924:
+    Name: CommonControl35
   6A:
     Name: SetEventSkip
     Arguments:
