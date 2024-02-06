@@ -5,13 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Scripting" Height="450" Width="600" Closing="Window_Closing">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-        </Grid.ColumnDefinitions>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Edit">
+                <MenuItem x:Name="mnuEditCopy" Header="Copy"/>
+            </MenuItem>
+        </Menu>
 
-        <TextBox Grid.Column="0" Name="DecompiledText" TextAlignment="Left" FontFamily="Consolas" />
-        <TextBox Grid.Column="1" Name="DecodedText" TextAlignment="Left" FontFamily="Consolas" />
-    </Grid>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="lblStatusBar" Text="" />
+            </StatusBarItem>
+        </StatusBar>
+
+        <ScrollViewer CanContentScroll="true" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible" Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+            
+                <TextBox Grid.Column="0" Name="DecompiledText" TextAlignment="Left" AcceptsReturn="True" FontFamily="Consolas" />
+                <TextBox Grid.Column="1" Name="DecodedText" TextAlignment="Left" AcceptsReturn="True" FontFamily="Consolas" />
+            </Grid>
+        </ScrollViewer>
+    </DockPanel>
 </Window>
