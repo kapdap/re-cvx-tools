@@ -219,6 +219,8 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
+    - Type: byte
+      Size: 8
   1C:
     Name: BGSEOn
     Arguments:
@@ -981,10 +983,46 @@ OpCodes:
       Size: 16
     - Type: float
       Size: 16
+  640D:
+    Name: PlayerControl0D
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   6434:
     Name: PlayerControl34
   6480:
     Name: PlayerControl80
+  6481:
+    Name: PlayerControl81
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  6482:
+    Name: PlayerControl82
   6483:
     Name: PlayerControl83
     Arguments:
@@ -994,8 +1032,15 @@ OpCodes:
       Size: 8
   6489:
     Name: PlayerControl89
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   648B:
     Name: PlayerControl8B
+  648E:
+    Name: PlayerControl8E
   6496:
     Name: PlayerControl96
     Arguments:
@@ -1015,6 +1060,31 @@ OpCodes:
   66:
     Name: ObjectControl
     Arguments:
+    - Type: byte
+      Size: 8
+  6601:
+    Name: ObjectControl01
+    Arguments:
+    - Type: byte
+      Size: 8
+  6608:
+    Name: ObjectControl08
+  660C:
+    Name: ObjectControl0C
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  6614:
+    Name: ObjectControl14
+    Arguments:
+    - Type: byte
+      Size: 8
     - Type: byte
       Size: 8
   67:
@@ -1037,6 +1107,26 @@ OpCodes:
       Size: 8
   6793:
     Name: SubControl93
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  6794:
+    Name: SubControl94
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   68:
     Name: LoadWork2
     Arguments:
@@ -1066,6 +1156,11 @@ OpCodes:
       Size: 8
   6903:
     Name: CommonControl03
+    Arguments:
+    - Type: byte
+      Size: 8
+  6904:
+    Name: CommonControl04
     Arguments:
     - Type: byte
       Size: 8
@@ -1100,8 +1195,30 @@ OpCodes:
       Size: 16
     - Type: float
       Size: 16
+  6908:
+    Name: CommonControl08
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: ushort
+      Size: 16
+    - Type: ushort
+      Size: 16
   6909:
     Name: CommonControl09
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  690A:
+    Name: CommonControl0A
     Arguments:
     - Type: byte
       Size: 8
@@ -1259,6 +1376,11 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
+  691D:
+    Name: CommonControl1D
+    Arguments:
+    - Type: byte
+      Size: 8
   691E:
     Name: CommonControl1E
     Arguments:
@@ -1266,6 +1388,11 @@ OpCodes:
       Size: 8
   691F:
     Name: CommonControl1F
+    Arguments:
+    - Type: byte
+      Size: 8
+  6920:
+    Name: CommonControl20
     Arguments:
     - Type: byte
       Size: 8
@@ -1308,6 +1435,13 @@ OpCodes:
       Size: 16
     - Type: float
       Size: 16
+  6928:
+    Name: CommonControl28
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   6929:
     Name: CommonControl29
     Arguments:
@@ -1322,6 +1456,15 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
+  692C:
+    Name: CommonControl2C
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   692E:
     Name: CommonControl2E
     Arguments:
@@ -1331,8 +1474,47 @@ OpCodes:
       Size: 8
   692F:
     Name: CommonControl2F
+  6930:
+    Name: CommonControl30
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  6931:
+    Name: CommonControl31
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   6932:
     Name: CommonControl32
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  6933:
+    Name: CommonControl33
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  6934:
+    Name: CommonControl34
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+  6935:
+    Name: CommonControl35
     Arguments:
     - Type: byte
       Size: 8
@@ -1545,15 +1727,17 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: byte
+      Size: 8
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   79:
     Name: EnemySEOn
@@ -2102,11 +2286,11 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
     - Type: byte
       Size: 8
@@ -2114,11 +2298,13 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: byte
+      Size: 8
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
     - Type: ushort
       Size: 16
