@@ -40,7 +40,7 @@ OpCodes:
     - Type: byte
       Size: 8
   06:
-    Name: CompareValue
+    Name: CompareByte
     Arguments:
     - Type: byte
       Size: 8
@@ -49,7 +49,7 @@ OpCodes:
     - Type: byte
       Size: 8
   07:
-    Name: CompareValueWord
+    Name: CompareWord
     Arguments:
     - Type: byte
       Size: 8
@@ -60,7 +60,7 @@ OpCodes:
     - Type: ushort
       Size: 16
   08:
-    Name: SetValue
+    Name: SetValueByte
     Arguments:
     - Type: byte
       Size: 8
@@ -326,12 +326,12 @@ OpCodes:
     - Type: byte
       Size: 8
   26:
-    Name: CheckUseItem
+    Name: CheckArmsItem
     Arguments:
     - Type: byte
       Size: 8
   27:
-    Name: ArmsItemChange
+    Name: ChangeArmsItem
     Arguments:
     - Type: byte
       Size: 8
@@ -464,14 +464,8 @@ OpCodes:
   36:
     Name: SetFade
     Arguments:
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
+    - Type: int
+      Size: 32
     - Type: byte
       Size: 8
   37:
@@ -1002,6 +996,13 @@ OpCodes:
     Name: PlayerControl89
   648B:
     Name: PlayerControl8B
+  6496:
+    Name: PlayerControl96
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   65:
     Name: LoadWork
     Arguments:
@@ -1330,6 +1331,13 @@ OpCodes:
       Size: 8
   692F:
     Name: CommonControl2F
+  6932:
+    Name: CommonControl32
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   6A:
     Name: SetEventSkip
     Arguments:
@@ -1930,7 +1938,7 @@ OpCodes:
     - Type: byte
       Size: 8
   A1:
-    Name: TrapDamageSet
+    Name: SetTrapDamage
     Arguments:
     - Type: byte
       Size: 8
@@ -2177,12 +2185,12 @@ OpCodes:
     - Type: byte
       Size: 8
   B7:
-    Name: RoomSoundCase
+    Name: ItemPlayerToStorageBox
     Arguments:
     - Type: byte
       Size: 8
   B8:
-    Name: ItemSBoxToIBox
+    Name: ItemStorageBoxToInventoryBox
     Arguments:
     - Type: byte
       Size: 8
@@ -2238,12 +2246,12 @@ OpCodes:
     - Type: byte
       Size: 8
   BE:
-    Name: SetReTryPoint
+    Name: CheckPlayerDPos
     Arguments:
     - Type: byte
       Size: 8
   BF:
-    Name: CheckPlayerDPos
+    Name: PlayerItemLostEx
     Arguments:
     - Type: byte
       Size: 8
@@ -2451,7 +2459,7 @@ OpCodes:
     - Type: ushort
       Size: 16
   D3:
-    Name: RankingCall
+    Name: CallRanking
     Arguments:
     - Type: byte
       Size: 8

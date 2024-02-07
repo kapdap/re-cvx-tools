@@ -88,7 +88,7 @@ namespace RDXplorer.Formats.RDX
 
                 i += (key.Length / 2) - 1;
 
-                if (tabStack.Count > 0 && i >= tabStack.Peek())
+                while (tabStack.Count > 0 && i >= tabStack.Peek())
                 {
                     tabStack.Pop();
                     tabSize--;
