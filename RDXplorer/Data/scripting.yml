@@ -700,14 +700,8 @@ OpCodes:
   4C:
     Name: SetFogColor
     Arguments:
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
+    - Type: uint
+      Size: 32
     - Type: byte
       Size: 8
   4D:

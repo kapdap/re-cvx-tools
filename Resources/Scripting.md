@@ -83,7 +83,7 @@ Opcodes are read by the Scenario Check function located at 0x00171750.
 | 49     | CallWeaponSE(u8, u8, u8, u8, u8, u8, u8, u8, u8)                                |
 | 4A     | SetYakkyou(u8, u8, u8, u8, u8, u8, u8)                                          |
 | 4B     | SetLightType(u8, u8, u8)                                                        |
-| 4C     | SetFogColor(u8, u8, u8, u8, u8)                                                 |
+| 4C     | SetFogColor(u32, u8)                                                            |
 | 4D     | CheckPlayerItemBlock(u8, u8, u8)                                                |
 | 4E     | SetEffectBlood(u8, u8, u8, f16, f16, f16, u8, u8, u8, u8)                       |
 | 4F     | SetCyoutenHenkei(u8, u8, u8, u8, u8)                                            |
