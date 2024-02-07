@@ -2,275 +2,329 @@
 
 ## Opcodes
 
-- First byte of an opcode is an index into the Scenario Jump Table
-- Scenario Jump Table entries are 4 byte pointers to functions
-- Some functions appear in the jump table mutiple times
-- Scenario Jump Table has 256 entries
-
 USA PS2 release, the Scenario Jump Table is found at 0x00304FA0.<br />
 Opcodes are read by the Scenario Check function located at 0x00171750.
 
-TODO: Determine function arguments<br />
-TODO: Update function descriptions
-
-|Description|Function|Arg 0|Arg 1|Arg 2|Arg 3|Arg 4|Arg 5|
-|-|-|-|-|-|-|-|-|
-|End|00| | | | | | |
-|Else If|01| | | | | | |
-|Else|02| | | | | | |
-|End If|03| | | | | | |
-|Check|04| | | | | | |
-|Set|05| | | | | | |
-|Set|06| | | | | | |
-|Compare Word|07| | | | | | |
-|Sv|08| | | | | | |
-|Sv Word|09| | | | | | |
-|Wall Atari Set|0A| | | | | | |
-|Etc Atari Set|0B| | | | | | |
-|Floor Atari Set|0C| | | | | | |
-|Death Check|0D| | | | | | |
-|Item Check|0E| | | | | | |
-|Use Item Clear|0F| | | | | | |
-|Use Item Check|10| | | | | | |
-|Player Item Check|11| | | | | | |
-|Cinematic Set|12| | | | | | |
-|Camera Set|13| | | | | | |
-|Event On|14| | | | | | |
-|BGM On|15| | | | | | |
-|BGM On|16| | | | | | |
-|SE On|17| | | | | | |
-|SE Off|18| | | | | | |
-|Voice On|19| | | | | | |
-|Voice Off|1A| | | | | | |
-|ADX Check|1B| | | | | | |
-|BG SE On|1C| | | | | | |
-|BG SE Off|1D| | | | | | |
-|ADX Time Check|1E| | | | | | |
-|Message Set|1F| | | | | | |
-|Set Display Object|20| | | | | | |
-|Death Event Check|21| | | | | | |
-|Enemy Set Check|22| | | | | | |
-|Item Set Check|23| | | | | | |
-|Init Model Set|24| | | | | | |
-|Etc Atari Set 2|25| | | | | | |
-|Use Item Check|26| | | | | | |
-|Arms Item Change|27| | | | | | |
-|Sub Status|28| | | | | | |
-|Camera Set 2|29| | | | | | |
-|Camera Set 2|2A| | | | | | |
-|Motion Pause Set|2B| | | | | | |
-|Effect Set|2C| | | | | | |
-|Init Motion Pause|2D| | | | | | |
-|Motion Pause Set Ply|2E| | | | | | |
-|Init Set Kage|2F| | | | | | |
-|Init Motion Pause Ex|30| | | | | | |
-|Player Item Lost|31| | | | | | |
-|Object Link Set|32| | | | | | |
-|Set Disp Object|33| | | | | | |
-|Object Link Set Ply|34| | | | | | |
-|Light Set|35| | | | | | |
-|Fade Set|36| | | | | | |
-|Room Case No|37| | | | | | |
-|Frame Check|38| | | | | | |
-|Camera Info Set|39| | | | | | |
-|Muteki Set Pl|3A| | | | | | |
-|Def Model Set|3B| | | | | | |
-|Mask Set|3C| | | | | | |
-|Lip Set|3D| | | | | | |
-|Mask Start|3E| | | | | | |
-|Lip Start|3F| | | | | | |
-|Look G Set Player Start|40| | | | | | |
-|Look G Set Player Stop|41| | | | | | |
-|Item Aspd Set|42| | | | | | |
-|Item Aspd Set|43| | | | | | |
-|Effect Amb Set|44| | | | | | |
-|Delete Object SE|45| | | | | | |
-|Set Next Room BGM|46| | | | | | |
-|Set Next Room BG SE|47| | | | | | |
-|Foot SE Call|48| | | | | | |
-|Light Set|49| | | | | | |
-|Yakkyou Set|4A| | | | | | |
-|Light Type Set|4B| | | | | | |
-|Fog Color Set|4C| | | | | | |
-|Player Item Block Check|4D| | | | | | |
-|Effect Blood Set|4E| | | | | | |
-|Cyouten Henkei Set|4F| | | | | | |
-|Set Object Motion|50| | | | | | |
-|Object Link Set Object Enemy|51| | | | | | |
-|Object Link Set Object Item|52| | | | | | |
-|Object Link Set Enemy Item|53| | | | | | |
-|Object Link Set Enemy Enemy|54| | | | | | |
-|Cyouten Henkei Start|55| | | | | | |
-|Effect Blood Pool Set|56| | | | | | |
-|Fix Event Camera Ply|57| | | | | | |
-|Effect Blood Pool Set 2|58| | | | | | |
-|Object Link Set Object Object|59| | | | | | |
-|Camera Yure Set|5A| | | | | | |
-|Init Camera Set|5B| | | | | | |
-|Message Display End Set|5C| | | | | | |
-|Pad Check|5D| | | | | | |
-|Movie Start|5E| | | | | | |
-|Movie Stop|5F| | | | | | |
-|T Frame Check|60| | | | | | |
-|Event Timer Clear|61| | | | | | |
-|Camera Check|62| | | | | | |
-|Random Set|63| | | | | | |
-|Player Ctr|64| | | | | | |
-|Load Work|65| | | | | | |
-|Object Ctr|66| | | | | | |
-|Sub Ctr|67| | | | | | |
-|Load Work 2|68| | | | | | |
-|Common Ctr|69| | | | | | |
-|Event Skip Set|6A| | | | | | |
-|Delete Yakkyou|6B| | | | | | |
-|Object Alpha Set|6C| | | | | | |
-|Cyodan Set|6D| | | | | | |
-|H Effect Set|6E| | | | | | |
-|Object Link Set Object Ply|6F| | | | | | |
-|Effect Push|70| | | | | | |
-|Effect Pop|71| | | | | | |
-|Area Search Object|72| | | | | | |
-|Light Parameter C Set|73| | | | | | |
-|Light Parameter Start|74| | | | | | |
-|Init Midi Slot Set|75| | | | | | |
-|D Sound Flag Set|76| | | | | | |
-|Sound Volume Set|77| | | | | | |
-|Light Parameter Set|78| | | | | | |
-|Enemy SE On|79| | | | | | |
-|Enemy SE Off|7A| | | | | | |
-|Wal Atari Set 2|7B| | | | | | |
-|Flr Atari Set2|7C| | | | | | |
-|Motion Pos Set Enemy Ply|7D| | | | | | |
-|Kage Sw Set|7E| | | | | | |
-|Sound Pan Set|7F| | | | | | |
-|Init Pony Set|80| | | | | | |
-|Sub Map Busy Check|81| | | | | | |
-|Set Debug Loop Ex|82| | | | | | |
-|Sound Fade Out|83| | | | | | |
-|Cyouten Henkei Set Ex|84| | | | | | |
-|Cyouten Henkei Start Ex|85| | | | | | |
-|Easy S E Set|86| | | | | | |
-|Sound Flag Re Set|87| | | | | | |
-|Effect UV Set|88| | | | | | |
-|Player Change Set|89| | | | | | |
-|Player Poison Check|8A| | | | | | |
-|Add Object SE|8B| | | | | | |
-|Rand Test|8C| | | | | | |
-|Event Com Set|8D| | | | | | |
-|Zombie Up Death Check|8E| | | | | | |
-|Face Pause Set|8F| | | | | | |
-|Face Re Set|90| | | | | | |
-|Effect Mode Set|91| | | | | | |
-|BG SE Off 2|92| | | | | | |
-|BGM Off 2|93| | | | | | |
-|BG SE On 2|94| | | | | | |
-|BGM On 2|95| | | | | | |
-|Effect Sensya Set|96| | | | | | |
-|Effect Kokuen Set|97| | | | | | |
-|Effect Sand Set|98| | | | | | |
-|Enemy HP Up|99| | | | | | |
-|Face Rep|9A| | | | | | |
-|Movie Check|9B| | | | | | |
-|Set Item Motion|9C| | | | | | |
-|Object Aspd Set|9D| | | | | | |
-|Puru Puru Flag Set|9E| | | | | | |
-|Puru Puru Start|9F| | | | | | |
-|Map System On|A0| | | | | | |
-|Map System On|A1| | | | | | |
-|Event Lighter Fire Set|A2| | | | | | |
-|Object Link Set Ply Item|A3| | | | | | |
-|Player Kaidan Motion|A4| | | | | | |
-|Enemy Render Set|A5| | | | | | |
-|BGM On Ex|A6| | | | | | |
-|BGM On 2 Ex|A7| | | | | | |
-|Fog Parameter C Set|A8| | | | | | |
-|Fog Parameter Start|A9| | | | | | |
-|Effect UV Set 2|AA| | | | | | |
-|BG Color Set|AB| | | | | | |
-|Movie Time Check|AC| | | | | | |
-|Effect Type Set|AD| | | | | | |
-|Player Poison 2 Cr|AE| | | | | | |
-|Ply Hand Change|AF| | | | | | |
-|H Effect Set 2|B0| | | | | | |
-|Object Dpos Check|B1| | | | | | |
-|Item Get Get|B2| | | | | | |
-|Etc Atari Enemy Pos Set|B3| | | | | | |
-|Etc Atari Event Pos Set|B4| | | | | | |
-|Load Work Ex|B5| | | | | | |
-|Room Sound Case|B6| | | | | | |
-|Room Sound Case|B7| | | | | | |
-|Item S Box To I Box|B8| | | | | | |
-|Grd Pos Set|B9| | | | | | |
-|Grd Pos Move C Set|BA| | | | | | |
-|Grd Pos Move Start|BB| | | | | | |
-|Event Kill|BC| | | | | | |
-|Re Try Point Set|BD| | | | | | |
-|Re Try Point Set|BE| | | | | | |
-|Ply Dpos Check|BF| | | | | | |
-|Cyodan Set Ex|C0| | | | | | |
-|Arms Item Set|C1| | | | | | |
-|Item Get Get Ex|C2| | | | | | |
-|Effect Sand Set Matsumoto|C3| | | | | | |
-|Voice Wait|C4| | | | | | |
-|Voice Start|C5| | | | | | |
-|Game Over Set|C6| | | | | | |
-|Player Item Change M|C7| | | | | | |
-|Effect Baku Drm Set|C8| | | | | | |
-|Effect Baku Drm Set|C9| | | | | | |
-|Effect Clear Event|CA| | | | | | |
-|Event Timer Set|CB| | | | | | |
-|Enemy Look Flag Set|CC| | | | | | |
-|Return Title Event|CD| | | | | | |
-|Syukan Mode Set|CE| | | | | | |
-|Ex Game Item Init|CF| | | | | | |
-|Ex Game Item Init|D0| | | | | | |
-|Effect S Size Set|D1| | | | | | |
-|Effect S Size Set|D2| | | | | | |
-|Ranking Call|D3| | | | | | |
-|Call Sys SE|D4| | | | | | |
-|Nothing|D5| | | | | | |
-|Nothing|D6| | | | | | |
-|Nothing|D7| | | | | | |
-|Nothing|D8| | | | | | |
-|Nothing|D9| | | | | | |
-|Nothing|DA| | | | | | |
-|Nothing|DB| | | | | | |
-|Nothing|DC| | | | | | |
-|Nothing|DD| | | | | | |
-|Nothing|DE| | | | | | |
-|Nothing|DF| | | | | | |
-|Nothing|E0| | | | | | |
-|Nothing|E1| | | | | | |
-|Nothing|E2| | | | | | |
-|Nothing|E3| | | | | | |
-|Nothing|E4| | | | | | |
-|Nothing|E5| | | | | | |
-|Nothing|E6| | | | | | |
-|Nothing|E7| | | | | | |
-|Nothing|E8| | | | | | |
-|Nothing|E9| | | | | | |
-|Nothing|EA| | | | | | |
-|Nothing|EB| | | | | | |
-|Nothing|EC| | | | | | |
-|Nothing|ED| | | | | | |
-|Nothing|EE| | | | | | |
-|Nothing|EF| | | | | | |
-|Nothing|F0| | | | | | |
-|Nothing|F1| | | | | | |
-|Nothing|F2| | | | | | |
-|E While 2|F3| | | | | | |
-|Com Next|F4| | | | | | |
-|Nothing|F5| | | | | | |
-|Nothing|F6| | | | | | |
-|Nothing|F7| | | | | | |
-|Sleep|F8| | | | | | |
-|Sleeping|F9| | | | | | |
-|For|FA| | | | | | |
-|For|FB| | | | | | |
-|While|FC| | | | | | |
-|E While|FD| | | | | | |
-|Event Next|FE| | | | | | |
-|Event End|FF| | | | | | |
+| OpCode | Function                                                                                              |
+| ------ | ----------------------------------------------------------------------------------------------------- |
+| 00     | End(u8)                                                                                               |
+| 01     | If(u8)                                                                                                |
+| 02     | Else(u8)                                                                                              |
+| 03     | EndIf(u8)                                                                                             |
+| 04     | Check(u8, u16, u16)                                                                                   |
+| 05     | Set(u8, u16, u8, u8)                                                                                  |
+| 06     | CompareByte(u8, u8, u8)                                                                               |
+| 07     | CompareWord(u8, u8, u8, u16)                                                                          |
+| 08     | SetValueByte(u8, u8, u8)                                                                              |
+| 09     | SetValueWord(u8, u16)                                                                                 |
+| 0A     | SetWallAtari(u8, u8, u8)                                                                              |
+| 0B     | SetEtcAtari(u8, u8, u8)                                                                               |
+| 0C     | SetFloorAtari(u8, u8, u8)                                                                             |
+| 0D     | CheckDeath(u8, u16)                                                                                   |
+| 0E     | CheckItem(u8, u16, u8, u8)                                                                            |
+| 0F     | ClearUseItem(u8)                                                                                      |
+| 10     | CheckUseItem(u8)                                                                                      |
+| 11     | CheckPlayerItem(u8)                                                                                   |
+| 12     | SetCinematic(u8)                                                                                      |
+| 13     | SetCamera(u8, u8, u8)                                                                                 |
+| 14     | EventOn(u8, u16)                                                                                      |
+| 15     | BGMOn(u8, u8, u8)                                                                                     |
+| 16     | BGMOff(u8)                                                                                            |
+| 17     | SEOn(u8, u8, u8, u16, u8)                                                                             |
+| 18     | SEOff(u8)                                                                                             |
+| 19     | VoiceOn(u8, u16, u8, u8, u8, u8)                                                                      |
+| 1A     | VoiceOff(u8)                                                                                          |
+| 1B     | CheckADX(u8, u8, u8, u8, u8)                                                                          |
+| 1C     | BGSEOn(u8, u16, u8, u8)                                                                               |
+| 1D     | BGSEOff(u8, u8, u8)                                                                                   |
+| 1E     | CheckADXTime(u8, u16, u8, u8)                                                                         |
+| 1F     | SetMessage(u8, u8, u8)                                                                                |
+| 20     | SetDisplayObject(u8, u8, u8)                                                                          |
+| 21     | CheckDeathEvent(u8, u16, u8, u8)                                                                      |
+| 22     | SetCheckEnemy(u8, u16)                                                                                |
+| 23     | SetCheckItem(u8, u16, u8, u8)                                                                         |
+| 24     | SetInitModel(u8, u8, u8)                                                                              |
+| 25     | SetEtcAtari2(u8, u16, u8, u8, u8, u8, u8, u8)                                                         |
+| 26     | CheckArmsItem(u8)                                                                                     |
+| 27     | ChangeArmsItem(u8)                                                                                    |
+| 28     | SubStatus(u8)                                                                                         |
+| 29     | SetCameraPause(u8)                                                                                    |
+| 2A     | SetCamera2(u8, u8, u8)                                                                                |
+| 2B     | SetMotionPause(u8)                                                                                    |
+| 2C     | SetEffect(u8, u16)                                                                                    |
+| 2D     | InitMotionPause(u8)                                                                                   |
+| 2E     | SetPlayerMotionPause(u8)                                                                              |
+| 2F     | InitSetKage(u8, u8, u8)                                                                               |
+| 30     | InitMotionPauseEx(u8, u8, u8)                                                                         |
+| 31     | PlayerItemLost(u8)                                                                                    |
+| 32     | SetObjectLink(u8, u8, u8, u8, u8, f16, f16, f16)                                                      |
+| 33     | SetDoorCall(u8, u16, u8, u8, u8, u8)                                                                  |
+| 34     | SetPlayerObjectLink(u8, u8, u8, u8, u8, f16, f16, f16)                                                |
+| 35     | SetLight(u8, u8, u8)                                                                                  |
+| 36     | SetFade(s32, u8)                                                                                      |
+| 37     | RoomCaseNo(u8)                                                                                        |
+| 38     | CheckFrame(u8, u8, u8, u16)                                                                           |
+| 39     | SetCameraInfo(u8, u8, u8)                                                                             |
+| 3A     | SetPlayerMuteki(u8)                                                                                   |
+| 3B     | SetDefaultModel(u8, u8, u8, u8, u8)                                                                   |
+| 3C     | SetMask(u8, u8, u8)                                                                                   |
+| 3D     | SetLip(u8, u8, u8)                                                                                    |
+| 3E     | StartMask(u8, u8, u8)                                                                                 |
+| 3F     | StartLip(u8, u8, u8)                                                                                  |
+| 40     | SetPlayerStartLookG(u8, u16, u16, u16)                                                                |
+| 41     | SetPlayerStopLookG(u8)                                                                                |
+| 42     | SetItemAspd(u8, u8, u8)                                                                               |
+| 43     | SetEffectDisplay(u8, u8, u8)                                                                          |
+| 44     | SetEffectAmb(u8, u8, u8, u8, u8)                                                                      |
+| 45     | DeleteObjectSE(u8)                                                                                    |
+| 46     | SetNextRoomBGM(u8, u8, u8, u16, u8, u8)                                                               |
+| 47     | SetNextRoomBGSE(u8, u8, u8, u16, u16, u8, u8)                                                         |
+| 48     | CallFootSE(u8, u8, u8, u8, u8)                                                                        |
+| 49     | CallWeaponSE(u8, u8, u8, u8, u8, u8, u8, u8, u8)                                                      |
+| 4A     | SetYakkyou(u8, u8, u8, u8, u8, u8, u8)                                                                |
+| 4B     | SetLightType(u8, u8, u8)                                                                              |
+| 4C     | SetFogColor(u8, u8, u8)                                                                               |
+| 4D     | CheckPlayerItemBlock(u8, u8, u8)                                                                      |
+| 4E     | SetEffectBlood(u8, u8, u8, u16, u16, u16, u8, u8, u16)                                                |
+| 4F     | SetCyoutenHenkei(u8, u8, u8, u8, u8)                                                                  |
+| 50     | SetObjectMotion(u8)                                                                                   |
+| 51     | SetObjectEnemyLink(u8, u8, u8, u8, u8, u16, u16, u16)                                                 |
+| 52     | SetObjectItemLink(u8, u8, u8, u8, u8, u16, u16, u16)                                                  |
+| 53     | SetEnemyItemLink(u8, u8, u8, u8, u8, u16, u16, u16)                                                   |
+| 54     | SetEnemyEnemyLink(u8, u8, u8, u8, u8, u16, u16, u16)                                                  |
+| 55     | StartCyoutenHenkei(u8)                                                                                |
+| 56     | SetEffectBloodPool(u8, u8, u8, u16)                                                                   |
+| 57     | FixEventCameraPlayer(u8)                                                                              |
+| 58     | SetEffectBloodPool2(u8, u16, u16, u16, u8, u8, u8, u8, u16)                                           |
+| 59     | SetObjectObjectLink(u8, u8, u8, u8, u8, u16, u16, u16)                                                |
+| 5A     | SetCameraYure(u8, u16)                                                                                |
+| 5B     | SetInitCamera(u8)                                                                                     |
+| 5C     | SetMessageDisplayEnd(u8)                                                                              |
+| 5D     | CheckPad(u8, u8, u8, u8, u8)                                                                          |
+| 5E     | StartMovie(u8, u8, u8)                                                                                |
+| 5F     | StopMovie(u8)                                                                                         |
+| 60     | CheckTFrame(u8, u8, u8, u16)                                                                          |
+| 61     | ClearEventTimer(u8, u8, u8)                                                                           |
+| 62     | CheckCamera(u8, u8, u8, u8, u8)                                                                       |
+| 63     | SetRandom(u8)                                                                                         |
+| 6407   | PlayerControl07(f16, f16, f16)                                                                        |
+| 640D   | PlayerControl0D(u8, u8, u8, u8)                                                                       |
+| 6434   | PlayerControl34()                                                                                     |
+| 6480   | PlayerControl80()                                                                                     |
+| 6481   | PlayerControl81(u8, u8, u8, u8, u8, u8, u8, u8, u8, u8)                                               |
+| 6482   | PlayerControl82()                                                                                     |
+| 6483   | PlayerControl83(u8, u8)                                                                               |
+| 6489   | PlayerControl89(u8, u8)                                                                               |
+| 648B   | PlayerControl8B()                                                                                     |
+| 648E   | PlayerControl8E()                                                                                     |
+| 6496   | PlayerControl96(u8, u8)                                                                               |
+| 65     | LoadWork(u8, u8, u8)                                                                                  |
+| 6601   | ObjectControl01(u8)                                                                                   |
+| 6608   | ObjectControl08()                                                                                     |
+| 660C   | ObjectControl0C(u8, u8, u8, u8)                                                                       |
+| 6614   | ObjectControl14(u8, u8)                                                                               |
+| 6780   | SubControl80()                                                                                        |
+| 678F   | SubControl8F(u8, u8, u8, u8)                                                                          |
+| 6793   | SubControl93(u8, u8, u8, u8, u8, u8)                                                                  |
+| 6794   | SubControl94(u8, u8)                                                                                  |
+| 68     | LoadWork2(u8, u8, u8, u8)                                                                             |
+| 6902   | CommonControl02(u8)                                                                                   |
+| 6903   | CommonControl03(u8)                                                                                   |
+| 6904   | CommonControl04(u8)                                                                                   |
+| 6905   | CommonControl05(u8, u8, u8, u8)                                                                       |
+| 6906   | CommonControl06(u8, u8, u8, u8)                                                                       |
+| 6907   | CommonControl07(f16, f16, f16)                                                                        |
+| 6908   | CommonControl08(u8, u8, u16, u16)                                                                     |
+| 6909   | CommonControl09(u8, u8, u8, u8)                                                                       |
+| 690A   | CommonControl0A(u8, u8, u8, u8)                                                                       |
+| 690B   | CommonControl0B(u8, u8, u8, u8)                                                                       |
+| 690C   | CommonControl0C(u8, u8, u8, u8)                                                                       |
+| 690D   | CommonControl0D(u8, u8, u8, u8)                                                                       |
+| 690F   | CommonControl0F(u8, u8, u8, u8)                                                                       |
+| 6910   | CommonControl10(u8, u8, u8, u8)                                                                       |
+| 6911   | CommonControl11(u8, u8)                                                                               |
+| 6912   | CommonControl12(u8, u8)                                                                               |
+| 6913   | CommonControl13(u8, u8)                                                                               |
+| 6917   | CommonControl17(u8, u8)                                                                               |
+| 6918   | CommonControl18(u8, u8, u8, u8, u8, u8)                                                               |
+| 6919   | CommonControl19(u8, u8, u8, u8, u8, u8)                                                               |
+| 691A   | CommonControl1A(u8, u8, f16, f16, f16)                                                                |
+| 691B   | CommonControl1B(u8, u8, f16, f16)                                                                     |
+| 691C   | CommonControl1C(u8, u8, u8, u8)                                                                       |
+| 691D   | CommonControl1D(u8)                                                                                   |
+| 691E   | CommonControl1E(u8)                                                                                   |
+| 691F   | CommonControl1F(u8)                                                                                   |
+| 6920   | CommonControl20(u8)                                                                                   |
+| 6921   | CommonControl21(u8)                                                                                   |
+| 6922   | CommonControl22(u8, u8, u8, u8, u8, u8, u8, u8)                                                       |
+| 6924   | CommonControl24()                                                                                     |
+| 6926   | CommonControl26(u8, u8, f16, f16, f16)                                                                |
+| 6928   | CommonControl28(u8, u8)                                                                               |
+| 6929   | CommonControl29(u8, u8)                                                                               |
+| 692A   | CommonControl2A(u8, u8)                                                                               |
+| 692C   | CommonControl2C(u8, u8, u8)                                                                           |
+| 692E   | CommonControl2E(u8, u8)                                                                               |
+| 692F   | CommonControl2F()                                                                                     |
+| 6930   | CommonControl30(u8, u8)                                                                               |
+| 6931   | CommonControl31(u8, u8)                                                                               |
+| 6932   | CommonControl32(u8, u8)                                                                               |
+| 6933   | CommonControl33(u8, u8, u8, u8)                                                                       |
+| 6934   | CommonControl34(u8, u8)                                                                               |
+| 6935   | CommonControl35(u8, u8)                                                                               |
+| 6A     | SetEventSkip(u8)                                                                                      |
+| 6B     | DeleteYakkyou(u8)                                                                                     |
+| 6C     | SetObjectAlpha(u8, u8, u8, u8, u8, u8, u8)                                                            |
+| 6D     | SetCyodan(f32, u8, f16, f16, f16, u8, u8, f16, f16, f16, u8, u8)                                      |
+| 6E     | SetHEffect(u8, u8, u8, u16, u16, u16, u8, u8, u8, u8, u16, u16, u16, u16)                             |
+| 6F     | SetObjectPlayerLink(u8, u8, u8, u8, u8, u16, u16, u16)                                                |
+| 70     | EffectPush(u8)                                                                                        |
+| 71     | EffectPop(u8)                                                                                         |
+| 72     | AreaSearchObject(u8, u8, u8, u16, u16, u8, u8, u16, u16)                                              |
+| 73     | SetLightParameterC(u8, u16, u16, u16, u16, u16, u16, u16, u16, u16, u16)                              |
+| 74     | StartLightParameter(u8, u8, u8)                                                                       |
+| 75     | SetInitMidiSlot(u8, u8, u8)                                                                           |
+| 76     | Set3DSoundFlag(u8, u8, u8)                                                                            |
+| 77     | SetSoundVolume(u8, u8, u8, u8, u8)                                                                    |
+| 78     | SetLightParameter(u8, u8, u8, f16, f16, f16, f16, f16)                                                |
+| 79     | EnemySEOn(u8, u8, u8, u16)                                                                            |
+| 7A     | EnemySEOff(u8)                                                                                        |
+| 7B     | SetWallAtari2(u8, u16, u8, u8, u8, u8, u8, u8)                                                        |
+| 7C     | SetFloorAtari2(u8, u16, u8, u8, u8, u8, u8, u8)                                                       |
+| 7D     | SetEnemyPlayerMotionPos(u8, u8, u8)                                                                   |
+| 7E     | SetKageSw(u8, u8, u8)                                                                                 |
+| 7F     | SetSoundPan(u8, u8, u8, u8, u8)                                                                       |
+| 80     | SetInitPony(u8, u8, u8)                                                                               |
+| 81     | CheckSubMapBusy(u8)                                                                                   |
+| 82     | SetDebugLoopEx(u8, u16)                                                                               |
+| 83     | SoundFadeOut(u8)                                                                                      |
+| 84     | SetCyoutenHenkeiEx(u8, u8, u8, u8, u8, u16)                                                           |
+| 85     | StartCyoutenHenkeiEx(u8, u16)                                                                         |
+| 86     | SetEasySE(u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u16)                                    |
+| 87     | SetSoundFlagReset(u8)                                                                                 |
+| 88     | SetEffectUV(u8, u16, u16, u16, u16)                                                                   |
+| 89     | SetPlayerChange(u8)                                                                                   |
+| 8A     | CheckPlayerPoison(u8)                                                                                 |
+| 8B     | AddObjectSE(u8, u8, u8, u16, u16, u16, u16)                                                           |
+| 8C     | RandomTest(u8, u16, u16)                                                                              |
+| 8D     | SetEventCom(u8)                                                                                       |
+| 8E     | CheckZombieUpDeath(u8, u16)                                                                           |
+| 8F     | SetFacePause(u8, u8, u8)                                                                              |
+| 90     | SetFaceRe(u8)                                                                                         |
+| 91     | SetEffectMode(u8, u8, u8)                                                                             |
+| 92     | BGSEOff2(u8)                                                                                          |
+| 93     | BGMOff2(u8)                                                                                           |
+| 94     | BGSEOn2(u8, u16)                                                                                      |
+| 95     | BGMOn2(u8, u8, u8)                                                                                    |
+| 96     | SetEffectSensya(u8)                                                                                   |
+| 97     | SetEffectKokuen(u8, u16, u16, u16)                                                                    |
+| 98     | SetEffectSand(u8, u8, u8, u16, u16, u16, u8, u8)                                                      |
+| 99     | EnemyHPUp(u8, u8, u8)                                                                                 |
+| 9A     | FaceRep(u8, u8, u8)                                                                                   |
+| 9B     | CheckMovie(u8, u8, u8, u8, u8)                                                                        |
+| 9C     | SetItemMotion(u8)                                                                                     |
+| 9D     | SetObjectAspd(u8, u8, u8)                                                                             |
+| 9E     | SetVibrationFlag(u8)                                                                                  |
+| 9F     | StartVibration(u8)                                                                                    |
+| A0     | MapSystemOn(u8, u8, u8, u8, u8)                                                                       |
+| A1     | SetTrapDamage(u8, u8, u8, u8, u8)                                                                     |
+| A2     | SetEventLighterFire(u8, u8, u8)                                                                       |
+| A3     | SetPlayerItemLink(u8, u8, u8, u8, u8, u16, u16, u16)                                                  |
+| A4     | PlayerKaidanMotion()                                                                                  |
+| A5     | SetEnemyRender(u8, u8, u8)                                                                            |
+| A6     | BGMOnEx(u8, u8, u8)                                                                                   |
+| A7     | BGMOn2Ex(u8, u8, u8)                                                                                  |
+| A8     | SetFogParameterC(u8, u8, u8, u8, u8, u8, u8, u8, u8)                                                  |
+| A9     | StartFogParameter(u8)                                                                                 |
+| AA     | SetEffectUV2(u8, u16, u16, u16, u16)                                                                  |
+| AB     | SetBGColor(u8, u8, u8, u8, u8)                                                                        |
+| AC     | CheckMovieTime(u8, u16, u8, u8)                                                                       |
+| AD     | SetEffectType(u8, u8, u8)                                                                             |
+| AE     | PlayerPoison2Cr(u8)                                                                                   |
+| AF     | PlayerHandChange(u8, u8, u8)                                                                          |
+| B0     | SetHEffect2(u8, u8, u8, f16, f16, f16, u8, u8, u8, u8, f16, f16, f16, u16)                            |
+| B1     | CheckObjectDpos(u8, u8, u8, u8, u8)                                                                   |
+| B2     | GetItem(u8, u8, u8)                                                                                   |
+| B3     | SetEtcAtariEnemyPos(u8, u8, u8, u8, u8, u8, u8)                                                       |
+| B4     | SetEtcAtariEventPos(u8, u8, u8)                                                                       |
+| B5     | LoadWorkEx(u8, u8, u8)                                                                                |
+| B6     | RoomSoundCase(u8)                                                                                     |
+| B7     | ItemPlayerToStorageBox(u8)                                                                            |
+| B8     | ItemStorageBoxToInventoryBox(u8)                                                                      |
+| B9     | SetGridPos(u8, u8, u8, u16, u16, u16)                                                                 |
+| BA     | SetGridPosMoveC(u8, u16, u16, u16, u8, u8, u16, u16, u16)                                             |
+| BB     | StartGridPosMove(u8)                                                                                  |
+| BC     | EventKill(u8)                                                                                         |
+| BD     | SetReTryPoint(u8)                                                                                     |
+| BE     | CheckPlayerDPos(u8)                                                                                   |
+| BF     | PlayerItemLostEx(u8, u8, u8, u8, u8)                                                                  |
+| C0     | SetCyodanEx(u8, u8, u8, u8, u8, u8, u8, u8, u8, u16, u16, u16, u8, u8, u16, u16, u16, u8, u8, u8, u8) |
+| C1     | SetArmsItem(u8)                                                                                       |
+| C2     | GetItemEx(u8, u8, u8, u16)                                                                            |
+| C3     | SetMatsumotoEffectSand(u8, u8, u8)                                                                    |
+| C4     | VoiceWait(u8, u16, u8, u8, u8, u8)                                                                    |
+| C5     | StartVoice(u8)                                                                                        |
+| C6     | SetGameOver(u8)                                                                                       |
+| C7     | PlayerItemChangeM(u8, u8, u8)                                                                         |
+| C8     | SetEffectBakuDrm(u8, u16, u16, u16)                                                                   |
+| C9     | SetPlayerItemTama(u8, u16, u16, u16)                                                                  |
+| CA     | ClearEventEffect(u8)                                                                                  |
+| CB     | SetEventTimer(u8)                                                                                     |
+| CC     | SetEnemyLookFlag(u8, u8, u8)                                                                          |
+| CD     | ReturnTitleEvent(u8)                                                                                  |
+| CE     | SetSyukanMode(u8)                                                                                     |
+| CF     | ExGameItemInit(u8)                                                                                    |
+| D0     | SetEnemyLifeM(u8)                                                                                     |
+| D1     | SetEffectSSize(u8, u8, u8, u16, u16, u16)                                                             |
+| D2     | SetEffectLinkOffset(u8, u8, u8, u16, u16, u16)                                                        |
+| D3     | CallRanking(u8)                                                                                       |
+| D4     | CallSysSE(u8, u16)                                                                                    |
+| D5     | Empty()                                                                                               |
+| D6     | Empty()                                                                                               |
+| D7     | Empty()                                                                                               |
+| D8     | Empty()                                                                                               |
+| D9     | Empty()                                                                                               |
+| DA     | Empty()                                                                                               |
+| DB     | Empty()                                                                                               |
+| DC     | Empty()                                                                                               |
+| DD     | Empty()                                                                                               |
+| DE     | Empty()                                                                                               |
+| DF     | Empty()                                                                                               |
+| E0     | Empty()                                                                                               |
+| E1     | Empty()                                                                                               |
+| E2     | Empty()                                                                                               |
+| E3     | Empty()                                                                                               |
+| E4     | Empty()                                                                                               |
+| E5     | Empty()                                                                                               |
+| E6     | Empty()                                                                                               |
+| E7     | Empty()                                                                                               |
+| E8     | Empty()                                                                                               |
+| E9     | Empty()                                                                                               |
+| EA     | Empty()                                                                                               |
+| EB     | Empty()                                                                                               |
+| EC     | Empty()                                                                                               |
+| ED     | Empty()                                                                                               |
+| EE     | Empty()                                                                                               |
+| EF     | Empty()                                                                                               |
+| F0     | Empty()                                                                                               |
+| F1     | Empty()                                                                                               |
+| F2     | Empty()                                                                                               |
+| F3     | EWhile2()                                                                                             |
+| F4     | ComNext()                                                                                             |
+| F5     | Empty()                                                                                               |
+| F6     | Empty()                                                                                               |
+| F7     | Empty()                                                                                               |
+| F8     | Sleep(u8, u16)                                                                                        |
+| F9     | Sleeping(u8, u8)                                                                                      |
+| FA     | For(u8, u16)                                                                                          |
+| FB     | Next(u8)                                                                                              |
+| FC     | While(u8)                                                                                             |
+| FD     | EWhile()                                                                                              |
+| FE     | EventNext()                                                                                           |
+| FF     | EventEnd(u8)                                                                                          |
+| FC     | While(u8)                                                                                             |
+| FD     | EWhile()                                                                                              |
+| FE     | EventNext()                                                                                           |
+| FF     | EventEnd(u8)                                                                                          |
 
 ## Links
 
