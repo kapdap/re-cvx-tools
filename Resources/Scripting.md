@@ -5,8 +5,6 @@
 USA PS2 release, the Scenario Jump Table is found at 0x00304FA0.<br />
 Opcodes are read by the Scenario Check function located at 0x00171750.
 
- Outer pipes Cell padding
-
 | OpCode | Function                                                                        | Bytes |
 | ------ | ------------------------------------------------------------------------------- | ----- |
 | 00     | End(u8)                                                                         | 2     |
