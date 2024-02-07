@@ -321,10 +321,6 @@ Opcodes are read by the Scenario Check function located at 0x00171750.
 | FD     | EWhile()                                                                        | 1     |
 | FE     | EventNext()                                                                     | 1     |
 | FF     | EventEnd(u8)                                                                    | 2     |
-| FC     | While(u8)                                                                       | 2     |
-| FD     | EWhile()                                                                        | 1     |
-| FE     | EventNext()                                                                     | 1     |
-| FF     | EventEnd(u8)                                                                    | 2     |
 
 ## Links
 
