@@ -26,8 +26,10 @@ OpCodes:
       Size: 8
     - Type: ushort
       Size: 16
-    - Type: ushort
-      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   05:
     Name: Set
     Arguments:
@@ -181,6 +183,8 @@ OpCodes:
       Size: 8
     - Type: ushort
       Size: 16
+    - Type: byte
+      Size: 8
     - Type: byte
       Size: 8
   18:
@@ -554,11 +558,11 @@ OpCodes:
     Arguments:
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   41:
     Name: SetPlayerStopLookG
@@ -586,11 +590,11 @@ OpCodes:
   44:
     Name: SetEffectAmb
     Arguments:
-    - Type: byte
+    - Type: float
       Size: 8
-    - Type: byte
+    - Type: float
       Size: 8
-    - Type: byte
+    - Type: float
       Size: 8
     - Type: byte
       Size: 8
@@ -702,6 +706,10 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   4D:
     Name: CheckPlayerItemBlock
     Arguments:
@@ -720,18 +728,20 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
     - Type: byte
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
-      Size: 16
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   4F:
     Name: SetCyoutenHenkei
     Arguments:
@@ -763,11 +773,11 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   52:
     Name: SetObjectItemLink
@@ -782,11 +792,11 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   53:
     Name: SetEnemyItemLink
@@ -801,11 +811,11 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   54:
     Name: SetEnemyEnemyLink
@@ -820,11 +830,11 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   55:
     Name: StartCyoutenHenkei
@@ -852,11 +862,11 @@ OpCodes:
     Arguments:
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
     - Type: byte
       Size: 8
@@ -881,18 +891,18 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   5A:
     Name: SetCameraYure
     Arguments:
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
   5B:
     Name: SetInitCamera
@@ -945,10 +955,6 @@ OpCodes:
   61:
     Name: ClearEventTimer
     Arguments:
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
     - Type: byte
       Size: 8
   62:
@@ -1054,9 +1060,6 @@ OpCodes:
       Size: 8
   6601:
     Name: ObjectControl01
-    Arguments:
-    - Type: byte
-      Size: 8
   6608:
     Name: ObjectControl08
   660C:
@@ -1115,6 +1118,8 @@ OpCodes:
   68:
     Name: LoadWork2
     Arguments:
+    - Type: byte
+      Size: 8
     - Type: byte
       Size: 8
     - Type: byte
@@ -1513,13 +1518,13 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: byte
+    - Type: sbyte
       Size: 8
-    - Type: byte
+    - Type: sbyte
       Size: 8
-    - Type: byte
+    - Type: float
       Size: 8
-    - Type: byte
+    - Type: float
       Size: 8
   6D:
     Name: SetCyodan
@@ -1557,11 +1562,11 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
     - Type: byte
       Size: 8
@@ -1571,11 +1576,11 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
     - Type: ushort
       Size: 16
@@ -1592,11 +1597,11 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   70:
     Name: EffectPush
@@ -1617,42 +1622,42 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
     - Type: byte
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   73:
     Name: SetLightParameterC
     Arguments:
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   74:
     Name: StartLightParameter
@@ -1837,14 +1842,14 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
   85:
     Name: StartCyoutenHenkeiEx
     Arguments:
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
   86:
     Name: SetEasySE
@@ -1875,7 +1880,7 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: short
       Size: 16
   87:
     Name: SetSoundFlagReset
@@ -1887,16 +1892,16 @@ OpCodes:
     Arguments:
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   89:
-    Name: SetPlayerChange
+    Name: SetChangePlayer
     Arguments:
     - Type: byte
       Size: 8
@@ -1914,11 +1919,11 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
     - Type: ushort
       Size: 16
@@ -2002,11 +2007,11 @@ OpCodes:
     Arguments:
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   98:
     Name: SetEffectSand
@@ -2017,11 +2022,11 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
     - Type: byte
       Size: 8
@@ -2100,14 +2105,6 @@ OpCodes:
     Arguments:
     - Type: byte
       Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
   A2:
     Name: SetEventLighterFire
     Arguments:
@@ -2130,14 +2127,21 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   A4:
     Name: PlayerKaidanMotion
+    Arguments:
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   A5:
     Name: SetEnemyRender
     Arguments:
@@ -2168,21 +2172,21 @@ OpCodes:
   A8:
     Name: SetFogParameterC
     Arguments:
-    - Type: byte
+    - Type: float
       Size: 8
-    - Type: byte
+    - Type: float
       Size: 8
-    - Type: byte
+    - Type: float
       Size: 8
-    - Type: byte
+    - Type: float
       Size: 8
-    - Type: byte
+    - Type: float
       Size: 8
-    - Type: byte
+    - Type: float
       Size: 8
-    - Type: byte
+    - Type: float
       Size: 8
-    - Type: byte
+    - Type: float
       Size: 8
     - Type: byte
       Size: 8
@@ -2196,25 +2200,19 @@ OpCodes:
     Arguments:
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   AB:
     Name: SetBGColor
     Arguments:
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
+    - Type: uint
+      Size: 32
     - Type: byte
       Size: 8
   AC:
@@ -2313,7 +2311,7 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: byte
+    - Type: sbyte
       Size: 8
     - Type: byte
       Size: 8
@@ -2363,32 +2361,32 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   BA:
     Name: SetGridPosMoveC
     Arguments:
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
     - Type: byte
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   BB:
     Name: StartGridPosMove
@@ -2410,6 +2408,14 @@ OpCodes:
     Arguments:
     - Type: byte
       Size: 8
+    - Type: byte
+      Size: 8
+    - Type: sbyte
+      Size: 8
+    - Type: byte
+      Size: 8
+    - Type: byte
+      Size: 8
   BF:
     Name: PlayerItemLostEx
     Arguments:
@@ -2419,46 +2425,30 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
   C0:
     Name: SetCyodanEx
     Arguments:
+    - Type: int
+      Size: 32
+    - Type: int
+      Size: 32
     - Type: byte
       Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
     - Type: byte
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
     - Type: byte
       Size: 8
@@ -2532,21 +2522,17 @@ OpCodes:
     Arguments:
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   C9:
     Name: SetPlayerItemTama
     Arguments:
     - Type: byte
       Size: 8
-    - Type: ushort
-      Size: 16
-    - Type: ushort
-      Size: 16
     - Type: ushort
       Size: 16
   CA:
@@ -2579,7 +2565,7 @@ OpCodes:
     - Type: byte
       Size: 8
   CF:
-    Name: ExGameItemInit
+    Name: InitGameItemEx
     Arguments:
     - Type: byte
       Size: 8
@@ -2588,6 +2574,8 @@ OpCodes:
     Arguments:
     - Type: byte
       Size: 8
+    - Type: ushort
+      Size: 16
   D1:
     Name: SetEffectSSize
     Arguments:
@@ -2597,11 +2585,11 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   D2:
     Name: SetEffectLinkOffset
@@ -2612,11 +2600,11 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
-    - Type: ushort
+    - Type: float
       Size: 16
   D3:
     Name: CallRanking
