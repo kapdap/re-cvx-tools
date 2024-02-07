@@ -2554,7 +2554,7 @@ OpCodes:
     - Type: byte
       Size: 8
   CE:
-    Name: SetSyukanMode
+    Name: SetCameraMode
     Arguments:
     - Type: byte
       Size: 8
