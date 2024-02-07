@@ -115,9 +115,14 @@ namespace RDXplorer.Formats.RDX
             for (int i = 0; i < document.Script.Count; i++)
             {
                 ScriptModel model = document.Script[i];
+                Scripting scripting = new();
+
                 fs.Seek(model.Pointer.Value, SeekOrigin.Begin);
-                WriteFile(br.ReadBytes((int)model.Size),
-                    new(Path.Combine(folder.FullName, $"scd_{i}.bin")));
+                byte[] data = br.ReadBytes((int)model.Size);
+
+                WriteFile(data, new(Path.Combine(folder.FullName, $"scd_{i}.bin")));
+                WriteFile(scripting.Decode(data), new(Path.Combine(folder.FullName, $"scd_{i}_hex.txt")));
+                WriteFile(scripting.Decompile(data), new(Path.Combine(folder.FullName, $"scd_{i}_code.txt")));
             }
         }
 
@@ -151,6 +156,12 @@ namespace RDXplorer.Formats.RDX
                         new(Path.Combine(folder.FullName, $"tex_{i}_{j}{extension}")));
                 }
             }
+        }
+
+        private static void WriteFile(string data, FileInfo file)
+        {
+            CreateDirectory(file.Directory);
+            File.WriteAllText(file.FullName, data);
         }
 
         private static void WriteFile(Span<byte> data, FileInfo file)
