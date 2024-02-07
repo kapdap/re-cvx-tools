@@ -969,11 +969,6 @@ OpCodes:
     Arguments:
     - Type: byte
       Size: 8
-  64:
-    Name: PlayerControl
-    Arguments:
-    - Type: byte
-      Size: 8
   6407:
     Name: PlayerControl07
     Arguments:
@@ -1057,11 +1052,6 @@ OpCodes:
       Size: 8
     - Type: byte
       Size: 8
-  66:
-    Name: ObjectControl
-    Arguments:
-    - Type: byte
-      Size: 8
   6601:
     Name: ObjectControl01
     Arguments:
@@ -1085,11 +1075,6 @@ OpCodes:
     Arguments:
     - Type: byte
       Size: 8
-    - Type: byte
-      Size: 8
-  67:
-    Name: SubControl
-    Arguments:
     - Type: byte
       Size: 8
   6780:
@@ -1129,17 +1114,6 @@ OpCodes:
       Size: 8
   68:
     Name: LoadWork2
-    Arguments:
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-    - Type: byte
-      Size: 8
-  69:
-    Name: CommonControl
     Arguments:
     - Type: byte
       Size: 8
