@@ -119,6 +119,43 @@ namespace RECVXFlagTool
             }
         }
 
+        public static FileInfo SelectFile() =>
+            SelectFile((FileInfo)null);
+
+        public static FileInfo SelectFile(string path) =>
+            SelectFile(new FileInfo(path));
+
+        public static FileInfo SelectFile(FileInfo path)
+        {
+            OpenFileDialog dialog = new()
+            {
+                Multiselect = false,
+                CheckFileExists = true,
+                FileName = path != null && path.Exists ? path.FullName : string.Empty
+            };
+
+            return dialog.ShowDialog() == null || !File.Exists(dialog.FileName)
+                ? null
+                : new FileInfo(dialog.FileName);
+        }
+
+        public static FileInfo SaveFile() =>
+            SaveFile(null);
+
+        public static FileInfo SaveFile(FileInfo path)
+        {
+            SaveFileDialog dialog = new()
+            {
+                DefaultExt = "json",
+                Filter = "JSON Files | *.json",
+                FileName = path != null && path.Exists ? path.FullName : string.Empty
+            };
+
+            return dialog.ShowDialog() == null
+                ? null
+                : new FileInfo(dialog.FileName);
+        }
+
         public static void CloseApp()
         {
             IsClosing = true;
