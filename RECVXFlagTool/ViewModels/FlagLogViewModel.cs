@@ -24,8 +24,9 @@ namespace RECVXFlagTool.ViewModels
 
         private void SetPropertyChangedEvents(object sender, NotifyCollectionChangedEventArgs e)
         {
-            foreach (FlagModel flag in e.NewItems)
-                flag.PropertyChanged += PropertyChangedEvent;
+            if (e.NewItems != null)
+                foreach (FlagModel flag in e.NewItems)
+                    flag.PropertyChanged += PropertyChangedEvent;
         }
 
         private void SetPropertyChangedEvents(FlagCollection list)

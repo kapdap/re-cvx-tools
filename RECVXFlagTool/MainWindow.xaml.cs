@@ -17,12 +17,17 @@ namespace RECVXFlagTool
 
         private void FileLoadFlags_Click(object sender, RoutedEventArgs e)
         {
-            Program.LoadFlagNames();
+            Program.LoadFlagNames(Program.SelectFile());
         }
 
         private void FileSaveFlags_Click(object sender, RoutedEventArgs e)
         {
             Program.SaveFlagNames();
+        }
+
+        private void FileSaveFlagsAs_Click(object sender, RoutedEventArgs e)
+        {
+            Program.SaveFlagNames(Program.SaveFile());
         }
 
         private void FileExitMenu_Click(object sender, RoutedEventArgs e)

@@ -11,8 +11,10 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
-                <MenuItem x:Name="FileLoadFlags" Header="Load Flags" Click="FileLoadFlags_Click"/>
+                <MenuItem x:Name="FileLoadFlags" Header="Open Flags" Click="FileLoadFlags_Click"/>
+                <Separator/>
                 <MenuItem x:Name="FileSaveFlags" Header="Save Flags" Click="FileSaveFlags_Click"/>
+                <MenuItem x:Name="FileSaveFlagsAs" Header="Save Flags As" Click="FileSaveFlagsAs_Click"/>
                 <Separator/>
                 <MenuItem x:Name="FileExitMenu" Header="Exit" Click="FileExitMenu_Click"/>
             </MenuItem>

@@ -244,7 +244,7 @@ namespace RECVXFlagTool
 
         private static string ReadFlagName(FlagModel model)
         {
-            return Program.FlagNames.GetValueOrDefault($"{model.Flag}.{model.Offset}");
+            return Program.Models.AppViewModel.FlagNames.GetValueOrDefault($"{model.Flag}.{model.Offset}");
         }
 
         private bool disposedValue;

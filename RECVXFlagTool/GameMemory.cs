@@ -37,5 +37,15 @@ namespace RECVXFlagTool
             BindingOperations.EnableCollectionSynchronization(MapFlags, _mapFlagsLock);
             BindingOperations.EnableCollectionSynchronization(FlagLog, _flagLogLock);
         }
+
+        public void ClearFlags()
+        {
+            DocumentFlags.Clear();
+            KilledFlags.Clear();
+            EventFlags.Clear();
+            ItemFlags.Clear();
+            MapFlags.Clear();
+            FlagLog.Clear();
+        }
     }
 }
