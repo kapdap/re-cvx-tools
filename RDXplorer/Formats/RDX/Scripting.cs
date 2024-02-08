@@ -10,7 +10,7 @@ namespace RDXplorer.Formats.RDX
     public class Scripting
     {
         public Document Settings { get; private set; }
-        public FileInfo PathInfo { get; private set; } = new("Data\\scripting.yml");
+        public FileInfo PathInfo { get; private set; } = new(Path.Combine(AppContext.BaseDirectory, "Data\\scripting.yml"));
 
         public Scripting()
         {
