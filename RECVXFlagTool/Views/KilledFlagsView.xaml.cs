@@ -4,9 +4,7 @@ namespace RECVXFlagTool.Views
 {
     public partial class KilledFlagsView : View<MemoryViewModel>
     {
-        public KilledFlagsView()
-        {
+        public KilledFlagsView() => 
             InitializeComponent();
-        }
     }
 }

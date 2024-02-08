@@ -119,7 +119,7 @@ namespace RECVXFlagTool
             {
                 IntPtr pointer = IntPtr.Zero;
 
-                _dolphin = _dolphin ?? new Dolphin.Memory.Access.Dolphin(Process);
+                _dolphin ??= new Dolphin.Memory.Access.Dolphin(Process);
                 _dolphin.TryGetBaseAddress(out pointer);
 
                 VirtualMemoryPointer = pointer;
@@ -142,11 +142,10 @@ namespace RECVXFlagTool
 
                         VirtualMemoryPointer = (IntPtr)Process.ReadValue<long>(address);
 
-                        if (Process.ProcessName.ToLower() == PCSX264WX ||
-                            Process.ProcessName.ToLower() == PCSX264WXAV)
-                            ProductPointer = IntPtr.Add(VirtualMemoryPointer, 0x000155D0);
-                        else
-                            ProductPointer = IntPtr.Add(VirtualMemoryPointer, 0x00012610);
+                        ProductPointer = Process.ProcessName.ToLower() == PCSX264WX ||
+                            Process.ProcessName.ToLower() == PCSX264WXAV
+                            ? IntPtr.Add(VirtualMemoryPointer, 0x000155D0)
+                            : IntPtr.Add(VirtualMemoryPointer, 0x00012610);
 
                         NativeWrappers.FreeLibrary(process);
                     } catch { }

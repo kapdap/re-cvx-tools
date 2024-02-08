@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using YamlDotNet.Serialization;
 
@@ -12,10 +11,7 @@ namespace RDXplorer.Formats.RDX
         public Document Settings { get; private set; }
         public FileInfo PathInfo { get; private set; } = new(Path.Combine(AppContext.BaseDirectory, "Data\\scripting.yml"));
 
-        public Scripting()
-        {
-            Settings = ReadSettings();
-        }
+        public Scripting() => Settings = ReadSettings();
 
         public Scripting(FileInfo path)
         {
@@ -25,7 +21,7 @@ namespace RDXplorer.Formats.RDX
 
         public string Decode(byte[] data)
         {
-            StringBuilder builder = new StringBuilder();
+            StringBuilder builder = new();
 
             for (int i = 0; i < data.Length; i++)
             {
@@ -65,14 +61,14 @@ namespace RDXplorer.Formats.RDX
 
         public string Decompile(byte[] data)
         {
-            StringBuilder builder = new StringBuilder();
+            StringBuilder builder = new();
 
             Stack<int> tabStack = new();
             int tabSize = 0;
 
             for (int i = 0; i < data.Length; i++)
             {
-                StringBuilder args = new StringBuilder();
+                StringBuilder args = new();
                 OpCode opcode;
                 byte[] bytes = null;
                 string key = string.Empty;
@@ -113,7 +109,7 @@ namespace RDXplorer.Formats.RDX
                         case "float":
                             if (bytes.Length == 4)
                                 args.Append(BitConverter.ToSingle(bytes).ToString("0.########"));
-                            else if(bytes.Length == 2)
+                            else if (bytes.Length == 2)
                                 args.Append(BitConverter.ToHalf(bytes).ToString("0.########"));
                             else if (bytes.Length == 1)
                                 args.Append(Convert.ToDecimal(bytes[0]).ToString("0.########"));
@@ -156,8 +152,8 @@ namespace RDXplorer.Formats.RDX
                 if (args.Length > 2)
                     args.Remove(args.Length - 2, 2);
 
-                if ((opcode.Name == "If" || 
-                    opcode.Name == "Else" || 
+                if ((opcode.Name == "If" ||
+                    opcode.Name == "Else" ||
                     opcode.Name == "While") &&
                     bytes != null && bytes.Length > 0)
                 {

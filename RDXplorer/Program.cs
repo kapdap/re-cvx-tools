@@ -41,8 +41,8 @@ namespace RDXplorer.Views
                 FileName = path != null && path.Exists ? path.FullName : string.Empty
             };
 
-            return dialog.ShowDialog() == null || !File.Exists(dialog.FileName) 
-                ? null 
+            return dialog.ShowDialog() == null || !File.Exists(dialog.FileName)
+                ? null
                 : new FileInfo(dialog.FileName);
         }
 

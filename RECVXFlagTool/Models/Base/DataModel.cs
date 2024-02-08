@@ -48,20 +48,14 @@ namespace RECVXFlagTool.Models.Base
 
         public DataModel() { }
 
-        public DataModel(bool isPointer)
-        {
+        public DataModel(bool isPointer) => 
             IsPointer = isPointer;
-        }
 
-        public void SetValue(T value)
-        {
+        public void SetValue(T value) => 
             SetValue(value, IntPtr.Zero);
-        }
 
-        public void SetValue(Process process, IntPtr pointer, bool swap = false, T default_ = default)
-        {
+        public void SetValue(Process process, IntPtr pointer, bool swap = false, T default_ = default) => 
             SetValue(process.ReadValue(pointer, swap, default_), pointer);
-        }
 
         public void SetValue(T value, IntPtr pointer)
         {

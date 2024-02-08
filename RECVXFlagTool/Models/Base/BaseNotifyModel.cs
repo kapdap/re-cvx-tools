@@ -8,10 +8,8 @@ namespace RECVXFlagTool.Models.Base
     public class BaseNotifyModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
+        protected void OnPropertyChanged([CallerMemberName] string name = null) => 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
 
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string name = null, params string[] properties)
         {
@@ -44,9 +42,7 @@ namespace RECVXFlagTool.Models.Base
                 OnPropertyChanged(property);
         }
 
-        public void SendUpdateEntryEvent()
-        {
+        public void SendUpdateEntryEvent() => 
             OnPropertyChanged("UpdateEntry");
-        }
     }
 }

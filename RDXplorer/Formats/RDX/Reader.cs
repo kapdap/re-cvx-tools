@@ -876,10 +876,7 @@ namespace RDXplorer.Formats.RDX
         {
             string key = Utilities.SwapBytes(value).ToString("X4");
 
-            if (CharacterMap.ContainsKey(key))
-                 return CharacterMap[key];
-
-            return $"[0x{key}]";
+            return CharacterMap.ContainsKey(key) ? CharacterMap[key] : $"[0x{key}]";
         }
     }
 }

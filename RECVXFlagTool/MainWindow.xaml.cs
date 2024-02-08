@@ -15,39 +15,25 @@ namespace RECVXFlagTool
             Program.Initialize(this);
         }
 
-        private void FileLoadFlags_Click(object sender, RoutedEventArgs e)
-        {
+        private void FileLoadFlags_Click(object sender, RoutedEventArgs e) => 
             Program.LoadFlagNames(Program.SelectFile());
-        }
 
-        private void FileSaveFlags_Click(object sender, RoutedEventArgs e)
-        {
+        private void FileSaveFlags_Click(object sender, RoutedEventArgs e) => 
             Program.SaveFlagNames();
-        }
 
-        private void FileSaveFlagsAs_Click(object sender, RoutedEventArgs e)
-        {
+        private void FileSaveFlagsAs_Click(object sender, RoutedEventArgs e) => 
             Program.SaveFlagNames(Program.SaveFile());
-        }
 
-        private void FileExitMenu_Click(object sender, RoutedEventArgs e)
-        {
+        private void FileExitMenu_Click(object sender, RoutedEventArgs e) => 
             Close();
-        }
 
-        private void ClearLogMenu_Click(object sender, RoutedEventArgs e)
-        {
+        private void ClearLogMenu_Click(object sender, RoutedEventArgs e) => 
             Program.MemoryScanner.Memory.FlagLog.Clear();
-        }
 
-        private void HelpAboutMenu_Click(object sender, RoutedEventArgs e)
-        {
+        private void HelpAboutMenu_Click(object sender, RoutedEventArgs e) => 
             Program.Windows.About.Show();
-        }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
+        private void Window_Closing(object sender, CancelEventArgs e) => 
             Program.CloseApp();
-        }
     }
 }

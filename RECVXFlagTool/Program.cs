@@ -202,10 +202,8 @@ namespace RECVXFlagTool
             public static MainWindow Main { get; set; }
             public static AboutWindow About { get; set; } = new AboutWindow();
 
-            public static void CloseAll()
-            {
+            public static void CloseAll() => 
                 About?.Close();
-            }
         }
 
         public static class Models
@@ -213,9 +211,7 @@ namespace RECVXFlagTool
             public static AppViewModel AppViewModel { get; } = new AppViewModel();
         }
 
-        public static void Dispose()
-        {
+        public static void Dispose() => 
             MemoryScanner?.Dispose();
-        }
     }
 }

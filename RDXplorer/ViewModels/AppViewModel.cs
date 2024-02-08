@@ -2,7 +2,6 @@
 using RDXplorer.Models.RDX;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace RDXplorer.ViewModels
 {
