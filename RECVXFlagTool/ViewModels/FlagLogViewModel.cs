@@ -55,7 +55,7 @@ namespace RECVXFlagTool.ViewModels
                     log.Flag.Name = $"{log.Flag.Name} - ";
             }
 
-            Memory.FlagLog.Add(log);
+            Memory.FlagLog.Insert(0, log);
         }
     }
 }
