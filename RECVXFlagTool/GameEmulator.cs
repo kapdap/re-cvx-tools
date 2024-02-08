@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RECVXFlagTool.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
@@ -7,13 +8,20 @@ namespace RECVXFlagTool
 {
     public class GameEmulator : IDisposable
     {
+        // TODO: Add Retroarch support
         public const string RPCS3 = "rpcs3";
-        public const string PCSX2 = "pcsx2";
         public const string Dolphin = "dolphin";
         public const string Flycast = "flycast";
         public const string Redream = "redream";
         public const string NullDC = "nulldc";
         public const string Demul = "demul";
+
+        public const string PCSX2 = "pcsx2";
+        public const string PCSX2QT = "pcsx2-qt";
+        public const string PCSX264QT = "pcsx2-qtx64";
+        public const string PCSX264QTAV = "pcsx2-qtx64-avx2";
+        public const string PCSX264WX = "pcsx2x64";
+        public const string PCSX264WXAV = "pcsx2x64-avx2";
 
         private Dolphin.Memory.Access.Dolphin _dolphin;
 
@@ -56,11 +64,17 @@ namespace RECVXFlagTool
                 ProductLength = 6;
                 IsBigEndian = true;
             }
-            else if (Process.ProcessName.ToLower() == PCSX2)
+            else if (Process.ProcessName.ToLower().StartsWith(PCSX2))
             {
-                VirtualMemoryPointer = new IntPtr(0x20000000);
-                ProductPointer = IntPtr.Add(VirtualMemoryPointer, 0x00015B90);
+                UpdateVirtualMemoryPointer();
                 ProductLength = 11;
+                IsBigEndian = false;
+            }
+            else if (Process.ProcessName.ToLower() == Demul)
+            {
+                VirtualMemoryPointer = new IntPtr(0x2B000000);
+                ProductPointer = IntPtr.Add(VirtualMemoryPointer, 0x01008040);
+                ProductLength = 7;
                 IsBigEndian = false;
             }
             // TODO: Find a consistant way to get Flycast/Redream virtual memory pointers
@@ -85,17 +99,9 @@ namespace RECVXFlagTool
                 ProductLength = 7;
                 IsBigEndian = false;
             }*/
-            else if (Process.ProcessName.ToLower() == Demul)
-            {
-                VirtualMemoryPointer = new IntPtr(0x2B000000);
-                ProductPointer = IntPtr.Add(VirtualMemoryPointer, 0x01008040);
-                ProductLength = 7;
-                IsBigEndian = false;
-            }
             else // RPCS3
             {
-                VirtualMemoryPointer = new IntPtr(0x300000000);
-                ProductPointer = IntPtr.Add(VirtualMemoryPointer, 0x20010251);
+                UpdateVirtualMemoryPointer();
                 ProductLength = 9;
                 IsBigEndian = true;
             }
@@ -111,11 +117,55 @@ namespace RECVXFlagTool
 
             if (Process.ProcessName.ToLower() == Dolphin)
             {
-                _dolphin ??= new Dolphin.Memory.Access.Dolphin(Process);
-                _dolphin.TryGetBaseAddress(out IntPtr pointer);
+                IntPtr pointer = IntPtr.Zero;
+
+                _dolphin = _dolphin ?? new Dolphin.Memory.Access.Dolphin(Process);
+                _dolphin.TryGetBaseAddress(out pointer);
 
                 VirtualMemoryPointer = pointer;
                 ProductPointer = IntPtr.Add(VirtualMemoryPointer, 0x0);
+            }
+            else if (Process.ProcessName.ToLower().StartsWith(PCSX2))
+            {
+                if (Process.ProcessName.ToLower() == PCSX2) // PCSX2 1.6 and earlier
+                {
+                    VirtualMemoryPointer = new IntPtr(0x20000000);
+                    ProductPointer = IntPtr.Add(VirtualMemoryPointer, 0x00015B90);
+                }
+                else // PCSX2 1.7+
+                {
+                    try
+                    {
+                        // https://forums.pcsx2.net/Thread-PCSX2-1-7-Cheat-Engine-Script-Compatibility
+                        IntPtr process = NativeWrappers.LoadLibrary(Process.MainModule.FileName);
+                        IntPtr address = NativeWrappers.GetProcAddress(process, "EEmem");
+
+                        VirtualMemoryPointer = (IntPtr)Process.ReadValue<long>(address);
+
+                        if (Process.ProcessName.ToLower() == PCSX264WX ||
+                            Process.ProcessName.ToLower() == PCSX264WXAV)
+                            ProductPointer = IntPtr.Add(VirtualMemoryPointer, 0x000155D0);
+                        else
+                            ProductPointer = IntPtr.Add(VirtualMemoryPointer, 0x00012610);
+
+                        NativeWrappers.FreeLibrary(process);
+                    } catch { }
+                }
+            }
+            else // RPCS3
+            {
+                // TODO: Replace this with the code below.
+                // TODO: Recent versions of RPCS3 use dynamic memory pointer.
+                VirtualMemoryPointer = new IntPtr(0x300000000);
+                ProductPointer = IntPtr.Add(VirtualMemoryPointer, 0x20010251);
+
+                // TODO: Import Reloaded.Memory library
+                // TODO: Update Dolphin.Memory library to prevent conflict with latest Reloaded.Memory
+                /*Scanner scanner = new Scanner(Process, Process.MainModule);
+                PatternScanResult result = scanner.FindPattern("50 53 33 5F 47 41 4D 45 00 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00 0F 00 00 00 00 00 00 00 30 30");
+
+                IntPtr pointer = IntPtr.Add(Process.MainModule.BaseAddress, result.Offset);
+                ProductPointer = result.Offset != 0 ? IntPtr.Add(pointer, -0xE0) : IntPtr.Zero;*/
             }
         }
 
