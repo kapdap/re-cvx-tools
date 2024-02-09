@@ -2,11 +2,11 @@
 
 ## Table
 
-Normal, Easy, Very Easy and Battle columns represent the default item pickup quantity for that difficulty.
+Normal, Easy, Very Easy and Battle columns represent the default item pickup quantity for that difficulty.<br>
 The item quantity table starts at 0x0035BCC0 ("getbulletmax") in the PS2 USA release.
 
 | ID   | Name                                 | Normal | Easy | Very Easy | Battle    |
-| ---- | ------------------------------------ | ------ | ---- | --------- | --------- |
+| ---- | ------------------------------------ | -----: | ---: | --------: | --------: |
 | 0x00 | Nothing                              | 0      | 0    | 0         | 0         |
 | 0x01 | Rocket Launcher (Bazooka)            | 1      | 1    | 1         | 1         |
 | 0x02 | Assault Rifle (AK-47)                | 300    | 300  | 300       | 300       |
