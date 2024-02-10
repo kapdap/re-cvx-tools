@@ -34,7 +34,7 @@ namespace RDXplorer.Formats.RDX
                 fs.Seek(header.Tables.Value, SeekOrigin.Begin);
                 header.Camera.SetValue(fs.Position, br.ReadBytes(4));
                 header.Lighting.SetValue(fs.Position, br.ReadBytes(4));
-                header.Actor.SetValue(fs.Position, br.ReadBytes(4));
+                header.Enemy.SetValue(fs.Position, br.ReadBytes(4));
                 header.Object.SetValue(fs.Position, br.ReadBytes(4));
                 header.Item.SetValue(fs.Position, br.ReadBytes(4));
                 header.Effect.SetValue(fs.Position, br.ReadBytes(4));
@@ -52,7 +52,7 @@ namespace RDXplorer.Formats.RDX
                 fs.Seek(256, SeekOrigin.Begin);
                 header.Camera.Count.SetValue(fs.Position, br.ReadBytes(4));
                 header.Lighting.Count.SetValue(fs.Position, br.ReadBytes(4));
-                header.Actor.Count.SetValue(fs.Position, br.ReadBytes(4));
+                header.Enemy.Count.SetValue(fs.Position, br.ReadBytes(4));
                 header.Object.Count.SetValue(fs.Position, br.ReadBytes(4));
                 header.Item.Count.SetValue(fs.Position, br.ReadBytes(4));
                 header.Effect.Count.SetValue(fs.Position, br.ReadBytes(4));
@@ -449,18 +449,18 @@ namespace RDXplorer.Formats.RDX
             return list;
         }
 
-        public static List<ActorModel> ReadActor(FileInfo file, HeaderModel header)
+        public static List<EnemyModel> ReadEnemy(FileInfo file, HeaderModel header)
         {
-            List<ActorModel> list = new();
+            List<EnemyModel> list = new();
 
             using FileStream fs = file.OpenReadShared();
             using BinaryReader br = new(fs);
 
-            fs.Seek(header.Actor.Value, SeekOrigin.Begin);
+            fs.Seek(header.Enemy.Value, SeekOrigin.Begin);
 
-            for (int i = 0; i < header.Actor.Count.Value; i++)
+            for (int i = 0; i < header.Enemy.Count.Value; i++)
             {
-                ActorModel model = new();
+                EnemyModel model = new();
 
                 model.Position = (nint)fs.Position;
 

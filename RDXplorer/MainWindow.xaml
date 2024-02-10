@@ -72,8 +72,8 @@
                 <TabItem Header="Lighting">
                     <Frame Source="Views/LightingView.xaml"/>
                 </TabItem>
-                <TabItem Header="Actors">
-                    <Frame Source="Views/ActorView.xaml"/>
+                <TabItem Header="Enemies">
+                    <Frame Source="Views/EnemyView.xaml"/>
                 </TabItem>
                 <TabItem Header="Objects">
                     <Frame Source="Views/ObjectView.xaml"/>

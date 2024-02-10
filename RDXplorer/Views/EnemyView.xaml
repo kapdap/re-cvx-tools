@@ -1,6 +1,6 @@
 ﻿<local:View 
-      x:TypeArguments="models:ActorViewModel, models:ActorViewModelEntry"
-      x:Class="RDXplorer.Views.ActorView"
+      x:TypeArguments="models:EnemyViewModel, models:EnemyViewModelEntry"
+      x:Class="RDXplorer.Views.EnemyView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,9 +8,9 @@
       xmlns:local="clr-namespace:RDXplorer.Views"
       xmlns:models="clr-namespace:RDXplorer.ViewModels"
       mc:Ignorable="d" 
-      d:DataContext="{d:DesignInstance Type=models:ActorViewModel}"
+      d:DataContext="{d:DesignInstance Type=models:EnemyViewModel}"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Actors">
+      Title="Enemies">
     <DataGrid AutoGenerateColumns="False"
               BorderThickness="0"
               CanUserAddRows="False"

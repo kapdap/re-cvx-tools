@@ -36,7 +36,7 @@ namespace RDXplorer.Formats.RDX
             {
                 document.Header.Camera,
                 document.Header.Lighting,
-                document.Header.Actor,
+                document.Header.Enemy,
                 document.Header.Object,
                 document.Header.Item,
                 document.Header.Effect,

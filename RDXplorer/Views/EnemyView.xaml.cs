@@ -5,9 +5,9 @@ using System.Windows.Input;
 
 namespace RDXplorer.Views
 {
-    public partial class ActorView : View<ActorViewModel, ActorViewModelEntry>
+    public partial class EnemyView : View<EnemyViewModel, EnemyViewModelEntry>
     {
-        public ActorView()
+        public EnemyView()
         {
             InitializeComponent();
             LoadModel();
@@ -16,6 +16,6 @@ namespace RDXplorer.Views
         }
 
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e) =>
-            OpenHexEditorFromDataGrid<ActorViewModelEntry, ActorModel>((DataGrid)sender);
+            OpenHexEditorFromDataGrid<EnemyViewModelEntry, EnemyModel>((DataGrid)sender);
     }
 }

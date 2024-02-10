@@ -4,7 +4,7 @@ using RDXplorer.Models.RDX;
 
 namespace RDXplorer.ViewModels
 {
-    public class ActorViewModel : PageViewModel<ActorViewModelEntry>
+    public class EnemyViewModel : PageViewModel<EnemyViewModelEntry>
     {
         public override void LoadData()
         {
@@ -13,17 +13,17 @@ namespace RDXplorer.ViewModels
             if (AppViewModel.RDXDocument == null)
                 return;
 
-            foreach (ActorModel item in AppViewModel.RDXDocument.Actor)
+            foreach (EnemyModel item in AppViewModel.RDXDocument.Enemy)
                 Entries.Add(new(item));
         }
     }
 
-    public class ActorViewModelEntry : PageViewModelEntry<ActorModel>
+    public class EnemyViewModelEntry : PageViewModelEntry<EnemyModel>
     {
         private string _name;
         public string Name => _name;
 
-        public ActorViewModelEntry(ActorModel model) : base(model) =>
-            Lookups.Actors.TryGetValue((ActorEnumeration)model.Fields.Type.Value, out _name);
+        public EnemyViewModelEntry(EnemyModel model) : base(model) =>
+            Lookups.Enemys.TryGetValue((EnemyEnumeration)model.Fields.Type.Value, out _name);
     }
 }

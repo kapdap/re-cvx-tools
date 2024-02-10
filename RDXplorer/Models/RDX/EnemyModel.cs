@@ -1,8 +1,8 @@
 ﻿namespace RDXplorer.Models.RDX
 {
-    public class ActorModel : DataModel<ActorModelFields> { }
+    public class EnemyModel : DataModel<EnemyModelFields> { }
 
-    public class ActorModelFields : IFieldsModel
+    public class EnemyModelFields : IFieldsModel
     {
         public DataEntryModel<int> Header { get; set; } = new();
         public DataEntryModel<short> Type { get; set; } = new();

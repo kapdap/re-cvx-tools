@@ -11,7 +11,7 @@
         public HeaderEntryModel Texture { get; set; } = new("Texture");
         public HeaderEntryModel Camera { get; set; } = new("Camera");
         public HeaderEntryModel Lighting { get; set; } = new("Lighting");
-        public HeaderEntryModel Actor { get; set; } = new("Actor");
+        public HeaderEntryModel Enemy { get; set; } = new("Enemy");
         public HeaderEntryModel Object { get; set; } = new("Object");
         public HeaderEntryModel Item { get; set; } = new("Item");
         public HeaderEntryModel Effect { get; set; } = new("Effect");

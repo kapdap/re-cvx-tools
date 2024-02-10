@@ -29,7 +29,7 @@ namespace RDXplorer.ViewModels
 
                 new(header.Camera),
                 new(header.Lighting),
-                new(header.Actor),
+                new(header.Enemy),
                 new(header.Object),
                 new(header.Item),
                 new(header.Effect),

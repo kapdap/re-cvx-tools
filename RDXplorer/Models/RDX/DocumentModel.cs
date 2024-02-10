@@ -98,17 +98,17 @@ namespace RDXplorer.Models.RDX
             private set => SetField(ref _lighting, value);
         }
 
-        private List<ActorModel> _actor;
-        public List<ActorModel> Actor
+        private List<EnemyModel> _enemy;
+        public List<EnemyModel> Enemy
         {
             get
             {
-                if (_actor == null)
-                    SetField(ref _actor, Reader.ReadActor(PathInfo, Header));
-                return _actor;
+                if (_enemy == null)
+                    SetField(ref _enemy, Reader.ReadEnemy(PathInfo, Header));
+                return _enemy;
             }
 
-            private set => SetField(ref _actor, value);
+            private set => SetField(ref _enemy, value);
         }
 
         private List<ObjectModel> _object;
