@@ -464,20 +464,17 @@ namespace RDXplorer.Formats.RDX
 
                 model.Position = (nint)fs.Position;
 
-                model.Fields.Unknown0.SetValue(fs.Position, br.ReadBytes(4));
+                model.Fields.Header.SetValue(fs.Position, br.ReadBytes(4));
                 model.Fields.Type.SetValue(fs.Position, br.ReadBytes(2));
-                model.Fields.Unknown1.SetValue(fs.Position, br.ReadBytes(2));
-                model.Fields.Unknown2.SetValue(fs.Position, br.ReadBytes(1));
-                model.Fields.Unknown3.SetValue(fs.Position, br.ReadBytes(1));
-                model.Fields.Slot.SetValue(fs.Position, br.ReadBytes(1));
-                model.Fields.Unknown4.SetValue(fs.Position, br.ReadBytes(1));
+                model.Fields.Effect.SetValue(fs.Position, br.ReadBytes(2));
+                model.Fields.Variant.SetValue(fs.Position, br.ReadBytes(2));
+                model.Fields.Index.SetValue(fs.Position, br.ReadBytes(2));
                 model.Fields.X.SetValue(fs.Position, br.ReadBytes(4));
                 model.Fields.Y.SetValue(fs.Position, br.ReadBytes(4));
                 model.Fields.Z.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Unknown5.SetValue(fs.Position, br.ReadBytes(4));
-                model.Fields.Rotation.SetValue(fs.Position, br.ReadBytes(2));
-                model.Fields.Unknown6.SetValue(fs.Position, br.ReadBytes(2));
-                model.Fields.Unknown7.SetValue(fs.Position, br.ReadBytes(4));
+                model.Fields.XRotation.SetValue(fs.Position, br.ReadBytes(4));
+                model.Fields.YRotation.SetValue(fs.Position, br.ReadBytes(4));
+                model.Fields.ZRotation.SetValue(fs.Position, br.ReadBytes(4));
 
                 list.Add(model);
             }
