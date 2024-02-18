@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="42">
+<CheatTable CheatEngineTableVersion="45">
   <CheatEntries>
     <CheatEntry>
       <ID>5252</ID>
@@ -50211,6 +50211,56 @@
           <Address>2C1F8D38</Address>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5258</ID>
+      <Description>"sys"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>2C1F8A34</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5259</ID>
+      <Description>"sys+173716"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>2C2230CA</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5261</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>2C017ACE</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5262</ID>
+      <Description>"No description"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>2C017AD0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5263</ID>
+      <Description>"No description"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>2C017AD2</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5264</ID>
+      <Description>"No description"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>2C017AD4</Address>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
