@@ -50229,6 +50229,7 @@
         <CheatEntry>
           <ID>5256</ID>
           <Description>"Doorskip2"</Description>
+          <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>2 Byte Big Endian</CustomType>
@@ -50242,6 +50243,33 @@
           <VariableType>Custom</VariableType>
           <CustomType>2 Byte Big Endian</CustomType>
           <Address>2C0180B2</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5264</ID>
+      <Description>"Debug Menu"</Description>
+      <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>5263</ID>
+          <Description>"Debug 1"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>4</ByteLength>
+          <Address>2C141220</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5262</ID>
+          <Description>"Debug 2"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>28</ByteLength>
+          <Address>2C132804</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>

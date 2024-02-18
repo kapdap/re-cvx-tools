@@ -1,0 +1,622 @@
+{
+    "watchList": [
+        {
+            "address": "804345D0",
+            "baseIndex": 1,
+            "label": "Room",
+            "typeIndex": 1,
+            "unsigned": true
+        },
+        {
+            "address": "804345BC",
+            "baseIndex": 0,
+            "label": "Timer",
+            "typeIndex": 2,
+            "unsigned": true
+        },
+        {
+            "address": "8044EE80",
+            "baseIndex": 0,
+            "label": "Countdown",
+            "typeIndex": 2,
+            "unsigned": true
+        },
+        {
+            "address": "80433DA0",
+            "baseIndex": 0,
+            "label": "Character",
+            "typeIndex": 0,
+            "unsigned": true
+        },
+        {
+            "address": "8043331C",
+            "baseIndex": 0,
+            "label": "Health",
+            "typeIndex": 2,
+            "unsigned": true
+        },
+        {
+            "groupEntries": [
+                {
+                    "address": "8042A3D9",
+                    "baseIndex": 0,
+                    "label": "Poison",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "8042A3D9",
+                    "baseIndex": 0,
+                    "label": "Gassed",
+                    "typeIndex": 0,
+                    "unsigned": true
+                }
+            ],
+            "groupName": "Status"
+        },
+        {
+            "groupEntries": [
+                {
+                    "address": "80433D9C",
+                    "baseIndex": 0,
+                    "label": "Saves",
+                    "typeIndex": 2,
+                    "unsigned": true
+                },
+                {
+                    "address": "804345C6",
+                    "baseIndex": 0,
+                    "label": "Retry",
+                    "typeIndex": 1,
+                    "unsigned": true
+                },
+                {
+                    "address": "804345C4",
+                    "baseIndex": 0,
+                    "label": "FAS",
+                    "typeIndex": 1,
+                    "unsigned": true
+                }
+            ],
+            "groupName": "Rank"
+        },
+        {
+            "address": "80433D69",
+            "baseIndex": 0,
+            "label": "Screen",
+            "typeIndex": 0,
+            "unsigned": true
+        },
+        {
+            "address": "80433DA8",
+            "baseIndex": 0,
+            "label": "Difficulty",
+            "typeIndex": 2,
+            "unsigned": true
+        },
+        {
+            "groupEntries": [
+                {
+                    "address": "80433F8C",
+                    "baseIndex": 0,
+                    "label": "Slot Equipped",
+                    "typeIndex": 2,
+                    "unsigned": true
+                },
+                {
+                    "groupEntries": [
+                        {
+                            "address": "80438572",
+                            "baseIndex": 0,
+                            "label": "Quantity",
+                            "typeIndex": 1,
+                            "unsigned": true
+                        },
+                        {
+                            "address": "80438570",
+                            "baseIndex": 3,
+                            "label": "Infinite",
+                            "typeIndex": 0,
+                            "unsigned": true
+                        },
+                        {
+                            "address": "80438570",
+                            "baseIndex": 3,
+                            "label": "Ammo",
+                            "typeIndex": 0,
+                            "unsigned": true
+                        }
+                    ],
+                    "groupName": "Slot 1"
+                },
+                {
+                    "groupEntries": [
+                        {
+                            "address": "80438576",
+                            "baseIndex": 0,
+                            "label": "Quantity",
+                            "typeIndex": 1,
+                            "unsigned": true
+                        },
+                        {
+                            "address": "80438574",
+                            "baseIndex": 3,
+                            "label": "Infinite",
+                            "typeIndex": 0,
+                            "unsigned": true
+                        },
+                        {
+                            "address": "80438574",
+                            "baseIndex": 3,
+                            "label": "Ammo",
+                            "typeIndex": 0,
+                            "unsigned": true
+                        }
+                    ],
+                    "groupName": "Slot 2"
+                },
+                {
+                    "groupEntries": [
+                        {
+                            "address": "8043857A",
+                            "baseIndex": 0,
+                            "label": "Quantity",
+                            "typeIndex": 1,
+                            "unsigned": true
+                        },
+                        {
+                            "address": "80438578",
+                            "baseIndex": 3,
+                            "label": "Infinite",
+                            "typeIndex": 0,
+                            "unsigned": true
+                        },
+                        {
+                            "address": "80438578",
+                            "baseIndex": 3,
+                            "label": "Ammo",
+                            "typeIndex": 0,
+                            "unsigned": true
+                        }
+                    ],
+                    "groupName": "Slot 3"
+                }
+            ],
+            "groupName": "Claire Item List"
+        },
+        {
+            "address": "80000000",
+            "baseIndex": 0,
+            "label": "Chris Item List",
+            "typeIndex": 0,
+            "unsigned": true
+        },
+        {
+            "address": "80000000",
+            "baseIndex": 0,
+            "label": "Steve Item List",
+            "typeIndex": 0,
+            "unsigned": true
+        },
+        {
+            "address": "80000000",
+            "baseIndex": 0,
+            "label": "Wesker Item List",
+            "typeIndex": 0,
+            "unsigned": true
+        },
+        {
+            "address": "80000000",
+            "baseIndex": 0,
+            "label": "Item Chest",
+            "typeIndex": 0,
+            "unsigned": true
+        },
+        {
+            "address": "80000000",
+            "baseIndex": 0,
+            "label": "Security Box 1",
+            "typeIndex": 0,
+            "unsigned": true
+        },
+        {
+            "address": "80000000",
+            "baseIndex": 0,
+            "label": "Security Box 2",
+            "typeIndex": 0,
+            "unsigned": true
+        },
+        {
+            "groupEntries": [
+                {
+                    "address": "80000000",
+                    "baseIndex": 0,
+                    "label": "X",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 0,
+                    "label": "Y",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 0,
+                    "label": "Z",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 0,
+                    "label": "Rotation",
+                    "typeIndex": 0,
+                    "unsigned": true
+                }
+            ],
+            "groupName": "Player"
+        },
+        {
+            "groupEntries": [
+                {
+                    "address": "804339B4",
+                    "baseIndex": 0,
+                    "label": "Count",
+                    "typeIndex": 2,
+                    "unsigned": true
+                },
+                {
+                    "groupEntries": [
+                        {
+                            "address": "8041C764",
+                            "baseIndex": 0,
+                            "label": "Damage",
+                            "typeIndex": 2,
+                            "unsigned": true
+                        },
+                        {
+                            "address": "8041C1FC",
+                            "baseIndex": 0,
+                            "label": "Action",
+                            "typeIndex": 0,
+                            "unsigned": true
+                        },
+                        {
+                            "address": "8041C1FF",
+                            "baseIndex": 0,
+                            "label": "Status",
+                            "typeIndex": 0,
+                            "unsigned": true
+                        },
+                        {
+                            "address": "8041C1F4",
+                            "baseIndex": 0,
+                            "label": "Type",
+                            "typeIndex": 1,
+                            "unsigned": true
+                        },
+                        {
+                            "address": "8041C58C",
+                            "baseIndex": 0,
+                            "label": "Slot",
+                            "typeIndex": 2,
+                            "unsigned": true
+                        },
+                        {
+                            "address": "80417C10",
+                            "baseIndex": 1,
+                            "label": "Base",
+                            "typeIndex": 2,
+                            "unsigned": true
+                        },
+                        {
+                            "groupEntries": [
+                                {
+                                    "address": "80000000",
+                                    "baseIndex": 0,
+                                    "label": "X",
+                                    "typeIndex": 0,
+                                    "unsigned": true
+                                },
+                                {
+                                    "address": "80000000",
+                                    "baseIndex": 0,
+                                    "label": "Y",
+                                    "typeIndex": 0,
+                                    "unsigned": true
+                                },
+                                {
+                                    "address": "80000000",
+                                    "baseIndex": 0,
+                                    "label": "Z",
+                                    "typeIndex": 0,
+                                    "unsigned": true
+                                },
+                                {
+                                    "address": "80000000",
+                                    "baseIndex": 0,
+                                    "label": "Rotation",
+                                    "typeIndex": 0,
+                                    "unsigned": true
+                                },
+                                {
+                                    "address": "80000000",
+                                    "baseIndex": 0,
+                                    "label": "X (Prev)",
+                                    "typeIndex": 0,
+                                    "unsigned": true
+                                },
+                                {
+                                    "address": "80000000",
+                                    "baseIndex": 0,
+                                    "label": "Y (Prev)",
+                                    "typeIndex": 0,
+                                    "unsigned": true
+                                },
+                                {
+                                    "address": "80000000",
+                                    "baseIndex": 0,
+                                    "label": "Z (Prev)",
+                                    "typeIndex": 0,
+                                    "unsigned": true
+                                },
+                                {
+                                    "address": "80000000",
+                                    "baseIndex": 0,
+                                    "label": "Rot. (Prev)",
+                                    "typeIndex": 0,
+                                    "unsigned": true
+                                }
+                            ],
+                            "groupName": "Position"
+                        }
+                    ],
+                    "groupName": "Health 0"
+                },
+                {
+                    "groupEntries": [
+                        {
+                            "address": "8041C760",
+                            "baseIndex": 1,
+                            "label": "Base",
+                            "typeIndex": 2,
+                            "unsigned": true
+                        }
+                    ],
+                    "groupName": "Health 1"
+                }
+            ],
+            "groupName": "Enemy"
+        },
+        {
+            "groupEntries": [
+                {
+                    "address": "80000000",
+                    "baseIndex": 1,
+                    "label": "View",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 1,
+                    "label": "View",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 0,
+                    "label": "Zoom In/Out",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 0,
+                    "label": "Pan Left/Right",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 0,
+                    "label": "Rot. Up/Down",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 0,
+                    "label": "Move Left/Right",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 0,
+                    "label": "Move Up/Down",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 0,
+                    "label": "Turn Left/Right",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 0,
+                    "label": "Tilt Left/Right",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 0,
+                    "label": "Float",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 0,
+                    "label": "Float",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 0,
+                    "label": "4 Bytes",
+                    "typeIndex": 0,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 0,
+                    "label": "4 Bytes",
+                    "typeIndex": 0,
+                    "unsigned": true
+                }
+            ],
+            "groupName": "Camera"
+        },
+        {
+            "groupEntries": [
+                {
+                    "address": "8077ADC0",
+                    "baseIndex": 1,
+                    "label": "Header",
+                    "typeIndex": 2,
+                    "unsigned": true
+                },
+                {
+                    "address": "80787380",
+                    "baseIndex": 0,
+                    "label": "Author",
+                    "length": 8,
+                    "typeIndex": 5,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 1,
+                    "label": "Enemy Offset",
+                    "typeIndex": 2,
+                    "unsigned": true
+                }
+            ],
+            "groupName": "Room"
+        },
+        {
+            "groupEntries": [
+                {
+                    "address": "80000000",
+                    "baseIndex": 1,
+                    "label": "Product",
+                    "length": 6,
+                    "typeIndex": 5,
+                    "unsigned": true
+                },
+                {
+                    "address": "80000000",
+                    "baseIndex": 1,
+                    "label": "Product",
+                    "length": 6,
+                    "typeIndex": 5,
+                    "unsigned": true
+                }
+            ],
+            "groupName": "Misc"
+        },
+        {
+            "address": "8077ADC0",
+            "baseIndex": 1,
+            "label": "No label",
+            "typeIndex": 2,
+            "unsigned": false
+        },
+        {
+            "address": "8077AE20",
+            "baseIndex": 0,
+            "label": "No label",
+            "length": 32,
+            "typeIndex": 5,
+            "unsigned": false
+        },
+        {
+            "address": "8077ADD0",
+            "baseIndex": 0,
+            "label": "No label",
+            "pointerOffsets": [
+                "0",
+                "0"
+            ],
+            "typeIndex": 2,
+            "unsigned": false
+        },
+        {
+            "address": "8077ADD0",
+            "baseIndex": 1,
+            "label": "No label",
+            "typeIndex": 2,
+            "unsigned": false
+        },
+        {
+            "address": "8077ADD4",
+            "baseIndex": 1,
+            "label": "No label",
+            "typeIndex": 2,
+            "unsigned": false
+        },
+        {
+            "address": "8077ADD8",
+            "baseIndex": 1,
+            "label": "No label",
+            "typeIndex": 2,
+            "unsigned": false
+        },
+        {
+            "address": "8077ADDC",
+            "baseIndex": 1,
+            "label": "No label",
+            "typeIndex": 2,
+            "unsigned": false
+        },
+        {
+            "address": "8077ADE0",
+            "baseIndex": 1,
+            "label": "No label",
+            "typeIndex": 2,
+            "unsigned": false
+        },
+        {
+            "address": "80985FD0",
+            "baseIndex": 0,
+            "label": "No label",
+            "typeIndex": 2,
+            "unsigned": false
+        },
+        {
+            "address": "807AEEAC",
+            "baseIndex": 0,
+            "label": "No label",
+            "length": 4,
+            "typeIndex": 6,
+            "unsigned": true
+        },
+        {
+            "address": "807AEE88",
+            "baseIndex": 0,
+            "label": "Room 1 Script",
+            "typeIndex": 2,
+            "unsigned": false
+        }
+    ]
+}
