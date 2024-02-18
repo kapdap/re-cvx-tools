@@ -106,13 +106,13 @@ namespace RDXplorer.Formats.RDX
 
                     switch (argument.Type)
                     {
-                        case "float": // TODO: Read inverse float flags
+                        case "float":
                             if (bytes.Length == 4)
-                                args.Append((BitConverter.ToUInt32(bytes) / 100.0).ToString("0.######"));
-                            else if (bytes.Length == 2)
-                                args.Append((BitConverter.ToUInt16(bytes) / 100.0).ToString("0.######"));
+                                args.Append(BitConverter.ToSingle(bytes).ToString("0.0#####"));
+                            else if (bytes.Length == 2) // TODO: Read signed float flags
+                                args.Append((BitConverter.ToUInt16(bytes) / 100.0).ToString("0.0#####"));
                             else if (bytes.Length == 1)
-                                args.Append((bytes[0] / 100.0).ToString("0.######"));
+                                args.Append(bytes[0].ToString("0.0"));
                             else
                                 args.Append(BitConverter.ToString(bytes));
                             break;
