@@ -401,9 +401,9 @@ namespace RDXplorer.Formats.RDX
                     model.Fields.Unknown49.SetValue(fs.Position, br.ReadBytes(4));
 
                     camera.Blocks.Add(model);
-
-                    fs.Seek(28, SeekOrigin.Current);
                 }
+
+                fs.Seek(84, SeekOrigin.Current);
 
                 list.Add(camera);
             }
