@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="42">
+<CheatTable CheatEngineTableVersion="45">
   <CheatEntries>
     <CheatEntry>
       <ID>1272</ID>
@@ -169,7 +169,7 @@
 00000547:16 Battle Time Room
 00000550:17 Battle Time "Boss"
 </DropDownList>
-      <LastState Value="00000600" RealAddress="204314B4"/>
+      <LastState Value="00000000" RealAddress="204314B4"/>
       <ShowAsHex>1</ShowAsHex>
       <VariableType>Custom</VariableType>
       <CustomType>2 Byte Big Endian</CustomType>
@@ -178,7 +178,7 @@
     <CheatEntry>
       <ID>1312</ID>
       <Description>"Timer"</Description>
-      <LastState Value="588275" RealAddress="204314A0"/>
+      <LastState Value="0" RealAddress="204314A0"/>
       <VariableType>4 Bytes</VariableType>
       <Address>204314A0</Address>
     </CheatEntry>
@@ -204,7 +204,7 @@
     <CheatEntry>
       <ID>1274</ID>
       <Description>"Health"</Description>
-      <LastState Value="200" Activated="1" RealAddress="204301FC"/>
+      <LastState Value="0" RealAddress="204301FC"/>
       <ShowAsSigned>1</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>204301FC</Address>
@@ -225,7 +225,7 @@
           <DropDownList DisplayValueAsItem="1">0:No
 1:Yes
 </DropDownList>
-          <LastState Value="0" Activated="1" RealAddress="2042FE6A"/>
+          <LastState Value="0" RealAddress="2042FE6A"/>
           <VariableType>Binary</VariableType>
           <BitStart>3</BitStart>
           <BitLength>1</BitLength>
@@ -288,7 +288,7 @@
         <CheatEntry>
           <ID>4128</ID>
           <Description>"Rodgio"</Description>
-          <LastState Value="18FFE5FF" RealAddress="20430C9C"/>
+          <LastState Value="00000000" RealAddress="20430C9C"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>20430C9C</Address>
@@ -296,7 +296,7 @@
         <CheatEntry>
           <ID>4195</ID>
           <Description>"Steve"</Description>
-          <LastState Value="E5A2B327" RealAddress="20430CA0"/>
+          <LastState Value="00000000" RealAddress="20430CA0"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>20430CA0</Address>
@@ -304,7 +304,7 @@
         <CheatEntry>
           <ID>4196</ID>
           <Description>"Map"</Description>
-          <LastState Value="0DFFFC02" RealAddress="20430E50"/>
+          <LastState Value="00000000" RealAddress="20430E50"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>20430E50</Address>
@@ -312,7 +312,7 @@
         <CheatEntry>
           <ID>4197</ID>
           <Description>"Map B"</Description>
-          <LastState Value="FF3CF3F0" RealAddress="20430E58"/>
+          <LastState Value="00000000" RealAddress="20430E58"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>20430E58</Address>
@@ -320,7 +320,7 @@
         <CheatEntry>
           <ID>4198</ID>
           <Description>"Map C"</Description>
-          <LastState Value="7DFF4000" RealAddress="20430E60"/>
+          <LastState Value="00000000" RealAddress="20430E60"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>20430E60</Address>
@@ -361,7 +361,7 @@
         <CheatEntry>
           <ID>137</ID>
           <Description>"Slot Equipped"</Description>
-          <LastState Value="2" RealAddress="20430E70"/>
+          <LastState Value="0" RealAddress="20430E70"/>
           <VariableType>4 Bytes</VariableType>
           <Address>20430E70</Address>
         </CheatEntry>
@@ -524,7 +524,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="37" RealAddress="20430E76"/>
+          <LastState Value="00" RealAddress="20430E76"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430E76</Address>
@@ -532,7 +532,7 @@
             <CheatEntry>
               <ID>1566</ID>
               <Description>"Quantity"</Description>
-              <LastState Value="1" RealAddress="20430E74"/>
+              <LastState Value="0" RealAddress="20430E74"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20430E74</Address>
             </CheatEntry>
@@ -725,7 +725,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="20" RealAddress="20430E7A"/>
+          <LastState Value="00" RealAddress="20430E7A"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430E7A</Address>
@@ -733,7 +733,7 @@
             <CheatEntry>
               <ID>139</ID>
               <Description>"Quantity"</Description>
-              <LastState Value="853" RealAddress="20430E78"/>
+              <LastState Value="0" RealAddress="20430E78"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20430E78</Address>
             </CheatEntry>
@@ -926,7 +926,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="07" RealAddress="20430E7E"/>
+          <LastState Value="00" RealAddress="20430E7E"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430E7E</Address>
@@ -934,7 +934,7 @@
             <CheatEntry>
               <ID>140</ID>
               <Description>"Quantity"</Description>
-              <LastState Value="6" RealAddress="20430E7C"/>
+              <LastState Value="0" RealAddress="20430E7C"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20430E7C</Address>
             </CheatEntry>
@@ -959,7 +959,7 @@
 10:Flame
 1:Acid
 </DropDownList>
-              <LastState Value="10" RealAddress="20430E7F"/>
+              <LastState Value="" RealAddress="20430E7F"/>
               <VariableType>Binary</VariableType>
               <BitStart>4</BitStart>
               <BitLength>4</BitLength>
@@ -1127,7 +1127,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="06" RealAddress="20430E82"/>
+          <LastState Value="00" RealAddress="20430E82"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430E82</Address>
@@ -1135,7 +1135,7 @@
             <CheatEntry>
               <ID>141</ID>
               <Description>"Quantity"</Description>
-              <LastState Value="10" RealAddress="20430E80"/>
+              <LastState Value="0" RealAddress="20430E80"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20430E80</Address>
             </CheatEntry>
@@ -1328,7 +1328,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="0A" RealAddress="20430E86"/>
+          <LastState Value="00" RealAddress="20430E86"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430E86</Address>
@@ -1336,7 +1336,7 @@
             <CheatEntry>
               <ID>142</ID>
               <Description>"Quantity"</Description>
-              <LastState Value="6" RealAddress="20430E84"/>
+              <LastState Value="0" RealAddress="20430E84"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20430E84</Address>
             </CheatEntry>
@@ -1529,7 +1529,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="06" RealAddress="20430E8A"/>
+          <LastState Value="00" RealAddress="20430E8A"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430E8A</Address>
@@ -1537,7 +1537,7 @@
             <CheatEntry>
               <ID>143</ID>
               <Description>"Quantity"</Description>
-              <LastState Value="12" RealAddress="20430E88"/>
+              <LastState Value="0" RealAddress="20430E88"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20430E88</Address>
             </CheatEntry>
@@ -1562,7 +1562,7 @@
 10:Flame
 1:Acid
 </DropDownList>
-              <LastState Value="1" RealAddress="20430E8B"/>
+              <LastState Value="" RealAddress="20430E8B"/>
               <VariableType>Binary</VariableType>
               <BitStart>4</BitStart>
               <BitLength>4</BitLength>
@@ -1730,7 +1730,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="0C" RealAddress="20430E8E"/>
+          <LastState Value="00" RealAddress="20430E8E"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430E8E</Address>
@@ -1738,7 +1738,7 @@
             <CheatEntry>
               <ID>144</ID>
               <Description>"Quantity"</Description>
-              <LastState Value="202" RealAddress="20430E8C"/>
+              <LastState Value="0" RealAddress="20430E8C"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20430E8C</Address>
             </CheatEntry>
@@ -1931,7 +1931,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="08" RealAddress="20430E92"/>
+          <LastState Value="00" RealAddress="20430E92"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430E92</Address>
@@ -2132,7 +2132,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="14" RealAddress="20430E96"/>
+          <LastState Value="00" RealAddress="20430E96"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430E96</Address>
@@ -3354,7 +3354,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="08" RealAddress="20430EBA"/>
+          <LastState Value="00" RealAddress="20430EBA"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430EBA</Address>
@@ -3362,7 +3362,7 @@
             <CheatEntry>
               <ID>3169</ID>
               <Description>"Quantity"</Description>
-              <LastState Value="1" RealAddress="20430EB8"/>
+              <LastState Value="0" RealAddress="20430EB8"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20430EB8</Address>
             </CheatEntry>
@@ -3555,7 +3555,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="05" RealAddress="20430EBE"/>
+          <LastState Value="00" RealAddress="20430EBE"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430EBE</Address>
@@ -3563,7 +3563,7 @@
             <CheatEntry>
               <ID>3173</ID>
               <Description>"Quantity"</Description>
-              <LastState Value="18" RealAddress="20430EBC"/>
+              <LastState Value="0" RealAddress="20430EBC"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20430EBC</Address>
             </CheatEntry>
@@ -3756,7 +3756,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="0C" RealAddress="20430EC2"/>
+          <LastState Value="00" RealAddress="20430EC2"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430EC2</Address>
@@ -3764,7 +3764,7 @@
             <CheatEntry>
               <ID>3177</ID>
               <Description>"Quantity"</Description>
-              <LastState Value="30" RealAddress="20430EC0"/>
+              <LastState Value="0" RealAddress="20430EC0"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20430EC0</Address>
             </CheatEntry>
@@ -3957,7 +3957,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="14" RealAddress="20430EC6"/>
+          <LastState Value="00" RealAddress="20430EC6"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430EC6</Address>
@@ -3965,7 +3965,7 @@
             <CheatEntry>
               <ID>3181</ID>
               <Description>"Quantity"</Description>
-              <LastState Value="1" RealAddress="20430EC4"/>
+              <LastState Value="0" RealAddress="20430EC4"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20430EC4</Address>
             </CheatEntry>
@@ -5619,7 +5619,7 @@
         <CheatEntry>
           <ID>3216</ID>
           <Description>"Slot Equipped"</Description>
-          <LastState Value="2" RealAddress="20430EF0"/>
+          <LastState Value="0" RealAddress="20430EF0"/>
           <VariableType>4 Bytes</VariableType>
           <Address>20430EF0</Address>
         </CheatEntry>
@@ -5782,7 +5782,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="8A" RealAddress="20430EF6"/>
+          <LastState Value="00" RealAddress="20430EF6"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430EF6</Address>
@@ -5790,7 +5790,7 @@
             <CheatEntry>
               <ID>3218</ID>
               <Description>"Quantity"</Description>
-              <LastState Value="1" RealAddress="20430EF4"/>
+              <LastState Value="0" RealAddress="20430EF4"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20430EF4</Address>
             </CheatEntry>
@@ -5983,7 +5983,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="22" RealAddress="20430EFA"/>
+          <LastState Value="00" RealAddress="20430EFA"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430EFA</Address>
@@ -5991,7 +5991,7 @@
             <CheatEntry>
               <ID>3222</ID>
               <Description>"Quantity"</Description>
-              <LastState Value="260" RealAddress="20430EF8"/>
+              <LastState Value="0" RealAddress="20430EF8"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20430EF8</Address>
             </CheatEntry>
@@ -36971,7 +36971,7 @@
 98:Crest Key S
 99:Crest Key G
 </DropDownList>
-          <LastState Value="52" RealAddress="2043117A"/>
+          <LastState Value="00" RealAddress="2043117A"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>2043117A</Address>
@@ -51305,28 +51305,28 @@
         <CheatEntry>
           <ID>4130</ID>
           <Description>"X"</Description>
-          <LastState Value="17024" RealAddress="2042FDF2"/>
+          <LastState Value="0" RealAddress="2042FDF2"/>
           <VariableType>4 Bytes</VariableType>
           <Address>2042FDF2</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4131</ID>
           <Description>"Y"</Description>
-          <LastState Value="1413677056" RealAddress="2042FDF6"/>
+          <LastState Value="0" RealAddress="2042FDF6"/>
           <VariableType>4 Bytes</VariableType>
           <Address>2042FDF6</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4132</ID>
           <Description>"Z"</Description>
-          <LastState Value="16800" RealAddress="2042FDFA"/>
+          <LastState Value="0" RealAddress="2042FDFA"/>
           <VariableType>4 Bytes</VariableType>
           <Address>2042FDFA</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4133</ID>
           <Description>"Rotation"</Description>
-          <LastState Value="2646" RealAddress="2042FE00"/>
+          <LastState Value="0" RealAddress="2042FE00"/>
           <VariableType>4 Bytes</VariableType>
           <Address>2042FE00</Address>
         </CheatEntry>
@@ -51342,7 +51342,7 @@
         <CheatEntry>
           <ID>4136</ID>
           <Description>"Count"</Description>
-          <LastState Value="2" RealAddress="2124CD88"/>
+          <LastState Value="555745282" RealAddress="2124CD88"/>
           <VariableType>4 Bytes</VariableType>
           <Address>2124CD88</Address>
         </CheatEntry>
@@ -51374,14 +51374,14 @@
 5:Inactive
 6:Unknown
 </DropDownList>
-              <LastState Value="1" RealAddress="20403DEC"/>
+              <LastState Value="0" RealAddress="20403DEC"/>
               <VariableType>Byte</VariableType>
               <Address>20403DEC</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>4140</ID>
               <Description>"Status"</Description>
-              <LastState Value="3" RealAddress="20403DEF"/>
+              <LastState Value="0" RealAddress="20403DEF"/>
               <VariableType>Byte</VariableType>
               <Address>20403DEF</Address>
             </CheatEntry>
@@ -51421,7 +51421,7 @@
 97:Wesker
 98:Rodrigo
 </DropDownList>
-              <LastState Value="93" RealAddress="20403DE4"/>
+              <LastState Value="0" RealAddress="20403DE4"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20403DE4</Address>
             </CheatEntry>
@@ -51435,7 +51435,7 @@
             <CheatEntry>
               <ID>4143</ID>
               <Description>"Base"</Description>
-              <LastState Value="00008901" RealAddress="20403DE0"/>
+              <LastState Value="00000000" RealAddress="20403DE0"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>4 Bytes</VariableType>
               <Address>20403DE0</Address>
@@ -51450,7 +51450,7 @@
                 <CheatEntry>
                   <ID>4145</ID>
                   <Description>"X"</Description>
-                  <LastState Value="-45.95220947" RealAddress="20403DF0"/>
+                  <LastState Value="0" RealAddress="20403DF0"/>
                   <VariableType>Float</VariableType>
                   <Address>20403DF0</Address>
                 </CheatEntry>
@@ -51464,7 +51464,7 @@
                 <CheatEntry>
                   <ID>4147</ID>
                   <Description>"Z"</Description>
-                  <LastState Value="72.39343262" RealAddress="20403DF8"/>
+                  <LastState Value="0" RealAddress="20403DF8"/>
                   <VariableType>Float</VariableType>
                   <Address>20403DF8</Address>
                 </CheatEntry>
@@ -51478,7 +51478,7 @@
                 <CheatEntry>
                   <ID>4149</ID>
                   <Description>"X (Prev)"</Description>
-                  <LastState Value="-45.95220947" RealAddress="20403E20"/>
+                  <LastState Value="0" RealAddress="20403E20"/>
                   <VariableType>Float</VariableType>
                   <Address>20403E20</Address>
                 </CheatEntry>
@@ -51492,7 +51492,7 @@
                 <CheatEntry>
                   <ID>4151</ID>
                   <Description>"Z (Prev)"</Description>
-                  <LastState Value="72.39343262" RealAddress="20403E28"/>
+                  <LastState Value="0" RealAddress="20403E28"/>
                   <VariableType>Float</VariableType>
                   <Address>20403E28</Address>
                 </CheatEntry>
@@ -51535,14 +51535,14 @@
 5:Inactive
 6:Unknown
 </DropDownList>
-              <LastState Value="1" RealAddress="2040436C"/>
+              <LastState Value="0" RealAddress="2040436C"/>
               <VariableType>Byte</VariableType>
               <Address>2040436C</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>4156</ID>
               <Description>"Status"</Description>
-              <LastState Value="3" RealAddress="2040436F"/>
+              <LastState Value="0" RealAddress="2040436F"/>
               <VariableType>Byte</VariableType>
               <Address>2040436F</Address>
             </CheatEntry>
@@ -51582,21 +51582,21 @@
 97:Wesker
 98:Rodrigo
 </DropDownList>
-              <LastState Value="91" RealAddress="20404364"/>
+              <LastState Value="0" RealAddress="20404364"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20404364</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>4158</ID>
               <Description>"Slot"</Description>
-              <LastState Value="1" RealAddress="204046FC"/>
+              <LastState Value="0" RealAddress="204046FC"/>
               <VariableType>4 Bytes</VariableType>
               <Address>204046FC</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>4159</ID>
               <Description>"Base"</Description>
-              <LastState Value="00008901" RealAddress="20404360"/>
+              <LastState Value="00000000" RealAddress="20404360"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>4 Bytes</VariableType>
               <Address>20404360</Address>
@@ -51611,7 +51611,7 @@
                 <CheatEntry>
                   <ID>4161</ID>
                   <Description>"X"</Description>
-                  <LastState Value="-42.03243637" RealAddress="20404370"/>
+                  <LastState Value="0" RealAddress="20404370"/>
                   <VariableType>Float</VariableType>
                   <Address>20404370</Address>
                 </CheatEntry>
@@ -51625,7 +51625,7 @@
                 <CheatEntry>
                   <ID>4163</ID>
                   <Description>"Z"</Description>
-                  <LastState Value="72.44834137" RealAddress="20404378"/>
+                  <LastState Value="0" RealAddress="20404378"/>
                   <VariableType>Float</VariableType>
                   <Address>20404378</Address>
                 </CheatEntry>
@@ -51639,7 +51639,7 @@
                 <CheatEntry>
                   <ID>4165</ID>
                   <Description>"X (Prev)"</Description>
-                  <LastState Value="-42.03243637" RealAddress="204043A0"/>
+                  <LastState Value="0" RealAddress="204043A0"/>
                   <VariableType>Float</VariableType>
                   <Address>204043A0</Address>
                 </CheatEntry>
@@ -51653,7 +51653,7 @@
                 <CheatEntry>
                   <ID>2873</ID>
                   <Description>"Z (Prev)"</Description>
-                  <LastState Value="72.44834137" RealAddress="204043A8"/>
+                  <LastState Value="0" RealAddress="204043A8"/>
                   <VariableType>Float</VariableType>
                   <Address>204043A8</Address>
                 </CheatEntry>
@@ -51696,14 +51696,14 @@
 5:Inactive
 6:Unknown
 </DropDownList>
-              <LastState Value="1" RealAddress="204048EC"/>
+              <LastState Value="0" RealAddress="204048EC"/>
               <VariableType>Byte</VariableType>
               <Address>204048EC</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>2878</ID>
               <Description>"Status"</Description>
-              <LastState Value="3" RealAddress="204048EF"/>
+              <LastState Value="0" RealAddress="204048EF"/>
               <VariableType>Byte</VariableType>
               <Address>204048EF</Address>
             </CheatEntry>
@@ -51743,14 +51743,14 @@
 97:Wesker
 98:Rodrigo
 </DropDownList>
-              <LastState Value="27" RealAddress="204048E4"/>
+              <LastState Value="0" RealAddress="204048E4"/>
               <VariableType>2 Bytes</VariableType>
               <Address>204048E4</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>2880</ID>
               <Description>"Slot"</Description>
-              <LastState Value="2" RealAddress="20404C7C"/>
+              <LastState Value="0" RealAddress="20404C7C"/>
               <VariableType>4 Bytes</VariableType>
               <Address>20404C7C</Address>
             </CheatEntry>
@@ -51772,56 +51772,56 @@
                 <CheatEntry>
                   <ID>2883</ID>
                   <Description>"X"</Description>
-                  <LastState Value="59.29067993" RealAddress="204048F0"/>
+                  <LastState Value="0" RealAddress="204048F0"/>
                   <VariableType>Float</VariableType>
                   <Address>204048F0</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>2884</ID>
                   <Description>"Y"</Description>
-                  <LastState Value="-3.400000095" RealAddress="204048F4"/>
+                  <LastState Value="0" RealAddress="204048F4"/>
                   <VariableType>Float</VariableType>
                   <Address>204048F4</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>2885</ID>
                   <Description>"Z"</Description>
-                  <LastState Value="4.412981033" RealAddress="204048F8"/>
+                  <LastState Value="0" RealAddress="204048F8"/>
                   <VariableType>Float</VariableType>
                   <Address>204048F8</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>2886</ID>
                   <Description>"Rotation"</Description>
-                  <LastState Value="32776" RealAddress="20404900"/>
+                  <LastState Value="0" RealAddress="20404900"/>
                   <VariableType>4 Bytes</VariableType>
                   <Address>20404900</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>2887</ID>
                   <Description>"X (Prev)"</Description>
-                  <LastState Value="59.29067993" RealAddress="20404920"/>
+                  <LastState Value="0" RealAddress="20404920"/>
                   <VariableType>Float</VariableType>
                   <Address>20404920</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>2888</ID>
                   <Description>"Y (Prev)"</Description>
-                  <LastState Value="-3.400000095" RealAddress="20404924"/>
+                  <LastState Value="0" RealAddress="20404924"/>
                   <VariableType>Float</VariableType>
                   <Address>20404924</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>2889</ID>
                   <Description>"Z (Prev)"</Description>
-                  <LastState Value="4.412981033" RealAddress="20404928"/>
+                  <LastState Value="0" RealAddress="20404928"/>
                   <VariableType>Float</VariableType>
                   <Address>20404928</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>2890</ID>
                   <Description>"Rot. (Prev)"</Description>
-                  <LastState Value="32776" RealAddress="20404930"/>
+                  <LastState Value="0" RealAddress="20404930"/>
                   <VariableType>4 Bytes</VariableType>
                   <Address>20404930</Address>
                 </CheatEntry>
@@ -51857,7 +51857,7 @@
 5:Inactive
 6:Unknown
 </DropDownList>
-              <LastState Value="1" RealAddress="20404E6C"/>
+              <LastState Value="0" RealAddress="20404E6C"/>
               <VariableType>Byte</VariableType>
               <Address>20404E6C</Address>
             </CheatEntry>
@@ -51904,21 +51904,21 @@
 97:Wesker
 98:Rodrigo
 </DropDownList>
-              <LastState Value="27" RealAddress="20404E64"/>
+              <LastState Value="0" RealAddress="20404E64"/>
               <VariableType>2 Bytes</VariableType>
               <Address>20404E64</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>2896</ID>
               <Description>"Slot"</Description>
-              <LastState Value="3" RealAddress="204051FC"/>
+              <LastState Value="0" RealAddress="204051FC"/>
               <VariableType>4 Bytes</VariableType>
               <Address>204051FC</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>2897</ID>
               <Description>"Base"</Description>
-              <LastState Value="00000081" RealAddress="20404E60"/>
+              <LastState Value="00000000" RealAddress="20404E60"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>4 Bytes</VariableType>
               <Address>20404E60</Address>
@@ -52018,7 +52018,7 @@
 5:Inactive
 6:Unknown
 </DropDownList>
-              <LastState Value="1" RealAddress="204053EC"/>
+              <LastState Value="0" RealAddress="204053EC"/>
               <VariableType>Byte</VariableType>
               <Address>204053EC</Address>
             </CheatEntry>
@@ -52065,21 +52065,21 @@
 97:Wesker
 98:Rodrigo
 </DropDownList>
-              <LastState Value="27" RealAddress="204053E4"/>
+              <LastState Value="0" RealAddress="204053E4"/>
               <VariableType>2 Bytes</VariableType>
               <Address>204053E4</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>2912</ID>
               <Description>"Slot"</Description>
-              <LastState Value="4" RealAddress="2040577C"/>
+              <LastState Value="0" RealAddress="2040577C"/>
               <VariableType>4 Bytes</VariableType>
               <Address>2040577C</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>2913</ID>
               <Description>"Base"</Description>
-              <LastState Value="00000081" RealAddress="204053E0"/>
+              <LastState Value="00000000" RealAddress="204053E0"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>4 Bytes</VariableType>
               <Address>204053E0</Address>
@@ -54586,7 +54586,7 @@ A0:First Person (A0)
 A1:First Person (A1)
 C2:First Person (C2)
 </DropDownList>
-          <LastState Value="02" RealAddress="20430C5C"/>
+          <LastState Value="00" RealAddress="20430C5C"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>20430C5C</Address>
@@ -54594,7 +54594,7 @@ C2:First Person (C2)
         <CheatEntry>
           <ID>4168</ID>
           <Description>"View"</Description>
-          <LastState Value="E8000002" RealAddress="20430C5C"/>
+          <LastState Value="00000000" RealAddress="20430C5C"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>20430C5C</Address>
@@ -54602,77 +54602,77 @@ C2:First Person (C2)
         <CheatEntry>
           <ID>4169</ID>
           <Description>"Zoom In/Out"</Description>
-          <LastState Value="20.66143036" RealAddress="20430398"/>
+          <LastState Value="0" RealAddress="20430398"/>
           <VariableType>Float</VariableType>
           <Address>20430398</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4170</ID>
           <Description>"Pan Left/Right"</Description>
-          <LastState Value="64.4069519" RealAddress="20430390"/>
+          <LastState Value="0" RealAddress="20430390"/>
           <VariableType>Float</VariableType>
           <Address>20430390</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4171</ID>
           <Description>"Rot. Up/Down"</Description>
-          <LastState Value="12" RealAddress="20430394"/>
+          <LastState Value="0" RealAddress="20430394"/>
           <VariableType>Float</VariableType>
           <Address>20430394</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4172</ID>
           <Description>"Move Left/Right"</Description>
-          <LastState Value="89.56459808" RealAddress="2043036C"/>
+          <LastState Value="0" RealAddress="2043036C"/>
           <VariableType>Float</VariableType>
           <Address>2043036C</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4173</ID>
           <Description>"Move Up/Down"</Description>
-          <LastState Value="61.60010147" RealAddress="20430370"/>
+          <LastState Value="0" RealAddress="20430370"/>
           <VariableType>Float</VariableType>
           <Address>20430370</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4174</ID>
           <Description>"Turn Left/Right"</Description>
-          <LastState Value="4294961332" RealAddress="204303B8"/>
+          <LastState Value="0" RealAddress="204303B8"/>
           <VariableType>4 Bytes</VariableType>
           <Address>204303B8</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4175</ID>
           <Description>"Tilt Left/Right"</Description>
-          <LastState Value="4294967274" RealAddress="204303BC"/>
+          <LastState Value="0" RealAddress="204303BC"/>
           <VariableType>4 Bytes</VariableType>
           <Address>204303BC</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4176</ID>
           <Description>"Float"</Description>
-          <LastState Value="59.7374115" RealAddress="20430374"/>
+          <LastState Value="0" RealAddress="20430374"/>
           <VariableType>Float</VariableType>
           <Address>20430374</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4177</ID>
           <Description>"Float"</Description>
-          <LastState Value="59.7374115" RealAddress="204303A4"/>
+          <LastState Value="0" RealAddress="204303A4"/>
           <VariableType>Float</VariableType>
           <Address>204303A4</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4178</ID>
           <Description>"4 Bytes"</Description>
-          <LastState Value="8528" RealAddress="204303B4"/>
+          <LastState Value="0" RealAddress="204303B4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>204303B4</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4179</ID>
           <Description>"4 Bytes"</Description>
-          <LastState Value="10012" RealAddress="204303E4"/>
+          <LastState Value="0" RealAddress="204303E4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>204303E4</Address>
         </CheatEntry>
@@ -54688,7 +54688,7 @@ C2:First Person (C2)
         <CheatEntry>
           <ID>2843</ID>
           <Description>"Header"</Description>
-          <LastState Value="00002041" RealAddress="2124CC80"/>
+          <LastState Value="BABD7408" RealAddress="2124CC80"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Custom</VariableType>
           <CustomType>4 Byte Big Endian</CustomType>
@@ -54708,7 +54708,7 @@ C2:First Person (C2)
         <CheatEntry>
           <ID>2844</ID>
           <Description>"Enemy Offset"</Description>
-          <LastState Value="000012BC" RealAddress="2124CD08"/>
+          <LastState Value="00004000" RealAddress="2124CD08"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
           <Address>2124CD08</Address>
@@ -54716,7 +54716,7 @@ C2:First Person (C2)
         <CheatEntry>
           <ID>2845</ID>
           <Description>"Enemy Count"</Description>
-          <LastState Value="2" RealAddress="2124CD88"/>
+          <LastState Value="555745282" RealAddress="2124CD88"/>
           <VariableType>4 Bytes</VariableType>
           <Address>2124CD88</Address>
         </CheatEntry>
@@ -54763,14 +54763,14 @@ C2:First Person (C2)
         <CheatEntry>
           <ID>4188</ID>
           <Description>"SystemSeSlotSwitch"</Description>
-          <LastState Value="1" RealAddress="204F3140"/>
+          <LastState Value="0" RealAddress="204F3140"/>
           <VariableType>8 Bytes</VariableType>
           <Address>204F3140</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4189</ID>
           <Description>"WeaponSeSlotSwitch"</Description>
-          <LastState Value="1" RealAddress="204F3148"/>
+          <LastState Value="0" RealAddress="204F3148"/>
           <VariableType>8 Bytes</VariableType>
           <Address>204F3148</Address>
         </CheatEntry>
@@ -54825,7 +54825,7 @@ C2:First Person (C2)
     <CheatEntry>
       <ID>4200</ID>
       <Description>"RNG2"</Description>
-      <LastState Value="CF885DAC" RealAddress="20302560"/>
+      <LastState Value="00000001" RealAddress="20302560"/>
       <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
@@ -54834,7 +54834,7 @@ C2:First Person (C2)
     <CheatEntry>
       <ID>4201</ID>
       <Description>"RNG2"</Description>
-      <LastState Value="3481820588" RealAddress="20302560"/>
+      <LastState Value="1" RealAddress="20302560"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>20302560</Address>
@@ -54842,7 +54842,7 @@ C2:First Person (C2)
     <CheatEntry>
       <ID>4202</ID>
       <Description>"No description"</Description>
-      <LastState Value="000F0919" RealAddress="2042FDE0"/>
+      <LastState Value="00000000" RealAddress="2042FDE0"/>
       <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
@@ -54851,7 +54851,7 @@ C2:First Person (C2)
         <CheatEntry>
           <ID>4203</ID>
           <Description>"Status"</Description>
-          <LastState Value="40000000" RealAddress="2042FE68"/>
+          <LastState Value="00000000" RealAddress="2042FE68"/>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
@@ -54893,7 +54893,7 @@ C2:First Person (C2)
         <CheatEntry>
           <ID>4207</ID>
           <Description>"Status"</Description>
-          <LastState Value="1000000" RealAddress="2042FE6B"/>
+          <LastState Value="" RealAddress="2042FE6B"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Binary</VariableType>
           <BitStart>0</BitStart>
@@ -54970,7 +54970,7 @@ C2:First Person (C2)
         <CheatEntry>
           <ID>4214</ID>
           <Description>"Status"</Description>
-          <LastState Value="1" RealAddress="2042FE6B"/>
+          <LastState Value="" RealAddress="2042FE6B"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Binary</VariableType>
           <BitStart>6</BitStart>
@@ -54990,6 +54990,14 @@ C2:First Person (C2)
           <Address>+8B</Address>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4216</ID>
+      <Description>"MainMenuFlag"</Description>
+      <LastState Value="11" RealAddress="20506354"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>20506354</Address>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
