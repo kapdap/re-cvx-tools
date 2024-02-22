@@ -54,6 +54,20 @@
             <DataGridTextColumn Header="Unknown33" Binding="{Binding Model.Fields.Unknown33}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown34" Binding="{Binding Model.Fields.Unknown34}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Unknown35" Binding="{Binding Model.Fields.Unknown35}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown36" Binding="{Binding Model.Fields.Unknown36}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown37" Binding="{Binding Model.Fields.Unknown37}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown38" Binding="{Binding Model.Fields.Unknown38}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown39" Binding="{Binding Model.Fields.Unknown39}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown40" Binding="{Binding Model.Fields.Unknown40}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown41" Binding="{Binding Model.Fields.Unknown41}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown42" Binding="{Binding Model.Fields.Unknown42}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown43" Binding="{Binding Model.Fields.Unknown43}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown44" Binding="{Binding Model.Fields.Unknown44}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown45" Binding="{Binding Model.Fields.Unknown45}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown46" Binding="{Binding Model.Fields.Unknown46}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown47" Binding="{Binding Model.Fields.Unknown47}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown48" Binding="{Binding Model.Fields.Unknown48}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Unknown49" Binding="{Binding Model.Fields.Unknown49}" FontFamily="Consolas"/>
         </DataGrid.Columns>
     </DataGrid>
 </local:View>
