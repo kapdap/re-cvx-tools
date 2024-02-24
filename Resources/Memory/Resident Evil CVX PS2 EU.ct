@@ -28,8 +28,10 @@ if not AttachProcess("pcsx2-qtx64.exe") then
 if not AttachProcess("pcsx2-qtx64-avx2.exe") then
 if not AttachProcess("pcsx2-qt.exe") then
 if not AttachProcess("pcsx2x64.exe") then
-       AttachProcess("pcsx2x64-avx2.exe")
-end end end end end
+if not AttachProcess("pcsx2x64-avx2.exe") then
+  showMessage("Unable to find PCSX2 process.")
+  error()
+end end end end end end
 
 registerSymbol("PS2mem", PS2mem, true)
 

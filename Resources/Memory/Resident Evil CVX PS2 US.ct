@@ -28,8 +28,10 @@ if not AttachProcess("pcsx2-qtx64.exe") then
 if not AttachProcess("pcsx2-qtx64-avx2.exe") then
 if not AttachProcess("pcsx2-qt.exe") then
 if not AttachProcess("pcsx2x64.exe") then
-       AttachProcess("pcsx2x64-avx2.exe")
-end end end end end
+if not AttachProcess("pcsx2x64-avx2.exe") then
+  showMessage("Unable to find PCSX2 process.")
+  error()
+end end end end end end
 
 registerSymbol("PS2mem", PS2mem, true)
 
@@ -40,6 +42,7 @@ unregisterSymbol("PS2mem")
     <CheatEntry>
       <ID>1272</ID>
       <Description>"Room"</Description>
+      <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
       <DropDownList DisplayValueAsItem="1">00000000:Prison B1 Cells
 00000001:Prison B1 Entry
 00000002:Prison 1F Graveyard
@@ -209,13 +212,15 @@ unregisterSymbol("PS2mem")
       <VariableType>Custom</VariableType>
       <CustomType>2 Byte Big Endian</CustomType>
       <Address>PS2mem+04339B4</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>5579</ID>
-      <Description>"Room Case"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Byte</VariableType>
-      <Address>PS2mem+043331C</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>5579</ID>
+          <Description>"Case"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>PS2mem+043331C</Address>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
     <CheatEntry>
       <ID>567</ID>
