@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="31">
+<CheatTable CheatEngineTableVersion="45">
   <CheatEntries>
     <CheatEntry>
       <ID>1256</ID>
@@ -273,7 +273,6 @@
       <ID>165</ID>
       <Description>"Claire Item List"</Description>
       <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -2302,7 +2301,6 @@
       <ID>166</ID>
       <Description>"Chris Item List"</Description>
       <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -4331,7 +4329,6 @@
       <ID>195</ID>
       <Description>"Steve Item List"</Description>
       <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -6360,7 +6357,6 @@
       <ID>223</ID>
       <Description>"Wesker Item List"</Description>
       <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -8389,7 +8385,6 @@
       <ID>133</ID>
       <Description>"Item Chest"</Description>
       <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -31822,7 +31817,6 @@
       <ID>252</ID>
       <Description>"Security Box 1"</Description>
       <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -37687,7 +37681,6 @@
       <ID>317</ID>
       <Description>"Security Box 2"</Description>
       <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -43552,7 +43545,6 @@
       <ID>2623</ID>
       <Description>"Enemy"</Description>
       <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -44199,7 +44191,6 @@
       <ID>2621</ID>
       <Description>"Camera"</Description>
       <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -44239,7 +44230,6 @@ C2:First Person (C2)
       <ID>2622</ID>
       <Description>"Room"</Description>
       <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -44274,7 +44264,6 @@ C2:First Person (C2)
       <ID>673</ID>
       <Description>"Misc"</Description>
       <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
