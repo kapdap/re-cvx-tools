@@ -7,15 +7,48 @@
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{$lua}
 [ENABLE]
-PS2mem = 0x20000000
+local ProcLst =
+{
+  "pcsx2.exe",
+  "pcsx2-qtx64.exe",
+  "pcsx2-qtx64-avx2.exe",
+  "pcsx2-qt.exe",
+  "pcsx2x64.exe",
+  "pcsx2x64-avx2.exe",
+}
 
-if not AttachPCSX2 then
+PS2mem = 0x20000000
+unregisterSymbol("PS2mem")
+registerSymbol("PS2mem", PS2mem, true)
+
+function AttachProcess(name)
+  if getProcessIDFromProcessName(name) ~= nil then
+    openProcess(name)
+
+    if name ~= "pcsx2.exe" then
+        PS2mem = readPointer(getAddress("EEmem"))
+    end
+
+    return true
+  end
+
+  return false
+end
+
+function AttachPCSX2()
+  for i,name in pairs(ProcLst) do
+    if AttachProcess(name) then
+      return true
+    end
+  end
+
+  return false
+end
+
+if not AttachPCSX2() then
   showMessage("Unable to find PCSX2 process.")
   error()
 end
-
-unregisterSymbol("PS2mem")
-registerSymbol("PS2mem", PS2mem, true)
 
 [DISABLE]
 
@@ -401,6 +434,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>153</ID>
           <Description>"Slot 2"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449BAA</Address>
@@ -437,6 +471,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>154</ID>
           <Description>"Slot 3"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449BAE</Address>
@@ -473,6 +508,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>155</ID>
           <Description>"Slot 4"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449BB2</Address>
@@ -509,6 +545,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>156</ID>
           <Description>"Slot 5"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449BB6</Address>
@@ -545,6 +582,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>157</ID>
           <Description>"Slot 6"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449BBA</Address>
@@ -581,6 +619,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>158</ID>
           <Description>"Slot 7"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449BBE</Address>
@@ -617,6 +656,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>159</ID>
           <Description>"Slot 8"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449BC2</Address>
@@ -653,6 +693,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>160</ID>
           <Description>"Slot 9"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449BC6</Address>
@@ -986,6 +1027,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3168</ID>
           <Description>"Slot 2"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449BEA</Address>
@@ -1022,6 +1064,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3172</ID>
           <Description>"Slot 3"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449BEE</Address>
@@ -1058,6 +1101,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3176</ID>
           <Description>"Slot 4"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449BF2</Address>
@@ -1094,6 +1138,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3180</ID>
           <Description>"Slot 5"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449BF6</Address>
@@ -1130,6 +1175,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3184</ID>
           <Description>"Slot 6"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449BFA</Address>
@@ -1166,6 +1212,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3188</ID>
           <Description>"Slot 7"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449BFE</Address>
@@ -1202,6 +1249,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3192</ID>
           <Description>"Slot 8"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C02</Address>
@@ -1238,6 +1286,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3196</ID>
           <Description>"Slot 9"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C06</Address>
@@ -1432,6 +1481,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3217</ID>
           <Description>"Slot 1"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C26</Address>
@@ -1468,6 +1518,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3221</ID>
           <Description>"Slot 2"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C2A</Address>
@@ -1504,6 +1555,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3225</ID>
           <Description>"Slot 3"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C2E</Address>
@@ -1540,6 +1592,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3229</ID>
           <Description>"Slot 4"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C32</Address>
@@ -1576,6 +1629,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3233</ID>
           <Description>"Slot 5"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C36</Address>
@@ -1612,6 +1666,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3237</ID>
           <Description>"Slot 6"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C3A</Address>
@@ -1648,6 +1703,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3241</ID>
           <Description>"Slot 7"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C3E</Address>
@@ -1684,6 +1740,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3245</ID>
           <Description>"Slot 8"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C42</Address>
@@ -1720,6 +1777,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3249</ID>
           <Description>"Slot 9"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C46</Address>
@@ -1914,6 +1972,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3270</ID>
           <Description>"Slot 1"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C66</Address>
@@ -1950,6 +2009,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3274</ID>
           <Description>"Slot 2"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C6A</Address>
@@ -1986,6 +2046,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3278</ID>
           <Description>"Slot 3"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C6E</Address>
@@ -2022,6 +2083,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3282</ID>
           <Description>"Slot 4"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C72</Address>
@@ -2058,6 +2120,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3286</ID>
           <Description>"Slot 5"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C76</Address>
@@ -2094,6 +2157,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3290</ID>
           <Description>"Slot 6"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C7A</Address>
@@ -2130,6 +2194,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3294</ID>
           <Description>"Slot 7"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C7E</Address>
@@ -2166,6 +2231,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3298</ID>
           <Description>"Slot 8"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C82</Address>
@@ -2202,6 +2268,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3302</ID>
           <Description>"Slot 9"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449C86</Address>
@@ -2390,6 +2457,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3323</ID>
           <Description>"Slot 1"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449CA6</Address>
@@ -2426,6 +2494,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3327</ID>
           <Description>"Slot 2"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449CAA</Address>
@@ -2462,6 +2531,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3331</ID>
           <Description>"Slot 3"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449CAE</Address>
@@ -2498,6 +2568,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3335</ID>
           <Description>"Slot 4"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449CB2</Address>
@@ -2534,6 +2605,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3339</ID>
           <Description>"Slot 5"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449CB6</Address>
@@ -2570,6 +2642,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3343</ID>
           <Description>"Slot 6"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449CBA</Address>
@@ -2606,6 +2679,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3347</ID>
           <Description>"Slot 7"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449CBE</Address>
@@ -2642,6 +2716,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3351</ID>
           <Description>"Slot 8"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449CC2</Address>
@@ -2678,6 +2753,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3355</ID>
           <Description>"Slot 9"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449CC6</Address>
@@ -6970,6 +7046,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3831</ID>
           <Description>"Slot 1"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449EA2</Address>
@@ -7006,6 +7083,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3835</ID>
           <Description>"Slot 2"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449EA6</Address>
@@ -7042,6 +7120,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3839</ID>
           <Description>"Slot 3"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449EAA</Address>
@@ -7078,6 +7157,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3843</ID>
           <Description>"Slot 4"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449EAE</Address>
@@ -7114,6 +7194,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3847</ID>
           <Description>"Slot 5"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449EB2</Address>
@@ -7150,6 +7231,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3851</ID>
           <Description>"Slot 6"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449EB6</Address>
@@ -7186,6 +7268,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3855</ID>
           <Description>"Slot 7"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449EBA</Address>
@@ -7222,6 +7305,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3859</ID>
           <Description>"Slot 8"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449EBE</Address>
@@ -7258,6 +7342,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3863</ID>
           <Description>"Slot 9"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449EC2</Address>
@@ -8310,6 +8395,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3979</ID>
           <Description>"Slot 1"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449F22</Address>
@@ -8346,6 +8432,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3983</ID>
           <Description>"Slot 2"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449F26</Address>
@@ -8382,6 +8469,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3987</ID>
           <Description>"Slot 3"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449F2A</Address>
@@ -8418,6 +8506,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3991</ID>
           <Description>"Slot 4"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449F2E</Address>
@@ -8454,6 +8543,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3995</ID>
           <Description>"Slot 5"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449F32</Address>
@@ -8490,6 +8580,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>3999</ID>
           <Description>"Slot 6"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449F36</Address>
@@ -8526,6 +8617,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>4003</ID>
           <Description>"Slot 7"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449F3A</Address>
@@ -8562,6 +8654,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>4007</ID>
           <Description>"Slot 8"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449F3E</Address>
@@ -8598,6 +8691,7 @@ registerSymbol("PS2mem", PS2mem, true)
           <ID>4011</ID>
           <Description>"Slot 9"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>PS2mem+0449F42</Address>
@@ -12330,43 +12424,6 @@ US  -&gt; US = +780418
             +780518
             +7AC320
 </Comments>
-  <LuaScript>local ProcLst =
-{
-  "pcsx2.exe",
-  "pcsx2-qtx64.exe",
-  "pcsx2-qtx64-avx2.exe",
-  "pcsx2-qt.exe",
-  "pcsx2x64.exe",
-  "pcsx2x64-avx2.exe",
-}
-
-PS2mem = 0x20000000
-
-function AttachProcess(name)
-  if getProcessIDFromProcessName(name) ~= nil then
-    openProcess(name)
-
-    if name ~= "pcsx2.exe" then
-        PS2mem = readPointer(getAddress("EEmem"))
-    end
-
-    return true
-  end
-
-  return false
-end
-
-function AttachPCSX2()
-  for i,name in pairs(ProcLst) do
-    if AttachProcess(name) then
-      return true
-    end
-  end
-
-  return false
-end
-
-registerSymbol("PS2mem", PS2mem, true)
-
+  <LuaScript>
 </LuaScript>
 </CheatTable>

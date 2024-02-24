@@ -7,15 +7,48 @@
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{$lua}
 [ENABLE]
-PS2mem = 0x20000000
+local ProcLst =
+{
+  "pcsx2.exe",
+  "pcsx2-qtx64.exe",
+  "pcsx2-qtx64-avx2.exe",
+  "pcsx2-qt.exe",
+  "pcsx2x64.exe",
+  "pcsx2x64-avx2.exe",
+}
 
-if not AttachPCSX2 then
+PS2mem = 0x20000000
+unregisterSymbol("PS2mem")
+registerSymbol("PS2mem", PS2mem, true)
+
+function AttachProcess(name)
+  if getProcessIDFromProcessName(name) ~= nil then
+    openProcess(name)
+
+    if name ~= "pcsx2.exe" then
+        PS2mem = readPointer(getAddress("EEmem"))
+    end
+
+    return true
+  end
+
+  return false
+end
+
+function AttachPCSX2()
+  for i,name in pairs(ProcLst) do
+    if AttachProcess(name) then
+      return true
+    end
+  end
+
+  return false
+end
+
+if not AttachPCSX2() then
   showMessage("Unable to find PCSX2 process.")
   error()
 end
-
-unregisterSymbol("PS2mem")
-registerSymbol("PS2mem", PS2mem, true)
 
 [DISABLE]
 
@@ -12625,42 +12658,6 @@ US  -&gt; US = +780418
             +780518
             +7AC320
 </Comments>
-  <LuaScript>local ProcLst =
-{
-  "pcsx2.exe",
-  "pcsx2-qtx64.exe",
-  "pcsx2-qtx64-avx2.exe",
-  "pcsx2-qt.exe",
-  "pcsx2x64.exe",
-  "pcsx2x64-avx2.exe",
-}
-
-PS2mem = 0x20000000
-
-function AttachProcess(name)
-  if getProcessIDFromProcessName(name) ~= nil then
-    openProcess(name)
-
-    if name ~= "pcsx2.exe" then
-        PS2mem = readPointer(getAddress("EEmem"))
-    end
-
-    return true
-  end
-
-  return false
-end
-
-function AttachPCSX2()
-  for i,name in pairs(ProcLst) do
-    if AttachProcess(name) then
-      return true
-    end
-  end
-
-  return false
-end
-
-registerSymbol("PS2mem", PS2mem, true)
+  <LuaScript>
 </LuaScript>
 </CheatTable>
