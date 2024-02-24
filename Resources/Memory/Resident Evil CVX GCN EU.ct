@@ -242,9 +242,7 @@
         <CheatEntry>
           <ID>2482</ID>
           <Description>"Poison"</Description>
-          <DropDownList DisplayValueAsItem="1">0:No
-1:Yes
-</DropDownList>
+          <DropDownListLink>0No1Yes</DropDownListLink>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Binary</VariableType>
           <BitStart>3</BitStart>
@@ -258,9 +256,7 @@
         <CheatEntry>
           <ID>2543</ID>
           <Description>"Gassed"</Description>
-          <DropDownList DisplayValueAsItem="1">0:No
-1:Yes
-</DropDownList>
+          <DropDownListLink>0No1Yes</DropDownListLink>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Binary</VariableType>
           <BitStart>5</BitStart>
@@ -424,163 +420,9 @@
         </CheatEntry>
         <CheatEntry>
           <ID>1564</ID>
-          <Description>"Slot 1 (memrec)"</Description>
+          <Description>"Slot 1"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-          <DropDownList DisplayValueAsItem="1">00:Nothing
-01:Rocket Launcher
-02:Assault Rifle
-03:Sniper Rifle
-04:Shotgun
-05:Handgun
-06:Grenade Launcher
-07:Bow Gun
-08:Combat Knife
-09:Handgun
-0A:Custom Handgun
-0B:Linear Launcher
-0C:Handgun Bullets
-0D:Magnum Bullets
-0E:Shotgun Shells
-0F:Grenade Rounds
-10:Acid Rounds
-11:Flame Rounds
-12:Bow Gun Arrows
-13:M93R Part
-14:F. Aid Spray
-15:Green Herb
-16:Red Herb
-17:Blue Herb
-18:Mixed Herb (2 Green)
-19:Mixed Herb (1 Red &amp;amp; 1 Green)
-1A:Mixed Herb (1 Blue &amp;amp; 1 Green)
-1B:Mixed Herb (1 Green &amp;amp; 1 Blue)
-1C:Mixed Herb (3 Green)
-1D:Mixed Herb (Tan?)
-1E:Magnum Bullets
-1F:Ink Ribbon
-20:Magnum
-21:Gold Lugers
-22:Sub Machine Gun
-23:Bow Gun Powder
-24:Gun Powder Arrow
-25:BOW Gas Rounds
-26:M. Gun Bullets
-27:Gas Mask
-28:Rifle Bullets
-29:Duralumin Case
-2A:A. Rifle Bullets
-2B:Alexander's Pierce
-2C:Alexander's Jewel
-2D:Alfred's Ring
-2E:Alfred's Jewel
-2F:Prisoner's Diary
-30:Director's Memo
-31:Instructions
-32:Lockpick
-33:Glass Eye
-34:Piano Roll
-35:Steering Wheel
-36:Crane Key
-37:Lighter
-38:Eagle Plate
-39:Side Pack
-3A:Map
-3B:Hawk Emblem
-3C:Queen Ant Object
-3D:King Ant Object
-3E:Biohazard Card
-3F:Duralumin Case
-40:Detonator
-41:Control Lever
-42:Gold Dragonfly
-43:Silver Key
-44:Gold Key
-45:Army Proof
-46:Navy Proof
-47:Air Force Proof
-48:Key With Tag
-49:ID Card
-4A:Map
-4B:Airport Key
-4C:Emblem Card
-4D:Skeleton Picture
-4E:Music Box Plate
-4F:Dragonfly Object
-50:Album
-51:Halberd
-52:Extinguisher
-53:Briefcase
-54:Padlock Key
-55:TG-01
-56:Sp. Alloy Emblem
-57:Valve Handle
-58:Octa Valve Handle
-59:Machine Room Key
-5A:Mining Room Key
-5B:Bar Code Sticker
-5C:Sterile Room Key
-5D:Door Knob
-5E:Battery Pack
-5F:Hemostatic
-60:Turn Table Key
-61:Chem. Storage Key
-62:Clement Alpha
-63:Clement Sigma
-64:Tank Object
-65:Sp. Alloy Emblem
-66:Alfred's Memo
-67:Rusted Sword
-68:Hemostatic
-69:Security Card
-6A:Security File
-6B:Alexia's Choker
-6C:Alexia's Jewel
-6D:Queen Ant Relief
-6E:King Ant Relief
-6F:Red Jewel
-70:Blue Jewel
-71:Socket
-72:Sq. Valve Handle
-73:Serum
-74:Earthenware Vase
-75:Paper Weight
-76:Silver Dragonfly
-77:Silver Dragonfly
-78:Wing Object
-79:Crystal
-7A:Gold Dragonfly
-7B:Gold Dragonfly
-7C:Gold Dragonfly
-7D:File
-7E:Plant Pot
-7F:Picture B
-80:Duralumin Case
-81:Duralumin Case
-82:Bow Gun Powder
-83:Enhanced Handgun
-84:Memo
-85:Board Clip
-86:Card
-87:Newspaper Clip
-88:Luger Replica
-89:Queen Ant Relief
-8A:Family Picture
-8B:File
-8C:Remote Controller
-8D:?
-8E:M-1P
-8F:Calico Bullets
-90:Clement Mixture
-91:Playing Manual
-92:?
-93:?
-94:?
-95:Empty Extinguisher
-96:Square Socket
-97:?
-98:Crest Key S
-99:Crest Key G
-</DropDownList>
+          <DropDownListLink>ItemType</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>11CE008</Address>
@@ -601,9 +443,7 @@
             <CheatEntry>
               <ID>1565</ID>
               <Description>"Infinite"</Description>
-              <DropDownList DisplayValueAsItem="1">:No
-1:Yes
-</DropDownList>
+              <DropDownListLink>No1Yes</DropDownListLink>
               <VariableType>Binary</VariableType>
               <BitStart>3</BitStart>
               <BitLength>1</BitLength>
@@ -616,11 +456,7 @@
             <CheatEntry>
               <ID>2625</ID>
               <Description>"Ammo"</Description>
-              <DropDownList DisplayValueAsItem="1">:Normal
-100:B.O.W.
-10:Flame
-1:Acid
-</DropDownList>
+              <DropDownListLink>AmmoTypes</DropDownListLink>
               <VariableType>Binary</VariableType>
               <BitStart>4</BitStart>
               <BitLength>4</BitLength>
@@ -636,7 +472,7 @@
           <ID>4227</ID>
           <Description>"Slot 2"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-          <DropDownListLink>Slot 1 (memrec)</DropDownListLink>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>11CE008</Address>
@@ -657,9 +493,7 @@
             <CheatEntry>
               <ID>4229</ID>
               <Description>"Infinite"</Description>
-              <DropDownList DisplayValueAsItem="1">:No
-1:Yes
-</DropDownList>
+              <DropDownListLink>No1Yes</DropDownListLink>
               <VariableType>Binary</VariableType>
               <BitStart>3</BitStart>
               <BitLength>1</BitLength>
@@ -672,11 +506,7 @@
             <CheatEntry>
               <ID>4230</ID>
               <Description>"Ammo"</Description>
-              <DropDownList DisplayValueAsItem="1">:Normal
-100:B.O.W.
-10:Flame
-1:Acid
-</DropDownList>
+              <DropDownListLink>AmmoTypes</DropDownListLink>
               <VariableType>Binary</VariableType>
               <BitStart>4</BitStart>
               <BitLength>4</BitLength>
@@ -692,7 +522,7 @@
           <ID>4231</ID>
           <Description>"Slot 3"</Description>
           <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
-          <DropDownListLink>Slot 1 (memrec)</DropDownListLink>
+          <DropDownListLink>ItemTypes</DropDownListLink>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>Byte</VariableType>
           <Address>11CE008</Address>
@@ -713,9 +543,7 @@
             <CheatEntry>
               <ID>4233</ID>
               <Description>"Infinite"</Description>
-              <DropDownList DisplayValueAsItem="1">:No
-1:Yes
-</DropDownList>
+              <DropDownListLink>No1Yes</DropDownListLink>
               <VariableType>Binary</VariableType>
               <BitStart>3</BitStart>
               <BitLength>1</BitLength>
@@ -728,11 +556,7 @@
             <CheatEntry>
               <ID>4234</ID>
               <Description>"Ammo"</Description>
-              <DropDownList DisplayValueAsItem="1">:Normal
-100:B.O.W.
-10:Flame
-1:Acid
-</DropDownList>
+              <DropDownListLink>AmmoTypes</DropDownListLink>
               <VariableType>Binary</VariableType>
               <BitStart>4</BitStart>
               <BitLength>4</BitLength>
@@ -857,14 +681,7 @@
             <CheatEntry>
               <ID>4139</ID>
               <Description>"Action"</Description>
-              <DropDownList DisplayValueAsItem="1">0:Unknown
-1:Normal
-2:Attacking
-3:Ground
-4:Dead
-5:Inactive
-6:Unknown
-</DropDownList>
+              <DropDownListLink>EnemyActionTypes</DropDownListLink>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>11CE008</Address>
@@ -885,39 +702,7 @@
             <CheatEntry>
               <ID>4141</ID>
               <Description>"Type"</Description>
-              <DropDownList DisplayValueAsItem="1">0:Unknown
-1:Zombie
-2:Glup Worm
-3:Black Widow
-4:Zombie Dog
-5:Hunter
-6:Moth
-7:Bat
-8:Fish
-9:Bandersnatch
-10:Ant
-11:Scanner
-12:Alexia Ashford
-13:Alexia Ashford (2nd Stage) (700)
-14:Alexia Ashford (Final Stage) (400)
-15:Nosferatu
-17:Mutated Steve (250)
-19:Tyrant
-21:Albinoid Infant
-22:Albinoid Adult
-23:Giant Black Widow
-24:Baby Black Widow
-26:Anatomist Zombie
-29:Tenticle
-30:Alexia Baby (15)
-91:Claire
-92:Chris
-93:Steve
-95:Alexia
-96:Alfred
-97:Wesker
-98:Rodrigo
-</DropDownList>
+              <DropDownListLink>EnemyTypes</DropDownListLink>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Custom</VariableType>
               <CustomType>2 Byte Big Endian</CustomType>
@@ -1218,6 +1003,269 @@ C2:First Person (C2)
       <VariableType>Custom</VariableType>
       <CustomType>4 Byte Big Endian</CustomType>
       <Address>2807964C0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5639</ID>
+      <Description>"Lists"</Description>
+      <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>5645</ID>
+          <Description>"No1Yes"</Description>
+          <DropDownList DisplayValueAsItem="1">:No
+1:Yes
+</DropDownList>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address/>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5642</ID>
+          <Description>"0No1Yes"</Description>
+          <DropDownList DisplayValueAsItem="1">0:No
+1:Yes
+</DropDownList>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address/>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5647</ID>
+          <Description>"1No0Yes"</Description>
+          <DropDownList DisplayValueAsItem="1">1:No
+0:Yes
+</DropDownList>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address/>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5640</ID>
+          <Description>"ItemTypes"</Description>
+          <DropDownList DisplayValueAsItem="1">00:Nothing
+01:Rocket Launcher
+02:Assault Rifle
+03:Sniper Rifle
+04:Shotgun
+05:Handgun
+06:Grenade Launcher
+07:Bow Gun
+08:Combat Knife
+09:Handgun
+0A:Custom Handgun
+0B:Linear Launcher
+0C:Handgun Bullets
+0D:Magnum Bullets
+0E:Shotgun Shells
+0F:Grenade Rounds
+10:Acid Rounds
+11:Flame Rounds
+12:Bow Gun Arrows
+13:M93R Part
+14:F. Aid Spray
+15:Green Herb
+16:Red Herb
+17:Blue Herb
+18:Mixed Herb (2 Green)
+19:Mixed Herb (1 Red &amp; 1 Green)
+1A:Mixed Herb (1 Blue &amp; 1 Green)
+1B:Mixed Herb (1 Green &amp; 1 Blue)
+1C:Mixed Herb (3 Green)
+1D:Mixed Herb (Tan?)
+1E:Magnum Bullets
+1F:Ink Ribbon
+20:Magnum
+21:Gold Lugers
+22:Sub Machine Gun
+23:Bow Gun Powder
+24:Gun Powder Arrow
+25:BOW Gas Rounds
+26:M. Gun Bullets
+27:Gas Mask
+28:Rifle Bullets
+29:Duralumin Case
+2A:A. Rifle Bullets
+2B:Alexander's Pierce
+2C:Alexander's Jewel
+2D:Alfred's Ring
+2E:Alfred's Jewel
+2F:Prisoner's Diary
+30:Director's Memo
+31:Instructions
+32:Lockpick
+33:Glass Eye
+34:Piano Roll
+35:Steering Wheel
+36:Crane Key
+37:Lighter
+38:Eagle Plate
+39:Side Pack
+3A:Map
+3B:Hawk Emblem
+3C:Queen Ant Object
+3D:King Ant Object
+3E:Biohazard Card
+3F:Duralumin Case
+40:Detonator
+41:Control Lever
+42:Gold Dragonfly
+43:Silver Key
+44:Gold Key
+45:Army Proof
+46:Navy Proof
+47:Air Force Proof
+48:Key With Tag
+49:ID Card
+4A:Map
+4B:Airport Key
+4C:Emblem Card
+4D:Skeleton Picture
+4E:Music Box Plate
+4F:Dragonfly Object
+50:Album
+51:Halberd
+52:Extinguisher
+53:Briefcase
+54:Padlock Key
+55:TG-01
+56:Sp. Alloy Emblem
+57:Valve Handle
+58:Octa Valve Handle
+59:Machine Room Key
+5A:Mining Room Key
+5B:Bar Code Sticker
+5C:Sterile Room Key
+5D:Door Knob
+5E:Battery Pack
+5F:Hemostatic
+60:Turn Table Key
+61:Chem. Storage Key
+62:Clement Alpha
+63:Clement Sigma
+64:Tank Object
+65:Sp. Alloy Emblem
+66:Alfred's Memo
+67:Rusted Sword
+68:Hemostatic
+69:Security Card
+6A:Security File
+6B:Alexia's Choker
+6C:Alexia's Jewel
+6D:Queen Ant Relief
+6E:King Ant Relief
+6F:Red Jewel
+70:Blue Jewel
+71:Socket
+72:Sq. Valve Handle
+73:Serum
+74:Earthenware Vase
+75:Paper Weight
+76:Silver Dragonfly
+77:Silver Dragonfly
+78:Wing Object
+79:Crystal
+7A:Gold Dragonfly
+7B:Gold Dragonfly
+7C:Gold Dragonfly
+7D:File
+7E:Plant Pot
+7F:Picture B
+80:Duralumin Case
+81:Duralumin Case
+82:Bow Gun Powder
+83:Enhanced Handgun
+84:Memo
+85:Board Clip
+86:Card
+87:Newspaper Clip
+88:Luger Replica
+89:Queen Ant Relief
+8A:Family Picture
+8B:File
+8C:Remote Controller
+8D:?
+8E:M-1P
+8F:Calico Bullets
+90:Clement Mixture
+91:Playing Manual
+92:?
+93:?
+94:?
+95:Empty Extinguisher
+96:Square Socket
+97:?
+98:Crest Key S
+99:Crest Key G
+</DropDownList>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address/>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5643</ID>
+          <Description>"AmmoTypes"</Description>
+          <DropDownListLink>AmmoTypes</DropDownListLink>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address/>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5644</ID>
+          <Description>"EnemyTypes"</Description>
+          <DropDownList DisplayValueAsItem="1">0:Unknown
+1:Zombie
+2:Glup Worm
+3:Black Widow
+4:Zombie Dog
+5:Hunter
+6:Moth
+7:Bat
+8:Fish
+9:Bandersnatch
+10:Ant
+11:Scanner
+12:Alexia Ashford
+13:Alexia Ashford (2nd Stage) (700)
+14:Alexia Ashford (Final Stage) (400)
+15:Nosferatu
+17:Mutated Steve (250)
+19:Tyrant
+21:Albinoid Infant
+22:Albinoid Adult
+23:Giant Black Widow
+24:Baby Black Widow
+26:Anatomist Zombie
+29:Tenticle
+30:Alexia Baby (15)
+91:Claire
+92:Chris
+93:Steve
+95:Alexia
+96:Alfred
+97:Wesker
+98:Rodrigo
+</DropDownList>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address/>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5646</ID>
+          <Description>"EnemyActionTypes"</Description>
+          <DropDownList DisplayValueAsItem="1">0:Unknown
+1:Normal
+2:Attacking
+3:Ground
+4:Dead
+5:Inactive
+6:Unknown
+</DropDownList>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address/>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
