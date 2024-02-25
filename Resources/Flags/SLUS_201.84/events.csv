@@ -1,513 +1,726 @@
-Pointer,Bit,Name
-0x00433190,0,
-0x00433190,1,Military Training Facility 2F Command Center - Shutter Opened
-0x00433190,2,
-0x00433190,3,Military Training Facility Lobby - Shutter Closed
-0x00433190,4,Military Training Facility Lobby - Shutter Opened
-0x00433190,5,Military Training Facility 1F Diorama Room - Reveal Hidden Room
-0x00433190,6,
-0x00433190,7,
-0x00433190,8,Private Residence 3F Play Room - Place Sliver Dragonfly
-0x00433190,9,Private Residence 2F Alexias Bedroom - Bed Ceiling Raised
-0x00433190,10,Private Residence 2F Alexias Bedroom - Find Alexia
-0x00433190,11,Private Residence 2F Alfreds Bedroom - Place Music Box Plate
-0x00433190,12,Palace B1 Dock - Submarine Raised
-0x00433190,13,Palace B1 Dock - Place Steering Wheel
-0x00433190,14,
-0x00433190,15,Palace 2F Alfreds Office - Bandersnatch Breaks Through Window
-0x00433190,16,Palace 1F Display Room - Steve Saved
-0x00433190,17,Palace 1F Display Room - Security System Active
-0x00433190,18,Palace 1F Display Room - Pushed Ant Button
-0x00433190,19,Prison 1F Clinic - Placed Glass Eye
-0x00433190,20,Prison 1F Execution Yard - Placed Eagle Plate
-0x00433190,21,Prison 1F Execution Yard - Open Shutter
-0x00433190,22,Prison 1F Barracks Yard - Unlock Small Gate with Padlock Key
-0x00433190,23,
-0x00433190,24,Military Training Facility 2F Warehouse Corridor - Sidepack Equipped
-0x00433190,25,Palace B1 Submarine - Sidepack Equiped
-0x00433190,26,
-0x00433190,27,Palace Entrance Hall - Deactivate Security Lock System
-0x00433190,28,Palace Entrance Hall - Steve is Trapped
-0x00433190,29,Prison 1F Statue Room - Gas Leak Stopped
-0x00433190,30,Game Start
-0x00433190,31,
-0x00433194,0,
-0x00433194,1,
-0x00433194,2,Palace 2F Alfreds Office - Passcode Entered
-0x00433194,3,Antartic Transport Terminal Sorting Room - Place Bar Code Sticker on Parcle
-0x00433194,4,Airport Cargo Bay - Lift Cargo Box?
-0x00433194,5,Military Training Facility B1 Chemical Storage Room - Set Chemical Temprature
-0x00433194,6,
-0x00433194,7,Transport Plane Cockpit - Part One Complete Screen
-0x00433194,8,Military Training Facility 1F Elevator Corridor - Elevator on 1F
-0x00433194,9,Military Training Facility B1 Iron Walkway - Elevator on B1
-0x00433194,10,Prison 1F Security Corridor - Alarm Activated
-0x00433194,11,
-0x00433194,12,
-0x00433194,13,
-0x00433194,14,
-0x00433194,15,Military Training Facility B3 Tomb - Activate Lift
-0x00433194,16,
-0x00433194,17,
-0x00433194,18,
-0x00433194,19,Military Training Facility Garage - Place Battery Pack
-0x00433194,20,Military Training Facility B1 Turn Table Room - Insert Turntable Key
-0x00433194,21,
-0x00433194,22,Military Training Facility Iron Walkway - Unlock Manhole Cover
-0x00433194,23,Military Training Facility Iron Walkway - Staircase Raised
-0x00433194,24,
-0x00433194,25,
-0x00433194,26,Antartic Transport Terminal B2 Office - Revealed Passage Behind Bookcase
-0x00433194,27,Airport Cargo Transport - Elevator Raised?
-0x00433194,28,Airport Bridge - Control Leaver Raised
-0x00433194,29,Military Training Facility B1 Boiler Room - Open Gate
-0x00433194,30,Military Training Facility B1 Basement Storehouse - Open Shutter
-0x00433194,31,Military Training Facility 2F Warehouse Corridor - Shutter Closed
-0x00433198,0,Antartic Transport Terminal B1 Silo - Part Two Begins
-0x00433198,1,
-0x00433198,2,
-0x00433198,3,
-0x00433198,4,
-0x00433198,5,
-0x00433198,6,
-0x00433198,7,
-0x00433198,8,
-0x00433198,9,
-0x00433198,10,
-0x00433198,11,
-0x00433198,12,
-0x00433198,13,
-0x00433198,14,
-0x00433198,15,
-0x00433198,16,
-0x00433198,17,
-0x00433198,18,
-0x00433198,19,
-0x00433198,20,Antartic Transport Terminal 1F Helipad - Nosferatu Dead
-0x00433198,21,
-0x00433198,22,
-0x00433198,23,
-0x00433198,24,
-0x00433198,25,
-0x00433198,26,Military Training Facility 2F Biological Laboratory - Biohazard Alarm Triggered?
-0x00433198,27,
-0x00433198,28,Airport Cargo Transport - Countdown Active
-0x00433198,29,
-0x00433198,30,
-0x00433198,31,Airport Check-in - Water Puzzle Solved?
-0x0043319C,0,Prison Iron Bridge - Placed Box Over Fire
-0x0043319C,1,Prison 1F Security Corridor - Zombies Break Through
-0x0043319C,2,Prison 1F Security Corridor - Alloy Placed in 3D Printer/3D Print Complete
-0x0043319C,3,Prison 1F Security Corridor - Placed Hawk Emblem in 3D Scanner
-0x0043319C,4,Prison 1F Security Corridor - Open 3D Scanner
-0x0043319C,5,Prison 1F Security Corridor - Disabled Alarm
-0x0043319C,6,Prison 1F Security Corridor - Triggered Alarm
-0x0043319C,7,Prison 1F Security Corridor - Zombies Break Through
-0x0043319C,8,Prison 1F Execution Yard - Spawned Zombie Behind Wall
-0x0043319C,9,Prison 1F Execution Yard - Push Shutter Button (Locked)
-0x0043319C,10,Prison 1F Execution Yard - ???
-0x0043319C,11,Prison 1F Bunkhouse - Zombie w/ M-100P bursts through window
-0x0043319C,12,Prison 1F Barracks Yard - Dogs escaped
-0x0043319C,13,Prison 1F Barracks Yard - Dog breaks through mesh
-0x0043319C,14,Prison 1F Barracks Yard - After leaving barracks/Returning from Computer Room
-0x0043319C,15,Prison 1F Barracks Yard - Body dragged away
-0x0043319C,16,Prison 1F Computer Room - Claire finds Steve at the Computer
-0x0043319C,17,Prison 1F Computer Room - Release Shutter Lock
-0x0043319C,18,Prison 1F Barracks - ???
-0x0043319C,19,Prison 1F Yard - Zombies Spawn
-0x0043319C,20,Prison 1F Yard - Steve Attacks!
-0x0043319C,21,Prison 1F Yard - Place Sp. Alloy Emblem
-0x0043319C,22,Prison 1F Barracks Yard - ???
-0x0043319C,23,Prison 1F Graveyard - Truck Explodes
-0x0043319C,24,
-0x0043319C,25,
-0x0043319C,26,
-0x0043319C,27,Prison 1F Graveyard - Put out Truck Fire
-0x0043319C,28,Prison B1 Cells - After Equiping Lighter
-0x0043319C,29,Prison Iron Bridge - ???
-0x0043319C,30,Prison B1 Cells - Talk to Rodrigo after giving him the Hemostatic
-0x0043319C,31,Prison B1 Cells - Give Hemostatic to Rodrigo
-0x004331A0,0,Palace 1F Display Room - Steve State 1
-0x004331A0,1,Palace 1F Corridor - Unlock Portrait Room Door
-0x004331A0,2,Palace 1F Corridor - Unlock Umbrella Meeting Room Door
-0x004331A0,3,Palace 1F Display Room - Steve State 3
-0x004331A0,4,Palace 1F Display Room - Steve State 2
-0x004331A0,5,Palace 1F Portrait Room - Unlock Hidden Vase
-0x004331A0,6,
-0x004331A0,7,
-0x004331A0,8,Palace Entrance Hall - Alfred Ashford Introduction
-0x004331A0,9,Palace Entrance Hall - Rescue Steve
-0x004331A0,10,
-0x004331A0,11,
-0x004331A0,12,Palace Entrance Hall - Unlock Casino Lounge Door
-0x004331A0,13,Palace Entrance Hall - Steve Calls for Help
-0x004331A0,14,
-0x004331A0,15,Palace Entrance Hall - Defaced Alexander Ashford Portrait
-0x004331A0,16,
-0x004331A0,17,Palace Courtyard - Steve Cutscene
-0x004331A0,18,
-0x004331A0,19,
-0x004331A0,20,
-0x004331A0,21,Prison 1F Backyard - ???
-0x004331A0,22,Prison 1F Backyard - Door to Computer Room Unblocked (Updates apon leaving room)
-0x004331A0,23,Prison 1F Statue Room - Iron Statue Opened
-0x004331A0,24,Prison 1F Statue Room - Iron Statue Revealed
-0x004331A0,25,
-0x004331A0,26,Prison 1F Statue Room - Stop the Gas Leak
-0x004331A0,27,
-0x004331A0,28,
-0x004331A0,29,Prison 1F Cremetorium - Dr. Zombie Awake
-0x004331A0,30,Prison 1F Clinic - Dr. Zombie Fight
-0x004331A0,31,Prison 1F Clinic - Dr. Zombie Wriggles
-0x004331A4,0,Military Training Facility Garage - Steve Cutscene
-0x004331A4,1,Military Training Facility Garage - FAAAAAAAAATHHEEEEERRRRRRRRRRR
-0x004331A4,2,Military Training Facility Garage - Walkway Breaks
-0x004331A4,3,Private Residence 4F Private Study - Push Box to Cabinet
-0x004331A4,4,Private Residence Courtyard - After King and Queen Ants Collected?
-0x004331A4,5,Private Residence 2F Alexias Bedroom - Meeting Alexia
-0x004331A4,6,Private Residence 2F Alexias Bedroom - Take Music Box Plate
-0x004331A4,7,Private Residence 2F Alexias Bedroom - Place Queen Ant
-0x004331A4,8,Private Residence 2F Alexias Bedroom - Music Box Closed
-0x004331A4,9,
-0x004331A4,10,Palace Courtyard - Self-destruct sequence activated
-0x004331A4,11,Private Residence 2F Alfreds Bedroom - Alfred is Alexia!
-0x004331A4,12,Private Residence 2F Alfreds Bedroom - Place King Ant
-0x004331A4,13,
-0x004331A4,14,
-0x004331A4,15,Private Residence 2F Bedroom Corridor - Alfred/Alexia Discussion
-0x004331A4,16,Private Residence 1F Dining Room - Light Fire
-0x004331A4,17,Private Residence Entrance Hall - ???
-0x004331A4,18,Private Residence Courtyard - Bandersnatch Spawns
-0x004331A4,19,Palace B1 Submarine - Steve Lowers the Submarine
-0x004331A4,20,Palace B1 Dock - Steve Extends the Platform
-0x004331A4,21,Palace B1 Dock - Platform Extended
-0x004331A4,22,Palace Passage - Tyrant Fight
-0x004331A4,23,Palace Passage - Spawn Bandersnatch
-0x004331A4,24,Palace 2F Casino Lounge - Place Music Notes in Piano
-0x004331A4,25,Palace 2F Casino Lounge - Piano is Playing
-0x004331A4,26,Palace 2F Residence Bridge - ???
-0x004331A4,27,Palace 2F Alfreds Office - Turn on Computer
-0x004331A4,28,Palace 2F Alfreds Office - ???
-0x004331A4,29,Palace 2F Secretarys Office - Leave Office After Taking Card?
-0x004331A4,30,Palace 2F Secretarys Office - Leave Office After Taking Card?
-0x004331A4,31,Palace 2F Secretarys Office - Place Lugers
-0x004331A8,0,
-0x004331A8,1,Military Training Facility 2F Emergency Door - Passcode Entered
-0x004331A8,2,Military Training Facility 2F Command Center - Spawn Zombies
-0x004331A8,3,Military Training Facility 2F Command Center - Change to Claire
-0x004331A8,4,Military Training Facility 2F Command Center - Security Code Seen?
-0x004331A8,5,Military Training Facility 2F Command Center - View Security Camera
-0x004331A8,6,Military Training Facility Warehouse - Bandersnatch Killed
-0x004331A8,7,Military Training Facility Warehouse - Steve Saves Claire from Bandersnatch
-0x004331A8,8,Military Training Facility Warehouse - Bandersnatch Introduction
-0x004331A8,9,Military Training Facility 1F Excercise Yard - Gulp Worm
-0x004331A8,10,Military Training Facility Lobby - Unlock Shutter
-0x004331A8,11,
-0x004331A8,12,Military Training Facility Lobby - Lock Shutter
-0x004331A8,13,Military Training Facility Lobby - Ventalation Underway
-0x004331A8,14,Military Training Facility Lobby - Stairway Shutter Sealed
-0x004331A8,15,Military Training Facility 1F Front Office - Print Map
-0x004331A8,16,Military Training Facility 1F Front Office - Open Safe using Key with Tag
-0x004331A8,17,
-0x004331A8,18,Military Training Facility 1F Swimming Pool - Turn Circulation Pipe Valve
-0x004331A8,19,
-0x004331A8,20,Military Training Facility 1F Lockers - Bugs Crawl out of Body
-0x004331A8,21,Military Training Facility 1F Diorama Room - Draw Unlocked
-0x004331A8,22,Military Training Facility 1F Elevator Corridor - ???
-0x004331A8,23,
-0x004331A8,24,Military Training Facility 1F Tank Yard - Alfred Reveals a Hidden Passage
-0x004331A8,25,Military Training Facility Back Courtyard - Alfred Escapes
-0x004331A8,26,Military Training Facility Back Courtyard - Alfred Fight
-0x004331A8,27,Military Training Facility Back Courtyard - Placed Eagle Plate
-0x004331A8,28,Palace Passage - Spawn Bandersnatch
-0x004331A8,29,
-0x004331A8,30,
-0x004331A8,31,
-0x004331AC,0,Airport Cargo Bay - Open Gate
-0x004331AC,1,Airport Cargo Bay - Raise Lift
-0x004331AC,2,Airport Cargo Bay - Lift Cargo Box?
-0x004331AC,3,
-0x004331AC,4,Airport Bridge - Place Control Leaver
-0x004331AC,5,
-0x004331AC,6,Airport Bridge - ???
-0x004331AC,7,Airport Bridge - Pushed Lift Switch
-0x004331AC,8,Airport Bridge - Platform Closed
-0x004331AC,9,Airport Bridge - Lift Lowered
-0x004331AC,10,Airport Bridge - Air Force Proof Placed
-0x004331AC,11,Airport Bridge - Navy Proof Placed
-0x004331AC,12,Airport Bridge - Army Proof Placed
-0x004331AC,13,
-0x004331AC,14,
-0x004331AC,15,Military Training Facility Jet Hangar Corridor - Alfred Escapes Island
-0x004331AC,16,Military Training Facility Elevator - ???
-0x004331AC,17,
-0x004331AC,18,Military Training Facility B1 Iron Walkway - Steve Section Complete
-0x004331AC,19,Military Training Facility B1 Weapon Repair Shop - Cabinet Unlocked
-0x004331AC,20,
-0x004331AC,21,
-0x004331AC,22,Military Training Facility B1 Weapon Repair Shop - ???
-0x004331AC,23,
-0x004331AC,24,Military Training Facility B1 Basement Storehouse Cargo Lift - Changed to Steve
-0x004331AC,25,Military Training Facility B1 Boiler Room - Turn on Extractor Fan
-0x004331AC,26,Military Training Facility 2F Warehouse Corridor - Shutter Status
-0x004331AC,27,Military Training Facility 2F Biological Laboratory - Alarm Triggered
-0x004331AC,28,
-0x004331AC,29,Military Training Facility 2F Biological Laboratory - Baby Albinoid Breaks Free?
-0x004331AC,30,Military Training Facility 2F Biological Laboratory Security Camera - Zoom in on Security Code
-0x004331AC,31,Military Training Facility 2F Emergency Door - Trigger Alarm
-0x004331B0,0,Antartic Transport Terminal Sorting Room - Escaped the Mining Room
-0x004331B0,1,Antartic Transport Terminal Sorting Room - Sorter Power Active
-0x004331B0,2,
-0x004331B0,3,Antartic Transport Terminal Sorting Room - Activate Sorter
-0x004331B0,4,Antartic Transport Terminal B2 Office - Revealed Nosferatus Prison Cell
-0x004331B0,5,Antartic Transport Terminal B2 Office - Nosferatu Released
-0x004331B0,6,Antartic Transport Terminal B2 Office - Push Switch and Reveal Hidden Room
-0x004331B0,7,Antartic Transport Terminal B2 Office - Locker Opened
-0x004331B0,8,Antartic Transport Terminal B2 Frozen Corridor - Zombie Hanging from Ceiling
-0x004331B0,9,Antartic Transport Terminal B2 Weapon Room - ???
-0x004331B0,10,Antartic Transport Terminal B1 Tool Storeroom - Convert Square Valve to Octagon Valve Handle
-0x004331B0,11,Antartic Transport Terminal B1 Workmans Bunkhouse - Spawn Zombies
-0x004331B0,12,
-0x004331B0,13,
-0x004331B0,14,Antartic Transport Terminal B1 Silo - Claire and Steve Escape from the Crashed Cargo Plane
-0x004331B0,15,
-0x004331B0,16,
-0x004331B0,17,
-0x004331B0,18,Transport Plane Cargo Hold - Tyrant Fight
-0x004331B0,19,Transport Plane Cockpit - Cargo Plane Crashlands into the Antarctic
-0x004331B0,20,Transport Plane Cockpit - Cargo Plane is force into Autopilot mode
-0x004331B0,21,Transport Plane Cockpit - A Disturbance On-board the Cargo Plane
-0x004331B0,22,Transport Plane Cockpit - Escaped the Island
-0x004331B0,23,Transport Plane Cockpit - Cargo Plane Takes Off
-0x004331B0,24,
-0x004331B0,25,
-0x004331B0,26,Transport Plane Cockpit - Steve Prepares the Cargo Plane
-0x004331B0,27,Military Training Facility Cargo Elevator - Elevator Status?
-0x004331B0,28,Airport Cargo Transport - Elevator Status?
-0x004331B0,29,
-0x004331B0,30,Airport Cargo Transport - Cargo Elevator Door Unblocked
-0x004331B0,31,Airport Entry - Steve Runs down the Hallway
-0x004331B4,0,
-0x004331B4,1,Military Training Facility 2F Command Center - Alexia has Awakened
-0x004331B4,2,
-0x004331B4,3,Military Training Facility 1F Diorama Room - Lower Leaver and Reveal Hidden Ladder
-0x004331B4,4,Military Training Facility 1F Diorama Room - Place Air Force Proof
-0x004331B4,5,Military Training Facility 1F Diorama Room - Place Navy Proof
-0x004331B4,6,Military Training Facility 1F Diorama Room - Place Army Proof
-0x004331B4,7,Military Training Facility 1F Diorama Room - Place Tank Object
-0x004331B4,8,Military Training Facility Elevator - Elevator on 1F
-0x004331B4,9,Military Training Facility Elevator - Elevator on B1
-0x004331B4,10,Military Training Facility 1F Tank Yard - Lift Rasied
-0x004331B4,11,Military Training Facility 1F Tank Yard - Push Tank Button?
-0x004331B4,12,Antartic Transport Terminal 1F Helipad - Poisoned by Nosferatu
-0x004331B4,13,Antartic Transport Terminal 1F Helipad - Claire Rescues Steve
-0x004331B4,14,Antartic Transport Terminal 1F Helipad - Head Downstairs
-0x004331B4,15,Antartic Transport Terminal 1F Helipad - On the Helipad
-0x004331B4,16,
-0x004331B4,17,
-0x004331B4,18,Antartic Transport Terminal B2 Weapon Room - Sorter on Fire?
-0x004331B4,19,Antartic Transport Terminal B2 Weapon Room - Detonator Placed
-0x004331B4,20,Antartic Transport Terminal B2 Weapon Room - Activate Detonator
-0x004331B4,21,Antartic Transport Terminal B2 Weapon Room - ???
-0x004331B4,22,Antartic Transport Terminal Power Room - Electricity Restored
-0x004331B4,23,Antartic Transport Terminal Power Room - Generator Active
-0x004331B4,24,
-0x004331B4,25,Antartic Transport Terminal Mining Room - Escape the using the Miner
-0x004331B4,26,Antartic Transport Terminal Mining Room - Looked at Octagon Shaped Valve Connection
-0x004331B4,27,Antartic Transport Terminal Mining Room - Steve gets Distracted
-0x004331B4,28,Antartic Transport Terminal Mining Room - Turn off Gas Leak
-0x004331B4,29,Antartic Transport Terminal Sorting Room - After Obtaining Octagon Valve Handle
-0x004331B4,30,
-0x004331B4,31,Antartic Transport Terminal Sorting Room - Show Package from Above
-0x004331B8,0,
-0x004331B8,1,Military Training Facility B1 Turn Table Room - Turntable Raised
-0x004331B8,2,Military Training Facility B1 Turn Table Room - Hunter Introduction
-0x004331B8,3,Military Training Facility B1 Turn Table Room - Detected
-0x004331B8,4,
-0x004331B8,5,Military Training Facility B2 Water Pool - Albinoid Fight
-0x004331B8,6,
-0x004331B8,7,
-0x004331B8,8,Military Training Facility B2 Captins Room - Unlock Hidden Container
-0x004331B8,9,
-0x004331B8,10,
-0x004331B8,11,Military Training Facility B2 Jet Hangar Corridor - Spawn Spiders
-0x004331B8,12,Military Training Facility B2 Jet Hangar Corridor - Place Key
-0x004331B8,13,Military Training Facility B2 Jet Hangar Corridor - Detected
-0x004331B8,14,Military Training Facility B2 Jet Hangar Corridor - Detected
-0x004331B8,15,
-0x004331B8,16,
-0x004331B8,17,
-0x004331B8,18,
-0x004331B8,19,
-0x004331B8,20,
-0x004331B8,21,
-0x004331B8,22,Military Training Facility Specimen Lab - Push Switch
-0x004331B8,23,
-0x004331B8,24,Military Training Facility Specimen Lab - Chris Meets Weasker
-0x004331B8,25,
-0x004331B8,26,
-0x004331B8,27,Military Training Facility 1F Lobby - After Collecting Proofs?
-0x004331B8,28,Military Training Facility Iron Walkway - Removed Shotgun (First Time)
-0x004331B8,29,Military Training Facility Iron Walkway - Spawn Zombie
-0x004331B8,30,Military Training Facility B1 Chemical Storage Room - Hunter Break Through the Vent
-0x004331B8,31,Military Training Facility B1 Chemical Storage Room - Unlock Chemical Storage
-0x004331BC,0,Airport Bridge - Take Army|Air Force|Navy Proof
-0x004331BC,1,Airport Bridge - Take Army|Air Force|Navy Proof
-0x004331BC,2,Airport Bridge - Bridge Lowered
-0x004331BC,3,Airport Check-in - Water Puzzle Solved?
-0x004331BC,4,
-0x004331BC,5,Military Training Facility B3 Outside Cave - Chris Arrives at Rockfort Island
-0x004331BC,6,
-0x004331BC,7,
-0x004331BC,8,Military Training Facility B3 Tomb - Glup Worm Killed
-0x004331BC,9,
-0x004331BC,10,
-0x004331BC,11,Military Training Facility B3 Tomb - Inside Lift?
-0x004331BC,12,Military Training Facility B3 Tomb - Lift Avaliable
-0x004331BC,13,Military Training Facility B3 Tomb - Inside Lift?
-0x004331BC,14,Military Training Facility B3 Tomb - Glup Worm Spits Out Rodrigo?
-0x004331BC,15,
-0x004331BC,16,Military Training Facility B3 Cave - Unlock Sub Machine Gun
-0x004331BC,17,Military Training Facility B3 Cave - Cave Entrance Collapses
-0x004331BC,18,Military Training Facility B3 Cave - Find Rodigo
-0x004331BC,19,
-0x004331BC,20,Military Training Facility B3 Cave - Move Stone Lid Down
-0x004331BC,21,
-0x004331BC,22,
-0x004331BC,23,
-0x004331BC,24,Military Training Facility 2F Warehouse Corridor - ???
-0x004331BC,25,Military Training Facility 2F Warehouse Corridor - Detected
-0x004331BC,26,Military Training Facility 2F Lobby - Place Door Knob
-0x004331BC,27,Military Training Facility 1F Lobby - A Monster Attacks
-0x004331BC,28,Military Training Facility Back Courtyard - Eagle Plate falls into Sewers?
-0x004331BC,29,Military Training Facility Back Courtyard - Eagle Plate falls into Sewers?
-0x004331BC,30,
-0x004331BC,31,
-0x004331C0,0,
-0x004331C0,1,
-0x004331C0,2,
-0x004331C0,3,
-0x004331C0,4,
-0x004331C0,5,
-0x004331C0,6,
-0x004331C0,7,
-0x004331C0,8,
-0x004331C0,9,Antartic Transport Terminal B1 Water Tank Room - Raise Extinguisher
-0x004331C0,10,
-0x004331C0,11,
-0x004331C0,12,Antartic Transport Terminal B1 Water Tank Room - Refill Extinguisher
-0x004331C0,13,Antartic Transport Terminal B1 Corridor - Elevator???
-0x004331C0,14,Antartic Transport Terminal B1 Corridor - ???
-0x004331C0,15,Antartic Transport Terminal B1 Corridor - Detected
-0x004331C0,16,
-0x004331C0,17,Antartic Transport Terminal B1 Jet Hanger - Chris Escapes Island in Fighter Jet
-0x004331C0,18,
-0x004331C0,19,Antartic Transport Terminal B2 Weapon Room - Extinguish Fire
-0x004331C0,20,Antartic Transport Terminal B1 Mining Room - Zombies Attack
-0x004331C0,21,
-0x004331C0,22,
-0x004331C0,23,
-0x004331C0,24,Antartic Transport Terminal B2 Office - Place Halbard
-0x004331C0,25,
-0x004331C0,26,
-0x004331C0,27,Antartic Transport Terminal B2 Frozen Corridor - Zombie Drops from Ceiling
-0x004331C0,28,
-0x004331C0,29,No Room Loaded - ??? (Weasker Cutscene at Airport)
-0x004331C0,30,
-0x004331C0,31,Airport Bridge - Turn off Electricity
-0x004331C4,0,
-0x004331C4,1,
-0x004331C4,2,
-0x004331C4,3,
-0x004331C4,4,
-0x004331C4,5,
-0x004331C4,6,
-0x004331C4,7,
-0x004331C4,8,
-0x004331C4,9,
-0x004331C4,10,
-0x004331C4,11,
-0x004331C4,12,
-0x004331C4,13,
-0x004331C4,14,
-0x004331C4,15,
-0x004331C4,16,
-0x004331C4,17,
-0x004331C4,18,
-0x004331C4,19,
-0x004331C4,20,
-0x004331C4,21,
-0x004331C4,22,
-0x004331C4,23,
-0x004331C4,24,
-0x004331C4,25,
-0x004331C4,26,
-0x004331C4,27,
-0x004331C4,28,
-0x004331C4,29,
-0x004331C4,30,
-0x004331C4,31,
-0x004331C8,0,
-0x004331C8,1,
-0x004331C8,2,
-0x004331C8,3,
-0x004331C8,4,
-0x004331C8,5,
-0x004331C8,6,
-0x004331C8,7,
-0x004331C8,8,
-0x004331C8,9,
-0x004331C8,10,
-0x004331C8,11,
-0x004331C8,12,
-0x004331C8,13,
-0x004331C8,14,
-0x004331C8,15,
-0x004331C8,16,
-0x004331C8,17,
-0x004331C8,18,
-0x004331C8,19,
-0x004331C8,20,
-0x004331C8,21,
-0x004331C8,22,
-0x004331C8,23,Palace Courtyard - Wesker Introduction
-0x004331C8,24,
-0x004331C8,25,Military Training Facility Garage - ??? (After Collecting Battery Pack?)
-0x004331C8,26,Military Training Facility Garage - Lift Raised
-0x004331C8,27,
-0x004331C8,28,
-0x004331C8,29,
-0x004331C8,30,
-0x004331C8,31,
-0x004331CC,0,
-0x004331CC,1,
-0x004331CC,2,
-0x004331CC,3,
-0x004331CC,4,
-0x004331CC,5,
-0x004331CC,6,
-0x004331CC,7,
-0x004331CC,8,
-0x004331CC,9,
-0x004331CC,10,
-0x004331CC,11,
-0x004331CC,12,
-0x004331CC,13,
-0x004331CC,14,
-0x004331CC,15,
-0x004331CC,16,
-0x004331CC,17,
-0x004331CC,18,
-0x004331CC,19,
-0x004331CC,20,
-0x004331CC,21,
-0x004331CC,22,
-0x004331CC,23,
-0x004331CC,24,
-0x004331CC,25,
-0x004331CC,26,
-0x004331CC,27,
-0x004331CC,28,
-0x004331CC,29,
-0x004331CC,30,
-0x004331CC,31,
+Index,Pointer,Bit,Name
+0,541274512,0,
+1,541274512,1,Game Start
+2,541274512,2,Prison 1F Statue Room - Gas Leak Stopped
+3,541274512,3,Palace Entrance Hall - Steve is Trapped
+4,541274512,4,Palace Entrance Hall - Deactivate Security Lock System
+5,541274512,5,
+6,541274512,6,Palace B1 Submarine - Sidepack Equiped
+7,541274512,7,Military Training Facility 2F Warehouse Corridor - Sidepack Equipped
+8,541274512,8,
+9,541274512,9,Prison 1F Barracks Yard - Unlock Small Gate with Padlock Key
+10,541274512,10,Prison 1F Execution Yard - Open Shutter
+11,541274512,11,Prison 1F Execution Yard - Placed Eagle Plate
+12,541274512,12,Prison 1F Clinic - Placed Glass Eye
+13,541274512,13,Palace 1F Display Room - Pushed Ant Button
+14,541274512,14,Palace 1F Display Room - Security System Active
+15,541274512,15,Palace 1F Display Room - Steve Saved
+16,541274512,16,Palace 2F Alfreds Office - Bandersnatch Breaks Through Window
+17,541274512,17,
+18,541274512,18,Palace B1 Dock - Place Steering Wheel
+19,541274512,19,Palace B1 Dock - Submarine Raised
+20,541274512,20,Private Residence 2F Alfreds Bedroom - Place Music Box Plate
+21,541274512,21,Private Residence 2F Alexias Bedroom - Find Alexia
+22,541274512,22,Private Residence 2F Alexias Bedroom - Bed Ceiling Raised
+23,541274512,23,Private Residence 3F Play Room - Place Sliver Dragonfly
+24,541274512,24,
+25,541274512,25,
+26,541274512,26,Military Training Facility 1F Diorama Room - Reveal Hidden Room
+27,541274512,27,Military Training Facility Lobby - Shutter Opened
+28,541274512,28,Military Training Facility Lobby - Shutter Closed
+29,541274512,29,
+30,541274512,30,Military Training Facility 2F Command Center - Shutter Opened
+31,541274512,31,
+32,541274516,0,Military Training Facility 2F Warehouse Corridor - Shutter Closed
+33,541274516,1,Military Training Facility B1 Basement Storehouse - Open Shutter
+34,541274516,2,Military Training Facility B1 Boiler Room - Open Gate
+35,541274516,3,Airport Bridge - Control Leaver Raised
+36,541274516,4,Airport Cargo Transport - Elevator Raised?
+37,541274516,5,Antartic Transport Terminal B2 Office - Revealed Passage Behind Bookcase
+38,541274516,6,
+39,541274516,7,
+40,541274516,8,Military Training Facility Iron Walkway - Staircase Raised
+41,541274516,9,Military Training Facility Iron Walkway - Unlock Manhole Cover
+42,541274516,10,
+43,541274516,11,Military Training Facility B1 Turn Table Room - Insert Turntable Key
+44,541274516,12,Military Training Facility Garage - Place Battery Pack
+45,541274516,13,
+46,541274516,14,
+47,541274516,15,
+48,541274516,16,Military Training Facility B3 Tomb - Activate Lift
+49,541274516,17,
+50,541274516,18,
+51,541274516,19,
+52,541274516,20,
+53,541274516,21,Prison 1F Security Corridor - Alarm Activated
+54,541274516,22,Military Training Facility B1 Iron Walkway - Elevator on B1
+55,541274516,23,Military Training Facility 1F Elevator Corridor - Elevator on 1F
+56,541274516,24,Transport Plane Cockpit - Part One Complete Screen
+57,541274516,25,
+58,541274516,26,Military Training Facility B1 Chemical Storage Room - Set Chemical Temprature
+59,541274516,27,Airport Cargo Bay - Lift Cargo Box?
+60,541274516,28,Antartic Transport Terminal Sorting Room - Place Bar Code Sticker on Parcle
+61,541274516,29,Palace 2F Alfreds Office - Passcode Entered
+62,541274516,30,
+63,541274516,31,
+64,541274520,0,Airport Check-in - Water Puzzle Solved?
+65,541274520,1,
+66,541274520,2,
+67,541274520,3,Airport Cargo Transport - Countdown Active
+68,541274520,4,
+69,541274520,5,Military Training Facility 2F Biological Laboratory - Biohazard Alarm Triggered?
+70,541274520,6,
+71,541274520,7,
+72,541274520,8,
+73,541274520,9,
+74,541274520,10,
+75,541274520,11,Antartic Transport Terminal 1F Helipad - Nosferatu Dead
+76,541274520,12,
+77,541274520,13,
+78,541274520,14,
+79,541274520,15,
+80,541274520,16,
+81,541274520,17,
+82,541274520,18,
+83,541274520,19,
+84,541274520,20,
+85,541274520,21,
+86,541274520,22,
+87,541274520,23,
+88,541274520,24,
+89,541274520,25,
+90,541274520,26,
+91,541274520,27,
+92,541274520,28,
+93,541274520,29,
+94,541274520,30,
+95,541274520,31,Antartic Transport Terminal B1 Silo - Part Two Begins
+96,541274524,0,Prison B1 Cells - Give Hemostatic to Rodrigo
+97,541274524,1,Prison B1 Cells - Talk to Rodrigo after giving him the Hemostatic 
+98,541274524,2,Prison Iron Bridge - ???
+99,541274524,3,Prison B1 Cells - After Equiping Lighter
+100,541274524,4,Prison 1F Graveyard - Put out Truck Fire
+101,541274524,5,
+102,541274524,6,
+103,541274524,7,
+104,541274524,8,Prison 1F Graveyard - Truck Explodes
+105,541274524,9,Prison 1F Barracks Yard - ???
+106,541274524,10,Prison 1F Yard - Place Sp. Alloy Emblem
+107,541274524,11,Prison 1F Yard - Steve Attacks!
+108,541274524,12,Prison 1F Yard - Zombies Spawn
+109,541274524,13,Prison 1F Barracks - ???
+110,541274524,14,Prison 1F Computer Room - Release Shutter Lock
+111,541274524,15,Prison 1F Computer Room - Claire finds Steve at the Computer
+112,541274524,16,Prison 1F Barracks Yard - Body dragged away
+113,541274524,17,Prison 1F Barracks Yard - After leaving barracks/Returning from Computer Room
+114,541274524,18,Prison 1F Barracks Yard - Dog breaks through mesh
+115,541274524,19,Prison 1F Barracks Yard - Dogs escaped
+116,541274524,20,Prison 1F Bunkhouse - Zombie w/ M-100P bursts through window
+117,541274524,21,Prison 1F Execution Yard - ???
+118,541274524,22,Prison 1F Execution Yard - Push Shutter Button (Locked)
+119,541274524,23,Prison 1F Execution Yard - Spawned Zombie Behind Wall
+120,541274524,24,Prison 1F Security Corridor - Zombies Break Through
+121,541274524,25,Prison 1F Security Corridor - Triggered Alarm
+122,541274524,26,Prison 1F Security Corridor - Disabled Alarm
+123,541274524,27,Prison 1F Security Corridor - Open 3D Scanner
+124,541274524,28,Prison 1F Security Corridor - Placed Hawk Emblem in 3D Scanner
+125,541274524,29,Prison 1F Security Corridor - Alloy Placed in 3D Printer/3D Print Complete
+126,541274524,30,Prison 1F Security Corridor - Zombies Break Through
+127,541274524,31,Prison Iron Bridge - Placed Box Over Fire
+128,541274528,0,Prison 1F Clinic - Dr. Zombie Wriggles
+129,541274528,1,Prison 1F Clinic - Dr. Zombie Fight
+130,541274528,2,Prison 1F Cremetorium - Dr. Zombie Awake
+131,541274528,3,
+132,541274528,4,
+133,541274528,5,Prison 1F Statue Room - Stop the Gas Leak
+134,541274528,6,
+135,541274528,7,Prison 1F Statue Room - Iron Statue Revealed
+136,541274528,8,Prison 1F Statue Room - Iron Statue Opened
+137,541274528,9,Prison 1F Backyard - Door to Computer Room Unblocked (Updates apon leaving room)
+138,541274528,10,Prison 1F Backyard - ???
+139,541274528,11,
+140,541274528,12,
+141,541274528,13,
+142,541274528,14,Palace Courtyard - Steve Cutscene
+143,541274528,15,
+144,541274528,16,Palace Entrance Hall - Defaced Alexander Ashford Portrait
+145,541274528,17,
+146,541274528,18,Palace Entrance Hall - Steve Calls for Help
+147,541274528,19,Palace Entrance Hall - Unlock Casino Lounge Door
+148,541274528,20,
+149,541274528,21,
+150,541274528,22,Palace Entrance Hall - Rescue Steve
+151,541274528,23,Palace Entrance Hall - Alfred Ashford Introduction
+152,541274528,24,
+153,541274528,25,
+154,541274528,26,Palace 1F Portrait Room - Unlock Hidden Vase
+155,541274528,27,Palace 1F Display Room - Steve State 2
+156,541274528,28,Palace 1F Display Room - Steve State 3
+157,541274528,29,Palace 1F Corridor - Unlock Umbrella Meeting Room Door
+158,541274528,30,Palace 1F Corridor - Unlock Portrait Room Door
+159,541274528,31,Palace 1F Display Room - Steve State 1
+160,541274532,0,Palace 2F Secretarys Office - Place Lugers
+161,541274532,1,Palace 2F Secretarys Office - Leave Office After Taking Card?
+162,541274532,2,Palace 2F Secretarys Office - Leave Office After Taking Card?
+163,541274532,3,Palace 2F Alfreds Office - ???
+164,541274532,4,Palace 2F Alfreds Office - Turn on Computer
+165,541274532,5,Palace 2F Residence Bridge - ???
+166,541274532,6,Palace 2F Casino Lounge - Piano is Playing
+167,541274532,7,Palace 2F Casino Lounge - Place Music Notes in Piano
+168,541274532,8,Palace Passage - Spawn Bandersnatch
+169,541274532,9,Palace Passage - Tyrant Fight
+170,541274532,10,Palace B1 Dock - Platform Extended
+171,541274532,11,Palace B1 Dock - Steve Extends the Platform
+172,541274532,12,Palace B1 Submarine - Steve Lowers the Submarine
+173,541274532,13,Private Residence Courtyard - Bandersnatch Spawns
+174,541274532,14,Private Residence Entrance Hall - ???
+175,541274532,15,Private Residence 1F Dining Room - Light Fire
+176,541274532,16,Private Residence 2F Bedroom Corridor - Alfred/Alexia Discussion 
+177,541274532,17,
+178,541274532,18,
+179,541274532,19,Private Residence 2F Alfreds Bedroom - Place King Ant
+180,541274532,20,Private Residence 2F Alfreds Bedroom - Alfred is Alexia!
+181,541274532,21,Palace Courtyard - Self-destruct sequence activated
+182,541274532,22,
+183,541274532,23,Private Residence 2F Alexias Bedroom - Music Box Closed
+184,541274532,24,Private Residence 2F Alexias Bedroom - Place Queen Ant
+185,541274532,25,Private Residence 2F Alexias Bedroom - Take Music Box Plate
+186,541274532,26,Private Residence 2F Alexias Bedroom - Meeting Alexia
+187,541274532,27,Private Residence Courtyard - After King and Queen Ants Collected?
+188,541274532,28,Private Residence 4F Private Study - Push Box to Cabinet
+189,541274532,29,Military Training Facility Garage - Walkway Breaks
+190,541274532,30,Military Training Facility Garage - FAAAAAAAAATHHEEEEERRRRRRRRRRR
+191,541274532,31,Military Training Facility Garage - Steve Cutscene
+192,541274536,0,
+193,541274536,1,
+194,541274536,2,
+195,541274536,3,Palace Passage - Spawn Bandersnatch
+196,541274536,4,Military Training Facility Back Courtyard - Placed Eagle Plate
+197,541274536,5,Military Training Facility Back Courtyard - Alfred Fight
+198,541274536,6,Military Training Facility Back Courtyard - Alfred Escapes
+199,541274536,7,Military Training Facility 1F Tank Yard - Alfred Reveals a Hidden Passage
+200,541274536,8,
+201,541274536,9,Military Training Facility 1F Elevator Corridor - ???
+202,541274536,10,Military Training Facility 1F Diorama Room - Draw Unlocked
+203,541274536,11,Military Training Facility 1F Lockers - Bugs Crawl out of Body
+204,541274536,12,
+205,541274536,13,Military Training Facility 1F Swimming Pool - Turn Circulation Pipe Valve
+206,541274536,14,
+207,541274536,15,Military Training Facility 1F Front Office - Open Safe using Key with Tag
+208,541274536,16,Military Training Facility 1F Front Office - Print Map
+209,541274536,17,Military Training Facility Lobby - Stairway Shutter Sealed
+210,541274536,18,Military Training Facility Lobby - Ventalation Underway
+211,541274536,19,Military Training Facility Lobby - Lock Shutter
+212,541274536,20,
+213,541274536,21,Military Training Facility Lobby - Unlock Shutter
+214,541274536,22,Military Training Facility 1F Excercise Yard - Gulp Worm
+215,541274536,23,Military Training Facility Warehouse - Bandersnatch Introduction
+216,541274536,24,Military Training Facility Warehouse - Steve Saves Claire from Bandersnatch
+217,541274536,25,Military Training Facility Warehouse - Bandersnatch Killed
+218,541274536,26,Military Training Facility 2F Command Center - View Security Camera
+219,541274536,27,Military Training Facility 2F Command Center - Security Code Seen?
+220,541274536,28,Military Training Facility 2F Command Center - Change to Claire
+221,541274536,29,Military Training Facility 2F Command Center - Spawn Zombies
+222,541274536,30,Military Training Facility 2F Emergency Door - Passcode Entered
+223,541274536,31,
+224,541274540,0,Military Training Facility 2F Emergency Door - Trigger Alarm
+225,541274540,1,Military Training Facility 2F Biological Laboratory Security Camera - Zoom in on Security Code
+226,541274540,2,Military Training Facility 2F Biological Laboratory - Baby Albinoid Breaks Free?
+227,541274540,3,
+228,541274540,4,Military Training Facility 2F Biological Laboratory - Alarm Triggered
+229,541274540,5,Military Training Facility 2F Warehouse Corridor - Shutter Status
+230,541274540,6,Military Training Facility B1 Boiler Room - Turn on Extractor Fan
+231,541274540,7,Military Training Facility B1 Basement Storehouse Cargo Lift - Changed to Steve
+232,541274540,8,
+233,541274540,9,Military Training Facility B1 Weapon Repair Shop - ???
+234,541274540,10,
+235,541274540,11,
+236,541274540,12,Military Training Facility B1 Weapon Repair Shop - Cabinet Unlocked
+237,541274540,13,Military Training Facility B1 Iron Walkway - Steve Section Complete
+238,541274540,14,
+239,541274540,15,Military Training Facility Elevator - ???
+240,541274540,16,Military Training Facility Jet Hangar Corridor - Alfred Escapes Island
+241,541274540,17,
+242,541274540,18,
+243,541274540,19,Airport Bridge - Army Proof Placed
+244,541274540,20,Airport Bridge - Navy Proof Placed
+245,541274540,21,Airport Bridge - Air Force Proof Placed
+246,541274540,22,Airport Bridge - Lift Lowered
+247,541274540,23,Airport Bridge - Platform Closed
+248,541274540,24,Airport Bridge - Pushed Lift Switch
+249,541274540,25,Airport Bridge - ???
+250,541274540,26,
+251,541274540,27,Airport Bridge - Place Control Leaver
+252,541274540,28,
+253,541274540,29,Airport Cargo Bay - Lift Cargo Box?
+254,541274540,30,Airport Cargo Bay - Raise Lift
+255,541274540,31,Airport Cargo Bay - Open Gate
+256,541274544,0,Airport Entry - Steve Runs down the Hallway
+257,541274544,1,Airport Cargo Transport - Cargo Elevator Door Unblocked
+258,541274544,2,
+259,541274544,3,Airport Cargo Transport - Elevator Status?
+260,541274544,4,Military Training Facility Cargo Elevator - Elevator Status?
+261,541274544,5,Transport Plane Cockpit - Steve Prepares the Cargo Plane
+262,541274544,6,
+263,541274544,7,
+264,541274544,8,Transport Plane Cockpit - Cargo Plane Takes Off
+265,541274544,9,Transport Plane Cockpit - Escaped the Island
+266,541274544,10,Transport Plane Cockpit - A Disturbance On-board the Cargo Plane
+267,541274544,11,Transport Plane Cockpit - Cargo Plane is force into Autopilot mode
+268,541274544,12,Transport Plane Cockpit - Cargo Plane Crashlands into the Antarctic
+269,541274544,13,Transport Plane Cargo Hold - Tyrant Fight
+270,541274544,14,
+271,541274544,15,
+272,541274544,16,
+273,541274544,17,Antartic Transport Terminal B1 Silo - Claire and Steve Escape from the Crashed Cargo Plane
+274,541274544,18,
+275,541274544,19,
+276,541274544,20,Antartic Transport Terminal B1 Workmans Bunkhouse - Spawn Zombies
+277,541274544,21,Antartic Transport Terminal B1 Tool Storeroom - Convert Square Valve to Octagon Valve Handle
+278,541274544,22,Antartic Transport Terminal B2 Weapon Room - ???
+279,541274544,23,Antartic Transport Terminal B2 Frozen Corridor - Zombie Hanging from Ceiling
+280,541274544,24,Antartic Transport Terminal B2 Office - Locker Opened
+281,541274544,25,Antartic Transport Terminal B2 Office - Push Switch and Reveal Hidden Room
+282,541274544,26,Antartic Transport Terminal B2 Office - Nosferatu Released
+283,541274544,27,Antartic Transport Terminal B2 Office - Revealed Nosferatus Prison Cell
+284,541274544,28,Antartic Transport Terminal Sorting Room - Activate Sorter
+285,541274544,29,
+286,541274544,30,Antartic Transport Terminal Sorting Room - Sorter Power Active
+287,541274544,31,Antartic Transport Terminal Sorting Room - Escaped the Mining Room
+288,541274548,0,Antartic Transport Terminal Sorting Room - Show Package from Above
+289,541274548,1,
+290,541274548,2,Antartic Transport Terminal Sorting Room - After Obtaining Octagon Valve Handle
+291,541274548,3,Antartic Transport Terminal Mining Room - Turn off Gas Leak
+292,541274548,4,Antartic Transport Terminal Mining Room - Steve gets Distracted
+293,541274548,5,Antartic Transport Terminal Mining Room - Looked at Octagon Shaped Valve Connection
+294,541274548,6,Antartic Transport Terminal Mining Room - Escape the using the Miner
+295,541274548,7,
+296,541274548,8,Antartic Transport Terminal Power Room - Generator Active
+297,541274548,9,Antartic Transport Terminal Power Room - Electricity Restored
+298,541274548,10,Antartic Transport Terminal B2 Weapon Room - ???
+299,541274548,11,Antartic Transport Terminal B2 Weapon Room - Activate Detonator
+300,541274548,12,Antartic Transport Terminal B2 Weapon Room - Detonator Placed
+301,541274548,13,Antartic Transport Terminal B2 Weapon Room - Sorter on Fire?
+302,541274548,14,
+303,541274548,15,
+304,541274548,16,Antartic Transport Terminal 1F Helipad - On the Helipad
+305,541274548,17,Antartic Transport Terminal 1F Helipad - Head Downstairs
+306,541274548,18,Antartic Transport Terminal 1F Helipad - Claire Rescues Steve
+307,541274548,19,Antartic Transport Terminal 1F Helipad - Poisoned by Nosferatu
+308,541274548,20,Military Training Facility 1F Tank Yard - Push Tank Button?
+309,541274548,21,Military Training Facility 1F Tank Yard - Lift Rasied
+310,541274548,22,Military Training Facility Elevator - Elevator on B1
+311,541274548,23,Military Training Facility Elevator - Elevator on 1F
+312,541274548,24,Military Training Facility 1F Diorama Room - Place Tank Object
+313,541274548,25,Military Training Facility 1F Diorama Room - Place Army Proof
+314,541274548,26,Military Training Facility 1F Diorama Room - Place Navy Proof
+315,541274548,27,Military Training Facility 1F Diorama Room - Place Air Force Proof
+316,541274548,28,Military Training Facility 1F Diorama Room - Lower Leaver and Reveal Hidden Ladder
+317,541274548,29,
+318,541274548,30,Military Training Facility 2F Command Center - Alexia has Awakened
+319,541274548,31,
+320,541274552,0,Military Training Facility B1 Chemical Storage Room - Unlock Chemical Storage
+321,541274552,1,Military Training Facility B1 Chemical Storage Room - Hunter Break Through the Vent
+322,541274552,2,Military Training Facility Iron Walkway - Spawn Zombie
+323,541274552,3,Military Training Facility Iron Walkway - Removed Shotgun (First Time)
+324,541274552,4,Military Training Facility 1F Lobby - After Collecting Proofs?
+325,541274552,5,
+326,541274552,6,
+327,541274552,7,Military Training Facility Specimen Lab - Chris Meets Weasker
+328,541274552,8,
+329,541274552,9,Military Training Facility Specimen Lab - Push Switch
+330,541274552,10,
+331,541274552,11,
+332,541274552,12,
+333,541274552,13,
+334,541274552,14,
+335,541274552,15,
+336,541274552,16,
+337,541274552,17,Military Training Facility B2 Jet Hangar Corridor - Detected
+338,541274552,18,Military Training Facility B2 Jet Hangar Corridor - Detected
+339,541274552,19,Military Training Facility B2 Jet Hangar Corridor - Place Key
+340,541274552,20,Military Training Facility B2 Jet Hangar Corridor - Spawn Spiders
+341,541274552,21,
+342,541274552,22,
+343,541274552,23,Military Training Facility B2 Captins Room - Unlock Hidden Container
+344,541274552,24,
+345,541274552,25,
+346,541274552,26,Military Training Facility B2 Water Pool - Albinoid Fight
+347,541274552,27,
+348,541274552,28,Military Training Facility B1 Turn Table Room - Detected
+349,541274552,29,Military Training Facility B1 Turn Table Room - Hunter Introduction
+350,541274552,30,Military Training Facility B1 Turn Table Room - Turntable Raised
+351,541274552,31,
+352,541274556,0,
+353,541274556,1,
+354,541274556,2,Military Training Facility Back Courtyard - Eagle Plate falls into Sewers?
+355,541274556,3,Military Training Facility Back Courtyard - Eagle Plate falls into Sewers?
+356,541274556,4,Military Training Facility 1F Lobby - A Monster Attacks
+357,541274556,5,Military Training Facility 2F Lobby - Place Door Knob
+358,541274556,6,Military Training Facility 2F Warehouse Corridor - Detected
+359,541274556,7,Military Training Facility 2F Warehouse Corridor - ???
+360,541274556,8,
+361,541274556,9,
+362,541274556,10,
+363,541274556,11,Military Training Facility B3 Cave - Move Stone Lid Down
+364,541274556,12,
+365,541274556,13,Military Training Facility B3 Cave - Find Rodigo
+366,541274556,14,Military Training Facility B3 Cave - Cave Entrance Collapses
+367,541274556,15,Military Training Facility B3 Cave - Unlock Sub Machine Gun
+368,541274556,16,
+369,541274556,17,Military Training Facility B3 Tomb - Glup Worm Spits Out Rodrigo?
+370,541274556,18,Military Training Facility B3 Tomb - Inside Lift?
+371,541274556,19,Military Training Facility B3 Tomb - Lift Avaliable
+372,541274556,20,Military Training Facility B3 Tomb - Inside Lift?
+373,541274556,21,
+374,541274556,22,
+375,541274556,23,Military Training Facility B3 Tomb - Glup Worm Killed
+376,541274556,24,
+377,541274556,25,
+378,541274556,26,Military Training Facility B3 Outside Cave - Chris Arrives at Rockfort Island
+379,541274556,27,
+380,541274556,28,Airport Check-in - Water Puzzle Solved?
+381,541274556,29,Airport Bridge - Bridge Lowered
+382,541274556,30,Airport Bridge - Take Army|Air Force|Navy Proof
+383,541274556,31,Airport Bridge - Take Army|Air Force|Navy Proof
+384,541274560,0,Airport Bridge - Turn off Electricity
+385,541274560,1,
+386,541274560,2,No Room Loaded - ??? (Weasker Cutscene at Airport)
+387,541274560,3,
+388,541274560,4,Antartic Transport Terminal B2 Frozen Corridor - Zombie Drops from Ceiling
+389,541274560,5,
+390,541274560,6,
+391,541274560,7,Antartic Transport Terminal B2 Office - Place Halbard
+392,541274560,8,
+393,541274560,9,
+394,541274560,10,
+395,541274560,11,Antartic Transport Terminal B1 Mining Room - Zombies Attack
+396,541274560,12,Antartic Transport Terminal B2 Weapon Room - Extinguish Fire
+397,541274560,13,
+398,541274560,14,Antartic Transport Terminal B1 Jet Hanger - Chris Escapes Island in Fighter Jet
+399,541274560,15,
+400,541274560,16,Antartic Transport Terminal B1 Corridor - Detected
+401,541274560,17,Antartic Transport Terminal B1 Corridor - ???
+402,541274560,18,Antartic Transport Terminal B1 Corridor - Elevator???
+403,541274560,19,Antartic Transport Terminal B1 Water Tank Room - Refill Extinguisher
+404,541274560,20,
+405,541274560,21,
+406,541274560,22,Antartic Transport Terminal B1 Water Tank Room - Raise Extinguisher
+407,541274560,23,
+408,541274560,24,
+409,541274560,25,
+410,541274560,26,
+411,541274560,27,
+412,541274560,28,
+413,541274560,29,
+414,541274560,30,
+415,541274560,31,
+416,541274564,0,
+417,541274564,1,
+418,541274564,2,
+419,541274564,3,
+420,541274564,4,
+421,541274564,5,
+422,541274564,6,
+423,541274564,7,
+424,541274564,8,
+425,541274564,9,
+426,541274564,10,
+427,541274564,11,
+428,541274564,12,
+429,541274564,13,
+430,541274564,14,
+431,541274564,15,
+432,541274564,16,
+433,541274564,17,
+434,541274564,18,
+435,541274564,19,
+436,541274564,20,
+437,541274564,21,
+438,541274564,22,
+439,541274564,23,
+440,541274564,24,
+441,541274564,25,
+442,541274564,26,
+443,541274564,27,
+444,541274564,28,
+445,541274564,29,
+446,541274564,30,
+447,541274564,31,
+448,541274568,0,
+449,541274568,1,
+450,541274568,2,
+451,541274568,3,
+452,541274568,4,
+453,541274568,5,Military Training Facility Garage - Lift Raised
+454,541274568,6,Military Training Facility Garage - ??? (After Collecting Battery Pack?)
+455,541274568,7,
+456,541274568,8,Palace Courtyard - Wesker Introduction
+457,541274568,9,
+458,541274568,10,
+459,541274568,11,
+460,541274568,12,
+461,541274568,13,
+462,541274568,14,
+463,541274568,15,
+464,541274568,16,
+465,541274568,17,
+466,541274568,18,
+467,541274568,19,
+468,541274568,20,
+469,541274568,21,
+470,541274568,22,
+471,541274568,23,
+472,541274568,24,
+473,541274568,25,
+474,541274568,26,
+475,541274568,27,
+476,541274568,28,
+477,541274568,29,
+478,541274568,30,
+479,541274568,31,
+480,541274572,0,
+481,541274572,1,
+482,541274572,2,
+483,541274572,3,
+484,541274572,4,
+485,541274572,5,
+486,541274572,6,
+487,541274572,7,
+488,541274572,8,
+489,541274572,9,
+490,541274572,10,
+491,541274572,11,
+492,541274572,12,
+493,541274572,13,
+494,541274572,14,
+495,541274572,15,
+496,541274572,16,
+497,541274572,17,
+498,541274572,18,
+499,541274572,19,
+500,541274572,20,
+501,541274572,21,
+502,541274572,22,
+503,541274572,23,
+504,541274572,24,
+505,541274572,25,
+506,541274572,26,
+507,541274572,27,
+508,541274572,28,
+509,541274572,29,
+510,541274572,30,
+511,541274572,31,
+,Antartic Transport Terminal B2 Weapon Room - Activate Detonator,20,Antartic Transport Terminal B2 Weapon Room - Activate Detonator
+300,Antartic Transport Terminal B2 Weapon Room - Detonator Placed,19,Antartic Transport Terminal B2 Weapon Room - Detonator Placed
+301,Antartic Transport Terminal B2 Weapon Room - Sorter on Fire?,18,Antartic Transport Terminal B2 Weapon Room - Sorter on Fire?
+302,,17,
+303,,16,
+304,Antartic Transport Terminal 1F Helipad - On the Helipad,15,Antartic Transport Terminal 1F Helipad - On the Helipad
+305,Antartic Transport Terminal 1F Helipad - Head Downstairs,14,Antartic Transport Terminal 1F Helipad - Head Downstairs
+306,Antartic Transport Terminal 1F Helipad - Claire Rescues Steve,13,Antartic Transport Terminal 1F Helipad - Claire Rescues Steve
+307,Antartic Transport Terminal 1F Helipad - Poisoned by Nosferatu,12,Antartic Transport Terminal 1F Helipad - Poisoned by Nosferatu
+308,Military Training Facility 1F Tank Yard - Push Tank Button?,11,Military Training Facility 1F Tank Yard - Push Tank Button?
+309,Military Training Facility 1F Tank Yard - Lift Rasied,10,Military Training Facility 1F Tank Yard - Lift Rasied
+310,Military Training Facility Elevator - Elevator on B1,9,Military Training Facility Elevator - Elevator on B1
+311,Military Training Facility Elevator - Elevator on 1F,8,Military Training Facility Elevator - Elevator on 1F
+312,Military Training Facility 1F Diorama Room - Place Tank Object,7,Military Training Facility 1F Diorama Room - Place Tank Object
+313,Military Training Facility 1F Diorama Room - Place Army Proof,6,Military Training Facility 1F Diorama Room - Place Army Proof
+314,Military Training Facility 1F Diorama Room - Place Navy Proof,5,Military Training Facility 1F Diorama Room - Place Navy Proof
+315,Military Training Facility 1F Diorama Room - Place Air Force Proof,4,Military Training Facility 1F Diorama Room - Place Air Force Proof
+316,Military Training Facility 1F Diorama Room - Lower Leaver and Reveal Hidden Ladder,3,Military Training Facility 1F Diorama Room - Lower Leaver and Reveal Hidden Ladder
+317,,2,
+318,Military Training Facility 2F Command Center - Alexia has Awakened,1,Military Training Facility 2F Command Center - Alexia has Awakened
+319,,0,
+320,Military Training Facility B1 Chemical Storage Room - Unlock Chemical Storage,31,Military Training Facility B1 Chemical Storage Room - Unlock Chemical Storage
+321,Military Training Facility B1 Chemical Storage Room - Hunter Break Through the Vent,30,Military Training Facility B1 Chemical Storage Room - Hunter Break Through the Vent
+322,Military Training Facility Iron Walkway - Spawn Zombie,29,Military Training Facility Iron Walkway - Spawn Zombie
+323,Military Training Facility Iron Walkway - Removed Shotgun (First Time),28,Military Training Facility Iron Walkway - Removed Shotgun (First Time)
+324,Military Training Facility 1F Lobby - After Collecting Proofs?,27,Military Training Facility 1F Lobby - After Collecting Proofs?
+325,,26,
+326,,25,
+327,Military Training Facility Specimen Lab - Chris Meets Weasker,24,Military Training Facility Specimen Lab - Chris Meets Weasker
+328,,23,
+329,Military Training Facility Specimen Lab - Push Switch,22,Military Training Facility Specimen Lab - Push Switch
+330,,21,
+331,,20,
+332,,19,
+333,,18,
+334,,17,
+335,,16,
+336,,15,
+337,Military Training Facility B2 Jet Hangar Corridor - Detected,14,Military Training Facility B2 Jet Hangar Corridor - Detected
+338,Military Training Facility B2 Jet Hangar Corridor - Detected,13,Military Training Facility B2 Jet Hangar Corridor - Detected
+339,Military Training Facility B2 Jet Hangar Corridor - Place Key,12,Military Training Facility B2 Jet Hangar Corridor - Place Key
+340,Military Training Facility B2 Jet Hangar Corridor - Spawn Spiders,11,Military Training Facility B2 Jet Hangar Corridor - Spawn Spiders
+341,,10,
+342,,9,
+343,Military Training Facility B2 Captins Room - Unlock Hidden Container,8,Military Training Facility B2 Captins Room - Unlock Hidden Container
+344,,7,
+345,,6,
+346,Military Training Facility B2 Water Pool - Albinoid Fight,5,Military Training Facility B2 Water Pool - Albinoid Fight
+347,,4,
+348,Military Training Facility B1 Turn Table Room - Detected,3,Military Training Facility B1 Turn Table Room - Detected
+349,Military Training Facility B1 Turn Table Room - Hunter Introduction,2,Military Training Facility B1 Turn Table Room - Hunter Introduction
+350,Military Training Facility B1 Turn Table Room - Turntable Raised,1,Military Training Facility B1 Turn Table Room - Turntable Raised
+351,,0,
+352,,31,
+353,,30,
+354,Military Training Facility Back Courtyard - Eagle Plate falls into Sewers?,29,Military Training Facility Back Courtyard - Eagle Plate falls into Sewers?
+355,Military Training Facility Back Courtyard - Eagle Plate falls into Sewers?,28,Military Training Facility Back Courtyard - Eagle Plate falls into Sewers?
+356,Military Training Facility 1F Lobby - A Monster Attacks,27,Military Training Facility 1F Lobby - A Monster Attacks
+357,Military Training Facility 2F Lobby - Place Door Knob,26,Military Training Facility 2F Lobby - Place Door Knob
+358,Military Training Facility 2F Warehouse Corridor - Detected,25,Military Training Facility 2F Warehouse Corridor - Detected
+359,Military Training Facility 2F Warehouse Corridor - ???,24,Military Training Facility 2F Warehouse Corridor - ???
+360,,23,
+361,,22,
+362,,21,
+363,Military Training Facility B3 Cave - Move Stone Lid Down,20,Military Training Facility B3 Cave - Move Stone Lid Down
+364,,19,
+365,Military Training Facility B3 Cave - Find Rodigo,18,Military Training Facility B3 Cave - Find Rodigo
+366,Military Training Facility B3 Cave - Cave Entrance Collapses,17,Military Training Facility B3 Cave - Cave Entrance Collapses
+367,Military Training Facility B3 Cave - Unlock Sub Machine Gun,16,Military Training Facility B3 Cave - Unlock Sub Machine Gun
+368,,15,
+369,Military Training Facility B3 Tomb - Glup Worm Spits Out Rodrigo?,14,Military Training Facility B3 Tomb - Glup Worm Spits Out Rodrigo?
+370,Military Training Facility B3 Tomb - Inside Lift?,13,Military Training Facility B3 Tomb - Inside Lift?
+371,Military Training Facility B3 Tomb - Lift Avaliable,12,Military Training Facility B3 Tomb - Lift Avaliable
+372,Military Training Facility B3 Tomb - Inside Lift?,11,Military Training Facility B3 Tomb - Inside Lift?
+373,,10,
+374,,9,
+375,Military Training Facility B3 Tomb - Glup Worm Killed,8,Military Training Facility B3 Tomb - Glup Worm Killed
+376,,7,
+377,,6,
+378,Military Training Facility B3 Outside Cave - Chris Arrives at Rockfort Island,5,Military Training Facility B3 Outside Cave - Chris Arrives at Rockfort Island
+379,,4,
+380,Airport Check-in - Water Puzzle Solved?,3,Airport Check-in - Water Puzzle Solved?
+381,Airport Bridge - Bridge Lowered,2,Airport Bridge - Bridge Lowered
+382,Airport Bridge - Take Army|Air Force|Navy Proof,1,Airport Bridge - Take Army|Air Force|Navy Proof
+383,Airport Bridge - Take Army|Air Force|Navy Proof,0,Airport Bridge - Take Army|Air Force|Navy Proof
+384,Airport Bridge - Turn off Electricity,31,Airport Bridge - Turn off Electricity
+385,,30,
+386,No Room Loaded - ??? (Weasker Cutscene at Airport),29,No Room Loaded - ??? (Weasker Cutscene at Airport)
+387,,28,
+388,Antartic Transport Terminal B2 Frozen Corridor - Zombie Drops from Ceiling,27,Antartic Transport Terminal B2 Frozen Corridor - Zombie Drops from Ceiling
+389,,26,
+390,,25,
+391,Antartic Transport Terminal B2 Office - Place Halbard,24,Antartic Transport Terminal B2 Office - Place Halbard
+392,,23,
+393,,22,
+394,,21,
+395,Antartic Transport Terminal B1 Mining Room - Zombies Attack,20,Antartic Transport Terminal B1 Mining Room - Zombies Attack
+396,Antartic Transport Terminal B2 Weapon Room - Extinguish Fire,19,Antartic Transport Terminal B2 Weapon Room - Extinguish Fire
+397,,18,
+398,Antartic Transport Terminal B1 Jet Hanger - Chris Escapes Island in Fighter Jet,17,Antartic Transport Terminal B1 Jet Hanger - Chris Escapes Island in Fighter Jet
+399,,16,
+400,Antartic Transport Terminal B1 Corridor - Detected,15,Antartic Transport Terminal B1 Corridor - Detected
+401,Antartic Transport Terminal B1 Corridor - ???,14,Antartic Transport Terminal B1 Corridor - ???
+402,Antartic Transport Terminal B1 Corridor - Elevator???,13,Antartic Transport Terminal B1 Corridor - Elevator???
+403,Antartic Transport Terminal B1 Water Tank Room - Refill Extinguisher,12,Antartic Transport Terminal B1 Water Tank Room - Refill Extinguisher
+404,,11,
+405,,10,
+406,Antartic Transport Terminal B1 Water Tank Room - Raise Extinguisher,9,Antartic Transport Terminal B1 Water Tank Room - Raise Extinguisher
+407,,8,
+408,,7,
+409,,6,
+410,,5,
+411,,4,
+412,,3,
+413,,2,
+414,,1,
+415,,0,
+416,,31,
+417,,30,
+418,,29,
+419,,28,
+420,,27,
+421,,26,
+422,,25,
+423,,24,
+424,,23,
+425,,22,
+426,,21,
+427,,20,
+428,,19,
+429,,18,
+430,,17,
+431,,16,
+432,,15,
+433,,14,
+434,,13,
+435,,12,
+436,,11,
+437,,10,
+438,,9,
+439,,8,
+440,,7,
+441,,6,
+442,,5,
+443,,4,
+444,,3,
+445,,2,
+446,,1,
+447,,0,
+448,,31,
+449,,30,
+450,,29,
+451,,28,
+452,,27,
+453,Military Training Facility Garage - Lift Raised,26,Military Training Facility Garage - Lift Raised
+454,Military Training Facility Garage - ??? (After Collecting Battery Pack?),25,Military Training Facility Garage - ??? (After Collecting Battery Pack?)
+455,,24,
+456,Palace Courtyard - Wesker Introduction,23,Palace Courtyard - Wesker Introduction
+457,,22,
+458,,21,
+459,,20,
+460,,19,
+461,,18,
+462,,17,
+463,,16,
+464,,15,
+465,,14,
+466,,13,
+467,,12,
+468,,11,
+469,,10,
+470,,9,
+471,,8,
+472,,7,
+473,,6,
+474,,5,
+475,,4,
+476,,3,
+477,,2,
+478,,1,
+479,,0,
+480,,31,
+481,,30,
+482,,29,
+483,,28,
+484,,27,
+485,,26,
+486,,25,
+487,,24,
+488,,23,
+489,,22,
+490,,21,
+491,,20,
+492,,19,
+493,,18,
+494,,17,
+495,,16,
+496,,15,
+497,,14,
+498,,13,
+499,,12,
+500,,11,
+501,,10,
+502,,9,
+503,,8,
+504,,7,
+505,,6,
+506,,5,
+507,,4,
+508,,3,
+509,,2,
+510,,1,
+511,,0,

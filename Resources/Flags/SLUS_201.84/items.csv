@@ -1,513 +1,725 @@
-Pointer,Bit,Name
-0x00433210,0,Antartic Transport Terminal B2 Weapon Room - Mining Room Key
-0x00433210,1,Antartic Transport Terminal Power Room - Valve Handle
-0x00433210,2,Antartic Transport Terminal B2 Office - Plant Pot
-0x00433210,3,Transport Plane Cockpit - Control Leaver
-0x00433210,4,Airport Cargo Bay - Biohazard Card
-0x00433210,5,Airport Check-in - Airport Key
-0x00433210,6,Military Training Facility 2F Biological Laboratory - Skeleton Picture
-0x00433210,7,Military Training Facility 2F Command Center - Army Proof
-0x00433210,8,Military Training Facility 2F Warehouse Managers Room - Hemostatic
-0x00433210,9,Military Training Facility 1F Swimming Pool - Key with Tag
-0x00433210,10,Military Training Facility 1F Diorama Room - Eagle Plate
-0x00433210,11,Military Training Facility 1F Diorama Room - Gold Key
-0x00433210,12,Military Training Facility Back Courtyard - Emblem Card
-0x00433210,13,Private Residence 4F Private Study - Air Force Proof
-0x00433210,14,Private Residence 3F Play Room - Silver Dragonfly
-0x00433210,15,Private Residence 2F Alexias Bedroom - Music Box Plate
-0x00433210,16,Private Residence 2F Alexias Bedroom - Sliver Key
-0x00433210,17,
-0x00433210,18,Palace 2F Casino Lounge - King Ant Object
-0x00433210,19,Palace 1F Umbrella Meeting Room - Eagle Plate
-0x00433210,20,Palace 1F Display Room - Steering Wheel
-0x00433210,21,Palace 1F Portrait Room - Earthenware Vase
-0x00433210,22,Palace Courtyard - Navy Proof
-0x00433210,23,Prison 1F Statue Room - Rusted Sword
-0x00433210,24,Prison 1F Statue Room - Piano Roll
-0x00433210,25,Prison 1F Clinic - Glass Eye
-0x00433210,26,Prison 1F Security Corridor - Sp. Alloy Emblem
-0x00433210,27,Prison 1F Execution Yard - Extinguisher
-0x00433210,28,Prison 1F Computer Room - Hawk Emblem
-0x00433210,29,Prison 1F Execution Yard - Padlock Key
-0x00433210,30,Prison 1F Graveyard - Briefcase
-0x00433210,31,
-0x00433214,0,Antartic Transport Terminal B2 B.O.W. Room - Gas Mask
-0x00433214,1,Military Training Facility Warehouse - Sub Machine Gun
-0x00433214,2,Airport Bridge - Air Force Proof
-0x00433214,3,Airport Bridge - Navy Proof
-0x00433214,4,Airport Bridge - Army Proof
-0x00433214,5,
-0x00433214,6,
-0x00433214,7,
-0x00433214,8,
-0x00433214,9,
-0x00433214,10,
-0x00433214,11,
-0x00433214,12,
-0x00433214,13,
-0x00433214,14,
-0x00433214,15,Antartic Transport Terminal B1 Mining Room - Octa Valve Handle
-0x00433214,16,
-0x00433214,17,
-0x00433214,18,Antartic Transport Terminal B5 Mansion Courtyard - Wing Object
-0x00433214,19,
-0x00433214,20,
-0x00433214,21,
-0x00433214,22,Antartic Transport Terminal B2 Office - Paper Weight
-0x00433214,23,Military Training Facility B2 Water Pool - Eagle Plate
-0x00433214,24,Military Training Facility Garage - Chem. Storage Key
-0x00433214,25,Military Training Facility Garage - Tank Object
-0x00433214,26,Military Training Facility B1 Turn Table Room - Door Knob
-0x00433214,27,Military Training Facility B2 Jet Hangar Corridor - Battery Pack
-0x00433214,28,Military Training Facility B1 Chemical Storage Room - Clement Sigma
-0x00433214,29,Military Training Facility B1 Weapon Repair Shop - Clement Alpha
-0x00433214,30,Military Training Facility 1F Diorama Room - Turn Table Key
-0x00433214,31,Antartic Transport Terminal B2 B.O.W. Room - Bar Code Sticker
-0x00433218,0,
-0x00433218,1,
-0x00433218,2,
-0x00433218,3,
-0x00433218,4,
-0x00433218,5,
-0x00433218,6,
-0x00433218,7,
-0x00433218,8,
-0x00433218,9,
-0x00433218,10,
-0x00433218,11,
-0x00433218,12,
-0x00433218,13,
-0x00433218,14,
-0x00433218,15,
-0x00433218,16,
-0x00433218,17,
-0x00433218,18,
-0x00433218,19,
-0x00433218,20,
-0x00433218,21,
-0x00433218,22,
-0x00433218,23,
-0x00433218,24,
-0x00433218,25,
-0x00433218,26,
-0x00433218,27,
-0x00433218,28,
-0x00433218,29,Palace 2F Secretarys Office - ID Card
-0x00433218,30,
-0x00433218,31,
-0x0043321C,0,Prison 1F Yard - Handgun Bullets
-0x0043321C,1,
-0x0043321C,2,
-0x0043321C,3,Prison B1 Entry - Handgun Bullets
-0x0043321C,4,Prison B1 Entry - Ink Ribbon
-0x0043321C,5,Prison B1 Cells - Green Herb
-0x0043321C,6,Prison B1 Cells - Handgun Bullets
-0x0043321C,7,Prison B1 Cells - Combat Knife
-0x0043321C,8,
-0x0043321C,9,
-0x0043321C,10,
-0x0043321C,11,
-0x0043321C,12,Prison 1F Clinic - F. Aid Spray
-0x0043321C,13,Palace 2F Secretarys Office - Secretary's Note
-0x0043321C,14,Antartic Transport Terminal B2 Office - Butler's Letter
-0x0043321C,15,Private Residence 2F Alfreds Bedroom - Message Card
-0x0043321C,16,
-0x0043321C,17,
-0x0043321C,18,
-0x0043321C,19,Antartic Transport Terminal B2 Office - Alfred's Diary
-0x0043321C,20,Military Training Facility Garage - Report: Enhanced Anti-Decay Alloy
-0x0043321C,21,Military Training Facility 1F Diorama Room - Secret Passage Note
-0x0043321C,22,Antartic Transport Terminal B2 Office - Alexander's Memo
-0x0043321C,23,Antartic Transport Terminal B1 Workmans Bunkhouse - Workers Diary
-0x0043321C,24,Military Training Facility 2F Emergency Door - ???
-0x0043321C,25,Private Residence 4F Private Study - Confession Letter
-0x0043321C,26,
-0x0043321C,27,Palace 1F Umbrella Meeting Room - Hunk's Report
-0x0043321C,28,Palace 1F Portrait Room - Message to the new Family Master
-0x0043321C,29,Prison 1F Security Corridor - Users Manual
-0x0043321C,30,Prison 1F Bunkhouse - Prisoner's Diary
-0x0043321C,31,Prison 1F Computer Room - Fax on the Facility Access Application
-0x00433220,0,Palace Entrance Hall - Handgun Bullets
-0x00433220,1,Palace Courtyard - ???
-0x00433220,2,Palace Courtyard - Green Herb
-0x00433220,3,Prison 1F Backyard - ???
-0x00433220,4,Prison 1F Backyard - Handgun Bullets
-0x00433220,5,Prison 1F Backyard - Green Herb
-0x00433220,6,Prison 1F Torture Chamber - Bow Gun Arrows
-0x00433220,7,Prison 1F Torture Chamber - Handgun Bullets
-0x00433220,8,Prison 1F Secret Corridor - ???
-0x00433220,9,Prison 1F Secret Corridor - Green Herb
-0x00433220,10,Prison 1F Cremetorium - Red Herb
-0x00433220,11,Prison 1F Cremetorium - Handgun Bullets
-0x00433220,12,Prison 1F Cremetorium - Duralumin Case
-0x00433220,13,Prison 1F Clinic - Handgun Bullets
-0x00433220,14,Prison 1F Clinic - Anatomist's Note
-0x00433220,15,Prison Iron Bridge - Green Herb
-0x00433220,16,Prison Iron Bridge - Green Herb
-0x00433220,17,Prison Iron Bridge - Handgun Bullets
-0x00433220,18,
-0x00433220,19,Prison 1F Security Corridor - BOW Gas Rounds
-0x00433220,20,Prison 1F Security Corridor - Flame Rounds
-0x00433220,21,Prison 1F Security Corridor - F. Aid Spray
-0x00433220,22,
-0x00433220,23,Prison 1F Bunkhouse - M-100P
-0x00433220,24,Prison 1F Bunkhouse - Handgun Bullets
-0x00433220,25,Prison 1F Bunkhouse - Handgun Bullets
-0x00433220,26,Prison 1F Barracks - Prison Map
-0x00433220,27,Prison 1F Barracks - Handgun Bullets
-0x00433220,28,Prison 1F Barracks - Green Herb
-0x00433220,29,Prison 1F Barracks Yard - Green Herb
-0x00433220,30,Prison 1F Computer Room - Ink Ribbon
-0x00433220,31,
-0x00433224,0,Private Residence 1F Dining Room - Bow Gun Arrows
-0x00433224,1,Private Residence Entrance Hall - F. Aid Spray
-0x00433224,2,Private Residence Entrance Hall - Handgun Bullets
-0x00433224,3,Private Residence Courtyard - Red Herb
-0x00433224,4,Private Residence Courtyard - ???
-0x00433224,5,Palace B1 Submarine - Sidepack
-0x00433224,6,
-0x00433224,7,Palace B1 Dock - Bow Gun Arrows
-0x00433224,8,Palace B1 Dock - Handgun Bullets
-0x00433224,9,Palace B1 Dock - Palace Map
-0x00433224,10,
-0x00433224,11,
-0x00433224,12,Palace 2F Casino Lounge - Bow Gun Powder
-0x00433224,13,Palace 2F Casino Lounge - Green Herb
-0x00433224,14,Palace 2F Casino Lounge - Green Herb
-0x00433224,15,Palace 2F Casino Lounge - Handgun Bullets
-0x00433224,16,Palace 2F Alfreds Office - Blue Herb
-0x00433224,17,Palace 2F Alfreds Office - Handgun Bullets
-0x00433224,18,Palace 2F Secretarys Office - Green Herb
-0x00433224,19,Palace 2F Secretarys Office - Handgun Bullets
-0x00433224,20,Palace 2F Secretarys Office - Ink Ribbon
-0x00433224,21,
-0x00433224,22,Palace 1F Corridor - ???
-0x00433224,23,Palace 1F Corridor - Red Herb
-0x00433224,24,Palace 1F Corridor - Handgun Bullets
-0x00433224,25,Palace 1F Umbrella Meeting Room - Handgun Bullets
-0x00433224,26,Palace 1F Display Room - Handgun Bullets
-0x00433224,27,
-0x00433224,28,Palace 1F Bathroom - ???
-0x00433224,29,
-0x00433224,30,Palace 1F Bathroom - F. Aid Spray
-0x00433224,31,Palace 1F Bathroom - Duralumin Case
-0x00433228,0,
-0x00433228,1,
-0x00433228,2,
-0x00433228,3,
-0x00433228,4,Military Training Facility 1F Excercise Yard - Bow Gun Arrows
-0x00433228,5,Military Training Facility Lobby - Bow Gun Arrows
-0x00433228,6,Military Training Facility Lobby - Red Herb
-0x00433228,7,
-0x00433228,8,
-0x00433228,9,Military Training Facility 1F Front Office - Green Herb
-0x00433228,10,
-0x00433228,11,Military Training Facility 1F Front Office - Bow Gun Arrows
-0x00433228,12,Military Training Facility 1F Front Office - Bow Gun Powder
-0x00433228,13,Military Training Facility 1F Front Office - Training Facility Map
-0x00433228,14,
-0x00433228,15,Military Training Facility 1F Lockers - Bow Gun Arrows
-0x00433228,16,Military Training Facility 1F Lockers - Bow Gun Arrows
-0x00433228,17,Military Training Facility 1F Lockers - Bow Gun Arrows
-0x00433228,18,Military Training Facility 1F Diorama Room - Ink Ribbon
-0x00433228,19,Military Training Facility 1F Diorama Room - F. Aid Spray
-0x00433228,20,Military Training Facility 1F Elevator Corridor - Handgun Bullets
-0x00433228,21,Military Training Facility 1F Tank Yard - Bow Gun Arrows
-0x00433228,22,Military Training Facility Back Courtyard - ???
-0x00433228,23,Military Training Facility Garage - Handgun Bullets
-0x00433228,24,Private Residence 4F Private Study - Ink Ribbon
-0x00433228,25,Private Residence 4F Private Study - Handgun Bullets
-0x00433228,26,Private Residence 3F Play Room - Green Herb
-0x00433228,27,Private Residence 3F Play Room - ???
-0x00433228,28,Private Residence 2F Bedroom Corridor - Handgun Bullets
-0x00433228,29,Private Residence 2F Bedroom Corridor - Green Herb
-0x00433228,30,Private Residence 1F Dining Room - Handgun Bullets
-0x00433228,31,Private Residence 1F Dining Room - Ink Ribbon
-0x0043322C,0,Airport Cargo Transport - Handgun Bullets
-0x0043322C,1,Airport Cargo Transport - Green Herb
-0x0043322C,2,Airport Cargo Transport - Green Herb
-0x0043322C,3,Airport Cargo Bay - ???
-0x0043322C,4,Airport Cargo Bay - Bow Gun Arrows
-0x0043322C,5,Airport Check-in - Shotgun Shells
-0x0043322C,6,Airport Check-in - Ink Ribbon
-0x0043322C,7,Airport Check-in - Handgun Bullets
-0x0043322C,8,Airport Check-in - Shotgun Shells (Chris)
-0x0043322C,9,
-0x0043322C,10,
-0x0043322C,11,
-0x0043322C,12,Military Training Facility B1 Weapon Repair Shop - Acid Rounds
-0x0043322C,13,
-0x0043322C,14,
-0x0043322C,15,Military Training Facility B1 Basement Storehouse Lab - ???
-0x0043322C,16,Military Training Facility B1 Basement Storehouse Cargo Lift - Bow Gun Arrows
-0x0043322C,17,Military Training Facility B1 Basement Storehouse - Zombie
-0x0043322C,18,Military Training Facility B1 Basement Storehouse - Grenade Launcher
-0x0043322C,19,Military Training Facility 2F Warehouse Corridor - Handgun Bullets
-0x0043322C,20,Military Training Facility 2F Warehouse Corridor - Handgun Bullets
-0x0043322C,21,Military Training Facility 2F Biological Laboratory Security Camera - ???
-0x0043322C,22,Military Training Facility 2F Biological Laboratory - Acid Rounds
-0x0043322C,23,Military Training Facility 2F Emergency Door - Bow Gun
-0x0043322C,24,
-0x0043322C,25,Military Training Facility 2F Command Center - Green Herb
-0x0043322C,26,Military Training Facility 2F Command Center - Green Herb
-0x0043322C,27,Military Training Facility 2F Command Center - ???
-0x0043322C,28,Military Training Facility 2F Warehouse Managers Room - Green Herb
-0x0043322C,29,Military Training Facility 2F Warehouse Managers Room - ???
-0x0043322C,30,Military Training Facility 2F Warehouse Managers Room - Green Herb
-0x0043322C,31,Military Training Facility 2F Warehouse Managers Room - Ink Ribbon
-0x00433230,0,
-0x00433230,1,
-0x00433230,2,Antartic Transport Terminal B2 Weapon Room - Assault Rifle
-0x00433230,3,
-0x00433230,4,
-0x00433230,5,Antartic Transport Terminal Power Room - Handgun Bullets
-0x00433230,6,Antartic Transport Terminal Power Room - Handgun Bullets
-0x00433230,7,Antartic Transport Terminal Power Room - Green Herb
-0x00433230,8,Antartic Transport Terminal Power Room - Green Herb
-0x00433230,9,Antartic Transport Terminal Power Room - Green Herb
-0x00433230,10,
-0x00433230,11,Antartic Transport Terminal Mining Room - Sniper Rifle
-0x00433230,12,
-0x00433230,13,Antartic Transport Terminal B2 Office - Bow Gun Arrows
-0x00433230,14,Antartic Transport Terminal B2 Office - Green Herb
-0x00433230,15,Antartic Transport Terminal B2 Office - Ink Ribbon
-0x00433230,16,Antartic Transport Terminal B2 Frozen Corridor - ???
-0x00433230,17,Antartic Transport Terminal B1 Tool Storeroom - Handgun Bullets
-0x00433230,18,Antartic Transport Terminal B1 Tool Storeroom - Green Herb
-0x00433230,19,Antartic Transport Terminal B1 Tool Storeroom - Blue Herb
-0x00433230,20,Antartic Transport Terminal B1 Tool Storeroom - Ink Ribbon
-0x00433230,21,Antartic Transport Terminal B1 Tool Storeroom - Handgun Bullets
-0x00433230,22,Antartic Transport Terminal B1 Workmans Bunkhouse - Handgun Bullets
-0x00433230,23,Antartic Transport Terminal B1 Workmans Bunkhouse - Antarctic Transportation Base Map
-0x00433230,24,Antartic Transport Terminal B1 Workmans Bunkhouse - Handgun Bullets
-0x00433230,25,Antartic Transport Terminal B1 Workmans Bunkhouse - Handgun Bullets
-0x00433230,26,Antartic Transport Terminal B1 Workmans Bunkhouse - Ink Ribbon
-0x00433230,27,Antartic Transport Terminal B1 Workmans Bunkhouse - Bow Gun Powder
-0x00433230,28,Antartic Transport Terminal B1 Workmans Bunkhouse - Handgun Bullets
-0x00433230,29,Antartic Transport Terminal B1 Workmans Bunkhouse - F. Aid Spray
-0x00433230,30,Transport Plane Cockpit - Ink Ribbon
-0x00433230,31,Airport Cargo Transport - Grenade Rounds
-0x00433234,0,Military Training Facility Specimen Lab - Green Herb
-0x00433234,1,Military Training Facility Specimen Lab - A. Rifle Bullets
-0x00433234,2,Military Training Facility Iron Walkway - Ink Ribbon
-0x00433234,3,Military Training Facility Iron Walkway - Handgun Bullets
-0x00433234,4,
-0x00433234,5,Military Training Facility Iron Walkway - Red Herb
-0x00433234,6,Military Training Facility Iron Walkway - Red Herb
-0x00433234,7,Military Training Facility Iron Walkway - Flame Rounds
-0x00433234,8,
-0x00433234,9,Military Training Facility B1 Chemical Storage Room - Handgun Bullets
-0x00433234,10,Military Training Facility B1 Chemical Storage Room - Blue Herbs
-0x00433234,11,Military Training Facility B1 Chemical Storage Room - Red Herbs
-0x00433234,12,Military Training Facility B1 Chemical Storage Room - ???
-0x00433234,13,Military Training Facility B1 Chemical Storage Room - Shotgun Shells
-0x00433234,14,Military Training Facility B1 Chemical Storage Room - ???
-0x00433234,15,Military Training Facility 1F Diorama Room - Shotgun Shells
-0x00433234,16,Military Training Facility 1F Diorama Room - ???
-0x00433234,17,Military Training Facility 1F Diorama Room - Green Herb
-0x00433234,18,Military Training Facility 1F Diorama Room - Shotgun Shells
-0x00433234,19,Military Training Facility 1F Diorama Room - ???
-0x00433234,20,Military Training Facility 1F Tank Yard - Handgun Bullets
-0x00433234,21,Antartic Transport Terminal 1F Helipad - F. Aid Spray
-0x00433234,22,Antartic Transport Terminal 1F Helipad - ???
-0x00433234,23,Antartic Transport Terminal 1F Helipad - Handgun Bullets
-0x00433234,24,Antartic Transport Terminal B2 B.O.W. Room - Handgun Bullets
-0x00433234,25,Antartic Transport Terminal B2 B.O.W. Room - Handgun Bullets
-0x00433234,26,Antartic Transport Terminal B2 B.O.W. Room - Green Herb
-0x00433234,27,Antartic Transport Terminal B2 B.O.W. Room - Blue Herb
-0x00433234,28,Antartic Transport Terminal B2 B.O.W. Room - Bow Gun Arrows
-0x00433234,29,
-0x00433234,30,Antartic Transport Terminal B2 Weapon Room - Detonator
-0x00433234,31,Antartic Transport Terminal B2 Weapon Room - Magnum
-0x00433238,0,Military Training Facility B3 Cave - ???
-0x00433238,1,Military Training Facility B3 Cave - Ink Ribbon
-0x00433238,2,
-0x00433238,3,
-0x00433238,4,
-0x00433238,5,Military Training Facility 2F Warehouse Corridor - Sidepack
-0x00433238,6,Military Training Facility 2F Warehouse Corridor - Bow Gun Arrows
-0x00433238,7,Military Training Facility 1F Lobby - Bow Gun Powder
-0x00433238,8,Military Training Facility 1F Front Office - Shotgun Shells
-0x00433238,9,Military Training Facility 1F Front Office - Acid Rounds
-0x00433238,10,Military Training Facility 1F Front Office - ???
-0x00433238,11,
-0x00433238,12,Military Training Facility 1F Front Office - ???
-0x00433238,13,
-0x00433238,14,Military Training Facility 1F Excercise Yard - Shotgun Shells
-0x00433238,15,Military Training Facility Garage - Handgun Bullets
-0x00433238,16,
-0x00433238,17,
-0x00433238,18,Military Training Facility B2 Water Pool - Blue Herb
-0x00433238,19,Military Training Facility B2 Water Pool - Green Herb
-0x00433238,20,Military Training Facility B2 Water Pool - Green Herb
-0x00433238,21,Military Training Facility B2 Water Pool - Handgun Bullets
-0x00433238,22,Military Training Facility B2 Captins Room - Green Herb
-0x00433238,23,Military Training Facility B2 Captins Room - Handgun Bullets
-0x00433238,24,Military Training Facility B2 Captins Room - Shotgun Shells
-0x00433238,25,Military Training Facility B2 Captins Room - Luger Replica
-0x00433238,26,Military Training Facility B2 Captins Room - Ink Ribbon
-0x00433238,27,Military Training Facility B2 Captins Room - Acid Rounds
-0x00433238,28,Military Training Facility B2 Jet Hangar Corridor - Green Herb
-0x00433238,29,Military Training Facility B2 Jet Hangar Corridor - Shotgun Shells
-0x00433238,30,Military Training Facility B2 Jet Hangar Corridor - Blue Herb
-0x00433238,31,
-0x0043323C,0,
-0x0043323C,1,
-0x0043323C,2,
-0x0043323C,3,
-0x0043323C,4,
-0x0043323C,5,
-0x0043323C,6,
-0x0043323C,7,
-0x0043323C,8,
-0x0043323C,9,Antartic Transport Terminal B5 Mansion Courtyard - ???
-0x0043323C,10,
-0x0043323C,11,
-0x0043323C,12,
-0x0043323C,13,
-0x0043323C,14,
-0x0043323C,15,
-0x0043323C,16,
-0x0043323C,17,
-0x0043323C,18,Antartic Transport Terminal B2 Office - Ink Ribbon
-0x0043323C,19,Antartic Transport Terminal B1 Tool Storeroom - Duralumin Case
-0x0043323C,20,Antartic Transport Terminal B1 Tool Storeroom - Shotgun Shells
-0x0043323C,21,Antartic Transport Terminal B1 Workmans Bunkhouse - Grenade Rounds
-0x0043323C,22,
-0x0043323C,23,Military Training Facility B1 Underground Passage - Green Herb
-0x0043323C,24,Military Training Facility B1 Underground Passage - Grenade Rounds
-0x0043323C,25,Military Training Facility B3 Tomb - Bow Gun Arrows
-0x0043323C,26,Military Training Facility B3 Tomb - Handgun Bullets
-0x0043323C,27,Military Training Facility B3 Tomb - Blue Herb
-0x0043323C,28,Military Training Facility B3 Tomb - Green Herb
-0x0043323C,29,Military Training Facility B3 Cave - Bow Gun Arrows
-0x0043323C,30,Military Training Facility B3 Cave - Sub Machine Gun
-0x0043323C,31,Military Training Facility B3 Cave - Green Herb
-0x00433240,0,
-0x00433240,1,
-0x00433240,2,
-0x00433240,3,
-0x00433240,4,
-0x00433240,5,
-0x00433240,6,
-0x00433240,7,
-0x00433240,8,
-0x00433240,9,
-0x00433240,10,
-0x00433240,11,
-0x00433240,12,
-0x00433240,13,
-0x00433240,14,
-0x00433240,15,
-0x00433240,16,
-0x00433240,17,
-0x00433240,18,
-0x00433240,19,
-0x00433240,20,
-0x00433240,21,
-0x00433240,22,
-0x00433240,23,
-0x00433240,24,
-0x00433240,25,
-0x00433240,26,
-0x00433240,27,
-0x00433240,28,
-0x00433240,29,
-0x00433240,30,
-0x00433240,31,
-0x00433244,0,
-0x00433244,1,
-0x00433244,2,
-0x00433244,3,
-0x00433244,4,
-0x00433244,5,Antartic Transport Terminal B2 Weapon Room - Handgun Bullets
-0x00433244,6,Antartic Transport Terminal B2 Weapon Room - Handgun Bullets
-0x00433244,7,Antartic Transport Terminal B2 Weapon Room - Handgun Bullets
-0x00433244,8,Military Training Facility B1 Basement Storehouse - Grenade Rounds
-0x00433244,9,Military Training Facility B1 Weapon Repair Shop - Handgun Bullets
-0x00433244,10,
-0x00433244,11,
-0x00433244,12,
-0x00433244,13,
-0x00433244,14,
-0x00433244,15,
-0x00433244,16,
-0x00433244,17,
-0x00433244,18,
-0x00433244,19,
-0x00433244,20,
-0x00433244,21,
-0x00433244,22,
-0x00433244,23,
-0x00433244,24,
-0x00433244,25,
-0x00433244,26,
-0x00433244,27,
-0x00433244,28,
-0x00433244,29,
-0x00433244,30,
-0x00433244,31,
-0x00433248,0,
-0x00433248,1,
-0x00433248,2,
-0x00433248,3,
-0x00433248,4,
-0x00433248,5,
-0x00433248,6,
-0x00433248,7,
-0x00433248,8,
-0x00433248,9,
-0x00433248,10,
-0x00433248,11,
-0x00433248,12,
-0x00433248,13,
-0x00433248,14,
-0x00433248,15,
-0x00433248,16,
-0x00433248,17,
-0x00433248,18,
-0x00433248,19,
-0x00433248,20,
-0x00433248,21,
-0x00433248,22,
-0x00433248,23,
-0x00433248,24,
-0x00433248,25,
-0x00433248,26,
-0x00433248,27,
-0x00433248,28,
-0x00433248,29,
-0x00433248,30,
-0x00433248,31,
-0x0043324C,0,
-0x0043324C,1,
-0x0043324C,2,
-0x0043324C,3,
-0x0043324C,4,
-0x0043324C,5,
-0x0043324C,6,
-0x0043324C,7,
-0x0043324C,8,
-0x0043324C,9,
-0x0043324C,10,
-0x0043324C,11,
-0x0043324C,12,
-0x0043324C,13,
-0x0043324C,14,
-0x0043324C,15,
-0x0043324C,16,
-0x0043324C,17,
-0x0043324C,18,
-0x0043324C,19,
-0x0043324C,20,
-0x0043324C,21,
-0x0043324C,22,
-0x0043324C,23,
-0x0043324C,24,
-0x0043324C,25,
-0x0043324C,26,
-0x0043324C,27,
-0x0043324C,28,
-0x0043324C,29,
-0x0043324C,30,
-0x0043324C,31,
+Index,Pointer,Bit,Name
+0,541274640,0,
+1,541274640,1,Prison 1F Graveyard - Briefcase
+2,541274640,2,Prison 1F Execution Yard - Padlock Key
+3,541274640,3,Prison 1F Computer Room - Hawk Emblem
+4,541274640,4,Prison 1F Execution Yard - Extinguisher
+5,541274640,5,Prison 1F Security Corridor - Sp. Alloy Emblem
+6,541274640,6,Prison 1F Clinic - Glass Eye
+7,541274640,7,Prison 1F Statue Room - Piano Roll
+8,541274640,8,Prison 1F Statue Room - Rusted Sword
+9,541274640,9,Palace Courtyard - Navy Proof
+10,541274640,10,Palace 1F Portrait Room - Earthenware Vase
+11,541274640,11,Palace 1F Display Room - Steering Wheel
+12,541274640,12,Palace 1F Umbrella Meeting Room - Eagle Plate
+13,541274640,13,Palace 2F Casino Lounge - King Ant Object
+14,541274640,14,
+15,541274640,15,Private Residence 2F Alexias Bedroom - Sliver Key
+16,541274640,16,Private Residence 2F Alexias Bedroom - Music Box Plate
+17,541274640,17,Private Residence 3F Play Room - Silver Dragonfly
+18,541274640,18,Private Residence 4F Private Study - Air Force Proof
+19,541274640,19,Military Training Facility Back Courtyard - Emblem Card
+20,541274640,20,Military Training Facility 1F Diorama Room - Gold Key
+21,541274640,21,Military Training Facility 1F Diorama Room - Eagle Plate
+22,541274640,22,Military Training Facility 1F Swimming Pool - Key with Tag
+23,541274640,23,Military Training Facility 2F Warehouse Managers Room - Hemostatic
+24,541274640,24,Military Training Facility 2F Command Center - Army Proof
+25,541274640,25,Military Training Facility 2F Biological Laboratory - Skeleton Picture
+26,541274640,26,Airport Check-in - Airport Key
+27,541274640,27,Airport Cargo Bay - Biohazard Card
+28,541274640,28,Transport Plane Cockpit - Control Leaver
+29,541274640,29,Antartic Transport Terminal B2 Office - Plant Pot
+30,541274640,30,Antartic Transport Terminal Power Room - Valve Handle
+31,541274640,31,Antartic Transport Terminal B2 Weapon Room - Mining Room Key
+32,541274644,0,Antartic Transport Terminal B2 B.O.W. Room - Bar Code Sticker
+33,541274644,1,Military Training Facility 1F Diorama Room - Turn Table Key
+34,541274644,2,Military Training Facility B1 Weapon Repair Shop - Clement Alpha
+35,541274644,3,Military Training Facility B1 Chemical Storage Room - Clement Sigma
+36,541274644,4,Military Training Facility B2 Jet Hangar Corridor - Battery Pack
+37,541274644,5,Military Training Facility B1 Turn Table Room - Door Knob
+38,541274644,6,Military Training Facility Garage - Tank Object
+39,541274644,7,Military Training Facility Garage - Chem. Storage Key
+40,541274644,8,Military Training Facility B2 Water Pool - Eagle Plate
+41,541274644,9,Antartic Transport Terminal B2 Office - Paper Weight
+42,541274644,10,
+43,541274644,11,
+44,541274644,12,
+45,541274644,13,Antartic Transport Terminal B5 Mansion Courtyard - Wing Object
+46,541274644,14,
+47,541274644,15,
+48,541274644,16,Antartic Transport Terminal B1 Mining Room - Octa Valve Handle
+49,541274644,17,
+50,541274644,18,
+51,541274644,19,
+52,541274644,20,
+53,541274644,21,
+54,541274644,22,
+55,541274644,23,
+56,541274644,24,
+57,541274644,25,
+58,541274644,26,
+59,541274644,27,Airport Bridge - Army Proof
+60,541274644,28,Airport Bridge - Navy Proof
+61,541274644,29,Airport Bridge - Air Force Proof
+62,541274644,30,Military Training Facility Warehouse - Sub Machine Gun
+63,541274644,31,Antartic Transport Terminal B2 B.O.W. Room - Gas Mask
+64,541274648,0,
+65,541274648,1,
+66,541274648,2,Palace 2F Secretarys Office - ID Card
+67,541274648,3,
+68,541274648,4,
+69,541274648,5,
+70,541274648,6,
+71,541274648,7,
+72,541274648,8,
+73,541274648,9,
+74,541274648,10,
+75,541274648,11,
+76,541274648,12,
+77,541274648,13,
+78,541274648,14,
+79,541274648,15,
+80,541274648,16,
+81,541274648,17,
+82,541274648,18,
+83,541274648,19,
+84,541274648,20,
+85,541274648,21,
+86,541274648,22,
+87,541274648,23,
+88,541274648,24,
+89,541274648,25,
+90,541274648,26,
+91,541274648,27,
+92,541274648,28,
+93,541274648,29,
+94,541274648,30,
+95,541274648,31,
+96,541274652,0,Prison 1F Computer Room - Fax on the Facility Access Application
+97,541274652,1,Prison 1F Bunkhouse - Prisoner's Diary
+98,541274652,2,Prison 1F Security Corridor - Users Manual
+99,541274652,3,Palace 1F Portrait Room - Message to the new Family Master
+100,541274652,4,Palace 1F Umbrella Meeting Room - Hunk's Report
+101,541274652,5,
+102,541274652,6,Private Residence 4F Private Study - Confession Letter
+103,541274652,7,Military Training Facility 2F Emergency Door - ???
+104,541274652,8,Antartic Transport Terminal B1 Workmans Bunkhouse - Workers Diary
+105,541274652,9,Antartic Transport Terminal B2 Office - Alexander's Memo
+106,541274652,10,Military Training Facility 1F Diorama Room - Secret Passage Note
+107,541274652,11,Military Training Facility Garage - Report: Enhanced Anti-Decay Alloy
+108,541274652,12,Antartic Transport Terminal B2 Office - Alfred's Diary
+109,541274652,13,
+110,541274652,14,
+111,541274652,15,
+112,541274652,16,Private Residence 2F Alfreds Bedroom - Message Card
+113,541274652,17,Antartic Transport Terminal B2 Office - Butler's Letter
+114,541274652,18,Palace 2F Secretarys Office - Secretary's Note
+115,541274652,19,Prison 1F Clinic - F. Aid Spray
+116,541274652,20,
+117,541274652,21,
+118,541274652,22,
+119,541274652,23,
+120,541274652,24,Prison B1 Cells - Combat Knife
+121,541274652,25,Prison B1 Cells - Handgun Bullets
+122,541274652,26,Prison B1 Cells - Green Herb
+123,541274652,27,Prison B1 Entry - Ink Ribbon
+124,541274652,28,Prison B1 Entry - Handgun Bullets
+125,541274652,29,
+126,541274652,30,
+127,541274652,31,Prison 1F Yard - Handgun Bullets
+128,541274656,0,
+129,541274656,1,Prison 1F Computer Room - Ink Ribbon
+130,541274656,2,Prison 1F Barracks Yard - Green Herb
+131,541274656,3,Prison 1F Barracks - Green Herb
+132,541274656,4,Prison 1F Barracks - Handgun Bullets
+133,541274656,5,Prison 1F Barracks - Prison Map
+134,541274656,6,Prison 1F Bunkhouse - Handgun Bullets
+135,541274656,7,Prison 1F Bunkhouse - Handgun Bullets
+136,541274656,8,Prison 1F Bunkhouse - M-100P
+137,541274656,9,
+138,541274656,10,Prison 1F Security Corridor - F. Aid Spray
+139,541274656,11,Prison 1F Security Corridor - Flame Rounds
+140,541274656,12,Prison 1F Security Corridor - BOW Gas Rounds
+141,541274656,13,
+142,541274656,14,Prison Iron Bridge - Handgun Bullets
+143,541274656,15,Prison Iron Bridge - Green Herb
+144,541274656,16,Prison Iron Bridge - Green Herb
+145,541274656,17,Prison 1F Clinic - Anatomist's Note
+146,541274656,18,Prison 1F Clinic - Handgun Bullets
+147,541274656,19,Prison 1F Cremetorium - Duralumin Case
+148,541274656,20,Prison 1F Cremetorium - Handgun Bullets
+149,541274656,21,Prison 1F Cremetorium - Red Herb
+150,541274656,22,Prison 1F Secret Corridor - Green Herb
+151,541274656,23,Prison 1F Secret Corridor - ???
+152,541274656,24,Prison 1F Torture Chamber - Handgun Bullets
+153,541274656,25,Prison 1F Torture Chamber - Bow Gun Arrows
+154,541274656,26,Prison 1F Backyard - Green Herb
+155,541274656,27,Prison 1F Backyard - Handgun Bullets
+156,541274656,28,Prison 1F Backyard - ???
+157,541274656,29,Palace Courtyard - Green Herb
+158,541274656,30,Palace Courtyard - ???
+159,541274656,31,Palace Entrance Hall - Handgun Bullets
+160,541274660,0,Palace 1F Bathroom - Duralumin Case
+161,541274660,1,Palace 1F Bathroom - F. Aid Spray
+162,541274660,2,
+163,541274660,3,Palace 1F Bathroom - ???
+164,541274660,4,
+165,541274660,5,Palace 1F Display Room - Handgun Bullets
+166,541274660,6,Palace 1F Umbrella Meeting Room - Handgun Bullets
+167,541274660,7,Palace 1F Corridor - Handgun Bullets
+168,541274660,8,Palace 1F Corridor - Red Herb
+169,541274660,9,Palace 1F Corridor - ???
+170,541274660,10,
+171,541274660,11,Palace 2F Secretarys Office - Ink Ribbon
+172,541274660,12,Palace 2F Secretarys Office - Handgun Bullets
+173,541274660,13,Palace 2F Secretarys Office - Green Herb
+174,541274660,14,Palace 2F Alfreds Office - Handgun Bullets
+175,541274660,15,Palace 2F Alfreds Office - Blue Herb
+176,541274660,16,Palace 2F Casino Lounge - Handgun Bullets
+177,541274660,17,Palace 2F Casino Lounge - Green Herb
+178,541274660,18,Palace 2F Casino Lounge - Green Herb
+179,541274660,19,Palace 2F Casino Lounge - Bow Gun Powder
+180,541274660,20,
+181,541274660,21,
+182,541274660,22,Palace B1 Dock - Palace Map
+183,541274660,23,Palace B1 Dock - Handgun Bullets
+184,541274660,24,Palace B1 Dock - Bow Gun Arrows
+185,541274660,25,
+186,541274660,26,Palace B1 Submarine - Sidepack
+187,541274660,27,Private Residence Courtyard - ???
+188,541274660,28,Private Residence Courtyard - Red Herb
+189,541274660,29,Private Residence Entrance Hall - Handgun Bullets
+190,541274660,30,Private Residence Entrance Hall - F. Aid Spray
+191,541274660,31,Private Residence 1F Dining Room - Bow Gun Arrows
+192,541274664,0,Private Residence 1F Dining Room - Ink Ribbon
+193,541274664,1,Private Residence 1F Dining Room - Handgun Bullets
+194,541274664,2,Private Residence 2F Bedroom Corridor - Green Herb
+195,541274664,3,Private Residence 2F Bedroom Corridor - Handgun Bullets
+196,541274664,4,Private Residence 3F Play Room - ???
+197,541274664,5,Private Residence 3F Play Room - Green Herb
+198,541274664,6,Private Residence 4F Private Study - Handgun Bullets
+199,541274664,7,Private Residence 4F Private Study - Ink Ribbon
+200,541274664,8,Military Training Facility Garage - Handgun Bullets
+201,541274664,9,Military Training Facility Back Courtyard - ???
+202,541274664,10,Military Training Facility 1F Tank Yard - Bow Gun Arrows
+203,541274664,11,Military Training Facility 1F Elevator Corridor - Handgun Bullets
+204,541274664,12,Military Training Facility 1F Diorama Room - F. Aid Spray
+205,541274664,13,Military Training Facility 1F Diorama Room - Ink Ribbon
+206,541274664,14,Military Training Facility 1F Lockers - Bow Gun Arrows
+207,541274664,15,Military Training Facility 1F Lockers - Bow Gun Arrows
+208,541274664,16,Military Training Facility 1F Lockers - Bow Gun Arrows
+209,541274664,17,
+210,541274664,18,Military Training Facility 1F Front Office - Training Facility Map
+211,541274664,19,Military Training Facility 1F Front Office - Bow Gun Powder
+212,541274664,20,Military Training Facility 1F Front Office - Bow Gun Arrows
+213,541274664,21,
+214,541274664,22,Military Training Facility 1F Front Office - Green Herb
+215,541274664,23,
+216,541274664,24,
+217,541274664,25,Military Training Facility Lobby - Red Herb
+218,541274664,26,Military Training Facility Lobby - Bow Gun Arrows
+219,541274664,27,Military Training Facility 1F Excercise Yard - Bow Gun Arrows
+220,541274664,28,
+221,541274664,29,
+222,541274664,30,
+223,541274664,31,
+224,541274668,0,Military Training Facility 2F Warehouse Managers Room - Ink Ribbon
+225,541274668,1,Military Training Facility 2F Warehouse Managers Room - Green Herb
+226,541274668,2,Military Training Facility 2F Warehouse Managers Room - ???
+227,541274668,3,Military Training Facility 2F Warehouse Managers Room - Green Herb
+228,541274668,4,Military Training Facility 2F Command Center - ???
+229,541274668,5,Military Training Facility 2F Command Center - Green Herb
+230,541274668,6,Military Training Facility 2F Command Center - Green Herb
+231,541274668,7,
+232,541274668,8,Military Training Facility 2F Emergency Door - Bow Gun
+233,541274668,9,Military Training Facility 2F Biological Laboratory - Acid Rounds
+234,541274668,10,Military Training Facility 2F Biological Laboratory Security Camera - ???
+235,541274668,11,Military Training Facility 2F Warehouse Corridor - Handgun Bullets
+236,541274668,12,Military Training Facility 2F Warehouse Corridor - Handgun Bullets
+237,541274668,13,Military Training Facility B1 Basement Storehouse - Grenade Launcher
+238,541274668,14,Military Training Facility B1 Basement Storehouse - Zombie
+239,541274668,15,Military Training Facility B1 Basement Storehouse Cargo Lift - Bow Gun Arrows
+240,541274668,16,Military Training Facility B1 Basement Storehouse Lab - ???
+241,541274668,17,
+242,541274668,18,
+243,541274668,19,Military Training Facility B1 Weapon Repair Shop - Acid Rounds
+244,541274668,20,
+245,541274668,21,
+246,541274668,22,
+247,541274668,23,Airport Check-in - Shotgun Shells (Chris)
+248,541274668,24,Airport Check-in - Handgun Bullets
+249,541274668,25,Airport Check-in - Ink Ribbon
+250,541274668,26,Airport Check-in - Shotgun Shells
+251,541274668,27,Airport Cargo Bay - Bow Gun Arrows
+252,541274668,28,Airport Cargo Bay - ???
+253,541274668,29,Airport Cargo Transport - Green Herb
+254,541274668,30,Airport Cargo Transport - Green Herb
+255,541274668,31,Airport Cargo Transport - Handgun Bullets
+256,541274672,0,Airport Cargo Transport - Grenade Rounds
+257,541274672,1,Transport Plane Cockpit - Ink Ribbon
+258,541274672,2,Antartic Transport Terminal B1 Workmans Bunkhouse - F. Aid Spray
+259,541274672,3,Antartic Transport Terminal B1 Workmans Bunkhouse - Handgun Bullets
+260,541274672,4,Antartic Transport Terminal B1 Workmans Bunkhouse - Bow Gun Powder
+261,541274672,5,Antartic Transport Terminal B1 Workmans Bunkhouse - Ink Ribbon
+262,541274672,6,Antartic Transport Terminal B1 Workmans Bunkhouse - Handgun Bullets
+263,541274672,7,Antartic Transport Terminal B1 Workmans Bunkhouse - Handgun Bullets
+264,541274672,8,Antartic Transport Terminal B1 Workmans Bunkhouse - Antarctic Transportation Base Map
+265,541274672,9,Antartic Transport Terminal B1 Workmans Bunkhouse - Handgun Bullets
+266,541274672,10,Antartic Transport Terminal B1 Tool Storeroom - Handgun Bullets
+267,541274672,11,Antartic Transport Terminal B1 Tool Storeroom - Ink Ribbon
+268,541274672,12,Antartic Transport Terminal B1 Tool Storeroom - Blue Herb
+269,541274672,13,Antartic Transport Terminal B1 Tool Storeroom - Green Herb
+270,541274672,14,Antartic Transport Terminal B1 Tool Storeroom - Handgun Bullets
+271,541274672,15,Antartic Transport Terminal B2 Frozen Corridor - ???
+272,541274672,16,Antartic Transport Terminal B2 Office - Ink Ribbon
+273,541274672,17,Antartic Transport Terminal B2 Office - Green Herb
+274,541274672,18,Antartic Transport Terminal B2 Office - Bow Gun Arrows
+275,541274672,19,
+276,541274672,20,Antartic Transport Terminal Mining Room - Sniper Rifle
+277,541274672,21,
+278,541274672,22,Antartic Transport Terminal Power Room - Green Herb
+279,541274672,23,Antartic Transport Terminal Power Room - Green Herb
+280,541274672,24,Antartic Transport Terminal Power Room - Green Herb
+281,541274672,25,Antartic Transport Terminal Power Room - Handgun Bullets
+282,541274672,26,Antartic Transport Terminal Power Room - Handgun Bullets
+283,541274672,27,
+284,541274672,28,
+285,541274672,29,Antartic Transport Terminal B2 Weapon Room - Assault Rifle
+286,541274672,30,
+287,541274672,31,
+288,541274676,0,Antartic Transport Terminal B2 Weapon Room - Magnum
+289,541274676,1,Antartic Transport Terminal B2 Weapon Room - Detonator
+290,541274676,2,
+291,541274676,3,Antartic Transport Terminal B2 B.O.W. Room - Bow Gun Arrows
+292,541274676,4,Antartic Transport Terminal B2 B.O.W. Room - Blue Herb
+293,541274676,5,Antartic Transport Terminal B2 B.O.W. Room - Green Herb
+294,541274676,6,Antartic Transport Terminal B2 B.O.W. Room - Handgun Bullets
+295,541274676,7,Antartic Transport Terminal B2 B.O.W. Room - Handgun Bullets
+296,541274676,8,Antartic Transport Terminal 1F Helipad - Handgun Bullets
+297,541274676,9,Antartic Transport Terminal 1F Helipad - ???
+298,541274676,10,Antartic Transport Terminal 1F Helipad - F. Aid Spray
+299,541274676,11,Military Training Facility 1F Tank Yard - Handgun Bullets
+300,541274676,12,Military Training Facility 1F Diorama Room - ???
+301,541274676,13,Military Training Facility 1F Diorama Room - Shotgun Shells
+302,541274676,14,Military Training Facility 1F Diorama Room - Green Herb
+303,541274676,15,Military Training Facility 1F Diorama Room - ???
+304,541274676,16,Military Training Facility 1F Diorama Room - Shotgun Shells
+305,541274676,17,Military Training Facility B1 Chemical Storage Room - ???
+306,541274676,18,Military Training Facility B1 Chemical Storage Room - Shotgun Shells
+307,541274676,19,Military Training Facility B1 Chemical Storage Room - ???
+308,541274676,20,Military Training Facility B1 Chemical Storage Room - Red Herbs
+309,541274676,21,Military Training Facility B1 Chemical Storage Room - Blue Herbs
+310,541274676,22,Military Training Facility B1 Chemical Storage Room - Handgun Bullets
+311,541274676,23,
+312,541274676,24,Military Training Facility Iron Walkway - Flame Rounds
+313,541274676,25,Military Training Facility Iron Walkway - Red Herb
+314,541274676,26,Military Training Facility Iron Walkway - Red Herb
+315,541274676,27,
+316,541274676,28,Military Training Facility Iron Walkway - Handgun Bullets
+317,541274676,29,Military Training Facility Iron Walkway - Ink Ribbon
+318,541274676,30,Military Training Facility Specimen Lab - A. Rifle Bullets
+319,541274676,31,Military Training Facility Specimen Lab - Green Herb
+320,541274680,0,
+321,541274680,1,Military Training Facility B2 Jet Hangar Corridor - Blue Herb
+322,541274680,2,Military Training Facility B2 Jet Hangar Corridor - Shotgun Shells
+323,541274680,3,Military Training Facility B2 Jet Hangar Corridor - Green Herb
+324,541274680,4,Military Training Facility B2 Captins Room - Acid Rounds
+325,541274680,5,Military Training Facility B2 Captins Room - Ink Ribbon
+326,541274680,6,Military Training Facility B2 Captins Room - Luger Replica
+327,541274680,7,Military Training Facility B2 Captins Room - Shotgun Shells
+328,541274680,8,Military Training Facility B2 Captins Room - Handgun Bullets
+329,541274680,9,Military Training Facility B2 Captins Room - Green Herb
+330,541274680,10,Military Training Facility B2 Water Pool - Handgun Bullets
+331,541274680,11,Military Training Facility B2 Water Pool - Green Herb
+332,541274680,12,Military Training Facility B2 Water Pool - Green Herb
+333,541274680,13,Military Training Facility B2 Water Pool - Blue Herb
+334,541274680,14,
+335,541274680,15,
+336,541274680,16,Military Training Facility Garage - Handgun Bullets
+337,541274680,17,Military Training Facility 1F Excercise Yard - Shotgun Shells
+338,541274680,18,
+339,541274680,19,Military Training Facility 1F Front Office - ???
+340,541274680,20,
+341,541274680,21,Military Training Facility 1F Front Office - ???
+342,541274680,22,Military Training Facility 1F Front Office - Acid Rounds
+343,541274680,23,Military Training Facility 1F Front Office - Shotgun Shells
+344,541274680,24,Military Training Facility 1F Lobby - Bow Gun Powder
+345,541274680,25,Military Training Facility 2F Warehouse Corridor - Bow Gun Arrows
+346,541274680,26,Military Training Facility 2F Warehouse Corridor - Sidepack
+347,541274680,27,
+348,541274680,28,
+349,541274680,29,
+350,541274680,30,Military Training Facility B3 Cave - Ink Ribbon
+351,541274680,31,Military Training Facility B3 Cave - ???
+352,541274684,0,Military Training Facility B3 Cave - Green Herb
+353,541274684,1,Military Training Facility B3 Cave - Sub Machine Gun
+354,541274684,2,Military Training Facility B3 Cave - Bow Gun Arrows
+355,541274684,3,Military Training Facility B3 Tomb - Green Herb
+356,541274684,4,Military Training Facility B3 Tomb - Blue Herb
+357,541274684,5,Military Training Facility B3 Tomb - Handgun Bullets
+358,541274684,6,Military Training Facility B3 Tomb - Bow Gun Arrows
+359,541274684,7,Military Training Facility B1 Underground Passage - Grenade Rounds
+360,541274684,8,Military Training Facility B1 Underground Passage - Green Herb
+361,541274684,9,
+362,541274684,10,Antartic Transport Terminal B1 Workmans Bunkhouse - Grenade Rounds
+363,541274684,11,Antartic Transport Terminal B1 Tool Storeroom - Shotgun Shells
+364,541274684,12,Antartic Transport Terminal B1 Tool Storeroom - Duralumin Case
+365,541274684,13,Antartic Transport Terminal B2 Office - Ink Ribbon
+366,541274684,14,
+367,541274684,15,
+368,541274684,16,
+369,541274684,17,
+370,541274684,18,
+371,541274684,19,
+372,541274684,20,
+373,541274684,21,
+374,541274684,22,Antartic Transport Terminal B5 Mansion Courtyard - ???
+375,541274684,23,
+376,541274684,24,
+377,541274684,25,
+378,541274684,26,
+379,541274684,27,
+380,541274684,28,
+381,541274684,29,
+382,541274684,30,
+383,541274684,31,
+384,541274688,0,
+385,541274688,1,
+386,541274688,2,
+387,541274688,3,
+388,541274688,4,
+389,541274688,5,
+390,541274688,6,
+391,541274688,7,
+392,541274688,8,
+393,541274688,9,
+394,541274688,10,
+395,541274688,11,
+396,541274688,12,
+397,541274688,13,
+398,541274688,14,
+399,541274688,15,
+400,541274688,16,
+401,541274688,17,
+402,541274688,18,
+403,541274688,19,
+404,541274688,20,
+405,541274688,21,
+406,541274688,22,
+407,541274688,23,
+408,541274688,24,
+409,541274688,25,
+410,541274688,26,
+411,541274688,27,
+412,541274688,28,
+413,541274688,29,
+414,541274688,30,
+415,541274688,31,
+416,541274692,0,
+417,541274692,1,
+418,541274692,2,
+419,541274692,3,
+420,541274692,4,
+421,541274692,5,
+422,541274692,6,
+423,541274692,7,
+424,541274692,8,
+425,541274692,9,
+426,541274692,10,
+427,541274692,11,
+428,541274692,12,
+429,541274692,13,
+430,541274692,14,
+431,541274692,15,
+432,541274692,16,
+433,541274692,17,
+434,541274692,18,
+435,541274692,19,
+436,541274692,20,
+437,541274692,21,
+438,541274692,22,Military Training Facility B1 Weapon Repair Shop - Handgun Bullets
+439,541274692,23,Military Training Facility B1 Basement Storehouse - Grenade Rounds
+440,541274692,24,Antartic Transport Terminal B2 Weapon Room - Handgun Bullets
+441,541274692,25,Antartic Transport Terminal B2 Weapon Room - Handgun Bullets
+442,541274692,26,Antartic Transport Terminal B2 Weapon Room - Handgun Bullets
+443,541274692,27,
+444,541274692,28,
+445,541274692,29,
+446,541274692,30,
+447,541274692,31,
+448,541274696,0,
+449,541274696,1,
+450,541274696,2,
+451,541274696,3,
+452,541274696,4,
+453,541274696,5,
+454,541274696,6,
+455,541274696,7,
+456,541274696,8,
+457,541274696,9,
+458,541274696,10,
+459,541274696,11,
+460,541274696,12,
+461,541274696,13,
+462,541274696,14,
+463,541274696,15,
+464,541274696,16,
+465,541274696,17,
+466,541274696,18,
+467,541274696,19,
+468,541274696,20,
+469,541274696,21,
+470,541274696,22,
+471,541274696,23,
+472,541274696,24,
+473,541274696,25,
+474,541274696,26,
+475,541274696,27,
+476,541274696,28,
+477,541274696,29,
+478,541274696,30,
+479,541274696,31,
+480,541274700,0,
+481,541274700,1,
+482,541274700,2,
+483,541274700,3,
+484,541274700,4,
+485,541274700,5,
+486,541274700,6,
+487,541274700,7,
+488,541274700,8,
+489,541274700,9,
+490,541274700,10,
+491,541274700,11,
+492,541274700,12,
+493,541274700,13,
+494,541274700,14,
+495,541274700,15,
+496,541274700,16,
+497,541274700,17,
+498,541274700,18,
+499,541274700,19,
+500,541274700,20,
+501,541274700,21,
+502,541274700,22,
+503,541274700,23,
+504,541274700,24,
+505,541274700,25,
+506,541274700,26,
+507,541274700,27,
+508,541274700,28,
+509,541274700,29,
+510,541274700,30,
+511,541274700,31,
+ - ???,19,Military Training Facility 1F Diorama Room - ???
+301,Military Training Facility 1F Diorama Room - Shotgun Shells,18,Military Training Facility 1F Diorama Room - Shotgun Shells
+302,Military Training Facility 1F Diorama Room - Green Herb,17,Military Training Facility 1F Diorama Room - Green Herb
+303,Military Training Facility 1F Diorama Room - ???,16,Military Training Facility 1F Diorama Room - ???
+304,Military Training Facility 1F Diorama Room - Shotgun Shells,15,Military Training Facility 1F Diorama Room - Shotgun Shells
+305,Military Training Facility B1 Chemical Storage Room - ???,14,Military Training Facility B1 Chemical Storage Room - ???
+306,Military Training Facility B1 Chemical Storage Room - Shotgun Shells,13,Military Training Facility B1 Chemical Storage Room - Shotgun Shells
+307,Military Training Facility B1 Chemical Storage Room - ???,12,Military Training Facility B1 Chemical Storage Room - ???
+308,Military Training Facility B1 Chemical Storage Room - Red Herbs,11,Military Training Facility B1 Chemical Storage Room - Red Herbs
+309,Military Training Facility B1 Chemical Storage Room - Blue Herbs,10,Military Training Facility B1 Chemical Storage Room - Blue Herbs
+310,Military Training Facility B1 Chemical Storage Room - Handgun Bullets,9,Military Training Facility B1 Chemical Storage Room - Handgun Bullets
+311,,8,
+312,Military Training Facility Iron Walkway - Flame Rounds,7,Military Training Facility Iron Walkway - Flame Rounds
+313,Military Training Facility Iron Walkway - Red Herb,6,Military Training Facility Iron Walkway - Red Herb
+314,Military Training Facility Iron Walkway - Red Herb,5,Military Training Facility Iron Walkway - Red Herb
+315,,4,
+316,Military Training Facility Iron Walkway - Handgun Bullets,3,Military Training Facility Iron Walkway - Handgun Bullets
+317,Military Training Facility Iron Walkway - Ink Ribbon,2,Military Training Facility Iron Walkway - Ink Ribbon
+318,Military Training Facility Specimen Lab - A. Rifle Bullets,1,Military Training Facility Specimen Lab - A. Rifle Bullets
+319,Military Training Facility Specimen Lab - Green Herb,0,Military Training Facility Specimen Lab - Green Herb
+320,,31,
+321,Military Training Facility B2 Jet Hangar Corridor - Blue Herb,30,Military Training Facility B2 Jet Hangar Corridor - Blue Herb
+322,Military Training Facility B2 Jet Hangar Corridor - Shotgun Shells,29,Military Training Facility B2 Jet Hangar Corridor - Shotgun Shells
+323,Military Training Facility B2 Jet Hangar Corridor - Green Herb,28,Military Training Facility B2 Jet Hangar Corridor - Green Herb
+324,Military Training Facility B2 Captins Room - Acid Rounds,27,Military Training Facility B2 Captins Room - Acid Rounds
+325,Military Training Facility B2 Captins Room - Ink Ribbon,26,Military Training Facility B2 Captins Room - Ink Ribbon
+326,Military Training Facility B2 Captins Room - Luger Replica,25,Military Training Facility B2 Captins Room - Luger Replica
+327,Military Training Facility B2 Captins Room - Shotgun Shells,24,Military Training Facility B2 Captins Room - Shotgun Shells
+328,Military Training Facility B2 Captins Room - Handgun Bullets,23,Military Training Facility B2 Captins Room - Handgun Bullets
+329,Military Training Facility B2 Captins Room - Green Herb,22,Military Training Facility B2 Captins Room - Green Herb
+330,Military Training Facility B2 Water Pool - Handgun Bullets,21,Military Training Facility B2 Water Pool - Handgun Bullets
+331,Military Training Facility B2 Water Pool - Green Herb,20,Military Training Facility B2 Water Pool - Green Herb
+332,Military Training Facility B2 Water Pool - Green Herb,19,Military Training Facility B2 Water Pool - Green Herb
+333,Military Training Facility B2 Water Pool - Blue Herb,18,Military Training Facility B2 Water Pool - Blue Herb
+334,,17,
+335,,16,
+336,Military Training Facility Garage - Handgun Bullets,15,Military Training Facility Garage - Handgun Bullets
+337,Military Training Facility 1F Excercise Yard - Shotgun Shells,14,Military Training Facility 1F Excercise Yard - Shotgun Shells
+338,,13,
+339,Military Training Facility 1F Front Office - ???,12,Military Training Facility 1F Front Office - ???
+340,,11,
+341,Military Training Facility 1F Front Office - ???,10,Military Training Facility 1F Front Office - ???
+342,Military Training Facility 1F Front Office - Acid Rounds,9,Military Training Facility 1F Front Office - Acid Rounds
+343,Military Training Facility 1F Front Office - Shotgun Shells,8,Military Training Facility 1F Front Office - Shotgun Shells
+344,Military Training Facility 1F Lobby - Bow Gun Powder,7,Military Training Facility 1F Lobby - Bow Gun Powder
+345,Military Training Facility 2F Warehouse Corridor - Bow Gun Arrows,6,Military Training Facility 2F Warehouse Corridor - Bow Gun Arrows
+346,Military Training Facility 2F Warehouse Corridor - Sidepack,5,Military Training Facility 2F Warehouse Corridor - Sidepack
+347,,4,
+348,,3,
+349,,2,
+350,Military Training Facility B3 Cave - Ink Ribbon,1,Military Training Facility B3 Cave - Ink Ribbon
+351,Military Training Facility B3 Cave - ???,0,Military Training Facility B3 Cave - ???
+352,Military Training Facility B3 Cave - Green Herb,31,Military Training Facility B3 Cave - Green Herb
+353,Military Training Facility B3 Cave - Sub Machine Gun,30,Military Training Facility B3 Cave - Sub Machine Gun
+354,Military Training Facility B3 Cave - Bow Gun Arrows,29,Military Training Facility B3 Cave - Bow Gun Arrows
+355,Military Training Facility B3 Tomb - Green Herb,28,Military Training Facility B3 Tomb - Green Herb
+356,Military Training Facility B3 Tomb - Blue Herb,27,Military Training Facility B3 Tomb - Blue Herb
+357,Military Training Facility B3 Tomb - Handgun Bullets,26,Military Training Facility B3 Tomb - Handgun Bullets
+358,Military Training Facility B3 Tomb - Bow Gun Arrows,25,Military Training Facility B3 Tomb - Bow Gun Arrows
+359,Military Training Facility B1 Underground Passage - Grenade Rounds,24,Military Training Facility B1 Underground Passage - Grenade Rounds
+360,Military Training Facility B1 Underground Passage - Green Herb,23,Military Training Facility B1 Underground Passage - Green Herb
+361,,22,
+362,Antartic Transport Terminal B1 Workmans Bunkhouse - Grenade Rounds,21,Antartic Transport Terminal B1 Workmans Bunkhouse - Grenade Rounds
+363,Antartic Transport Terminal B1 Tool Storeroom - Shotgun Shells,20,Antartic Transport Terminal B1 Tool Storeroom - Shotgun Shells
+364,Antartic Transport Terminal B1 Tool Storeroom - Duralumin Case,19,Antartic Transport Terminal B1 Tool Storeroom - Duralumin Case
+365,Antartic Transport Terminal B2 Office - Ink Ribbon,18,Antartic Transport Terminal B2 Office - Ink Ribbon
+366,,17,
+367,,16,
+368,,15,
+369,,14,
+370,,13,
+371,,12,
+372,,11,
+373,,10,
+374,Antartic Transport Terminal B5 Mansion Courtyard - ???,9,Antartic Transport Terminal B5 Mansion Courtyard - ???
+375,,8,
+376,,7,
+377,,6,
+378,,5,
+379,,4,
+380,,3,
+381,,2,
+382,,1,
+383,,0,
+384,,31,
+385,,30,
+386,,29,
+387,,28,
+388,,27,
+389,,26,
+390,,25,
+391,,24,
+392,,23,
+393,,22,
+394,,21,
+395,,20,
+396,,19,
+397,,18,
+398,,17,
+399,,16,
+400,,15,
+401,,14,
+402,,13,
+403,,12,
+404,,11,
+405,,10,
+406,,9,
+407,,8,
+408,,7,
+409,,6,
+410,,5,
+411,,4,
+412,,3,
+413,,2,
+414,,1,
+415,,0,
+416,,31,
+417,,30,
+418,,29,
+419,,28,
+420,,27,
+421,,26,
+422,,25,
+423,,24,
+424,,23,
+425,,22,
+426,,21,
+427,,20,
+428,,19,
+429,,18,
+430,,17,
+431,,16,
+432,,15,
+433,,14,
+434,,13,
+435,,12,
+436,,11,
+437,,10,
+438,Military Training Facility B1 Weapon Repair Shop - Handgun Bullets,9,Military Training Facility B1 Weapon Repair Shop - Handgun Bullets
+439,Military Training Facility B1 Basement Storehouse - Grenade Rounds,8,Military Training Facility B1 Basement Storehouse - Grenade Rounds
+440,Antartic Transport Terminal B2 Weapon Room - Handgun Bullets,7,Antartic Transport Terminal B2 Weapon Room - Handgun Bullets
+441,Antartic Transport Terminal B2 Weapon Room - Handgun Bullets,6,Antartic Transport Terminal B2 Weapon Room - Handgun Bullets
+442,Antartic Transport Terminal B2 Weapon Room - Handgun Bullets,5,Antartic Transport Terminal B2 Weapon Room - Handgun Bullets
+443,,4,
+444,,3,
+445,,2,
+446,,1,
+447,,0,
+448,,31,
+449,,30,
+450,,29,
+451,,28,
+452,,27,
+453,,26,
+454,,25,
+455,,24,
+456,,23,
+457,,22,
+458,,21,
+459,,20,
+460,,19,
+461,,18,
+462,,17,
+463,,16,
+464,,15,
+465,,14,
+466,,13,
+467,,12,
+468,,11,
+469,,10,
+470,,9,
+471,,8,
+472,,7,
+473,,6,
+474,,5,
+475,,4,
+476,,3,
+477,,2,
+478,,1,
+479,,0,
+480,,31,
+481,,30,
+482,,29,
+483,,28,
+484,,27,
+485,,26,
+486,,25,
+487,,24,
+488,,23,
+489,,22,
+490,,21,
+491,,20,
+492,,19,
+493,,18,
+494,,17,
+495,,16,
+496,,15,
+497,,14,
+498,,13,
+499,,12,
+500,,11,
+501,,10,
+502,,9,
+503,,8,
+504,,7,
+505,,6,
+506,,5,
+507,,4,
+508,,3,
+509,,2,
+510,,1,
+511,,0,
