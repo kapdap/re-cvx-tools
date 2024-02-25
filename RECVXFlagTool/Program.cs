@@ -138,8 +138,7 @@ namespace RECVXFlagTool
                     Properties.Settings.Default.LastOpenFile = file.FullName;
                     Properties.Settings.Default.Save();
                 }
-            }
-            catch { }
+            } catch { }
         }
 
         public static void ExportFlagsCSV(DirectoryInfo folder)
@@ -158,13 +157,15 @@ namespace RECVXFlagTool
         {
             try
             {
-                using StreamWriter writer = new StreamWriter(file.OpenWrite());
+                if (file.Exists)
+                    file.Delete();
+
+                using StreamWriter writer = new StreamWriter(file.Open(FileMode.CreateNew, FileAccess.Write, FileShare.None));
 
                 writer.WriteLine("Index,Pointer,Bit,Name");
                 foreach (FlagModel model in flags)
-                    writer.WriteLine($"{model.Index},{model.Pointer},{model.Order},{model.Name}");
-            }
-            catch { }
+                    writer.WriteLine($"{model.Index},0x{(model.Pointer - MemoryScanner.Emulator.VirtualMemoryPointer):X8},{model.Order},\"{model.Name}\"");
+            } catch { }
         }
 
         private static void UpdateFlagNames(FlagCollection flags)
