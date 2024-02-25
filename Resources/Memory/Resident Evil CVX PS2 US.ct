@@ -225,13 +225,6 @@ writeBytes(PS2mem+0x02C42AC, 0x9A, 0x00, 0x14, 0xA2, 0x30, 0x00, 0x01, 0x3C, 0x9
       <Address>PS2mem+04F8190</Address>
       <CheatEntries>
         <CheatEntry>
-          <ID>4138</ID>
-          <Description>"Score"</Description>
-          <ShowAsHex>1</ShowAsHex>
-          <VariableType>4 Bytes</VariableType>
-          <Address>PS2mem+04F818C</Address>
-        </CheatEntry>
-        <CheatEntry>
           <ID>5621</ID>
           <Description>"Score"</Description>
           <VariableType>4 Bytes</VariableType>
@@ -478,6 +471,7 @@ writeBytes(PS2mem+0x02C42AC, 0x9A, 0x00, 0x14, 0xA2, 0x30, 0x00, 0x01, 0x3C, 0x9
 00000547:16 Battle Time Room
 00000550:17 Battle Time "Boss"
 </DropDownList>
+      <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Custom</VariableType>
       <CustomType>2 Byte Big Endian</CustomType>
@@ -9978,91 +9972,658 @@ writeBytes(PS2mem+0x02C42AC, 0x9A, 0x00, 0x14, 0xA2, 0x30, 0x00, 0x01, 0x3C, 0x9
       <CheatEntries>
         <CheatEntry>
           <ID>5244</ID>
-          <Description>"Events"</Description>
+          <Description>"Events[0]"</Description>
+          <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Binary</VariableType>
           <BitStart>0</BitStart>
           <BitLength>32</BitLength>
           <ShowAsBinary>1</ShowAsBinary>
           <Address>PS2mem+0433190</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>5607</ID>
-          <Description>"Events"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Binary</VariableType>
-          <BitStart>0</BitStart>
-          <BitLength>32</BitLength>
-          <ShowAsBinary>1</ShowAsBinary>
-          <Address>PS2mem+0433194</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>5608</ID>
-          <Description>"Events"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Binary</VariableType>
-          <BitStart>0</BitStart>
-          <BitLength>32</BitLength>
-          <ShowAsBinary>1</ShowAsBinary>
-          <Address>PS2mem+0433198</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>5617</ID>
-          <Description>"Events"</Description>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>PS2mem+0433198</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>5609</ID>
-          <Description>"Events"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Binary</VariableType>
-          <BitStart>0</BitStart>
-          <BitLength>32</BitLength>
-          <ShowAsBinary>1</ShowAsBinary>
-          <Address>PS2mem+043319C</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>5610</ID>
-          <Description>"Events"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Binary</VariableType>
-          <BitStart>0</BitStart>
-          <BitLength>32</BitLength>
-          <ShowAsBinary>1</ShowAsBinary>
-          <Address>PS2mem+04331A0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>5607</ID>
+              <Description>"Events[1]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433194</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5608</ID>
+              <Description>"Events[2]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433198</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5609</ID>
+              <Description>"Events[3]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+043319C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5610</ID>
+              <Description>"Events[4]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04331A0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5653</ID>
+              <Description>"Events[5]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04331A4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5654</ID>
+              <Description>"Events[6]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04331A8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5655</ID>
+              <Description>"Events[7]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04331AC</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5656</ID>
+              <Description>"Events[8]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04331B0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5657</ID>
+              <Description>"Events[9]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04331B4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5658</ID>
+              <Description>"Events[10]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04331B8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5659</ID>
+              <Description>"Events[11]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04331BC</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5660</ID>
+              <Description>"Events[12]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04331C0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5661</ID>
+              <Description>"Events[13]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04331C4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5662</ID>
+              <Description>"Events[14]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04331C8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5663</ID>
+              <Description>"Events[15]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04331CC</Address>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
         <CheatEntry>
           <ID>5245</ID>
           <Description>"Items"</Description>
+          <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Binary</VariableType>
           <BitStart>0</BitStart>
           <BitLength>32</BitLength>
           <ShowAsBinary>1</ShowAsBinary>
           <Address>PS2mem+0433210</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>5679</ID>
+              <Description>"Items"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433214</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5680</ID>
+              <Description>"Items"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433218</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5681</ID>
+              <Description>"Items"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+043321C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5682</ID>
+              <Description>"Items"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433220</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5683</ID>
+              <Description>"Items"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433224</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5684</ID>
+              <Description>"Items"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433228</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5685</ID>
+              <Description>"Items"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+043322C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5686</ID>
+              <Description>"Items"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433230</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5687</ID>
+              <Description>"Items"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433234</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5688</ID>
+              <Description>"Items"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433238</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5689</ID>
+              <Description>"Items"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+043323C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5690</ID>
+              <Description>"Items"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433240</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5691</ID>
+              <Description>"Items"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433244</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5692</ID>
+              <Description>"Items"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433248</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5693</ID>
+              <Description>"Items"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+043324C</Address>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
         <CheatEntry>
           <ID>5246</ID>
           <Description>"Enemies"</Description>
+          <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Binary</VariableType>
           <BitStart>0</BitStart>
           <BitLength>32</BitLength>
           <ShowAsBinary>1</ShowAsBinary>
           <Address>PS2mem+0433290</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>5664</ID>
+              <Description>"Enemies"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433294</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5665</ID>
+              <Description>"Enemies"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433298</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5666</ID>
+              <Description>"Enemies"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+043329C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5667</ID>
+              <Description>"Enemies"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04332A0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5668</ID>
+              <Description>"Enemies"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04332A4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5669</ID>
+              <Description>"Enemies"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04332A8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5670</ID>
+              <Description>"Enemies"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04332AC</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5671</ID>
+              <Description>"Enemies"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04332B0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5672</ID>
+              <Description>"Enemies"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04332B4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5673</ID>
+              <Description>"Enemies"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04332B8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5674</ID>
+              <Description>"Enemies"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04332BC</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5675</ID>
+              <Description>"Enemies"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04332C0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5676</ID>
+              <Description>"Enemies"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04332C4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5677</ID>
+              <Description>"Enemies"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04332C8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5678</ID>
+              <Description>"Enemies"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+04332CC</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5725</ID>
+          <Description>"Unknown"</Description>
+          <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Binary</VariableType>
+          <BitStart>0</BitStart>
+          <BitLength>32</BitLength>
+          <ShowAsBinary>1</ShowAsBinary>
+          <Address>PS2mem+0433310</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>5726</ID>
+              <Description>"Unknown"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433314</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5727</ID>
+              <Description>"Unknown"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433318</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5728</ID>
+              <Description>"Unknown"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+043331C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5729</ID>
+              <Description>"Unknown"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433320</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5730</ID>
+              <Description>"Unknown"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433324</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5731</ID>
+              <Description>"Unknown"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433328</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5732</ID>
+              <Description>"Unknown"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+043332C</Address>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
         <CheatEntry>
           <ID>5247</ID>
           <Description>"Maps"</Description>
+          <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Binary</VariableType>
           <BitStart>0</BitStart>
           <BitLength>32</BitLength>
           <ShowAsBinary>1</ShowAsBinary>
           <Address>PS2mem+0433350</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>5694</ID>
+              <Description>"Maps"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433354</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5695</ID>
+              <Description>"Maps"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433358</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5696</ID>
+              <Description>"Maps"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+043335C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5697</ID>
+              <Description>"Maps"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433360</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5698</ID>
+              <Description>"Maps"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433364</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5699</ID>
+              <Description>"Maps"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433368</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5700</ID>
+              <Description>"Maps"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+043336C</Address>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
         <CheatEntry>
           <ID>5248</ID>
@@ -10175,49 +10736,52 @@ writeBytes(PS2mem+0x02C42AC, 0x9A, 0x00, 0x14, 0xA2, 0x30, 0x00, 0x01, 0x3C, 0x9
             <CheatEntry>
               <ID>2438</ID>
               <Description>"Base"</Description>
+              <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>4 Bytes</VariableType>
               <Address>PS2mem+04062E0</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>5590</ID>
-              <Description>"Base"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Binary</VariableType>
-              <BitStart>0</BitStart>
-              <BitLength>8</BitLength>
-              <ShowAsBinary>1</ShowAsBinary>
-              <Address>PS2mem+04062E0</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>5591</ID>
-              <Description>"Base"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Binary</VariableType>
-              <BitStart>0</BitStart>
-              <BitLength>8</BitLength>
-              <ShowAsBinary>1</ShowAsBinary>
-              <Address>PS2mem+04062E1</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>5593</ID>
-              <Description>"Base"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Binary</VariableType>
-              <BitStart>0</BitStart>
-              <BitLength>8</BitLength>
-              <ShowAsBinary>1</ShowAsBinary>
-              <Address>PS2mem+04062E2</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>5592</ID>
-              <Description>"Base"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Binary</VariableType>
-              <BitStart>0</BitStart>
-              <BitLength>8</BitLength>
-              <ShowAsBinary>1</ShowAsBinary>
-              <Address>PS2mem+04062E3</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>5590</ID>
+                  <Description>"Base"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>0</BitStart>
+                  <BitLength>8</BitLength>
+                  <ShowAsBinary>1</ShowAsBinary>
+                  <Address>PS2mem+04062E0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5591</ID>
+                  <Description>"Base"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>0</BitStart>
+                  <BitLength>8</BitLength>
+                  <ShowAsBinary>1</ShowAsBinary>
+                  <Address>PS2mem+04062E1</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5593</ID>
+                  <Description>"Base"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>0</BitStart>
+                  <BitLength>8</BitLength>
+                  <ShowAsBinary>1</ShowAsBinary>
+                  <Address>PS2mem+04062E2</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5592</ID>
+                  <Description>"Base"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Binary</VariableType>
+                  <BitStart>0</BitStart>
+                  <BitLength>8</BitLength>
+                  <ShowAsBinary>1</ShowAsBinary>
+                  <Address>PS2mem+04062E3</Address>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>2858</ID>
@@ -13468,7 +14032,7 @@ C2:First Person (C2)
             </CheatEntry>
             <CheatEntry>
               <ID>5559</ID>
-              <Description>"sys[132]"</Description>
+              <Description>"sys[132] unk flags"</Description>
               <ShowAsHex>1</ShowAsHex>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
@@ -13932,6 +14496,34 @@ C2:First Person (C2)
           <Address>PS2mem+035D020</Address>
         </CheatEntry>
         <CheatEntry>
+          <ID>5626</ID>
+          <Description>"GameMenuFlag"</Description>
+          <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>PS2mem+0433166</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>5627</ID>
+              <Description>"GameMenuFlag"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>32</BitLength>
+              <ShowAsBinary>1</ShowAsBinary>
+              <Address>PS2mem+0433166</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5624</ID>
+              <Description>"GameModeFlag"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>PS2mem+04F8824</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
           <ID>5548</ID>
           <Description>"No description"</Description>
           <ShowAsHex>1</ShowAsHex>
@@ -14212,31 +14804,14 @@ C2:First Person (C2)
           <VariableType>4 Bytes</VariableType>
           <Address>PS2mem+1E17290</Address>
         </CheatEntry>
-        <CheatEntry>
-          <ID>5626</ID>
-          <Description>"GameMenuFlag"</Description>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>PS2mem+0433166</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>5627</ID>
-          <Description>"GameMenuFlag"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Binary</VariableType>
-          <BitStart>0</BitStart>
-          <BitLength>32</BitLength>
-          <ShowAsBinary>1</ShowAsBinary>
-          <Address>PS2mem+0433166</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>5624</ID>
-          <Description>"GameModeFlag"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>PS2mem+04F8824</Address>
-        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5733</ID>
+      <Description>"Tables"</Description>
+      <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
         <CheatEntry>
           <ID>5616</ID>
           <Description>"ranktable"</Description>
@@ -14266,7 +14841,7 @@ C2:First Person (C2)
         </CheatEntry>
         <CheatEntry>
           <ID>5637</ID>
-          <Description>"Product (1.7) (wxWidgets)"</Description>
+          <Description>"Product (1.7) (wx)"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>String</VariableType>
           <Length>11</Length>
