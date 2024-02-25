@@ -196,11 +196,10 @@ namespace RECVXFlagTool
         private void ReadFlags(IntPtr flagPointer, FlagCollection list, int size)
         {
             IntPtr pointer = flagPointer;
-            int offset = 0;
+            int index = 0;
 
             if (list.Count <= 0)
             {
-                int index = 0;
                 for (int i = 0; i < (size / 4); ++i)
                 {
                     int order = 0;
@@ -211,9 +210,8 @@ namespace RECVXFlagTool
                         FlagModel model = new()
                         {
                             Bit = b,
-                            Offset = offset + b,
-                            Index = index++,
                             Order = order++,
+                            Index = index++,
                             Flag = list.Name,
                             FlagPointer = flagPointer,
                         };
@@ -221,8 +219,6 @@ namespace RECVXFlagTool
                         model.SetValue(((val >> model.Bit) & 1) != 0, pointer);
                         list.Add(model);
                     }
-
-                    offset += 32;
 
                     pointer = IntPtr.Add(pointer, 4);
                 }
@@ -238,7 +234,7 @@ namespace RECVXFlagTool
         }
 
         private static string ReadFlagName(FlagModel model) => 
-            Program.Models.AppViewModel.FlagNames.GetValueOrDefault($"{model.Flag}.{model.Offset}");
+            Program.Models.AppViewModel.FlagNames.GetValueOrDefault($"{model.Flag}.{model.Index}");
 
         private bool disposedValue;
         protected virtual void Dispose(bool disposing)

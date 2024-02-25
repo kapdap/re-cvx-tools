@@ -145,7 +145,7 @@ namespace RECVXFlagTool
         {
             foreach (FlagModel model in flags)
             {
-                string key = $"{model.Flag}.{model.Offset}";
+                string key = $"{model.Flag}.{model.Index}";
 
                 if (Models.AppViewModel.FlagNames.ContainsKey(key))
                     Models.AppViewModel.FlagNames[key] = model.Name;
