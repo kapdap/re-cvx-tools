@@ -20,10 +20,9 @@
               ItemsSource="{Binding Memory.FlagLog}" Margin="0,0,0,0">
         <DataGrid.Columns>
             <DataGridTextColumn Width="60"  FontFamily="Consolas" IsReadOnly="True" Header="Event"   Binding="{Binding Flag.Flag}"/>
-            <DataGridTextColumn Width="80"  FontFamily="Consolas" IsReadOnly="True" Header="Pointer" Binding="{Binding Flag.FlagPointer, StringFormat=X8}"/>
-            <DataGridTextColumn Width="50"  FontFamily="Consolas" IsReadOnly="True" Header="Offset"  Binding="{Binding Flag.Offset}"/>
-            <DataGridTextColumn Width="80"  FontFamily="Consolas" IsReadOnly="True" Header="Byte"    Binding="{Binding Flag.Pointer, StringFormat=X8}"/>
-            <DataGridTextColumn Width="30"  FontFamily="Consolas" IsReadOnly="True" Header="Bit"     Binding="{Binding Flag.Bit}"/>
+            <DataGridTextColumn Width="80"  FontFamily="Consolas" IsReadOnly="True" Header="Pointer" Binding="{Binding Flag.Pointer, StringFormat=X8}"/>
+            <DataGridTextColumn Width="50"  FontFamily="Consolas" IsReadOnly="True" Header="Index"   Binding="{Binding Flag.Index}"/>
+            <DataGridTextColumn Width="30"  FontFamily="Consolas" IsReadOnly="True" Header="Bit"     Binding="{Binding Flag.Order}"/>
             <DataGridTextColumn Width="40"  FontFamily="Consolas" IsReadOnly="True" Header="Value"   Binding="{Binding Value}"/>
             <DataGridTextColumn Width="400" FontFamily="Consolas"                   Header="Name"    Binding="{Binding Flag.Name, Mode=TwoWay}"/>
         </DataGrid.Columns>

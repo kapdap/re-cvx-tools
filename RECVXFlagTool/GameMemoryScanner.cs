@@ -200,23 +200,29 @@ namespace RECVXFlagTool
 
             if (list.Count <= 0)
             {
+                int index = 0;
                 for (int i = 0; i < (size / 4); ++i)
                 {
+                    int order = 0;
                     int val = _process.ReadValue<int>(pointer, Emulator.IsBigEndian);
 
-                    for (int b = 0; b < (8 * 4); ++b)
+                    for (int b = 31; b >= 0; --b)
                     {
                         FlagModel model = new()
                         {
                             Bit = b,
+                            Offset = offset + b,
+                            Index = index++,
+                            Order = order++,
                             Flag = list.Name,
                             FlagPointer = flagPointer,
-                            Offset = offset++
                         };
                         model.Name = ReadFlagName(model);
                         model.SetValue(((val >> model.Bit) & 1) != 0, pointer);
                         list.Add(model);
                     }
+
+                    offset += 32;
 
                     pointer = IntPtr.Add(pointer, 4);
                 }
@@ -225,11 +231,8 @@ namespace RECVXFlagTool
             {
                 foreach (FlagModel model in list)
                 {
-                    int val = _process.ReadValue<int>(pointer, Emulator.IsBigEndian);
-                    model.SetValue(((val >> model.Bit) & 1) != 0, pointer);
-
-                    if (model.Bit == 31)
-                        pointer = IntPtr.Add(pointer, 4);
+                    int val = _process.ReadValue<int>(model.Pointer, Emulator.IsBigEndian);
+                    model.SetValue(((val >> model.Bit) & 1) != 0, model.Pointer);
                 }
             }
         }

@@ -16,10 +16,9 @@
               CanUserAddRows="False"
               ItemsSource="{Binding Memory.ItemFlags}">
         <DataGrid.Columns>
-            <DataGridTextColumn Width="80"  FontFamily="Consolas" IsReadOnly="True" Header="Pointer" Binding="{Binding FlagPointer, StringFormat=X8}"/>
-            <DataGridTextColumn Width="50"  FontFamily="Consolas" IsReadOnly="True" Header="Offset"  Binding="{Binding Offset}"/>
-            <DataGridTextColumn Width="80"  FontFamily="Consolas" IsReadOnly="True" Header="Byte"    Binding="{Binding Pointer, StringFormat=X8}"/>
-            <DataGridTextColumn Width="30"  FontFamily="Consolas" IsReadOnly="True" Header="Bit"     Binding="{Binding Bit}"/>
+            <DataGridTextColumn Width="80"  FontFamily="Consolas" IsReadOnly="True" Header="Pointer" Binding="{Binding Pointer, StringFormat=X8}"/>
+            <DataGridTextColumn Width="50"  FontFamily="Consolas" IsReadOnly="True" Header="Index"   Binding="{Binding Index}"/>
+            <DataGridTextColumn Width="30"  FontFamily="Consolas" IsReadOnly="True" Header="Bit"     Binding="{Binding Order}"/>
             <DataGridTextColumn Width="40"  FontFamily="Consolas" IsReadOnly="True" Header="Value"   Binding="{Binding Value}"/>
             <DataGridTextColumn Width="450" FontFamily="Consolas"                   Header="Name"    Binding="{Binding Name, Mode=TwoWay}"/>
         </DataGrid.Columns>
