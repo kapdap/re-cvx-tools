@@ -1,346 +1,257 @@
 Index,Pointer,Bit,Name
-0,541274960,0,
-1,541274960,1,Prison B1 Cells
-2,541274960,2,Military Training Facility B1 Boiler Room
-3,541274960,3,
-4,541274960,4,Prison B1 Cells
-5,541274960,5,Prison 1F Graveyard
-6,541274960,6,
-7,541274960,7,Palace B1 Dock
-8,541274960,8,Palace Courtyard
-9,541274960,9,Palace Entrance Hall
-10,541274960,10,Private Residence Courtyard
-11,541274960,11,Private Residence Entrance Hall
-12,541274960,12,Private Residence 3F Play Room
-13,541274960,13,Private Residence 4F Private Study
-14,541274960,14,Military Training Facility B1 Basement Storehouse Cargo Lift
-15,541274960,15,Military Training Facility 1F Excercise Yard
-16,541274960,16,Military Training Facility Lobby
-17,541274960,17,Palace B1 Submarine Lowered
-18,541274960,18,Airport Cargo Bay
-19,541274960,19,Transport Plane Cockpit
-20,541274960,20,Antartic Transport Terminal B2 Frozen Corridor
-21,541274960,21,Antartic Transport Terminal B1 Silo
-22,541274960,22,Antartic Transport Terminal 1F Helipad
-23,541274960,23,Military Training Facility B3 Cave
-24,541274960,24,Military Training Facility Iron Walkway
-25,541274960,25,
-26,541274960,26,Antartic Transport Terminal B5 Mansion Courtyard
-27,541274960,27,
-28,541274960,28,
-29,541274960,29,
-30,541274960,30,Palace Passage
-31,541274960,31,
-32,541274964,0,Prison B1 Cells
-33,541274964,1,Prison B1 Entry
-34,541274964,2,Prison 1F Graveyard
-35,541274964,3,Prison 1F Yard
-36,541274964,4,Prison 1F Computer Room
-37,541274964,5,Prison 1F Barracks Yard
-38,541274964,6,Prison 1F Barracks
-39,541274964,7,Prison 1F Bunkhouse
-40,541274964,8,Prison 1F Execution Yard
-41,541274964,9,Prison 1F Execution Yard Storage
-42,541274964,10,Prison 1F Execution Yard
-43,541274964,11,Prison 1F Security Corridor
-44,541274964,12,Prison 1F Security Corridor
-45,541274964,13,Prison Iron Bridge
-46,541274964,14,Prison 1F Clinic
-47,541274964,15,Prison 1F Cremetorium
-48,541274964,16,Prison 1F Secret Corridor
-49,541274964,17,Prison 1F Torture Chamber
-50,541274964,18,Prison 1F Statue Room
-51,541274964,19,Prison 1F Backyard
-52,541274964,20,Prison 1F Backyard
-53,541274964,21,Palace Courtyard
-54,541274964,22,Palace Entrance Hall
-55,541274964,23,Palace Entrance Hall
-56,541274964,24,Palace 1F Bathroom
-57,541274964,25,Palace 1F Portrait Room
-58,541274964,26,Palace 1F Display Room
-59,541274964,27,Palace 1F Display Room Secret Room Revealed
-60,541274964,28,Palace 1F Umbrella Meeting Room
-61,541274964,29,Palace 1F Corridor
-62,541274964,30,Palace 2F Secretarys Office
-63,541274964,31,Palace 2F Alfreds Office
-64,541274968,0,Palace 2F Alfreds Office Secret Passage
-65,541274968,1,Palace 2F Residence Bridge
-66,541274968,2,Palace 2F Casino Lounge
-67,541274968,3,Palace Passage
-68,541274968,4,Palace B1 Dock
-69,541274968,5,Palace B1 Submarine
-70,541274968,6,Palace 2F Residence Bridge
-71,541274968,7,Private Residence Entrance Hall
-72,541274968,8,
-73,541274968,9,Private Residence 1F Dining Room
-74,541274968,10,Private Residence 2F Bedroom Corridor
-75,541274968,11,Private Residence 2F Alfreds Bedroom
-76,541274968,12,Private Residence 2F Alexias Bedroom
-77,541274968,13,Private Residence 3F Play Room
-78,541274968,14,
-79,541274968,15,
-80,541274968,16,Private Residence 4F Private Study
-81,541274968,17,Military Training Facility Garage
-82,541274968,18,Military Training Facility Garage Upstairs
-83,541274968,19,Military Training Facility Garage
-84,541274968,20,
-85,541274968,21,
-86,541274968,22,Military Training Facility Back Courtyard
-87,541274968,23,Military Training Facility Back Courtyard Upstairs
-88,541274968,24,Military Training Facility 1F Tank Yard
-89,541274968,25,Military Training Facility 1F Elevator Corridor
-90,541274968,26,Military Training Facility 1F Elevator Corridor
-91,541274968,27,Military Training Facility 1F Diorama Room
-92,541274968,28,Military Training Facility 1F Diorama Room
-93,541274968,29,Military Training Facility 1F Lockers
-94,541274968,30,Military Training Facility 1F Swimming Pool
-95,541274968,31,Military Training Facility 1F Front Office
-96,541274972,0,Military Training Facility Lobby
-97,541274972,1,Military Training Facility Lobby
-98,541274972,2,Military Training Facility Lobby
-99,541274972,3,
-100,541274972,4,Military Training Facility 1F Excercise Yard
-101,541274972,5,Airport Cargo Transport
-102,541274972,6,Military Training Facility Warehouse
-103,541274972,7,Military Training Facility Warehouse
-104,541274972,8,Military Training Facility Warehouse
-105,541274972,9,Military Training Facility 2F Warehouse Managers Room
-106,541274972,10,Military Training Facility 2F Command Center
-107,541274972,11,Military Training Facility 2F Command Center
-108,541274972,12,Military Training Facility 2F Emergency Door
-109,541274972,13,Military Training Facility 2F Biological Laboratory Security Camera
-110,541274972,14,Military Training Facility 2F Warehouse Corridor
-111,541274972,15,
-112,541274972,16,Military Training Facility B1 Basement Storehouse
-113,541274972,17,Military Training Facility B1 Boiler Room
-114,541274972,18,Military Training Facility B1 Basement Storehouse Cargo Lift
-115,541274972,19,
-116,541274972,20,Military Training Facility B1 Basement Storehouse Lab
-117,541274972,21,Military Training Facility B1 Weapon Repair Shop
-118,541274972,22,Military Training Facility B1 Iron Walkway
-119,541274972,23,Military Training Facility Elevator
-120,541274972,24,Military Training Facility Elevator
-121,541274972,25,Military Training Facility Elevator
-122,541274972,26,
-123,541274972,27,
-124,541274972,28,Airport Check-in
-125,541274972,29,Airport Check-in
-126,541274972,30,Airport Bridge
-127,541274972,31,Airport Bridge
-128,541274976,0,Airport Bridge Bridge Lowered
-129,541274976,1,Airport Cargo Bay
-130,541274976,2,Airport Bridge Bridge Raised
-131,541274976,3,Airport Cargo Bay
-132,541274976,4,Airport Cargo Bay Lift Raised
-133,541274976,5,Airport Cargo Bay
-134,541274976,6,
-135,541274976,7,Airport Entry
-136,541274976,8,Airport Submarine (False when Raised)
-137,541274976,9,Airport Cargo Transport
-138,541274976,10,Airport Cargo Transport
-139,541274976,11,Transport Plane Cockpit
-140,541274976,12,Transport Plane Cargo Hold
-141,541274976,13,Transport Plane Cargo Hold
-142,541274976,14,Antartic Transport Terminal B1 Workmans Bunkhouse
-143,541274976,15,Antartic Transport Terminal B1 Workmans Bunkhouse
-144,541274976,16,Antartic Transport Terminal B1 Tool Storeroom
-145,541274976,17,Antartic Transport Terminal B2 Frozen Corridor
-146,541274976,18,Antartic Transport Terminal B2 Office
-147,541274976,19,Antartic Transport Terminal B2 Office
-148,541274976,20,Antartic Transport Terminal B2 Office Prison Cell
-149,541274976,21,Antartic Transport Terminal Sorting Room
-150,541274976,22,Antartic Transport Terminal Sorting Room
-151,541274976,23,Antartic Transport Terminal Mining Room
-152,541274976,24,Antartic Transport Terminal Mining Room
-153,541274976,25,Antartic Transport Terminal Power Room
-154,541274976,26,Antartic Transport Terminal Power Room
-155,541274976,27,Antartic Transport Terminal B2 Weapon Room
-156,541274976,28,Antartic Transport Terminal B2 B.O.W. Room
-157,541274976,29,Antartic Transport Terminal 1F Helipad
-158,541274976,30,Military Training Facility 1F Tank Yard
-159,541274976,31,Military Training Facility Elevator
-160,541274980,0,Military Training Facility 1F Diorama Room
-161,541274980,1,Military Training Facility 2F Command Center
-162,541274980,2,Military Training Facility B1 Weapon Repair Shop
-163,541274980,3,Military Training Facility B1 Chemical Storage Room
-164,541274980,4,Military Training Facility Iron Walkway
-165,541274980,5,Military Training Facility Specimen Lab
-166,541274980,6,Military Training Facility Specimen Lab
-167,541274980,7,Military Training Facility B2 Jet Hangar Corridor
-168,541274980,8,Military Training Facility B2 Captins Room
-169,541274980,9,Military Training Facility B2 Water Pool
-170,541274980,10,Military Training Facility B1 Turn Table Room
-171,541274980,11,Military Training Facility B1 Turn Table Room (False when Raised)
-172,541274980,12,Military Training Facility Garage
-173,541274980,13,Military Training Facility 1F Excercise Yard
-174,541274980,14,Military Training Facility Back Courtyard
-175,541274980,15,Military Training Facility Back Courtyard
-176,541274980,16,Military Training Facility 1F Front Office
-177,541274980,17,Military Training Facility 1F Lobby
-178,541274980,18,Military Training Facility B1 Turn Table Room (False when Lowered)
-179,541274980,19,Military Training Facility 2F Lobby Stairway
-180,541274980,20,Military Training Facility 2F Lobby Upstairs
-181,541274980,21,Military Training Facility 2F Warehouse Corridor
-182,541274980,22,Military Training Facility 1F Elevator Corridor
-183,541274980,23,Military Training Facility B1 Basement Storehouse
-184,541274980,24,Military Training Facility B1 Boiler Room
-185,541274980,25,Military Training Facility B3 Cave
-186,541274980,26,Military Training Facility B3 Tomb
-187,541274980,27,Military Training Facility B3 Tomb Elevator
-188,541274980,28,
-189,541274980,29,Military Training Facility B1 Underground Passage
-190,541274980,30,
-191,541274980,31,
-192,541274984,0,
-193,541274984,1,
-194,541274984,2,
-195,541274984,3,
-196,541274984,4,
-197,541274984,5,
-198,541274984,6,
-199,541274984,7,Airport Cargo Transport
-200,541274984,8,Airport Entry
-201,541274984,9,Antartic Transport Terminal B1 Silo
-202,541274984,10,
-203,541274984,11,Antartic Transport Terminal B1 Tool Storeroom
-204,541274984,12,Antartic Transport Terminal B2 Frozen Corridor
-205,541274984,13,Antartic Transport Terminal B2 Office
-206,541274984,14,Antartic Transport Terminal B1 Sorting Room
-207,541274984,15,Antartic Transport Terminal B1 Mining Room
-208,541274984,16,
-209,541274984,17,Antartic Transport Terminal B2 Weapon Room
-210,541274984,18,Antartic Transport Terminal B1 Jet Hanger
-211,541274984,19,Antartic Transport Terminal B1 Corridor
-212,541274984,20,Antartic Transport Terminal B1 Corridor
-213,541274984,21,Antartic Transport Terminal B1 Water Tank Room
-214,541274984,22,
-215,541274984,23,
-216,541274984,24,Antartic Transport Terminal B5 Mansion Courtyard
-217,541274984,25,Antartic Transport Terminal B1 Corridor
-218,541274984,26,
-219,541274984,27,Antartic Transport Terminal B5 Main Hall
-220,541274984,28,
-221,541274984,29,
-222,541274984,30,
-223,541274984,31,
-224,541274988,0,
-225,541274988,1,
-226,541274988,2,
-227,541274988,3,
-228,541274988,4,
-229,541274988,5,
-230,541274988,6,
-231,541274988,7,
-232,541274988,8,
-233,541274988,9,
-234,541274988,10,
-235,541274988,11,
-236,541274988,12,
-237,541274988,13,
-238,541274988,14,
-239,541274988,15,
-240,541274988,16,
-241,541274988,17,Antartic Transport Terminal B2 Frozen Corridor
-242,541274988,18,
-243,541274988,19,Military Training Facility Iron Walkway
-244,541274988,20,
-245,541274988,21,
-246,541274988,22,
-247,541274988,23,
-248,541274988,24,
-249,541274988,25,
-250,541274988,26,
-251,541274988,27,
-252,541274988,28,
-253,541274988,29,
-254,541274988,30,
-255,541274988,31,
-or
-168,Military Training Facility B2 Captins Room,23,Military Training Facility B2 Captins Room
-169,Military Training Facility B2 Water Pool,22,Military Training Facility B2 Water Pool
-170,Military Training Facility B1 Turn Table Room,21,Military Training Facility B1 Turn Table Room
-171,Military Training Facility B1 Turn Table Room (False when Raised),20,Military Training Facility B1 Turn Table Room (False when Raised)
-172,Military Training Facility Garage,19,Military Training Facility Garage
-173,Military Training Facility 1F Excercise Yard,18,Military Training Facility 1F Excercise Yard
-174,Military Training Facility Back Courtyard,17,Military Training Facility Back Courtyard
-175,Military Training Facility Back Courtyard,16,Military Training Facility Back Courtyard
-176,Military Training Facility 1F Front Office,15,Military Training Facility 1F Front Office
-177,Military Training Facility 1F Lobby,14,Military Training Facility 1F Lobby
-178,Military Training Facility B1 Turn Table Room (False when Lowered),13,Military Training Facility B1 Turn Table Room (False when Lowered)
-179,Military Training Facility 2F Lobby Stairway,12,Military Training Facility 2F Lobby Stairway
-180,Military Training Facility 2F Lobby Upstairs,11,Military Training Facility 2F Lobby Upstairs
-181,Military Training Facility 2F Warehouse Corridor,10,Military Training Facility 2F Warehouse Corridor
-182,Military Training Facility 1F Elevator Corridor,9,Military Training Facility 1F Elevator Corridor
-183,Military Training Facility B1 Basement Storehouse,8,Military Training Facility B1 Basement Storehouse
-184,Military Training Facility B1 Boiler Room,7,Military Training Facility B1 Boiler Room
-185,Military Training Facility B3 Cave,6,Military Training Facility B3 Cave
-186,Military Training Facility B3 Tomb,5,Military Training Facility B3 Tomb
-187,Military Training Facility B3 Tomb Elevator,4,Military Training Facility B3 Tomb Elevator
-188,,3,
-189,Military Training Facility B1 Underground Passage,2,Military Training Facility B1 Underground Passage
-190,,1,
-191,,0,
-192,,31,
-193,,30,
-194,,29,
-195,,28,
-196,,27,
-197,,26,
-198,,25,
-199,Airport Cargo Transport,24,Airport Cargo Transport
-200,Airport Entry,23,Airport Entry
-201,Antartic Transport Terminal B1 Silo,22,Antartic Transport Terminal B1 Silo
-202,,21,
-203,Antartic Transport Terminal B1 Tool Storeroom,20,Antartic Transport Terminal B1 Tool Storeroom
-204,Antartic Transport Terminal B2 Frozen Corridor,19,Antartic Transport Terminal B2 Frozen Corridor
-205,Antartic Transport Terminal B2 Office,18,Antartic Transport Terminal B2 Office
-206,Antartic Transport Terminal B1 Sorting Room,17,Antartic Transport Terminal B1 Sorting Room
-207,Antartic Transport Terminal B1 Mining Room,16,Antartic Transport Terminal B1 Mining Room
-208,,15,
-209,Antartic Transport Terminal B2 Weapon Room,14,Antartic Transport Terminal B2 Weapon Room
-210,Antartic Transport Terminal B1 Jet Hanger,13,Antartic Transport Terminal B1 Jet Hanger
-211,Antartic Transport Terminal B1 Corridor,12,Antartic Transport Terminal B1 Corridor
-212,Antartic Transport Terminal B1 Corridor,11,Antartic Transport Terminal B1 Corridor
-213,Antartic Transport Terminal B1 Water Tank Room,10,Antartic Transport Terminal B1 Water Tank Room
-214,,9,
-215,,8,
-216,Antartic Transport Terminal B5 Mansion Courtyard,7,Antartic Transport Terminal B5 Mansion Courtyard
-217,Antartic Transport Terminal B1 Corridor,6,Antartic Transport Terminal B1 Corridor
-218,,5,
-219,Antartic Transport Terminal B5 Main Hall,4,Antartic Transport Terminal B5 Main Hall
-220,,3,
-221,,2,
-222,,1,
-223,,0,
-224,,31,
-225,,30,
-226,,29,
-227,,28,
-228,,27,
-229,,26,
-230,,25,
-231,,24,
-232,,23,
-233,,22,
-234,,21,
-235,,20,
-236,,19,
-237,,18,
-238,,17,
-239,,16,
-240,,15,
-241,Antartic Transport Terminal B2 Frozen Corridor,14,Antartic Transport Terminal B2 Frozen Corridor
-242,,13,
-243,Military Training Facility Iron Walkway,12,Military Training Facility Iron Walkway
-244,,11,
-245,,10,
-246,,9,
-247,,8,
-248,,7,
-249,,6,
-250,,5,
-251,,4,
-252,,3,
-253,,2,
-254,,1,
-255,,0,
+0,0x00433350,0,""
+1,0x00433350,1,"Prison B1 Cells"
+2,0x00433350,2,"Military Training Facility B1 Boiler Room"
+3,0x00433350,3,""
+4,0x00433350,4,"Prison B1 Cells"
+5,0x00433350,5,"Prison 1F Graveyard"
+6,0x00433350,6,""
+7,0x00433350,7,"Palace B1 Dock"
+8,0x00433350,8,"Palace Courtyard"
+9,0x00433350,9,"Palace Entrance Hall"
+10,0x00433350,10,"Private Residence Courtyard"
+11,0x00433350,11,"Private Residence Entrance Hall"
+12,0x00433350,12,"Private Residence 3F Play Room"
+13,0x00433350,13,"Private Residence 4F Private Study"
+14,0x00433350,14,"Military Training Facility B1 Basement Storehouse Cargo Lift"
+15,0x00433350,15,"Military Training Facility 1F Excercise Yard"
+16,0x00433350,16,"Military Training Facility Lobby"
+17,0x00433350,17,"Palace B1 Submarine Lowered"
+18,0x00433350,18,"Airport Cargo Bay"
+19,0x00433350,19,"Transport Plane Cockpit"
+20,0x00433350,20,"Antartic Transport Terminal B2 Frozen Corridor"
+21,0x00433350,21,"Antartic Transport Terminal B1 Silo"
+22,0x00433350,22,"Antartic Transport Terminal 1F Helipad"
+23,0x00433350,23,"Military Training Facility B3 Cave"
+24,0x00433350,24,"Military Training Facility Iron Walkway"
+25,0x00433350,25,""
+26,0x00433350,26,"Antartic Transport Terminal B5 Mansion Courtyard"
+27,0x00433350,27,""
+28,0x00433350,28,""
+29,0x00433350,29,""
+30,0x00433350,30,"Palace Passage"
+31,0x00433350,31,""
+32,0x00433354,0,"Prison B1 Cells"
+33,0x00433354,1,"Prison B1 Entry"
+34,0x00433354,2,"Prison 1F Graveyard"
+35,0x00433354,3,"Prison 1F Yard"
+36,0x00433354,4,"Prison 1F Computer Room"
+37,0x00433354,5,"Prison 1F Barracks Yard"
+38,0x00433354,6,"Prison 1F Barracks"
+39,0x00433354,7,"Prison 1F Bunkhouse"
+40,0x00433354,8,"Prison 1F Execution Yard"
+41,0x00433354,9,"Prison 1F Execution Yard Storage"
+42,0x00433354,10,"Prison 1F Execution Yard"
+43,0x00433354,11,"Prison 1F Security Corridor"
+44,0x00433354,12,"Prison 1F Security Corridor"
+45,0x00433354,13,"Prison Iron Bridge"
+46,0x00433354,14,"Prison 1F Clinic"
+47,0x00433354,15,"Prison 1F Cremetorium"
+48,0x00433354,16,"Prison 1F Secret Corridor"
+49,0x00433354,17,"Prison 1F Torture Chamber"
+50,0x00433354,18,"Prison 1F Statue Room"
+51,0x00433354,19,"Prison 1F Backyard"
+52,0x00433354,20,"Prison 1F Backyard"
+53,0x00433354,21,"Palace Courtyard"
+54,0x00433354,22,"Palace Entrance Hall"
+55,0x00433354,23,"Palace Entrance Hall"
+56,0x00433354,24,"Palace 1F Bathroom"
+57,0x00433354,25,"Palace 1F Portrait Room"
+58,0x00433354,26,"Palace 1F Display Room"
+59,0x00433354,27,"Palace 1F Display Room Secret Room Revealed"
+60,0x00433354,28,"Palace 1F Umbrella Meeting Room"
+61,0x00433354,29,"Palace 1F Corridor"
+62,0x00433354,30,"Palace 2F Secretarys Office"
+63,0x00433354,31,"Palace 2F Alfreds Office"
+64,0x00433358,0,"Palace 2F Alfreds Office Secret Passage"
+65,0x00433358,1,"Palace 2F Residence Bridge"
+66,0x00433358,2,"Palace 2F Casino Lounge"
+67,0x00433358,3,"Palace Passage"
+68,0x00433358,4,"Palace B1 Dock"
+69,0x00433358,5,"Palace B1 Submarine"
+70,0x00433358,6,"Palace 2F Residence Bridge"
+71,0x00433358,7,"Private Residence Entrance Hall"
+72,0x00433358,8,""
+73,0x00433358,9,"Private Residence 1F Dining Room"
+74,0x00433358,10,"Private Residence 2F Bedroom Corridor"
+75,0x00433358,11,"Private Residence 2F Alfreds Bedroom"
+76,0x00433358,12,"Private Residence 2F Alexias Bedroom"
+77,0x00433358,13,"Private Residence 3F Play Room"
+78,0x00433358,14,""
+79,0x00433358,15,""
+80,0x00433358,16,"Private Residence 4F Private Study"
+81,0x00433358,17,"Military Training Facility Garage"
+82,0x00433358,18,"Military Training Facility Garage Upstairs"
+83,0x00433358,19,"Military Training Facility Garage"
+84,0x00433358,20,""
+85,0x00433358,21,""
+86,0x00433358,22,"Military Training Facility Back Courtyard"
+87,0x00433358,23,"Military Training Facility Back Courtyard Upstairs"
+88,0x00433358,24,"Military Training Facility 1F Tank Yard"
+89,0x00433358,25,"Military Training Facility 1F Elevator Corridor"
+90,0x00433358,26,"Military Training Facility 1F Elevator Corridor"
+91,0x00433358,27,"Military Training Facility 1F Diorama Room"
+92,0x00433358,28,"Military Training Facility 1F Diorama Room"
+93,0x00433358,29,"Military Training Facility 1F Lockers"
+94,0x00433358,30,"Military Training Facility 1F Swimming Pool"
+95,0x00433358,31,"Military Training Facility 1F Front Office"
+96,0x0043335C,0,"Military Training Facility Lobby"
+97,0x0043335C,1,"Military Training Facility Lobby"
+98,0x0043335C,2,"Military Training Facility Lobby"
+99,0x0043335C,3,""
+100,0x0043335C,4,"Military Training Facility 1F Excercise Yard"
+101,0x0043335C,5,"Airport Cargo Transport"
+102,0x0043335C,6,"Military Training Facility Warehouse"
+103,0x0043335C,7,"Military Training Facility Warehouse"
+104,0x0043335C,8,"Military Training Facility Warehouse"
+105,0x0043335C,9,"Military Training Facility 2F Warehouse Managers Room"
+106,0x0043335C,10,"Military Training Facility 2F Command Center"
+107,0x0043335C,11,"Military Training Facility 2F Command Center"
+108,0x0043335C,12,"Military Training Facility 2F Emergency Door"
+109,0x0043335C,13,"Military Training Facility 2F Biological Laboratory Security Camera"
+110,0x0043335C,14,"Military Training Facility 2F Warehouse Corridor"
+111,0x0043335C,15,""
+112,0x0043335C,16,"Military Training Facility B1 Basement Storehouse"
+113,0x0043335C,17,"Military Training Facility B1 Boiler Room"
+114,0x0043335C,18,"Military Training Facility B1 Basement Storehouse Cargo Lift"
+115,0x0043335C,19,""
+116,0x0043335C,20,"Military Training Facility B1 Basement Storehouse Lab"
+117,0x0043335C,21,"Military Training Facility B1 Weapon Repair Shop"
+118,0x0043335C,22,"Military Training Facility B1 Iron Walkway"
+119,0x0043335C,23,"Military Training Facility Elevator"
+120,0x0043335C,24,"Military Training Facility Elevator"
+121,0x0043335C,25,"Military Training Facility Elevator"
+122,0x0043335C,26,""
+123,0x0043335C,27,""
+124,0x0043335C,28,"Airport Check-in"
+125,0x0043335C,29,"Airport Check-in"
+126,0x0043335C,30,"Airport Bridge"
+127,0x0043335C,31,"Airport Bridge"
+128,0x00433360,0,"Airport Bridge Bridge Lowered"
+129,0x00433360,1,"Airport Cargo Bay"
+130,0x00433360,2,"Airport Bridge Bridge Raised"
+131,0x00433360,3,"Airport Cargo Bay"
+132,0x00433360,4,"Airport Cargo Bay Lift Raised"
+133,0x00433360,5,"Airport Cargo Bay"
+134,0x00433360,6,""
+135,0x00433360,7,"Airport Entry"
+136,0x00433360,8,"Airport Submarine (False when Raised)"
+137,0x00433360,9,"Airport Cargo Transport"
+138,0x00433360,10,"Airport Cargo Transport"
+139,0x00433360,11,"Transport Plane Cockpit"
+140,0x00433360,12,"Transport Plane Cargo Hold"
+141,0x00433360,13,"Transport Plane Cargo Hold"
+142,0x00433360,14,"Antartic Transport Terminal B1 Workmans Bunkhouse"
+143,0x00433360,15,"Antartic Transport Terminal B1 Workmans Bunkhouse"
+144,0x00433360,16,"Antartic Transport Terminal B1 Tool Storeroom"
+145,0x00433360,17,"Antartic Transport Terminal B2 Frozen Corridor"
+146,0x00433360,18,"Antartic Transport Terminal B2 Office"
+147,0x00433360,19,"Antartic Transport Terminal B2 Office"
+148,0x00433360,20,"Antartic Transport Terminal B2 Office Prison Cell"
+149,0x00433360,21,"Antartic Transport Terminal Sorting Room"
+150,0x00433360,22,"Antartic Transport Terminal Sorting Room"
+151,0x00433360,23,"Antartic Transport Terminal Mining Room"
+152,0x00433360,24,"Antartic Transport Terminal Mining Room"
+153,0x00433360,25,"Antartic Transport Terminal Power Room"
+154,0x00433360,26,"Antartic Transport Terminal Power Room"
+155,0x00433360,27,"Antartic Transport Terminal B2 Weapon Room"
+156,0x00433360,28,"Antartic Transport Terminal B2 B.O.W. Room"
+157,0x00433360,29,"Antartic Transport Terminal 1F Helipad"
+158,0x00433360,30,"Military Training Facility 1F Tank Yard"
+159,0x00433360,31,"Military Training Facility Elevator"
+160,0x00433364,0,"Military Training Facility 1F Diorama Room"
+161,0x00433364,1,"Military Training Facility 2F Command Center"
+162,0x00433364,2,"Military Training Facility B1 Weapon Repair Shop"
+163,0x00433364,3,"Military Training Facility B1 Chemical Storage Room"
+164,0x00433364,4,"Military Training Facility Iron Walkway"
+165,0x00433364,5,"Military Training Facility Specimen Lab"
+166,0x00433364,6,"Military Training Facility Specimen Lab"
+167,0x00433364,7,"Military Training Facility B2 Jet Hangar Corridor"
+168,0x00433364,8,"Military Training Facility B2 Captins Room"
+169,0x00433364,9,"Military Training Facility B2 Water Pool"
+170,0x00433364,10,"Military Training Facility B1 Turn Table Room"
+171,0x00433364,11,"Military Training Facility B1 Turn Table Room (False when Raised)"
+172,0x00433364,12,"Military Training Facility Garage"
+173,0x00433364,13,"Military Training Facility 1F Excercise Yard"
+174,0x00433364,14,"Military Training Facility Back Courtyard"
+175,0x00433364,15,"Military Training Facility Back Courtyard"
+176,0x00433364,16,"Military Training Facility 1F Front Office"
+177,0x00433364,17,"Military Training Facility 1F Lobby"
+178,0x00433364,18,"Military Training Facility B1 Turn Table Room (False when Lowered)"
+179,0x00433364,19,"Military Training Facility 2F Lobby Stairway"
+180,0x00433364,20,"Military Training Facility 2F Lobby Upstairs"
+181,0x00433364,21,"Military Training Facility 2F Warehouse Corridor"
+182,0x00433364,22,"Military Training Facility 1F Elevator Corridor"
+183,0x00433364,23,"Military Training Facility B1 Basement Storehouse"
+184,0x00433364,24,"Military Training Facility B1 Boiler Room"
+185,0x00433364,25,"Military Training Facility B3 Cave"
+186,0x00433364,26,"Military Training Facility B3 Tomb"
+187,0x00433364,27,"Military Training Facility B3 Tomb Elevator"
+188,0x00433364,28,""
+189,0x00433364,29,"Military Training Facility B1 Underground Passage"
+190,0x00433364,30,""
+191,0x00433364,31,""
+192,0x00433368,0,""
+193,0x00433368,1,""
+194,0x00433368,2,""
+195,0x00433368,3,""
+196,0x00433368,4,""
+197,0x00433368,5,""
+198,0x00433368,6,""
+199,0x00433368,7,"Airport Cargo Transport"
+200,0x00433368,8,"Airport Entry"
+201,0x00433368,9,"Antartic Transport Terminal B1 Silo"
+202,0x00433368,10,""
+203,0x00433368,11,"Antartic Transport Terminal B1 Tool Storeroom"
+204,0x00433368,12,"Antartic Transport Terminal B2 Frozen Corridor"
+205,0x00433368,13,"Antartic Transport Terminal B2 Office"
+206,0x00433368,14,"Antartic Transport Terminal B1 Sorting Room"
+207,0x00433368,15,"Antartic Transport Terminal B1 Mining Room"
+208,0x00433368,16,""
+209,0x00433368,17,"Antartic Transport Terminal B2 Weapon Room"
+210,0x00433368,18,"Antartic Transport Terminal B1 Jet Hanger"
+211,0x00433368,19,"Antartic Transport Terminal B1 Corridor"
+212,0x00433368,20,"Antartic Transport Terminal B1 Corridor"
+213,0x00433368,21,"Antartic Transport Terminal B1 Water Tank Room"
+214,0x00433368,22,""
+215,0x00433368,23,""
+216,0x00433368,24,"Antartic Transport Terminal B5 Mansion Courtyard"
+217,0x00433368,25,"Antartic Transport Terminal B1 Corridor"
+218,0x00433368,26,""
+219,0x00433368,27,"Antartic Transport Terminal B5 Main Hall"
+220,0x00433368,28,""
+221,0x00433368,29,""
+222,0x00433368,30,""
+223,0x00433368,31,""
+224,0x0043336C,0,""
+225,0x0043336C,1,""
+226,0x0043336C,2,""
+227,0x0043336C,3,""
+228,0x0043336C,4,""
+229,0x0043336C,5,""
+230,0x0043336C,6,""
+231,0x0043336C,7,""
+232,0x0043336C,8,""
+233,0x0043336C,9,""
+234,0x0043336C,10,""
+235,0x0043336C,11,""
+236,0x0043336C,12,""
+237,0x0043336C,13,""
+238,0x0043336C,14,""
+239,0x0043336C,15,""
+240,0x0043336C,16,""
+241,0x0043336C,17,"Antartic Transport Terminal B2 Frozen Corridor"
+242,0x0043336C,18,""
+243,0x0043336C,19,"Military Training Facility Iron Walkway"
+244,0x0043336C,20,""
+245,0x0043336C,21,""
+246,0x0043336C,22,""
+247,0x0043336C,23,""
+248,0x0043336C,24,""
+249,0x0043336C,25,""
+250,0x0043336C,26,""
+251,0x0043336C,27,""
+252,0x0043336C,28,""
+253,0x0043336C,29,""
+254,0x0043336C,30,""
+255,0x0043336C,31,""

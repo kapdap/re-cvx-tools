@@ -1,35 +1,33 @@
 Index,Pointer,Bit,Name
-0,541276524,0,
-1,541276524,1,
-2,541276524,2,
-3,541276524,3,
-4,541276524,4,
-5,541276524,5,
-6,541276524,6,
-7,541276524,7,
-8,541276524,8,
-9,541276524,9,
-10,541276524,10,Alfred's Diary
-11,541276524,11,
-12,541276524,12,Secret Passage Note
-13,541276524,13,Confession Letter
-14,541276524,14,Butler's Letter
-15,541276524,15,Alexander's Memo
-16,541276524,16,Workers Diary
-17,541276524,17,Hunk's Report
-18,541276524,18,Message Card
-19,541276524,19,Newspaper Clip
-20,541276524,20,D.I.J. Diary
-21,541276524,21,Secretary's Note
-22,541276524,22,Anatomist's Note
-23,541276524,23,Prisoner's Diary
-24,541276524,24,Report: Enhanced Anti-Decay Alloy
-25,541276524,25,
-26,541276524,26,Message to the new Family Master
-27,541276524,27,Memo on the Pass Number
-28,541276524,28,Users Manual
-29,541276524,29,"TG-01" Product Description
-30,541276524,30,Fax on the Facility Access Application
-31,541276524,31,Playing Manual
-ation,1,Fax on the Facility Access Application
-31,Playing Manual,0,Playing Manual
+0,0x0043396C,0,""
+1,0x0043396C,1,""
+2,0x0043396C,2,""
+3,0x0043396C,3,""
+4,0x0043396C,4,""
+5,0x0043396C,5,""
+6,0x0043396C,6,""
+7,0x0043396C,7,""
+8,0x0043396C,8,""
+9,0x0043396C,9,""
+10,0x0043396C,10,"Alfred's Diary"
+11,0x0043396C,11,""
+12,0x0043396C,12,"Secret Passage Note"
+13,0x0043396C,13,"Confession Letter"
+14,0x0043396C,14,"Butler's Letter"
+15,0x0043396C,15,"Alexander's Memo"
+16,0x0043396C,16,"Workers Diary"
+17,0x0043396C,17,"Hunk's Report"
+18,0x0043396C,18,"Message Card"
+19,0x0043396C,19,"Newspaper Clip"
+20,0x0043396C,20,"D.I.J. Diary"
+21,0x0043396C,21,"Secretary's Note"
+22,0x0043396C,22,"Anatomist's Note"
+23,0x0043396C,23,"Prisoner's Diary"
+24,0x0043396C,24,"Report: Enhanced Anti-Decay Alloy"
+25,0x0043396C,25,""
+26,0x0043396C,26,"Message to the new Family Master"
+27,0x0043396C,27,"Memo on the Pass Number"
+28,0x0043396C,28,"Users Manual"
+29,0x0043396C,29,""TG-01" Product Description"
+30,0x0043396C,30,"Fax on the Facility Access Application"
+31,0x0043396C,31,"Playing Manual"
