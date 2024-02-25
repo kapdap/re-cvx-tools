@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace RECVXFlagTool
 {
@@ -141,6 +142,31 @@ namespace RECVXFlagTool
             catch { }
         }
 
+        public static void ExportFlagsCSV(DirectoryInfo folder)
+        {
+            if (folder == null)
+                return;
+
+            WriteFlagsCSV(new(Path.Combine(folder.FullName, "documents.csv")), MemoryScanner.Memory.DocumentFlags);
+            WriteFlagsCSV(new(Path.Combine(folder.FullName, "enemies.csv")), MemoryScanner.Memory.KilledFlags);
+            WriteFlagsCSV(new(Path.Combine(folder.FullName, "events.csv")), MemoryScanner.Memory.EventFlags);
+            WriteFlagsCSV(new(Path.Combine(folder.FullName, "items.csv")), MemoryScanner.Memory.ItemFlags);
+            WriteFlagsCSV(new(Path.Combine(folder.FullName, "maps.csv")), MemoryScanner.Memory.MapFlags);
+        }
+
+        public static void WriteFlagsCSV(FileInfo file, FlagCollection flags)
+        {
+            try
+            {
+                using StreamWriter writer = new StreamWriter(file.OpenWrite());
+
+                writer.WriteLine("Index,Pointer,Bit,Name");
+                foreach (FlagModel model in flags)
+                    writer.WriteLine($"{model.Index},{model.Pointer},{model.Order},{model.Name}");
+            }
+            catch { }
+        }
+
         private static void UpdateFlagNames(FlagCollection flags)
         {
             foreach (FlagModel model in flags)
@@ -172,6 +198,25 @@ namespace RECVXFlagTool
             return dialog.ShowDialog() == null || !File.Exists(dialog.FileName)
                 ? null
                 : new FileInfo(dialog.FileName);
+        }
+
+        public static DirectoryInfo SelectFolder() =>
+            SelectFolder((DirectoryInfo)null);
+
+        public static DirectoryInfo SelectFolder(string path) =>
+            SelectFolder(new DirectoryInfo(path));
+
+        public static DirectoryInfo SelectFolder(DirectoryInfo path)
+        {
+            OpenFolderDialog dialog = new()
+            {
+                Multiselect = false,
+                FolderName = path != null && path.Exists ? path.FullName : string.Empty,
+            };
+
+            return dialog.ShowDialog() == null || !Directory.Exists(dialog.FolderName)
+                ? null
+                : new DirectoryInfo(dialog.FolderName);
         }
 
         public static FileInfo SaveFile() =>

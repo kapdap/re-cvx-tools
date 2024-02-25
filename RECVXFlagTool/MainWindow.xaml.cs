@@ -24,6 +24,9 @@ namespace RECVXFlagTool
         private void FileSaveFlagsAs_Click(object sender, RoutedEventArgs e) => 
             Program.SaveFlagNames(Program.SaveFile());
 
+        private void FileExportFlagsCSV_Click(object sender, RoutedEventArgs e) =>
+            Program.ExportFlagsCSV(Program.SelectFolder());
+
         private void FileExitMenu_Click(object sender, RoutedEventArgs e) => 
             Close();
 

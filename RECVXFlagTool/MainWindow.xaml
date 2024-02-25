@@ -16,6 +16,8 @@
                 <MenuItem x:Name="FileSaveFlags" Header="Save Flags" Click="FileSaveFlags_Click"/>
                 <MenuItem x:Name="FileSaveFlagsAs" Header="Save Flags As" Click="FileSaveFlagsAs_Click"/>
                 <Separator/>
+                <MenuItem x:Name="FileExportFlagsCSV" Header="Export CSV" Click="FileExportFlagsCSV_Click"/>
+                <Separator/>
                 <MenuItem x:Name="FileExitMenu" Header="Exit" Click="FileExitMenu_Click"/>
             </MenuItem>
             <MenuItem Header="Log">
