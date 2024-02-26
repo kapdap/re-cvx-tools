@@ -164,7 +164,7 @@ namespace RECVXFlagTool
 
                 writer.WriteLine("Index,Pointer,Bit,Name");
                 foreach (FlagModel model in flags)
-                    writer.WriteLine($"{model.Index},0x{model.Pointer - MemoryScanner.Emulator.VirtualMemoryPointer:X8},{model.Order},\"{model.Name}\"");
+                    writer.WriteLine($"{model.Index},0x{model.Pointer - MemoryScanner.Emulator.VirtualMemoryPointer:X8},{model.Order},\"{model.Name?.Replace("\"", "\"\"")}\"");
             }
             catch { }
         }
