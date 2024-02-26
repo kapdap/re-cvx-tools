@@ -9,7 +9,7 @@
     <UseWPF>true</UseWPF>
     <Authors>Kapdap</Authors>
     <Company>Kapdap</Company>
-    <Product>RDCVXFlagTool</Product>
+    <Product>RECVXFlagTool</Product>
     <Description>A tool to assist labeling Resident Evil/BioHazard: Code: Veronica status flags.</Description>
     <Copyright>Copyright © 2024 Kapdap</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
