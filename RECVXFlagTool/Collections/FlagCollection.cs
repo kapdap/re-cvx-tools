@@ -8,7 +8,7 @@ namespace RECVXFlagTool.Collections
         public string Name { get; set; }
 
         public FlagCollection() : base() { }
-        public FlagCollection(string name) : base() => 
+        public FlagCollection(string name) : base() =>
             Name = name;
     }
 }

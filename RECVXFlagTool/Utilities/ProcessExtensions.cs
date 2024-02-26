@@ -92,7 +92,7 @@ namespace RECVXFlagTool.Utilities
             return true;
         }
 
-        public static byte[] ReadBytes(this Process process, IntPtr addr, int size, bool swap = false) => 
+        public static byte[] ReadBytes(this Process process, IntPtr addr, int size, bool swap = false) =>
             !process.ReadBytes(addr, size, out byte[] bytes, swap) ? (new byte[size]) : bytes;
 
         public static bool ReadBytes(this Process process, IntPtr addr, int size, out byte[] value, bool swap = false)
@@ -110,13 +110,13 @@ namespace RECVXFlagTool.Utilities
             return true;
         }
 
-        public static string ReadString(this Process process, IntPtr addr, int size, bool swap = false, string default_ = null) => 
+        public static string ReadString(this Process process, IntPtr addr, int size, bool swap = false, string default_ = null) =>
             !process.ReadString(addr, size, out string str, swap) ? default_ : str;
 
-        public static string ReadString(this Process process, IntPtr addr, StringEnumType type, int size, bool swap = false, string default_ = null) => 
+        public static string ReadString(this Process process, IntPtr addr, StringEnumType type, int size, bool swap = false, string default_ = null) =>
             !process.ReadString(addr, type, size, out string str, swap) ? default_ : str;
 
-        public static bool ReadString(this Process process, IntPtr addr, int size, out string value, bool swap = false) => 
+        public static bool ReadString(this Process process, IntPtr addr, int size, out string value, bool swap = false) =>
             ReadString(process, addr, StringEnumType.AutoDetect, size, out value, swap);
 
         public static bool ReadString(this Process process, IntPtr addr, StringEnumType type, int size, out string value, bool swap = false)

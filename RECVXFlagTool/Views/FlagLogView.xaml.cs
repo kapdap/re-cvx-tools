@@ -4,7 +4,7 @@ namespace RECVXFlagTool.Views
 {
     public partial class FlagLogView : View<FlagLogViewModel>
     {
-        public FlagLogView() => 
+        public FlagLogView() =>
             InitializeComponent();
     }
 }

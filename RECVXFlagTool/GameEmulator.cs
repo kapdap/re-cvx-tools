@@ -148,7 +148,8 @@ namespace RECVXFlagTool
                             : IntPtr.Add(VirtualMemoryPointer, 0x00012610);
 
                         NativeWrappers.FreeLibrary(process);
-                    } catch { }
+                    }
+                    catch { }
                 }
             }
             else // RPCS3

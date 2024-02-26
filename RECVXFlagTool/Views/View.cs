@@ -8,7 +8,7 @@ namespace RECVXFlagTool.Views
     {
         public T Model { get; } = new T();
 
-        public View() => 
+        public View() =>
             DataContext = Model;
     }
 }

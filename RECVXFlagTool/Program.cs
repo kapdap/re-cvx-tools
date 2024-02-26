@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace RECVXFlagTool
 {
@@ -138,7 +137,8 @@ namespace RECVXFlagTool
                     Properties.Settings.Default.LastOpenFile = file.FullName;
                     Properties.Settings.Default.Save();
                 }
-            } catch { }
+            }
+            catch { }
         }
 
         public static void ExportFlagsCSV(DirectoryInfo folder)
@@ -160,12 +160,13 @@ namespace RECVXFlagTool
                 if (file.Exists)
                     file.Delete();
 
-                using StreamWriter writer = new StreamWriter(file.Open(FileMode.CreateNew, FileAccess.Write, FileShare.None));
+                using StreamWriter writer = new(file.Open(FileMode.CreateNew, FileAccess.Write, FileShare.None));
 
                 writer.WriteLine("Index,Pointer,Bit,Name");
                 foreach (FlagModel model in flags)
-                    writer.WriteLine($"{model.Index},0x{(model.Pointer - MemoryScanner.Emulator.VirtualMemoryPointer):X8},{model.Order},\"{model.Name}\"");
-            } catch { }
+                    writer.WriteLine($"{model.Index},0x{model.Pointer - MemoryScanner.Emulator.VirtualMemoryPointer:X8},{model.Order},\"{model.Name}\"");
+            }
+            catch { }
         }
 
         private static void UpdateFlagNames(FlagCollection flags)
@@ -248,7 +249,7 @@ namespace RECVXFlagTool
             public static MainWindow Main { get; set; }
             public static AboutWindow About { get; set; } = new AboutWindow();
 
-            public static void CloseAll() => 
+            public static void CloseAll() =>
                 About?.Close();
         }
 
@@ -257,7 +258,7 @@ namespace RECVXFlagTool
             public static AppViewModel AppViewModel { get; } = new AppViewModel();
         }
 
-        public static void Dispose() => 
+        public static void Dispose() =>
             MemoryScanner?.Dispose();
     }
 }

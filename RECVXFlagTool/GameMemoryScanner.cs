@@ -18,7 +18,7 @@ namespace RECVXFlagTool
         public bool ProcessRunning => _process != null && !_process.HasExited && _process.IsRunning();
         public int ProcessExitCode => _process != null ? _process.ExitCode() : 0;
 
-        public GameMemoryScanner(GameEmulator emulator) => 
+        public GameMemoryScanner(GameEmulator emulator) =>
             Initialize(emulator);
 
         public void Initialize(GameEmulator emulator)
@@ -38,10 +38,10 @@ namespace RECVXFlagTool
             UpdatePointerAddresses();
         }
 
-        public void UpdateVirtualMemoryPointer() => 
+        public void UpdateVirtualMemoryPointer() =>
             Emulator.UpdateVirtualMemoryPointer();
 
-        public void UpdateGameVersion() => 
+        public void UpdateGameVersion() =>
             Memory.Game.Update(_process.ReadString(Emulator.ProductPointer, Emulator.ProductLength));
 
         public void UpdatePointerAddresses()
@@ -233,7 +233,7 @@ namespace RECVXFlagTool
             }
         }
 
-        private static string ReadFlagName(FlagModel model) => 
+        private static string ReadFlagName(FlagModel model) =>
             Program.Models.AppViewModel.FlagNames.GetValueOrDefault($"{model.Flag}.{model.Index}");
 
         private bool disposedValue;
