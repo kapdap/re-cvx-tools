@@ -8,6 +8,15 @@ namespace RDXplorer.Formats.RDX
 {
     public static class Export
     {
+        public static void Files(List<FileInfo> list, DirectoryInfo folder)
+        {
+            DocumentModel model;
+
+            foreach (FileInfo file in list)
+                if ((model = Reader.LoadFile(file)) != null)
+                    Document(model, new(Path.Combine(folder.FullName, file.Name)));
+        }
+
         public static void Document(DocumentModel document, DirectoryInfo folder)
         {
             Header(document, folder);
@@ -20,16 +29,15 @@ namespace RDXplorer.Formats.RDX
 
         public static void Header(DocumentModel document, DirectoryInfo folder)
         {
-            using FileStream fs = document.PathInfo.OpenReadShared();
+            using FileStream fs = document.RDXFileInfo.OpenReadShared();
             using BinaryReader br = new(fs);
 
-            fs.Seek(0, SeekOrigin.Begin);
             WriteFile(br.ReadBytes(0x46C), new(Path.Combine(folder.FullName, "header.bin")));
         }
 
         public static void Tables(DocumentModel document, DirectoryInfo folder)
         {
-            using FileStream fs = document.PathInfo.OpenReadShared();
+            using FileStream fs = document.RDXFileInfo.OpenReadShared();
             using BinaryReader br = new(fs);
 
             List<HeaderEntryModel> properties = new()
@@ -76,7 +84,7 @@ namespace RDXplorer.Formats.RDX
 
         public static void Models(DocumentModel document, DirectoryInfo folder)
         {
-            using FileStream fs = document.PathInfo.OpenReadShared();
+            using FileStream fs = document.RDXFileInfo.OpenReadShared();
             using BinaryReader br = new(fs);
 
             for (int i = 0; i < document.Model.Count; i++)
@@ -90,7 +98,7 @@ namespace RDXplorer.Formats.RDX
 
         public static void Motions(DocumentModel document, DirectoryInfo folder)
         {
-            using FileStream fs = document.PathInfo.OpenReadShared();
+            using FileStream fs = document.RDXFileInfo.OpenReadShared();
             using BinaryReader br = new(fs);
 
             for (int i = 0; i < document.Motion.Count; i++)
@@ -109,7 +117,7 @@ namespace RDXplorer.Formats.RDX
 
         public static void Scripts(DocumentModel document, DirectoryInfo folder)
         {
-            using FileStream fs = document.PathInfo.OpenReadShared();
+            using FileStream fs = document.RDXFileInfo.OpenReadShared();
             using BinaryReader br = new(fs);
 
             for (int i = 0; i < document.Script.Count; i++)
@@ -128,7 +136,7 @@ namespace RDXplorer.Formats.RDX
 
         public static void Textures(DocumentModel document, DirectoryInfo folder)
         {
-            using FileStream fs = document.PathInfo.OpenReadShared();
+            using FileStream fs = document.RDXFileInfo.OpenReadShared();
             using BinaryReader br = new(fs);
 
             for (int i = 0; i < document.Texture.Count; i++)

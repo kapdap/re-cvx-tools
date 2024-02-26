@@ -23,6 +23,8 @@
                     <MenuItem x:Name="ExportMotions" Header="Motions" Click="ExportMotions_Click" IsEnabled="{Binding RDXLoaded}"/>
                     <MenuItem x:Name="ExportScripts" Header="Scripts" Click="ExportScripts_Click" IsEnabled="{Binding RDXLoaded}"/>
                     <MenuItem x:Name="ExportTextures" Header="Textures" Click="ExportTextures_Click" IsEnabled="{Binding RDXLoaded}"/>
+                    <Separator/>
+                    <MenuItem x:Name="ExportFiles" Header="File List" Click="ExportFiles_Click" IsEnabled="{Binding RDXLoaded}"/>
                 </MenuItem>
                 <Separator/>
                 <MenuItem x:Name="FileExitMenu" Header="Exit" Click="FileExitMenu_Click"/>

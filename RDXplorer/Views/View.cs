@@ -46,7 +46,7 @@ namespace RDXplorer.Views
             }
             catch { }
 
-            Program.Windows.HexEditor.ShowFile(AppViewModel.RDXDocument.PathInfo);
+            Program.Windows.HexEditor.ShowFile(AppViewModel.RDXDocument.RDXFileInfo);
             Program.Windows.HexEditor.SetPosition(offset, length);
         }
 

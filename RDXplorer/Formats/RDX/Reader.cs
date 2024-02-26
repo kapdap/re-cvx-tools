@@ -1,5 +1,7 @@
-﻿using RDXplorer.Extensions;
+﻿using PSO.PRS;
+using RDXplorer.Extensions;
 using RDXplorer.Models.RDX;
+using RDXplorer.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +11,64 @@ namespace RDXplorer.Formats.RDX
 {
     public static class Reader
     {
+        public const int RDX_MAGIC_1 = 0x41200000;
+        public const int RDX_MAGIC_2 = 0x40051EB8;
+        public const int RDX_MAGIC_PRS_1 = 0x200000DF;
+        public const int RDX_MAGIC_PRS_2 = 0x051EB8DF;
+
+        public static DocumentModel LoadFile(FileInfo file) =>
+            LoadFile(file, Program.TempPath);
+
+        public static DocumentModel LoadFile(FileInfo file, DirectoryInfo output)
+        {
+            FileInfo prs = new(file.FullName);
+
+            if (IsPRS(prs))
+                file = ExtractPRS(prs, output);
+            else
+                prs = null;
+
+            return IsValid(file) ? new(file, prs) : null;
+        }
+
+        public static bool IsValid(FileInfo file)
+        {
+            using FileStream fs = file.OpenReadShared();
+            using BinaryReader br = new(fs);
+
+            int magic = br.ReadInt32();
+
+            return magic == RDX_MAGIC_1 || magic == RDX_MAGIC_2;
+        }
+
+        public static bool IsPRS(FileInfo file)
+        {
+            using FileStream fs = file.OpenReadShared();
+            using BinaryReader br = new(fs);
+
+            int magic = br.ReadInt32();
+
+            return magic == RDX_MAGIC_PRS_1 || magic == RDX_MAGIC_PRS_2;
+        }
+
+        public static FileInfo ExtractPRS(FileInfo prs, DirectoryInfo output)
+        {
+            using FileStream fs = prs.OpenReadShared();
+            using BinaryReader br = new(fs);
+
+            FileInfo file = new(Path.Combine(output.FullName, Utilities.GetFileMD5(fs)));
+
+            if (!file.Directory.Exists)
+                file.Directory.Create();
+
+            if (!file.Exists)
+                File.WriteAllBytes(file.FullName, PRS.Decompress(br.ReadBytes((int)prs.Length)));
+
+            file.Refresh();
+
+            return file;
+        }
+
         public static HeaderModel ReadHeader(FileInfo file)
         {
             HeaderModel header = new();

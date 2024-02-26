@@ -30,7 +30,7 @@ namespace RDXplorer
             Close();
 
         private void ToolsHexEditorMenu_Click(object sender, RoutedEventArgs e) =>
-            Program.Windows.HexEditor.ShowFile(AppViewModel.RDXFileInfo);
+            Program.Windows.HexEditor.ShowFile(AppViewModel?.CurrentFileInfo);
 
         private void HelpAboutMenu_Click(object sender, RoutedEventArgs e) =>
             Program.Windows.About.Show();
@@ -61,5 +61,8 @@ namespace RDXplorer
 
         private void ExportHeader_Click(object sender, RoutedEventArgs e) =>
             Program.ExportHeader(Program.SelectFolder());
+
+        private void ExportFiles_Click(object sender, RoutedEventArgs e) =>
+            Program.ExportFiles(Program.SelectFolder());
     }
 }

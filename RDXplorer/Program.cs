@@ -1,6 +1,4 @@
 ﻿using Microsoft.Win32;
-using PSO.PRS;
-using RDXplorer.Extensions;
 using RDXplorer.Formats.RDX;
 using RDXplorer.ViewModels;
 using System;
@@ -95,13 +93,13 @@ namespace RDXplorer.Views
 
         public static void ExportDocument(DirectoryInfo folder)
         {
-            if (folder == null || Models.AppView.CurrentDocument == null)
+            if (folder == null || Models.AppView.CurrentFileInfo == null)
                 return;
 
             try
             {
                 if (Models.AppView.RDXDocument != null)
-                    Export.Document(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentDocument.Name)));
+                    Export.Document(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentFileInfo.Name)));
             }
             catch (Exception ex)
             {
@@ -111,13 +109,13 @@ namespace RDXplorer.Views
 
         public static void ExportTables(DirectoryInfo folder)
         {
-            if (folder == null || Models.AppView.CurrentDocument == null)
+            if (folder == null || Models.AppView.CurrentFileInfo == null)
                 return;
 
             try
             {
                 if (Models.AppView.RDXDocument != null)
-                    Export.Tables(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentDocument.Name)));
+                    Export.Tables(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentFileInfo.Name)));
             }
             catch (Exception ex)
             {
@@ -127,13 +125,13 @@ namespace RDXplorer.Views
 
         public static void ExportModels(DirectoryInfo folder)
         {
-            if (folder == null || Models.AppView.CurrentDocument == null)
+            if (folder == null || Models.AppView.CurrentFileInfo == null)
                 return;
 
             try
             {
                 if (Models.AppView.RDXDocument != null)
-                    Export.Models(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentDocument.Name)));
+                    Export.Models(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentFileInfo.Name)));
             }
             catch (Exception ex)
             {
@@ -143,13 +141,13 @@ namespace RDXplorer.Views
 
         public static void ExportMotions(DirectoryInfo folder)
         {
-            if (folder == null || Models.AppView.CurrentDocument == null)
+            if (folder == null || Models.AppView.CurrentFileInfo == null)
                 return;
 
             try
             {
                 if (Models.AppView.RDXDocument != null)
-                    Export.Motions(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentDocument.Name)));
+                    Export.Motions(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentFileInfo.Name)));
             }
             catch (Exception ex)
             {
@@ -159,13 +157,13 @@ namespace RDXplorer.Views
 
         public static void ExportScripts(DirectoryInfo folder)
         {
-            if (folder == null || Models.AppView.CurrentDocument == null)
+            if (folder == null || Models.AppView.CurrentFileInfo == null)
                 return;
 
             try
             {
                 if (Models.AppView.RDXDocument != null)
-                    Export.Scripts(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentDocument.Name)));
+                    Export.Scripts(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentFileInfo.Name)));
             }
             catch (Exception ex)
             {
@@ -175,13 +173,13 @@ namespace RDXplorer.Views
 
         public static void ExportTextures(DirectoryInfo folder)
         {
-            if (folder == null || Models.AppView.CurrentDocument == null)
+            if (folder == null || Models.AppView.CurrentFileInfo == null)
                 return;
 
             try
             {
                 if (Models.AppView.RDXDocument != null)
-                    Export.Textures(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentDocument.Name)));
+                    Export.Textures(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentFileInfo.Name)));
             }
             catch (Exception ex)
             {
@@ -191,13 +189,28 @@ namespace RDXplorer.Views
 
         public static void ExportHeader(DirectoryInfo folder)
         {
-            if (folder == null || Models.AppView.CurrentDocument == null)
+            if (folder == null || Models.AppView.CurrentFileInfo == null)
                 return;
 
             try
             {
                 if (Models.AppView.RDXDocument != null)
-                    Export.Header(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentDocument.Name)));
+                    Export.Header(Models.AppView.RDXDocument, new(Path.Combine(folder.FullName, Models.AppView.CurrentFileInfo.Name)));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Application Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        public static void ExportFiles(DirectoryInfo folder)
+        {
+            if (folder == null || Models.AppView.RDXFileList == null)
+                return;
+
+            try
+            {
+                Export.Files(Models.AppView.RDXFileList, folder);
             }
             catch (Exception ex)
             {
@@ -235,44 +248,7 @@ namespace RDXplorer.Views
                 if (file == null)
                     return;
 
-                FileInfo prs_file = null;
-
-                using (FileStream fs = file.OpenReadShared())
-                {
-                    using BinaryReader br = new(fs);
-
-                    int magic = br.ReadInt32();
-
-                    if (magic == 0x200000DF)
-                    {
-                        FileInfo tmp_file = new($"{TempPath.FullName}\\{Utilities.GetFileMD5(fs)}");
-
-                        if (!tmp_file.Directory.Exists)
-                            tmp_file.Directory.Create();
-
-                        if (!tmp_file.Exists)
-                        {
-                            fs.Seek(0, SeekOrigin.Begin);
-                            File.WriteAllBytes(tmp_file.FullName, PRS.Decompress(br.ReadBytes((int)file.Length)));
-                        }
-
-                        prs_file = new(file.FullName);
-                        file = tmp_file;
-                        file.Refresh();
-                    }
-                }
-
-                bool isValid = false;
-
-                using (FileStream fs = file.OpenReadShared())
-                {
-                    using BinaryReader br = new(fs);
-                    int magic = br.ReadInt32();
-                    isValid = magic == 0x41200000 || magic == 0x40051EB8;
-                }
-
-                if (isValid)
-                    Models.AppView.LoadRDX(file, prs_file);
+                Models.AppView.LoadRDX(file);
 
                 if (Windows.HexEditor.IsVisible)
                 {

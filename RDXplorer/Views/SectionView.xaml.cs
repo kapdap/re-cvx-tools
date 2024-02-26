@@ -24,7 +24,7 @@ namespace RDXplorer.Views
 
             SectionViewModelEntry entry = (SectionViewModelEntry)grid.SelectedItem;
 
-            Program.Windows.HexEditor.ShowFile(AppViewModel.RDXDocument.PathInfo);
+            Program.Windows.HexEditor.ShowFile(AppViewModel.RDXDocument.RDXFileInfo);
 
             if (column == "Value" && entry.Model.IsPointer)
                 Program.Windows.HexEditor.SetPosition(entry.Model.Value);

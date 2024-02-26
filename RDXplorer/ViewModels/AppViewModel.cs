@@ -1,4 +1,5 @@
-﻿using RDXplorer.Models;
+﻿using RDXplorer.Formats.RDX;
+using RDXplorer.Models;
 using RDXplorer.Models.RDX;
 using System.Collections.Generic;
 using System.IO;
@@ -14,21 +15,8 @@ namespace RDXplorer.ViewModels
             private set => SetField(ref _statusBarText, value);
         }
 
-        public FileInfo CurrentDocument => PRSFileInfo ?? RDXFileInfo;
-
-        private FileInfo _prsFileInfo;
-        public FileInfo PRSFileInfo
-        {
-            get => _prsFileInfo;
-            private set => SetField(ref _prsFileInfo, value);
-        }
-
-        private FileInfo _rdxFileInfo;
-        public FileInfo RDXFileInfo
-        {
-            get => _rdxFileInfo;
-            private set => SetField(ref _rdxFileInfo, value);
-        }
+        public FileInfo CurrentFileInfo =>
+            RDXDocument?.PRSFileInfo ?? RDXDocument?.RDXFileInfo;
 
         private DirectoryInfo _rdxFolderInfo;
         public DirectoryInfo RDXFolderInfo
@@ -58,30 +46,17 @@ namespace RDXplorer.ViewModels
             private set => SetField(ref _rdxLoaded, value);
         }
 
-        public void LoadRDX(FileInfo file, FileInfo prs_file)
-        {
-            LoadRDX(file);
-
-            PRSFileInfo = prs_file;
-
-            StatusBarText = CurrentDocument?.FullName;
-        }
-
         public void LoadRDX(FileInfo file)
         {
-            PRSFileInfo = null;
-            RDXFileInfo = file;
-            RDXDocument = new(RDXFileInfo);
-            RDXLoaded = true;
+            RDXDocument = Reader.LoadFile(file);
+            RDXLoaded = RDXDocument != null;
 
-            StatusBarText = RDXFileInfo.FullName;
+            StatusBarText = CurrentFileInfo?.FullName ?? string.Empty;
         }
 
         public void UnloadRDX()
         {
-            PRSFileInfo = null;
             RDXDocument = null;
-            RDXFileInfo = null;
             RDXLoaded = false;
 
             StatusBarText = string.Empty;
