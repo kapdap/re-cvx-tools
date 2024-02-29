@@ -13957,6 +13957,14 @@ C2:First Person (C2)
               <Address>PS2mem+0432368</Address>
             </CheatEntry>
             <CheatEntry>
+              <ID>5746</ID>
+              <Description>"ply[35] status"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>2043236C</Address>
+            </CheatEntry>
+            <CheatEntry>
               <ID>5736</ID>
               <Description>"ply[249]"</Description>
               <ShowAsHex>1</ShowAsHex>
