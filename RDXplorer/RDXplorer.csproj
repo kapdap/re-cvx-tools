@@ -33,7 +33,7 @@
   <ItemGroup>
     <PackageReference Include="PRS" Version="1.1.0" />
     <PackageReference Include="WPFHexaEditor" Version="2.1.7" />
-    <PackageReference Include="YamlDotNet" Version="15.1.1" />
+    <PackageReference Include="YamlDotNet" Version="15.1.2" />
   </ItemGroup>
 
   <ItemGroup>
