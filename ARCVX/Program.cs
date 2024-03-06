@@ -36,7 +36,8 @@ internal class Program
         foreach (FileInfo file in files)
             ExtractFile(file, folder.Exists ?
                 new($"{folder.FullName}.export") :
-                new(Path.Combine(file.Directory.FullName, file.Name)));
+                new(Path.Combine(file.Directory.FullName,
+                    Path.ChangeExtension(file.Name, ".export"))));
 
         Console.WriteLine();
         Console.WriteLine($"ARC extraction complete.");
