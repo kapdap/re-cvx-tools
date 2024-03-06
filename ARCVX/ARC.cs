@@ -10,6 +10,8 @@ namespace ARCVX
     {
         public const int MAGIC_HFS = 0x48465300; // "HFS."
         public const int MAGIC_ARC = 0x41524300; // "ARC."
+        public const int MAGIC_HFS_LE = 0x00534648; // ".SFH"
+        public const int MAGIC_ARC_LE = 0x00435241; // ".CRA"
         public const int CHUNK_SIZE = 0x20000;
 
         public FileInfo File { get; }
@@ -26,9 +28,22 @@ namespace ARCVX
 
         public bool IsValid()
         {
-            if (!File.Exists && File.Length < 24)
+            if (!File.Exists && File.Length < 8)
                 return false;
 
+            int magic = GetMagic();
+
+            return magic == MAGIC_HFS ||
+                magic == MAGIC_ARC ||
+                magic == MAGIC_HFS_LE ||
+                magic == MAGIC_ARC_LE;
+        }
+
+        public bool IsHFS() =>
+            GetMagic() == MAGIC_HFS;
+
+        public int GetMagic()
+        {
             OpenReader();
 
             long position = Reader.GetPosition();
@@ -37,7 +52,12 @@ namespace ARCVX
             int magic = Reader.ReadInt32(false);
             Reader.SetPosition(position);
 
-            return magic == MAGIC_HFS;
+            if (magic == MAGIC_HFS || magic == MAGIC_ARC)
+                Reader.IsBigEndian = true;
+            else if (magic == MAGIC_HFS_LE || magic == MAGIC_ARC_LE)
+                Reader.IsBigEndian = false;
+
+            return magic;
         }
 
         public void ReadHeader()
@@ -52,7 +72,8 @@ namespace ARCVX
 
         public HFSHeader GetHFSHeader()
         {
-            OpenReader();
+            if (!IsHFS())
+                return new HFSHeader { };
 
             Reader.SetPosition(0);
 
@@ -70,7 +91,7 @@ namespace ARCVX
         {
             OpenReader();
 
-            Reader.SetPosition(16);
+            Reader.SetPosition(IsHFS() ? 16 : 0);
 
             return new ARCHeader
             {
