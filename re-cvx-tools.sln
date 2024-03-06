@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RDXplorer", "RDXplorer\RDXp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RECVXFlagTool", "RECVXFlagTool\RECVXFlagTool.csproj", "{64A5CD49-0DA2-4D25-8610-23983AF60333}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ARCVX", "ARCVX\ARCVX.csproj", "{B528C88D-8847-41D2-8D8F-18C6473E5CF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{64A5CD49-0DA2-4D25-8610-23983AF60333}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64A5CD49-0DA2-4D25-8610-23983AF60333}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64A5CD49-0DA2-4D25-8610-23983AF60333}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B528C88D-8847-41D2-8D8F-18C6473E5CF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B528C88D-8847-41D2-8D8F-18C6473E5CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B528C88D-8847-41D2-8D8F-18C6473E5CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B528C88D-8847-41D2-8D8F-18C6473E5CF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
