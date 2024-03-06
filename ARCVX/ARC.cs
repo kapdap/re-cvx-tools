@@ -231,7 +231,7 @@ namespace ARCVX
         // TODO: Complete Type map list
         public Dictionary<int, string> TypeMap { get; } = new()
         {
-            {0x02358E1A, "02358E1A"},
+            {0x02358E1A, "spkg"},
             {0x051BE0EC, "051BE0EC"},
             {0x070078B5, "070078B5"},
             {0x0949A1DA, "0949A1DA"},
@@ -239,14 +239,14 @@ namespace ARCVX
             {0x0A736313, "0A736313"},
             {0x108F442E, "108F442E"},
             {0x130124FA, "130124FA"},
-            {0x167DBBFF, "167DBBFF"},
+            {0x167DBBFF, "stq"},
             {0x18FF29AB, "18FF29AB"},
-            {0x1BCC4966, "1BCC4966"},
+            {0x1BCC4966, "srq"},
             {0x1BE1DBEB, "1BE1DBEB"},
-            {0x232E228C, "232E228C"},
+            {0x232E228C, "rev"},
             {0x241F5DEB, "tex"},
             {0x24339E8C, "24339E8C"},
-            {0x2749C8A8, "2749C8A8"},
+            {0x2749C8A8, "mrl"},
             {0x28D65BFA, "28D65BFA"},
             {0x2ADFA358, "2ADFA358"},
             {0x348C831D, "348C831D"},
@@ -270,7 +270,7 @@ namespace ARCVX
             {0x7618CC9A, "7618CC9A"},
             {0x7D9D148B, "7D9D148B"},
             {0x7DB518E8, "7DB518E8"},
-            {0x7E33A16C, "7E33A16C"},
+            {0x7E33A16C, "spc"},
             {0x7F68C6AF, "7F68C6AF"},
         };
     }
