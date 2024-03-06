@@ -6,7 +6,17 @@
     <SelfContained>false</SelfContained>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <TargetFramework>net8.0-windows</TargetFramework>
+    <Authors>Kapdap</Authors>
+    <Company>Kapdap</Company>
     <Product>ARCVX</Product>
+    <Description>A simple tool to extract Resident Evil/Biohazard: Code: Veronica HD ARC files.</Description>
+    <Copyright>Copyright © 2024 Kapdap</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/kapdap/re-cvx-tools</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <FileVersion>0.1.0.0</FileVersion>
+    <Version>0.1.0.0</Version>
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
