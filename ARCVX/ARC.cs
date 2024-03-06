@@ -80,8 +80,8 @@ namespace ARCVX
             return new HFSHeader
             {
                 Magic = Reader.ReadInt32(false),
-                Unknown0 = Reader.ReadInt16(),
-                Unknown1 = Reader.ReadInt16(),
+                Version = Reader.ReadInt16(),
+                Type = Reader.ReadInt16(),
                 Size = Reader.ReadInt32(),
                 Padding = Reader.ReadInt32(),
             };
@@ -119,7 +119,11 @@ namespace ARCVX
 
                 entry.TypeHash = Reader.ReadInt32();
                 entry.DataSize = Reader.ReadUInt32();
-                entry.FileSize = Reader.ReadUInt32();
+
+                uint size = Reader.ReadUInt32();
+                entry.FileSize = size & 0x00FFFFFF;
+                entry.Flags = (byte)(size >> 24);
+
                 entry.Offset = Reader.ReadUInt32();
 
                 entries.Add(entry);
@@ -280,8 +284,8 @@ namespace ARCVX
     public struct HFSHeader
     {
         public int Magic;
-        public short Unknown0;
-        public short Unknown1;
+        public short Version;
+        public short Type;
         public int Size;
         public int Padding;
     }
@@ -297,8 +301,9 @@ namespace ARCVX
     {
         public string Path;
         public int TypeHash;
-        public uint FileSize;
         public uint DataSize;
+        public uint FileSize;
+        public byte Flags;
         public uint Offset;
     }
 }
