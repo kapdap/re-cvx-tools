@@ -15,9 +15,10 @@ internal class Program
             return;
         }
 
+        DirectoryInfo folder = new(args[0]);
         List<FileInfo> files = new();
 
-        if (Directory.Exists(args[0]))
+        if (folder.Exists)
             files = [..new DirectoryInfo(args[0]).EnumerateFiles("*.arc", 
                 args.Length > 1 && args[1] == "-t" ? 
                 SearchOption.TopDirectoryOnly : 
@@ -33,18 +34,20 @@ internal class Program
         }
 
         foreach (FileInfo file in files)
-            ExtractFile(file);
+            ExtractFile(file, folder.Exists ?
+                new($"{folder.FullName}.export") :
+                new(Path.Combine(file.Directory.FullName, file.Name)));
 
         Console.WriteLine();
         Console.WriteLine($"ARC extraction complete.");
         Console.ReadLine();
     }
 
-    public static void ExtractFile(FileInfo file)
+    public static void ExtractFile(FileInfo file, DirectoryInfo folder)
     {
         using ARC arc = new(file);
 
-        if (!arc.IsValid())
+        if (!arc.IsHFS)
         {
             Console.WriteLine($"{file.FullName} is not a supported ARC file.");
             return;
@@ -52,10 +55,6 @@ internal class Program
 
         Console.WriteLine(file.FullName);
         Console.WriteLine();
-
-        // TODO: Add output folder argument
-        DirectoryInfo folder = new(Path.Combine(AppContext.BaseDirectory,
-            file.DirectoryName.Substring(file.Directory.Root.Name.Length)));
 
         foreach (ARCEntry entry in arc.ExportAllEntries(folder))
             Console.WriteLine($"Extracting {entry.Path}");

@@ -18,29 +18,51 @@ namespace ARCVX
         public FileStream Stream { get; private set; }
         public EndianReader Reader { get; private set; }
 
+        public int Magic { get; private set; }
+
         public FileHeader Header { get; private set; }
+        public List<ARCEntry> Entries { get; private set; }
+
+        private bool? _isValid;
+        public bool IsValid
+        {
+            get
+            {
+                if (_isValid == null)
+                {
+                    _isValid = File.Exists && File.Length > 8;
+
+                    if ((bool)_isValid)
+                    {
+                        ReadMagic();
+                        _isValid = Magic == MAGIC_HFS || Magic == MAGIC_ARC;
+                    }
+                }
+
+                return (bool)_isValid;
+            }
+        }
+
+        private bool? _isHFS;
+        public bool IsHFS
+        {
+            get
+            {
+                if (_isHFS == null)
+                    _isHFS = IsValid && Magic == MAGIC_HFS;
+                return (bool)_isHFS;
+            }
+        }
 
         public ARC(FileInfo file)
         {
             File = file;
             ReadHeader();
+            ReadEntries();
         }
 
-        public bool IsValid()
-        {
-            if (!File.Exists && File.Length < 8)
-                return false;
-
-            int magic = GetMagic();
-
-            return magic == MAGIC_HFS ||
-                magic == MAGIC_ARC ||
-                magic == MAGIC_HFS_LE ||
-                magic == MAGIC_ARC_LE;
-        }
-
-        public bool IsHFS() =>
-            GetMagic() == MAGIC_HFS;
+        public void ReadMagic() =>
+            Magic = GetMagic();
 
         public int GetMagic()
         {
@@ -62,7 +84,7 @@ namespace ARCVX
 
         public void ReadHeader()
         {
-            if (IsValid())
+            if (IsValid)
                 Header = new FileHeader
                 {
                     HFS = GetHFSHeader(),
@@ -72,7 +94,7 @@ namespace ARCVX
 
         public HFSHeader GetHFSHeader()
         {
-            if (!IsHFS())
+            if (!IsHFS)
                 return new HFSHeader { };
 
             Reader.SetPosition(0);
@@ -91,7 +113,7 @@ namespace ARCVX
         {
             OpenReader();
 
-            Reader.SetPosition(IsHFS() ? 16 : 0);
+            Reader.SetPosition(IsHFS ? 16 : 0);
 
             return new ARCHeader
             {
@@ -101,9 +123,17 @@ namespace ARCVX
             };
         }
 
+        public void ReadEntries()
+        {
+            if (IsValid)
+                Entries = GetEntries();
+        }
+
         public List<ARCEntry> GetEntries()
         {
             OpenReader();
+
+            Reader.SetPosition(IsHFS ? 24 : 8);
 
             List<ARCEntry> entries = new();
 
@@ -146,8 +176,7 @@ namespace ARCVX
 
         public void ExportEntryData(ARCEntry entry, DirectoryInfo folder)
         {
-            FileInfo entryFile = new(Path.Combine(folder.FullName,
-                Path.GetFileNameWithoutExtension(File.Name), entry.Path));
+            FileInfo entryFile = new(Path.Combine(folder.FullName, entry.Path));
 
             if (!entryFile.Directory.Exists)
                 entryFile.Directory.Create();
@@ -228,7 +257,6 @@ namespace ARCVX
         public string GetExtension(int hash) =>
             TypeMap.ContainsKey(hash) ? TypeMap[hash] : hash.ToString("X8");
 
-        // TODO: Complete Type map list
         public Dictionary<int, string> TypeMap { get; } = new()
         {
             {0x02358E1A, "spkg"},
@@ -258,7 +286,7 @@ namespace ARCVX
             {0x4C0DB839, "sdl"},
             {0x5DF3D947, "bin"},
             {0x5FF4BE71, "ene"},
-            {0x6505B384, "dds"},
+            {0x6505B384, "ddsp"},
             {0x681835FC, "itm"},
             {0x6A76E771, "mes"},
             {0x6B0369B1, "atr"},
