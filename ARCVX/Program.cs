@@ -53,7 +53,11 @@ internal class Program
         Console.WriteLine(file.FullName);
         Console.WriteLine();
 
-        foreach (ARCEntry entry in arc.ExportAllEntries())
+        // TODO: Add output folder argument
+        DirectoryInfo folder = new(Path.Combine(AppContext.BaseDirectory,
+            file.DirectoryName.Substring(file.Directory.Root.Name.Length)));
+
+        foreach (ARCEntry entry in arc.ExportAllEntries(folder))
             Console.WriteLine($"Extracting {entry.Path}");
 
         Console.WriteLine("---------------------------------");
