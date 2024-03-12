@@ -4,6 +4,7 @@ using ICSharpCode.SharpZipLib.Zip.Compression;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 
 namespace ARCVX.Formats
 {
@@ -200,20 +201,13 @@ namespace ARCVX.Formats
 
         public FileInfo ExportEntryData(ARCEntry entry, DirectoryInfo folder)
         {
-            FileInfo entryFile = new(Path.Combine(folder.FullName, entry.Path));
+            FileInfo outputFile = new(Path.Join(folder.FullName, entry.Path + "." + GetExtension(entry.TypeHash)));
 
-            if (!entryFile.Directory.Exists)
-                entryFile.Directory.Create();
+            if (!outputFile.Directory.Exists)
+                outputFile.Directory.Create();
 
-            FileInfo outputFile;
-            int i = 0;
-
-            do
-            {
-                outputFile = new(entryFile.FullName + (i != 0 ? $"_{i}" : "") + "." + GetExtension(entry.TypeHash));
-                i++;
-            }
-            while (outputFile.Exists);
+            if (outputFile.Exists)
+                outputFile.Delete();
 
             using MemoryStream entryStream = GetEntryStream(entry);
             using FileStream outputStream = outputFile.OpenWrite();
@@ -292,10 +286,10 @@ namespace ARCVX.Formats
             {0x02358E1A, "spkg"},
             {0x051BE0EC, "rut"},
             {0x070078B5, "mnt"},
-            {0x0949A1DA, "mdl"},
-            {0x09C48A11, "bin"},
-            {0x0A736313, "mdl"},
-            {0x108F442E, "skin"},
+            {0x0949A1DA, "adl"},
+            {0x09C48A11, "unk"},
+            {0x0A736313, "mdl"}, // wpn mdl
+            {0x108F442E, "mdl"}, // ene mdl
             {0x130124FA, "rmh"},
             {0x167DBBFF, "stq"},
             {0x18FF29AB, "cut"},
@@ -309,25 +303,25 @@ namespace ARCVX.Formats
             {0x2ADFA358, "pvl"},
             {0x348C831D, "evc"},
             {0x375F06DA, "evt"},
-            {0x40171000, "bin"},
+            {0x40171000, "dat"},
             {0x42940D09, "fmt"},
             {0x4356673E, "man"},
-            {0x46C78353, "mes"},
+            {0x46C78353, "mes"}, // rmn mes
             {0x4C0DB839, "sdl"},
-            {0x5DF3D947, "bin"},
+            {0x5DF3D947, "mry"},
             {0x5FF4BE71, "ene"},
             {0x6505B384, "ddsp"},
             {0x681835FC, "itm"},
-            {0x6A76E771, "mes"},
+            {0x6A76E771, "mes"}, // adv mes
             {0x6B0369B1, "atr"},
             {0x6B571E45, "lgt"},
             {0x6E69693A, "obj"},
             {0x7050198A, "pmb"},
-            {0x73850D05, "arc"},
-            {0x74AFE18C, "skin"},
+            {0x73850D05, "arcs"},
+            {0x74AFE18C, "mdl"}, // ply mdl
             {0x7618CC9A, "mtn"},
             {0x7D9D148B, "eft"},
-            {0x7DB518E8, "mdl"},
+            {0x7DB518E8, "mdl"}, // obj mdl
             {0x7E33A16C, "spc"},
             {0x7F68C6AF, "mpac"},
         };
