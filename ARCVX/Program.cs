@@ -47,7 +47,7 @@ internal class Program
 
     public static void ExtractFile(FileInfo file, DirectoryInfo folder)
     {
-        ARC arc = new(file);
+        using ARC arc = new(file);
 
         if (!arc.IsHFS)
         {
@@ -72,7 +72,7 @@ internal class Program
     public static void ConvertTexToDDS(FileInfo file)
     {
         FileInfo output;
-        Tex tex = new(file);
+        using Tex tex = new(file);
         if ((output = tex.ExportDDS()) != null)
             Console.WriteLine("Converted " + output.FullName);
     }
