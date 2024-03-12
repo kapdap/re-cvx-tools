@@ -1,29 +1,28 @@
 ﻿using ARCVX.Reader;
-using ComponentAce.Compression.Libs.zlib;
+using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
+using ICSharpCode.SharpZipLib.Zip.Compression;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace ARCVX
+namespace ARCVX.Formats
 {
     public class ARC : IDisposable
     {
-        public const int MAGIC_HFS = 0x48465300; // "HFS."
         public const int MAGIC_ARC = 0x41524300; // "ARC."
-        public const int MAGIC_HFS_LE = 0x00534648; // ".SFH"
         public const int MAGIC_ARC_LE = 0x00435241; // ".CRA"
-        public const int CHUNK_SIZE = 0x20000;
+
+        public const int MAGIC_HFS = 0x48465300; // "HFS."
+        public const int MAGIC_HFS_LE = 0x00534648; // ".SFH"
+
+        public const int HFS_CHUNK_SIZE = 0x20000;
+        public const int HFS_VALID_SIZE = 0x10;
 
         public FileInfo File { get; }
         public FileStream Stream { get; private set; }
         public EndianReader Reader { get; private set; }
 
-        public int Magic { get; private set; }
-
-        public FileHeader Header { get; private set; }
-        public List<ARCEntry> Entries { get; private set; }
-
-        private bool? _isValid;
+        private bool? _isValid = null;
         public bool IsValid
         {
             get
@@ -33,17 +32,14 @@ namespace ARCVX
                     _isValid = File.Exists && File.Length > 8;
 
                     if ((bool)_isValid)
-                    {
-                        ReadMagic();
                         _isValid = Magic == MAGIC_HFS || Magic == MAGIC_ARC;
-                    }
                 }
 
                 return (bool)_isValid;
             }
         }
 
-        private bool? _isHFS;
+        private bool? _isHFS = null;
         public bool IsHFS
         {
             get
@@ -54,15 +50,46 @@ namespace ARCVX
             }
         }
 
-        public ARC(FileInfo file)
+        private int? _magic;
+        public int Magic
         {
-            File = file;
-            ReadHeader();
-            ReadEntries();
+            get
+            {
+                if (_magic == null)
+                    _magic = GetMagic();
+                return (int)_magic;
+            }
         }
 
-        public void ReadMagic() =>
-            Magic = GetMagic();
+        private FileHeader? _header;
+        public FileHeader Header
+        {
+            get
+            {
+                if (_header == null && IsValid)
+                    _header = new FileHeader
+                    {
+                        HFS = GetHFSHeader(),
+                        ARC = GetARCHeader()
+                    };
+
+                return _header ?? new FileHeader();
+            }
+        }
+
+        private List<ARCEntry> _entries;
+        public List<ARCEntry> Entries
+        {
+            get
+            {
+                if (_entries == null && IsValid)
+                    _entries = GetEntries();
+                return _entries;
+            }
+        }
+
+        public ARC(FileInfo file) =>
+            File = file;
 
         public int GetMagic()
         {
@@ -80,16 +107,6 @@ namespace ARCVX
                 Reader.IsBigEndian = false;
 
             return magic;
-        }
-
-        public void ReadHeader()
-        {
-            if (IsValid)
-                Header = new FileHeader
-                {
-                    HFS = GetHFSHeader(),
-                    ARC = GetARCHeader()
-                };
         }
 
         public HFSHeader GetHFSHeader()
@@ -121,12 +138,6 @@ namespace ARCVX
                 Version = Reader.ReadInt16(),
                 Count = Reader.ReadInt16(),
             };
-        }
-
-        public void ReadEntries()
-        {
-            if (IsValid)
-                Entries = GetEntries();
         }
 
         public List<ARCEntry> GetEntries()
@@ -162,19 +173,32 @@ namespace ARCVX
             return entries;
         }
 
-        public byte[] GetEntryData(ARCEntry entry)
+        public long GetEntryOffset(ARCEntry entry) =>
+            entry.Offset + (entry.Offset / HFS_CHUNK_SIZE * HFS_VALID_SIZE) + HFS_VALID_SIZE;
+
+        public MemoryStream GetEntryStream(ARCEntry entry)
         {
             OpenReader();
 
-            Reader.SetPosition(entry.Offset + (entry.Offset / CHUNK_SIZE * 16) + 16);
+            MemoryStream stream = new();
 
-            byte[] data = new byte[entry.DataSize];
-            Stream.Read(data, 0, (int)entry.DataSize);
+            Reader.SetPosition(GetEntryOffset(entry));
 
-            return data;
+            for (int i = 0; i < entry.DataSize; i++)
+            {
+                if (Stream.Position % HFS_CHUNK_SIZE == 0)
+                    Reader.AddPosition(HFS_VALID_SIZE);
+
+                stream.WriteByte(Reader.ReadByte());
+            }
+
+            stream.Seek(0, SeekOrigin.Begin);
+            stream.SetLength((int)entry.DataSize);
+
+            return stream;
         }
 
-        public void ExportEntryData(ARCEntry entry, DirectoryInfo folder)
+        public FileInfo ExportEntryData(ARCEntry entry, DirectoryInfo folder)
         {
             FileInfo entryFile = new(Path.Combine(folder.FullName, entry.Path));
 
@@ -191,39 +215,45 @@ namespace ARCVX
             }
             while (outputFile.Exists);
 
+            using MemoryStream entryStream = GetEntryStream(entry);
             using FileStream outputStream = outputFile.OpenWrite();
 
-            byte[] data = GetEntryData(entry);
+            int magic = entryStream.ReadByte();
+
+            entryStream.Seek(0, SeekOrigin.Begin);
 
             try
             {
-                using MemoryStream dataStream = new();
+                if (magic != 0x68)
+                    throw new Exception();
 
-                dataStream.Write(data, 0, data.Length);
-                dataStream.Seek(0, SeekOrigin.Begin);
-
-                using ZInputStream zlibStream = new(dataStream);
-
-                int value;
-                while ((value = zlibStream.Read()) != -1)
-                    outputStream.WriteByte((byte)value);
+                using InflaterInputStream zlibStream = new(entryStream, new Inflater());
+                zlibStream.IsStreamOwner = false;
+                zlibStream.CopyTo(outputStream);
             }
             catch
             {
-                outputStream.Write(data);
+                entryStream.CopyTo(outputStream);
             }
+
+            return outputFile;
         }
 
-        public IEnumerable<ARCEntry> ExportAllEntries() =>
+        public IEnumerable<ARCExport> ExportAllEntries() =>
             ExportAllEntries(File.Directory);
 
-        public IEnumerable<ARCEntry> ExportAllEntries(DirectoryInfo folder)
+        public IEnumerable<ARCExport> ExportAllEntries(DirectoryInfo folder)
         {
             List<ARCEntry> entries = GetEntries();
             foreach (ARCEntry entry in entries)
             {
-                ExportEntryData(entry, folder);
-                yield return entry;
+                FileInfo path = ExportEntryData(entry, folder);
+
+                yield return new()
+                {
+                    Path = path.FullName,
+                    Entry = entry,
+                };
             }
         }
 
@@ -333,5 +363,11 @@ namespace ARCVX
         public uint FileSize;
         public byte Flags;
         public uint Offset;
+    }
+
+    public struct ARCExport
+    {
+        public string Path;
+        public ARCEntry Entry;
     }
 }

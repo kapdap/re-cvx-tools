@@ -1,3 +1,4 @@
+using ARCVX.Formats;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -46,7 +47,7 @@ internal class Program
 
     public static void ExtractFile(FileInfo file, DirectoryInfo folder)
     {
-        using ARC arc = new(file);
+        ARC arc = new(file);
 
         if (!arc.IsHFS)
         {
@@ -54,12 +55,25 @@ internal class Program
             return;
         }
 
-        Console.WriteLine(file.FullName);
+        Console.WriteLine($"Extracting {file.FullName}");
         Console.WriteLine();
 
-        foreach (ARCEntry entry in arc.ExportAllEntries(folder))
-            Console.WriteLine($"Extracting {entry.Path}");
+        foreach (ARCExport export in arc.ExportAllEntries(folder))
+        {
+            Console.WriteLine($"Extracted {export.Path}");
+
+            if (export.Entry.TypeHash == 0x241F5DEB)
+                ConvertTexToDDS(new(export.Path));
+        }
 
         Console.WriteLine("---------------------------------");
+    }
+
+    public static void ConvertTexToDDS(FileInfo file)
+    {
+        FileInfo output;
+        Tex tex = new(file);
+        if ((output = tex.ExportDDS()) != null)
+            Console.WriteLine("Converted " + output.FullName);
     }
 }
