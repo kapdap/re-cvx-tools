@@ -17,7 +17,8 @@ namespace ARCVX.Formats
         public const int MAGIC_HFS_LE = 0x00534648; // ".SFH"
 
         public const int HFS_CHUNK_SIZE = 0x20000;
-        public const int HFS_VALID_SIZE = 0x10;
+        public const int HFS_HASH_SIZE = 0x10;
+        public const int HFS_BLOCK_SIZE = HFS_CHUNK_SIZE - HFS_HASH_SIZE;
 
         public FileInfo File { get; }
         public FileStream Stream { get; private set; }
@@ -175,7 +176,7 @@ namespace ARCVX.Formats
         }
 
         public long GetEntryOffset(ARCEntry entry) =>
-            entry.Offset + (entry.Offset / HFS_CHUNK_SIZE * HFS_VALID_SIZE) + HFS_VALID_SIZE;
+            entry.Offset / HFS_BLOCK_SIZE * HFS_CHUNK_SIZE + (entry.Offset % HFS_BLOCK_SIZE) + HFS_HASH_SIZE;
 
         public MemoryStream GetEntryStream(ARCEntry entry)
         {
@@ -188,7 +189,7 @@ namespace ARCVX.Formats
             for (int i = 0; i < entry.DataSize; i++)
             {
                 if (Stream.Position % HFS_CHUNK_SIZE == 0)
-                    Reader.AddPosition(HFS_VALID_SIZE);
+                    Reader.AddPosition(HFS_HASH_SIZE);
 
                 stream.WriteByte(Reader.ReadByte());
             }
@@ -222,7 +223,6 @@ namespace ARCVX.Formats
                     throw new Exception();
 
                 using InflaterInputStream zlibStream = new(entryStream, new Inflater());
-                zlibStream.IsStreamOwner = false;
                 zlibStream.CopyTo(outputStream);
             }
             catch

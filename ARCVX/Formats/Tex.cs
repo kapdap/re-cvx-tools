@@ -119,6 +119,7 @@ namespace ARCVX.Formats
                 Caps = 0x00001000
             };
 
+        // TODO: Convert RGBA8888 textures
         public FileInfo ExportDDS()
         {
             if (Header.Unknown1 == 0x06 || // Environment_CM.tex
@@ -217,7 +218,8 @@ namespace ARCVX.Formats
         public short Height;
 
         public byte ImageCount;
-        public byte Format;
+        public byte Format; //0x14=DXT1,0x1E=DXT1,0x18=DXT5,0x28=RGBA8888
+
         public short Unknown2;
     }
 
