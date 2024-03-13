@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using RDXplorer.Extensions;
 using RDXplorer.Views;
 using System;
 using System.ComponentModel;
@@ -136,7 +137,7 @@ namespace RDXplorer
             if (path == null)
                 return;
 
-            HexEdit.FileName = path.FullName;
+            HexEdit.Stream = path.OpenReadShared();
         }
 
         public void SetPosition(long offset, long length = 1)

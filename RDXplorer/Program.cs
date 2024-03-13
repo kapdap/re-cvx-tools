@@ -250,9 +250,9 @@ namespace RDXplorer.Views
 
                 Models.AppView.LoadRDX(file);
 
-                if (Windows.HexEditor.IsVisible)
+                if (Windows.HexEditor.IsVisible && Models.AppView.RDXLoaded)
                 {
-                    Windows.HexEditor.ShowFile(file);
+                    Windows.HexEditor.ShowFile(Models.AppView.RDXDocument.RDXFileInfo);
                     Windows.Main.Focus();
                 }
             }
