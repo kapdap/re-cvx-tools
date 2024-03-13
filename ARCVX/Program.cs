@@ -35,10 +35,15 @@ internal class Program
         }
 
         foreach (FileInfo file in files)
-            ExtractFile(file, folder.Exists ?
-                new($"{folder.FullName}.export") :
-                new(Path.Combine(file.Directory.FullName,
-                    Path.ChangeExtension(file.Name, ".export"))));
+        {
+            if (file.Extension == ".tex")
+                ConvertTex(file);
+            else
+                ExtractFile(file, folder.Exists ?
+                    new($"{folder.FullName}.export") :
+                    new(Path.Combine(file.Directory.FullName,
+                        Path.ChangeExtension(file.Name, ".export"))));
+        }
 
         Console.WriteLine();
         Console.WriteLine($"ARC extraction complete.");
@@ -63,17 +68,17 @@ internal class Program
             Console.WriteLine($"Extracted {export.Path}");
 
             if (export.Entry.TypeHash == 0x241F5DEB)
-                ConvertTexToDDS(new(export.Path));
+                ConvertTex(new(export.Path));
         }
 
         Console.WriteLine("---------------------------------");
     }
 
-    public static void ConvertTexToDDS(FileInfo file)
+    public static void ConvertTex(FileInfo file)
     {
         FileInfo output;
         using Tex tex = new(file);
-        if ((output = tex.ExportDDS()) != null)
+        if ((output = tex.Export()) != null)
             Console.WriteLine("Converted " + output.FullName);
     }
 }

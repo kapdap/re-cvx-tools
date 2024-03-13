@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace ARCVX.Formats
 {
+    // TODO: Read .tex files in HFS containers
     public class Tex : IDisposable
     {
         public const int MAGIC_TEX = 0x54455800; // "TEX."
@@ -119,7 +120,9 @@ namespace ARCVX.Formats
                 Caps = 0x00001000
             };
 
-        // TODO: Convert RGBA8888 textures
+        public FileInfo Export() =>
+            ExportDDS() ?? ExportPNG();
+
         public FileInfo ExportDDS()
         {
             if (Header.Unknown1 == 0x06 || // Environment_CM.tex
@@ -150,9 +153,18 @@ namespace ARCVX.Formats
             }
         }
 
+        // TODO: Determine Environment_CM.tex file format
+        // TODO: Convert RGBA8888 textures (format=0x28)
+        public FileInfo ExportPNG()
+        {
+            if (Header.Format != 0x28)
+                return null;
+            return null;
+        }
+
         public byte[] GetPixelData()
         {
-            Reader.SetPosition(16 + Header.MipMapCount * 4);
+            Reader.SetPosition(16 + Header.Unknown1 != 6 ? Header.MipMapCount * 4 : 0);
             return Reader.ReadBytes((int)(File.Length - Reader.GetPosition()));
         }
 
