@@ -8,7 +8,7 @@ A fork of [plugin_mt_framework](https://github.com/FanTranslatorsInternational/K
 - Download [plugin_re_cvx_hd.zip](https://github.com/kapdap/re-cvx-tools/releases/download/plugin_re_cvx_hd/plugin_re_cvx_hd.zip).
 - Extract ***plugin_re_cvx_hd.dll*** from the zip file to Kuriimu2\plugins.
 - Run Kuriimu2 and open an .arc file.
-- Open ***<filename>.unhfs.arc*** from the Kuriimu2 browser.
+- Open ***\<filename\>.unhfs.arc*** from the Kuriimu2 browser.
 - Select ***plugin_re_cvx_hd.dll*** then ***CVX ARC*** and Continue.
 
 You can now browse and modify files in Resident Evil/Biohazard: Code: Veronica X HD .arc containers.
