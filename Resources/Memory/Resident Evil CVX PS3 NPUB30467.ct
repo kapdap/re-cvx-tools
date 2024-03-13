@@ -2,6 +2,50 @@
 <CheatTable CheatEngineTableVersion="45">
   <CheatEntries>
     <CheatEntry>
+      <ID>5636</ID>
+      <Description>"Attach RPCS3"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+[ENABLE]
+local ProcLst =
+{
+  "rpcs3.exe",
+}
+
+PS3mem = 0x300000000
+
+function AttachProcess(name)
+  if getProcessIDFromProcessName(name) ~= nil then
+    openProcess(name)
+    return true
+  end
+
+  return false
+end
+
+function AttachRPCS3()
+  for i,name in pairs(ProcLst) do
+    if AttachProcess(name) then
+      return true
+    end
+  end
+
+  return false
+end
+
+if not AttachRPCS3() then
+  showMessage("Unable to find RPCS3 process.")
+  error()
+end
+
+unregisterSymbol("PS3mem")
+registerSymbol("PS3mem", PS3mem, true)
+
+[DISABLE]
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
       <ID>1256</ID>
       <Description>"Room"</Description>
       <DropDownList DisplayValueAsItem="1">00000000:Prison B1 Cells
@@ -7429,28 +7473,167 @@
         <CheatEntry>
           <ID>2625</ID>
           <Description>"Header"</Description>
+          <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
           <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>4 Byte Big Endian</CustomType>
-          <Address>300BDE0EC</Address>
+          <Address>PS3mem+BDE0EC</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>2678</ID>
+          <Description>"Unknown"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Byte Big Endian</CustomType>
+          <Address>PS3mem+BDE0F8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5652</ID>
           <Description>"Name"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
           <VariableType>String</VariableType>
           <Length>32</Length>
           <Unicode>0</Unicode>
           <CodePage>0</CodePage>
           <ZeroTerminate>1</ZeroTerminate>
-          <Address>300BDE0FC</Address>
+          <Address>PS3mem+BDE0FC</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>2679</ID>
-          <Description>"Enemy Count"</Description>
-          <ShowAsSigned>1</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>4 Byte Big Endian</CustomType>
-          <Address>300BDE298</Address>
+          <ID>5655</ID>
+          <Description>"Counts"</Description>
+          <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>5656</ID>
+              <Description>"Camera"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE290</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5654</ID>
+              <Description>"Lighting"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE294</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5657</ID>
+              <Description>"Enemy"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE298</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5658</ID>
+              <Description>"Object"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE29C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5659</ID>
+              <Description>"Item"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE2A0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5660</ID>
+              <Description>"Effect"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE2A4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5661</ID>
+              <Description>"Boundry"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE2A8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5662</ID>
+              <Description>"AOT"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE2AC</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5663</ID>
+              <Description>"Trigger"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE2B0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5664</ID>
+              <Description>"Player"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE2B4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5665</ID>
+              <Description>"Event"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE2B8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5666</ID>
+              <Description>"Enemy"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE2BC</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5667</ID>
+              <Description>"Enemy"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE2C0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5668</ID>
+              <Description>"Enemy"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE2C4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5669</ID>
+              <Description>"Enemy"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE2C8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5670</ID>
+              <Description>"Enemy"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Byte Big Endian</CustomType>
+              <Address>300BDE2CC</Address>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
@@ -7768,6 +7951,24 @@
           <Address/>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5671</ID>
+      <Description>"No description"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Byte Big Endian</CustomType>
+      <Address>PS3mem+BDE758</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5672</ID>
+      <Description>"No description"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Byte Big Endian</CustomType>
+      <Address>PS3mem+3D650</Address>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
