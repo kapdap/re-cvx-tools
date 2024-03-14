@@ -124,7 +124,7 @@ namespace plugin_mt_framework.Images
             [0x14] = ImageFormats.Dxt1(), 
             [0x18] = ImageFormats.Dxt5(),
             [0x1E] = ImageFormats.Dxt1(),
-            [0x28] = ImageFormats.Rgba8888(),
+            [0x28] = new Rgba(8, 8, 8, 8, "BGRA"),
         };
 
         public static readonly IDictionary<int, IColorEncoding> SwitchFormats = new Dictionary<int, IColorEncoding>
