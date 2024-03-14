@@ -7,12 +7,12 @@ namespace ARCVX.Reader
     // Adapted from https://github.com/LJW-Dev/Big-Endian-Binary-Reader/blob/main/Reader.cs
     public class EndianReader : IDisposable
     {
-        public bool IsBigEndian = true;
+        public ByteOrder ByteOrder = ByteOrder.BigEndian;
         public BinaryReader BaseReader;
 
-        public EndianReader(Stream stream, bool isBigEndian)
+        public EndianReader(Stream stream, ByteOrder order)
         {
-            IsBigEndian = isBigEndian;
+            ByteOrder = order;
             BaseReader = new BinaryReader(stream);
         }
 
@@ -34,57 +34,57 @@ namespace ARCVX.Reader
         public byte[] ReadBytes(int count) =>
             BaseReader.ReadBytes(count);
 
-        public short ReadInt16(bool? isBigEndian = null)
+        public short ReadInt16(ByteOrder? order = null)
         {
             byte[] data = BaseReader.ReadBytes(2);
-            if (isBigEndian ?? IsBigEndian) Array.Reverse(data);
+            if ((order ?? ByteOrder) == ByteOrder.BigEndian) Array.Reverse(data);
             return BitConverter.ToInt16(data, 0);
         }
 
-        public ushort ReadUInt16(bool? isBigEndian = null)
+        public ushort ReadUInt16(ByteOrder? order = null)
         {
             byte[] data = BaseReader.ReadBytes(2);
-            if (isBigEndian ?? IsBigEndian) Array.Reverse(data);
+            if ((order ?? ByteOrder) == ByteOrder.BigEndian) Array.Reverse(data);
             return BitConverter.ToUInt16(data, 0);
         }
 
-        public int ReadInt32(bool? isBigEndian = null)
+        public int ReadInt32(ByteOrder? order = null)
         {
             byte[] data = BaseReader.ReadBytes(4);
-            if (isBigEndian ?? IsBigEndian) Array.Reverse(data);
+            if ((order ?? ByteOrder) == ByteOrder.BigEndian) Array.Reverse(data);
             return BitConverter.ToInt32(data, 0);
         }
-        public uint ReadUInt32(bool? isBigEndian = null)
+        public uint ReadUInt32(ByteOrder? order = null)
         {
             byte[] data = BaseReader.ReadBytes(4);
-            if (isBigEndian ?? IsBigEndian) Array.Reverse(data);
+            if ((order ?? ByteOrder) == ByteOrder.BigEndian) Array.Reverse(data);
             return BitConverter.ToUInt32(data, 0);
         }
 
-        public long ReadInt64(bool? isBigEndian = null)
+        public long ReadInt64(ByteOrder? order = null)
         {
             byte[] data = BaseReader.ReadBytes(8);
-            if (isBigEndian ?? IsBigEndian) Array.Reverse(data);
+            if ((order ?? ByteOrder) == ByteOrder.BigEndian) Array.Reverse(data);
             return BitConverter.ToInt64(data, 0);
         }
 
-        public ulong ReadUInt64(bool? isBigEndian = null)
+        public ulong ReadUInt64(ByteOrder? order = null)
         {
             byte[] data = BaseReader.ReadBytes(8);
-            if (isBigEndian ?? IsBigEndian) Array.Reverse(data);
+            if ((order ?? ByteOrder) == ByteOrder.BigEndian) Array.Reverse(data);
             return BitConverter.ToUInt64(data, 0);
         }
-        public float ReadFloat(bool? isBigEndian = null)
+        public float ReadFloat(ByteOrder? order = null)
         {
             byte[] data = BaseReader.ReadBytes(4);
-            if (isBigEndian ?? IsBigEndian) Array.Reverse(data);
+            if ((order ?? ByteOrder) == ByteOrder.BigEndian) Array.Reverse(data);
             return BitConverter.ToSingle(data, 0);
         }
 
-        public double ReadDouble(bool? isBigEndian = null)
+        public double ReadDouble(ByteOrder? order = null)
         {
             byte[] data = BaseReader.ReadBytes(8);
-            if (isBigEndian ?? IsBigEndian) Array.Reverse(data);
+            if ((order ?? ByteOrder) == ByteOrder.BigEndian) Array.Reverse(data);
             return BitConverter.ToDouble(data, 0);
         }
 
@@ -114,5 +114,11 @@ namespace ARCVX.Reader
             BaseReader.BaseStream.Length;
 
         public void Dispose() => ((IDisposable)BaseReader).Dispose();
+    }
+
+    public enum ByteOrder
+    {
+        LittleEndian,
+        BigEndian
     }
 }

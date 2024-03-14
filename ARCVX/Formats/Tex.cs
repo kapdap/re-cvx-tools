@@ -1,86 +1,32 @@
 ﻿using ARCVX.Reader;
+using BCnEncoder.Encoder;
+using BCnEncoder.Shared;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
 
 namespace ARCVX.Formats
 {
-    // TODO: Read .tex files in HFS containers
-    public class Tex : IDisposable
+    public class Tex : Base<TexHeader>
     {
-        public const int MAGIC_TEX = 0x54455800; // "TEX."
-        public const int MAGIC_TEX_LE = 0x00584554; // ".XET"
+        public override int MAGIC { get; } = 0x54455800; // "TEX."
+        public override int MAGIC_LE { get; } = 0x00584554; // ".XET"
 
-        public FileInfo File { get; }
-        public FileStream Stream { get; private set; }
-        public EndianReader Reader { get; private set; }
+        public Tex(FileInfo file) : base(file) { }
+        public Tex(FileInfo file, Stream stream) : base(file, stream) { }
 
-        private int? _magic;
-        public int Magic
+        public override TexHeader GetHeader()
         {
-            get
-            {
-                if (_magic == null)
-                    _magic = GetMagic();
-                return (int)_magic;
-            }
-        }
+            if (!IsValid)
+                return new TexHeader { };
 
-        private TexHeader? _header;
-        public TexHeader Header
-        { 
-            get
-            {
-                if (_header == null && IsValid)
-                    _header = GetTexHeader();
-                return _header ?? new TexHeader();
-            }
-        }
-
-        private bool? _isValid = null;
-        public bool IsValid
-        {
-            get
-            {
-                if (_isValid == null)
-                {
-                    _isValid = File.Exists && File.Length > 16;
-
-                    if ((bool)_isValid)
-                        _isValid = Magic == MAGIC_TEX || Magic == MAGIC_TEX_LE;
-                }
-
-                return (bool)_isValid;
-            }
-        }
-
-        public Tex(FileInfo file) =>
-            File = file;
-
-        public int GetMagic()
-        {
-            OpenReader();
-
-            long position = Reader.GetPosition();
-            Reader.SetPosition(0);
-
-            int magic = Reader.ReadInt32(false);
-            Reader.SetPosition(position);
-
-            Reader.IsBigEndian = magic == MAGIC_TEX;
-
-            return magic;
-        }
-
-        public TexHeader GetTexHeader()
-        {
             OpenReader();
 
             Reader.SetPosition(0);
 
             TexHeader header = new();
 
-            header.Magic = Reader.ReadInt32(false);
+            header.Magic = Reader.ReadInt32(ByteOrder.LittleEndian);
 
             uint[] data = new uint[3];
             for (int i = 0; i < data.Length; i++)
@@ -115,29 +61,71 @@ namespace ARCVX.Formats
 
                 PixelFormatSize = 32,
                 PixelFormatFlags = 0x00000004,
-                PixelFormatFourCC = Header.Format == 0x14 || Header.Format == 0x1E ? 0x31545844 : 0x35545844,
+                PixelFormatFourCC = Header.Format == 0x18 ? 0x35545844 : 0x31545844,
 
                 Caps = 0x00001000
             };
 
+        public long GetPixelOffset() =>
+            16 + (Header.Unknown1 != 6 ? Header.MipMapCount * 4 : 0);
+
+        public byte[] GetPixelBytes()
+        {
+            if (!IsValid)
+                return null;
+
+            Reader.SetPosition(GetPixelOffset());
+            return Reader.ReadBytes((int)(File.Length - Reader.GetPosition()));
+        }
+
+        public MemoryStream GetPixelStream()
+        {
+            if (!IsValid)
+                return null;
+
+            Reader.SetPosition(GetPixelOffset());
+
+            MemoryStream stream = new();
+            Stream.CopyTo(stream);
+
+            return stream;
+        }
+
+        public MemoryStream GetBitmap()
+        {
+            BcEncoder encoder = new();
+
+            encoder.OutputOptions.GenerateMipMaps = true;
+            encoder.OutputOptions.Quality = CompressionQuality.BestQuality;
+            encoder.OutputOptions.Format = CompressionFormat.Bc1WithAlpha;
+            encoder.OutputOptions.FileFormat = OutputFileFormat.Dds;
+
+            MemoryStream stream = new();
+            encoder.EncodeToStream(GetPixelBytes(), Header.Width, Header.Height, PixelFormat.Argb32, stream);
+            stream.Seek(0, SeekOrigin.Begin);
+
+            return stream;
+        }
+
         public FileInfo Export() =>
-            ExportDDS() ?? ExportPNG();
+            ExportDDS() ?? ExportRGBA();
 
         public FileInfo ExportDDS()
         {
-            if (Header.Unknown1 == 0x06 || // Environment_CM.tex
-               (Header.Format != 0x14 &&
-                Header.Format != 0x18 &&
-                Header.Format != 0x1E))
-                return null;
-
             try
             {
+                if (Header.Unknown1 == 0x06 ||
+                   (Header.Format != 0x14 &&
+                    Header.Format != 0x18 &&
+                    Header.Format != 0x19 &&
+                    Header.Format != 0x1E))
+                    throw new Exception();
+
                 FileInfo output = new(Path.ChangeExtension(File.FullName, "dds"));
                 using FileStream stream = output.OpenWrite();
 
                 byte[] head = GetBytes(GetDDSHeader());
-                byte[] data = GetPixelData();
+                byte[] data = GetPixelBytes();
 
                 stream.SetLength(head.Length + data.Length);
 
@@ -146,56 +134,28 @@ namespace ARCVX.Formats
 
                 return output;
             }
-            catch (Exception e)
-            {
-                Console.Error.WriteLine(e.Message);
-                return null;
-            }
+            catch { return null; }
         }
 
-        // TODO: Determine Environment_CM.tex file format
-        // TODO: Convert RGBA8888 textures (format=0x28)
-        public FileInfo ExportPNG()
+        public FileInfo ExportRGBA()
         {
-            if (Header.Format != 0x28)
-                return null;
-            return null;
-        }
-
-        public byte[] GetPixelData()
-        {
-            Reader.SetPosition(16 + Header.Unknown1 != 6 ? Header.MipMapCount * 4 : 0);
-            return Reader.ReadBytes((int)(File.Length - Reader.GetPosition()));
-        }
-
-        public void OpenReader()
-        {
-            if (Stream == null)
+            try
             {
-                Stream = File.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                Reader = new(Stream);
+                if (Header.Format != 0x28)
+                    throw new Exception();
+
+                FileInfo output = new(Path.ChangeExtension(File.FullName, "dds"));
+                using FileStream stream = output.OpenWrite();
+
+                GetBitmap().CopyTo(stream);
+
+                return output;
             }
+            catch { return null; }
         }
 
-        public void CloseReader()
-        {
-            if (Stream != null)
-            {
-                ((IDisposable)Stream).Dispose();
-                Stream = null;
-            }
-
-            if (Reader != null)
-            {
-                ((IDisposable)Reader).Dispose();
-                Reader = null;
-            }
-        }
-
-        public void Dispose() =>
-            CloseReader();
-
-        private static byte[] GetBytes(DDSHeader data)
+        private static byte[] GetBytes<T>(T data)
+            where T : struct
         {
             int size = Marshal.SizeOf(data);
             byte[] arr = new byte[size];
@@ -222,7 +182,7 @@ namespace ARCVX.Formats
 
         public short Version;
         public short Unknown0;
-        public byte Unknown1;
+        public byte Unknown1; // 0x02=standard,0x03=unknown,0x06=cubemaps???
         public byte AlphaFlags;
 
         public byte MipMapCount;
@@ -230,8 +190,8 @@ namespace ARCVX.Formats
         public short Height;
 
         public byte ImageCount;
-        public byte Format; //0x14=DXT1,0x1E=DXT1,0x18=DXT5,0x28=RGBA8888
-
+        public byte Format; // 0x14=DXT1,0x18=DXT5,0x18=DXT1,0x1E=DXT1,0x28=RGBA8888
+                            // 0x07=unknown,0x09=unknown,0x23=unknown,0x2B=unknown
         public short Unknown2;
     }
 

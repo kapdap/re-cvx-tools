@@ -1,142 +1,41 @@
 ﻿using ARCVX.Reader;
 using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
-using ICSharpCode.SharpZipLib.Zip.Compression;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading;
 
 namespace ARCVX.Formats
 {
-    public class ARC : IDisposable
+    public class ARC : Base<ARCHeader>
     {
-        public const int MAGIC_ARC = 0x41524300; // "ARC."
-        public const int MAGIC_ARC_LE = 0x00435241; // ".CRA"
-
-        public const int MAGIC_HFS = 0x48465300; // "HFS."
-        public const int MAGIC_HFS_LE = 0x00534648; // ".SFH"
-
-        public const int HFS_CHUNK_SIZE = 0x20000;
-        public const int HFS_HASH_SIZE = 0x10;
-        public const int HFS_BLOCK_SIZE = HFS_CHUNK_SIZE - HFS_HASH_SIZE;
-
-        public FileInfo File { get; }
-        public FileStream Stream { get; private set; }
-        public EndianReader Reader { get; private set; }
-
-        private bool? _isValid = null;
-        public bool IsValid
-        {
-            get
-            {
-                if (_isValid == null)
-                {
-                    _isValid = File.Exists && File.Length > 8;
-
-                    if ((bool)_isValid)
-                        _isValid = Magic == MAGIC_HFS || Magic == MAGIC_ARC;
-                }
-
-                return (bool)_isValid;
-            }
-        }
-
-        private bool? _isHFS = null;
-        public bool IsHFS
-        {
-            get
-            {
-                if (_isHFS == null)
-                    _isHFS = IsValid && Magic == MAGIC_HFS;
-                return (bool)_isHFS;
-            }
-        }
-
-        private int? _magic;
-        public int Magic
-        {
-            get
-            {
-                if (_magic == null)
-                    _magic = GetMagic();
-                return (int)_magic;
-            }
-        }
-
-        private FileHeader? _header;
-        public FileHeader Header
-        {
-            get
-            {
-                if (_header == null && IsValid)
-                    _header = new FileHeader
-                    {
-                        HFS = GetHFSHeader(),
-                        ARC = GetARCHeader()
-                    };
-
-                return _header ?? new FileHeader();
-            }
-        }
+        public override int MAGIC { get; } = 0x41524300; // "ARC."
+        public override int MAGIC_LE { get; } = 0x00435241; // ".CRA"
 
         private List<ARCEntry> _entries;
         public List<ARCEntry> Entries
         {
             get
             {
-                if (_entries == null && IsValid)
-                    _entries = GetEntries();
+                _entries ??= GetEntries();
                 return _entries;
             }
         }
 
-        public ARC(FileInfo file) =>
-            File = file;
+        public ARC(FileInfo file) : base(file) { }
+        public ARC(FileInfo file, Stream stream) : base(file, stream) { }
 
-        public int GetMagic()
+        public override ARCHeader GetHeader()
         {
+            if (!IsValid)
+                return new ARCHeader { };
+
             OpenReader();
 
-            long position = Reader.GetPosition();
             Reader.SetPosition(0);
-
-            int magic = Reader.ReadInt32(false);
-            Reader.SetPosition(position);
-
-            if (magic == MAGIC_HFS || magic == MAGIC_ARC)
-                Reader.IsBigEndian = true;
-            else if (magic == MAGIC_HFS_LE || magic == MAGIC_ARC_LE)
-                Reader.IsBigEndian = false;
-
-            return magic;
-        }
-
-        public HFSHeader GetHFSHeader()
-        {
-            if (!IsHFS)
-                return new HFSHeader { };
-
-            Reader.SetPosition(0);
-
-            return new HFSHeader
-            {
-                Magic = Reader.ReadInt32(false),
-                Version = Reader.ReadInt16(),
-                Type = Reader.ReadInt16(),
-                Size = Reader.ReadInt32(),
-                Padding = Reader.ReadInt32(),
-            };
-        }
-
-        public ARCHeader GetARCHeader()
-        {
-            OpenReader();
-
-            Reader.SetPosition(IsHFS ? 16 : 0);
 
             return new ARCHeader
             {
-                Magic = Reader.ReadInt32(false),
+                Magic = Reader.ReadInt32(ByteOrder.LittleEndian),
                 Version = Reader.ReadInt16(),
                 Count = Reader.ReadInt16(),
             };
@@ -144,13 +43,16 @@ namespace ARCVX.Formats
 
         public List<ARCEntry> GetEntries()
         {
+            if (!IsValid)
+                return null;
+
             OpenReader();
 
-            Reader.SetPosition(IsHFS ? 24 : 8);
+            Reader.SetPosition(8);
 
-            List<ARCEntry> entries = new();
+            List<ARCEntry> entries = [];
 
-            for (int i = 0; i < Header.ARC.Count; i++)
+            for (int i = 0; i < Header.Count; i++)
             {
                 ARCEntry entry = new();
 
@@ -175,34 +77,33 @@ namespace ARCVX.Formats
             return entries;
         }
 
-        public long GetEntryOffset(ARCEntry entry) =>
-            entry.Offset / HFS_BLOCK_SIZE * HFS_CHUNK_SIZE + (entry.Offset % HFS_BLOCK_SIZE) + HFS_HASH_SIZE;
-
         public MemoryStream GetEntryStream(ARCEntry entry)
         {
+            if (!IsValid)
+                return null;
+
             OpenReader();
+
+            Reader.SetPosition(entry.Offset);
 
             MemoryStream stream = new();
 
-            Reader.SetPosition(GetEntryOffset(entry));
-
-            for (int i = 0; i < entry.DataSize; i++)
-            {
-                if (Stream.Position % HFS_CHUNK_SIZE == 0)
-                    Reader.AddPosition(HFS_HASH_SIZE);
-
-                stream.WriteByte(Reader.ReadByte());
-            }
-
-            stream.Seek(0, SeekOrigin.Begin);
+            Stream.CopyTo(stream);
             stream.SetLength((int)entry.DataSize);
+            stream.Seek(0, SeekOrigin.Begin);
 
             return stream;
         }
 
+        public string GetEntryExtension(ARCEntry entry) =>
+            GetTypeExtension(entry.TypeHash);
+
+        public string GetTypeExtension(int hash) =>
+            TypeMap.ContainsKey(hash) ? TypeMap[hash] : hash.ToString("X8");
+
         public FileInfo ExportEntryData(ARCEntry entry, DirectoryInfo folder)
         {
-            FileInfo outputFile = new(Path.Join(folder.FullName, entry.Path + "." + GetExtension(entry.TypeHash)));
+            FileInfo outputFile = new(Path.Join(folder.FullName, Path.ChangeExtension(entry.Path, GetEntryExtension(entry))));
 
             if (!outputFile.Directory.Exists)
                 outputFile.Directory.Create();
@@ -219,10 +120,10 @@ namespace ARCVX.Formats
 
             try
             {
-                if (magic != 0x68)
+                if (magic != 0x68 && magic != 0x78)
                     throw new Exception();
 
-                using InflaterInputStream zlibStream = new(entryStream, new Inflater());
+                using InflaterInputStream zlibStream = new(entryStream);
                 zlibStream.CopyTo(outputStream);
             }
             catch
@@ -238,8 +139,7 @@ namespace ARCVX.Formats
 
         public IEnumerable<ARCExport> ExportAllEntries(DirectoryInfo folder)
         {
-            List<ARCEntry> entries = GetEntries();
-            foreach (ARCEntry entry in entries)
+            foreach (ARCEntry entry in Entries)
             {
                 FileInfo path = ExportEntryData(entry, folder);
 
@@ -251,37 +151,7 @@ namespace ARCVX.Formats
             }
         }
 
-        public void OpenReader()
-        {
-            if (Stream == null)
-            {
-                Stream = File.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                Reader = new(Stream);
-            }
-        }
-
-        public void CloseReader()
-        {
-            if (Stream != null)
-            {
-                ((IDisposable)Stream).Dispose();
-                Stream = null;
-            }
-
-            if (Reader != null)
-            {
-                ((IDisposable)Reader).Dispose();
-                Reader = null;
-            }
-        }
-
-        public void Dispose() =>
-            CloseReader();
-
-        public string GetExtension(int hash) =>
-            TypeMap.ContainsKey(hash) ? TypeMap[hash] : hash.ToString("X8");
-
-        public Dictionary<int, string> TypeMap { get; } = new()
+        private Dictionary<int, string> TypeMap { get; } = new()
         {
             {0x02358E1A, "spkg"},
             {0x051BE0EC, "rut"},
@@ -325,21 +195,6 @@ namespace ARCVX.Formats
             {0x7E33A16C, "spc"},
             {0x7F68C6AF, "mpac"},
         };
-    }
-
-    public struct FileHeader
-    {
-        public HFSHeader HFS;
-        public ARCHeader ARC;
-    }
-
-    public struct HFSHeader
-    {
-        public int Magic;
-        public short Version;
-        public short Type;
-        public int Size;
-        public int Padding;
     }
 
     public struct ARCHeader
