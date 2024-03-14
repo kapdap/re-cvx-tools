@@ -75,29 +75,17 @@ namespace ARCVX.Formats
                 return null;
 
             Reader.SetPosition(GetPixelOffset());
+
             return Reader.ReadBytes((int)(File.Length - Reader.GetPosition()));
         }
 
-        public MemoryStream GetPixelStream()
-        {
-            if (!IsValid)
-                return null;
-
-            Reader.SetPosition(GetPixelOffset());
-
-            MemoryStream stream = new();
-            Stream.CopyTo(stream);
-
-            return stream;
-        }
-
-        public MemoryStream GetBitmap()
+        public MemoryStream ConvertARGBToDSS()
         {
             BcEncoder encoder = new();
 
             encoder.OutputOptions.GenerateMipMaps = true;
             encoder.OutputOptions.Quality = CompressionQuality.BestQuality;
-            encoder.OutputOptions.Format = CompressionFormat.Bc1WithAlpha;
+            encoder.OutputOptions.Format = CompressionFormat.Bc3;
             encoder.OutputOptions.FileFormat = OutputFileFormat.Dds;
 
             MemoryStream stream = new();
@@ -108,7 +96,7 @@ namespace ARCVX.Formats
         }
 
         public FileInfo Export() =>
-            ExportDDS() ?? ExportRGBA();
+            ExportDDS() ?? ExportARGB();
 
         public FileInfo ExportDDS()
         {
@@ -127,17 +115,18 @@ namespace ARCVX.Formats
                 byte[] head = GetBytes(GetDDSHeader());
                 byte[] data = GetPixelBytes();
 
-                stream.SetLength(head.Length + data.Length);
-
                 stream.Write(head, 0, head.Length);
                 stream.Write(data, 0, data.Length);
 
                 return output;
             }
-            catch { return null; }
+            catch
+            {
+                return null;
+            }
         }
 
-        public FileInfo ExportRGBA()
+        public FileInfo ExportARGB()
         {
             try
             {
@@ -147,11 +136,14 @@ namespace ARCVX.Formats
                 FileInfo output = new(Path.ChangeExtension(File.FullName, "dds"));
                 using FileStream stream = output.OpenWrite();
 
-                GetBitmap().CopyTo(stream);
+                ConvertARGBToDSS().CopyTo(stream);
 
                 return output;
             }
-            catch { return null; }
+            catch
+            {
+                return null;
+            }
         }
 
         private static byte[] GetBytes<T>(T data)
@@ -190,7 +182,7 @@ namespace ARCVX.Formats
         public short Height;
 
         public byte ImageCount;
-        public byte Format; // 0x14=DXT1,0x18=DXT5,0x18=DXT1,0x1E=DXT1,0x28=RGBA8888
+        public byte Format; // 0x14=DXT1,0x18=DXT5,0x18=DXT1,0x1E=DXT1,0x28=ARBG8888
                             // 0x07=unknown,0x09=unknown,0x23=unknown,0x2B=unknown
         public short Unknown2;
     }
