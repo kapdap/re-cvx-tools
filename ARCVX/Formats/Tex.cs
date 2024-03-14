@@ -51,19 +51,11 @@ namespace ARCVX.Formats
         public DDSHeader GetDDSHeader() =>
             new()
             {
-                Magic = 0x20534444,
-
-                Size = 124,
                 Flags = Header.MipMapCount > 0 ? 0x00021007 : 0x00001007,
                 Height = Header.Height,
                 Width = Header.Width,
                 MipMapCount = Header.MipMapCount,
-
-                PixelFormatSize = 32,
-                PixelFormatFlags = 0x00000004,
                 PixelFormatFourCC = Header.Format == 0x18 ? 0x35545844 : 0x31545844,
-
-                Caps = 0x00001000
             };
 
         public long GetPixelOffset() =>
@@ -182,16 +174,16 @@ namespace ARCVX.Formats
         public short Height;
 
         public byte ImageCount;
-        public byte Format; // 0x14=DXT1,0x18=DXT5,0x18=DXT1,0x1E=DXT1,0x28=ARBG8888
+        public byte Format; // 0x14=DXT1,0x18=DXT5,0x18=DXT1,0x1E=DXT1,0x28=ARGB8888
                             // 0x07=unknown,0x09=unknown,0x23=unknown,0x2B=unknown
         public short Unknown2;
     }
 
     public struct DDSHeader
     {
-        public int Magic;
+        public int Magic = 0x20534444;
 
-        public int Size;
+        public int Size = 124;
         public int Flags;
         public int Height;
         public int Width;
@@ -211,8 +203,8 @@ namespace ARCVX.Formats
         public int Reserved10;
         public int Reserved11;
 
-        public int PixelFormatSize;
-        public int PixelFormatFlags;
+        public int PixelFormatSize = 32;
+        public int PixelFormatFlags = 0x00000004;
         public int PixelFormatFourCC;
         public int PixelFormatRGBBitCount;
         public int PixelFormatRBitMask;
@@ -220,11 +212,15 @@ namespace ARCVX.Formats
         public int PixelFormatBBitMask;
         public int PixelFormatABitMask;
 
-        public int Caps;
+        public int Caps = 0x00001000;
         public int Caps2;
         public int Caps3;
         public int Caps4;
 
         public int Reserved12;
+
+        public DDSHeader()
+        {
+        }
     }
 }
