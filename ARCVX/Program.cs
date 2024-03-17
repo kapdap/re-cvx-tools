@@ -116,6 +116,9 @@ namespace ARCVX
                 return;
             }
 
+            Console.WriteLine($"Extracting {files.Count} files...");
+            Console.WriteLine();
+
             foreach (FileInfo file in files)
             {
                 DirectoryInfo output =
@@ -151,6 +154,9 @@ namespace ARCVX
                 Console.ReadLine();
                 return;
             }
+
+            Console.WriteLine($"Rebuild {files.Count} files...");
+            Console.WriteLine();
 
             foreach (FileInfo file in files)
             {
@@ -188,6 +194,9 @@ namespace ARCVX
                 Console.ReadLine();
                 return;
             }
+
+            Console.WriteLine($"Converting {files.Count} files...");
+            Console.WriteLine();
 
             foreach (FileInfo file in files)
             {
@@ -254,6 +263,9 @@ namespace ARCVX
                 Console.WriteLine($"{file.FullName} is not a supported ARC file.");
                 return;
             }
+
+            Console.WriteLine($"Rebuilding {file.FullName}");
+            Console.WriteLine();
 
             if (hfs.IsValid)
             {
