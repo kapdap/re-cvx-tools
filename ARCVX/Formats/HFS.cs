@@ -91,12 +91,6 @@ namespace ARCVX.Formats
 
         public bool VerifyBlockChecksum(ReadOnlySpan<byte> data, ReadOnlySpan<byte> checksum) =>
             true;
-
-        public static Base Unpack(FileInfo file)
-        {
-            using HFS hfs = new(file);
-            return hfs.IsValid ? new(file, hfs.GetDataStream()) : new(file);
-        }
     }
 
     public struct HFSHeader
