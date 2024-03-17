@@ -123,7 +123,7 @@ namespace ARCVX.Formats
 
                 entryStream.Seek(0, SeekOrigin.Begin);
 
-                if (!zlibHeader.IsValid())
+                if (zlibHeader.IsValid())
                 {
                     using ZLibStream zlibStream = new(entryStream, CompressionMode.Decompress);
                     zlibStream.CopyTo(outputStream);
