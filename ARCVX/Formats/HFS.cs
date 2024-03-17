@@ -69,10 +69,9 @@ namespace ARCVX.Formats
             long read = 0;
             while (read < DataLength)
             {
-                ReadOnlySpan<byte> data;
                 int size = (int)(read + BLOCK_SIZE > RawDataLength ? RawDataLength - Reader.GetPosition() : BLOCK_SIZE);
 
-                data = Reader.ReadBytes(size);
+                ReadOnlySpan<byte> data = Reader.ReadBytes(size);
                 read += size;
 
                 if (read + CHECK_SIZE <= RawDataLength)

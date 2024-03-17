@@ -1,4 +1,5 @@
 ﻿using ARCVX.Reader;
+using ARCVX.Utilities;
 using BCnEncoder.Encoder;
 using BCnEncoder.Shared;
 using System;
@@ -19,8 +20,6 @@ namespace ARCVX.Formats
         {
             if (!IsValid)
                 return new TexHeader { };
-
-            OpenReader();
 
             Reader.SetPosition(0);
 
@@ -61,14 +60,10 @@ namespace ARCVX.Formats
         public long GetPixelOffset() =>
             16 + (Header.Unknown1 != 6 ? Header.MipMapCount * 4 : 0);
 
-        public byte[] GetPixelBytes()
+        public ReadOnlySpan<byte> GetPixelBytes()
         {
-            if (!IsValid)
-                return null;
-
             Reader.SetPosition(GetPixelOffset());
-
-            return Reader.ReadBytes((int)(File.Length - Reader.GetPosition()));
+            return IsValid ? Reader.ReadBytes((int)(File.Length - Reader.GetPosition())) : null;
         }
 
         public MemoryStream ConvertARGBToDSS()
@@ -81,6 +76,7 @@ namespace ARCVX.Formats
             encoder.OutputOptions.FileFormat = OutputFileFormat.Dds;
 
             MemoryStream stream = new();
+
             encoder.EncodeToStream(GetPixelBytes(), Header.Width, Header.Height, PixelFormat.Argb32, stream);
             stream.Seek(0, SeekOrigin.Begin);
 
@@ -102,13 +98,15 @@ namespace ARCVX.Formats
                     throw new Exception();
 
                 FileInfo output = new(Path.ChangeExtension(File.FullName, "dds"));
-                using FileStream stream = output.OpenWrite();
 
-                byte[] head = GetBytes(GetDDSHeader());
-                byte[] data = GetPixelBytes();
+                using (FileStream stream = output.OpenWrite())
+                {
+                    ReadOnlySpan<byte> head = Bytes.GetStructBytes(GetDDSHeader());
+                    ReadOnlySpan<byte> data = GetPixelBytes();
 
-                stream.Write(head, 0, head.Length);
-                stream.Write(data, 0, data.Length);
+                    stream.Write(head);
+                    stream.Write(data);
+                }
 
                 return output;
             }
@@ -126,9 +124,10 @@ namespace ARCVX.Formats
                     throw new Exception();
 
                 FileInfo output = new(Path.ChangeExtension(File.FullName, "dds"));
-                using FileStream stream = output.OpenWrite();
 
-                ConvertARGBToDSS().CopyTo(stream);
+                using (FileStream stream = output.OpenWrite())
+                    using (MemoryStream pixelStream = ConvertARGBToDSS())
+                        pixelStream.CopyTo(stream);
 
                 return output;
             }
@@ -136,27 +135,6 @@ namespace ARCVX.Formats
             {
                 return null;
             }
-        }
-
-        private static byte[] GetBytes<T>(T data)
-            where T : struct
-        {
-            int size = Marshal.SizeOf(data);
-            byte[] arr = new byte[size];
-
-            IntPtr ptr = IntPtr.Zero;
-            try
-            {
-                ptr = Marshal.AllocHGlobal(size);
-                Marshal.StructureToPtr(data, ptr, false);
-                Marshal.Copy(ptr, arr, 0, size);
-            }
-            finally
-            {
-                Marshal.FreeHGlobal(ptr);
-            }
-
-            return arr;
         }
     }
 

@@ -88,15 +88,6 @@ namespace ARCVX.Formats
             return stream;
         }
 
-        public string GetEntryPath(ARCEntry entry) =>
-            Path.ChangeExtension(entry.Path, GetEntryExtension(entry));
-
-        public string GetEntryExtension(ARCEntry entry) =>
-            GetTypeExtension(entry.TypeHash);
-
-        public string GetTypeExtension(int hash) =>
-            TypeMap.ContainsKey(hash) ? TypeMap[hash] : hash.ToString("X8");
-
         public ARCExport ExportEntryData(ARCEntry entry, DirectoryInfo folder)
         {
             FileInfo outputFile = new(Path.Join(folder.FullName, Path.ChangeExtension(entry.Path, GetEntryExtension(entry))));
@@ -287,7 +278,16 @@ namespace ARCVX.Formats
             }
         }
 
-        private Dictionary<int, string> TypeMap { get; } = new()
+        public static string GetEntryPath(ARCEntry entry) =>
+            Path.ChangeExtension(entry.Path, GetEntryExtension(entry));
+
+        public static string GetEntryExtension(ARCEntry entry) =>
+            GetTypeExtension(entry.TypeHash);
+
+        public static string GetTypeExtension(int hash) =>
+            TypeMap.ContainsKey(hash) ? TypeMap[hash] : hash.ToString("X8");
+
+        private static Dictionary<int, string> TypeMap { get; } = new()
         {
             {0x02358E1A, "spkg"},
             {0x051BE0EC, "rut"},

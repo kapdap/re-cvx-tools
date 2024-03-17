@@ -1,6 +1,7 @@
 ﻿using ARCVX.Reader;
 using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace ARCVX.Utilities
@@ -9,7 +10,7 @@ namespace ARCVX.Utilities
     {
         public static Span<byte> GetStringBytes(string value, int size = 0)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes(value);
+            Span<byte> bytes = Encoding.ASCII.GetBytes(value);
             return size > 0 ? RightPad(bytes, 0, size) : bytes;
         }
 
@@ -47,9 +48,31 @@ namespace ARCVX.Utilities
             return bytes;
         }
 
-        public static byte[] RightPad(byte[] input, byte value, int length)
+        public static Span<byte> GetStructBytes<T>(T data)
+            where T : struct
         {
-            byte[] buffer = Enumerable.Repeat(value, length).ToArray();
+            int size = Marshal.SizeOf(data);
+            byte[] buffer = new byte[size];
+
+            nint pointer = 0;
+
+            try
+            {
+                pointer = Marshal.AllocHGlobal(size);
+                Marshal.StructureToPtr(data, pointer, false);
+                Marshal.Copy(pointer, buffer, 0, size);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(pointer);
+            }
+
+            return buffer;
+        }
+
+        public static Span<byte> RightPad(Span<byte> input, byte value, int length)
+        {
+            Span<byte> buffer = Enumerable.Repeat(value, length).ToArray();
 
             for (int i = 0; i < input.Length; i++)
                 buffer[i] = input[i];

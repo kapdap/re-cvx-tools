@@ -97,7 +97,6 @@ namespace ARCVX.Formats
         public virtual void CloseReader()
         {
             Reader?.Close();
-
             Stream?.Close();
         }
 
