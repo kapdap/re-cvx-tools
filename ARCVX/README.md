@@ -18,12 +18,12 @@ Entries in archives will be replaced if a file exists with the same relative pat
 
 - Extract HFS containers
 - Extract ARC containers
+- Rebuild HFS containers
 - Rebuild ARC containers
 - Convert textures to .dds
 
 ## TODO
 
-- Rebuild HFS containers
 - Convert messages
 - Convert scripts
 - Repack messages
