@@ -1,4 +1,7 @@
-﻿/*   ARCVX
+﻿// SPDX-FileCopyrightText: 2024 Kuriimu2 contributers
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+/*   ARCVX
  * 
  *   Copyright 2024 Kuriimu2 contributers (https://github.com/FanTranslatorsInternational/Kuriimu2)
  *   Copyright 2024 Kapdap <kapdap@pm.me> (https://github.com/kapdap)
