@@ -29,6 +29,10 @@
     <DebugType>None</DebugType>
   </PropertyGroup>
   
+  <PropertyGroup>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+  
   <ItemGroup>
     <PackageReference Include="BCnEncoder.Net" Version="2.1.0" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
