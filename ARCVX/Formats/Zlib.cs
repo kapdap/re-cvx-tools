@@ -10,8 +10,20 @@
         public int FDICT;
         public int FCHECK;
 
+        public bool Checksum()
+        {
+            int check = 0;
+
+            check |= CINFO << 12;
+            check |= CM << 8;
+            check |= FLEVEL << 6;
+            check |= FDICT << 5;
+
+            return (check + FCHECK) % 31 == 0;
+        }
+
         public bool IsValid() =>
-            CINFO >= 0 && CINFO <= 7 && CM == 8 && FLEVEL >= 0 && FLEVEL <= 3 && FDICT >= 0 && FDICT <= 1;
+            CINFO >= 0 && CINFO <= 7 && CM == 8 && FLEVEL >= 0 && FLEVEL <= 3 && FDICT >= 0 && FDICT <= 1 && Checksum();
 
         public ZlibHeader(short data)
         {
