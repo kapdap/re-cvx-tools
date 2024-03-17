@@ -12,7 +12,7 @@ namespace ARCVX
     {
         private const string EXTRACT = ".extract";
 
-        private static HashSet<string> Convert { get; } = [".tex", ".mes", ".evt"];
+        private static HashSet<string> Convert { get; } = [EXTRACT, ".tex", ".mes", ".evt"];
 
         private static async Task<int> Main(string[] args)
         {
@@ -194,11 +194,11 @@ namespace ARCVX
                 if (file.Extension == ".tex")
                     ConvertTexture(file);
 
-                if (file.Extension == ".mes")
+                /*if (file.Extension == ".mes")
                     ConvertMessage(file);
 
                 if (file.Extension == ".evt")
-                    ConvertScript(file);
+                    ConvertScript(file);*/
             }
 
             Console.WriteLine();
