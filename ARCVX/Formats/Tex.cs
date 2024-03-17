@@ -3,8 +3,8 @@ using ARCVX.Utilities;
 using BCnEncoder.Encoder;
 using BCnEncoder.Shared;
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
 
 namespace ARCVX.Formats
 {
@@ -13,14 +13,14 @@ namespace ARCVX.Formats
         public override int MAGIC { get; } = 0x54455800; // "TEX."
         public override int MAGIC_LE { get; } = 0x00584554; // ".XET"
 
+        public HashSet<byte> DDSFormats { get; } = [0x14, 0x18, 0x19, 0x1E];
+        public HashSet<byte> ARGBFormats { get; } = [0x28];
+
         public Tex(FileInfo file) : base(file) { }
         public Tex(FileInfo file, Stream stream) : base(file, stream) { }
 
         public override TexHeader GetHeader()
         {
-            if (!IsValid)
-                return new TexHeader { };
-
             Reader.SetPosition(0);
 
             TexHeader header = new();
@@ -83,58 +83,40 @@ namespace ARCVX.Formats
             return stream;
         }
 
-        public FileInfo Export() =>
-            ExportDDS() ?? ExportARGB();
+        public FileInfo Export()
+        {
+            if (DDSFormats.Contains(Header.Format) && Header.Unknown1 != 0x06)
+                return ExportDDS();
+            else if (ARGBFormats.Contains(Header.Format))
+                return ExportARGB();
+            return null;
+        }
 
         public FileInfo ExportDDS()
         {
-            try
+            FileInfo output = new(Path.ChangeExtension(File.FullName, "dds"));
+
+            using (FileStream stream = output.OpenWrite())
             {
-                if (Header.Unknown1 == 0x06 ||
-                   (Header.Format != 0x14 &&
-                    Header.Format != 0x18 &&
-                    Header.Format != 0x19 &&
-                    Header.Format != 0x1E))
-                    throw new Exception();
+                ReadOnlySpan<byte> head = Bytes.GetStructBytes(GetDDSHeader());
+                ReadOnlySpan<byte> data = GetPixelBytes();
 
-                FileInfo output = new(Path.ChangeExtension(File.FullName, "dds"));
-
-                using (FileStream stream = output.OpenWrite())
-                {
-                    ReadOnlySpan<byte> head = Bytes.GetStructBytes(GetDDSHeader());
-                    ReadOnlySpan<byte> data = GetPixelBytes();
-
-                    stream.Write(head);
-                    stream.Write(data);
-                }
-
-                return output;
+                stream.Write(head);
+                stream.Write(data);
             }
-            catch
-            {
-                return null;
-            }
+
+            return output;
         }
 
         public FileInfo ExportARGB()
         {
-            try
-            {
-                if (Header.Format != 0x28)
-                    throw new Exception();
+            FileInfo output = new(Path.ChangeExtension(File.FullName, "dds"));
 
-                FileInfo output = new(Path.ChangeExtension(File.FullName, "dds"));
+            using (FileStream stream = output.OpenWrite())
+                using (MemoryStream pixelStream = ConvertARGBToDSS())
+                    pixelStream.CopyTo(stream);
 
-                using (FileStream stream = output.OpenWrite())
-                    using (MemoryStream pixelStream = ConvertARGBToDSS())
-                        pixelStream.CopyTo(stream);
-
-                return output;
-            }
-            catch
-            {
-                return null;
-            }
+            return output;
         }
     }
 

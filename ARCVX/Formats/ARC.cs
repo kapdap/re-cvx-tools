@@ -41,9 +41,6 @@ namespace ARCVX.Formats
 
         public List<ARCEntry> GetEntries()
         {
-            if (!IsValid)
-                return null;
-
             Reader.SetPosition(8);
 
             List<ARCEntry> entries = [];
@@ -75,13 +72,12 @@ namespace ARCVX.Formats
 
         public MemoryStream GetEntryStream(ARCEntry entry)
         {
-            if (!IsValid)
-                return null;
-
             Reader.SetPosition(entry.Offset);
 
             MemoryStream stream = new();
+
             Stream.CopyTo(stream);
+
             stream.SetLength((int)entry.DataSize);
             stream.Seek(0, SeekOrigin.Begin);
 
@@ -91,41 +87,25 @@ namespace ARCVX.Formats
         public ARCExport ExportEntryData(ARCEntry entry, DirectoryInfo folder)
         {
             FileInfo outputFile = new(Path.Join(folder.FullName, Path.ChangeExtension(entry.Path, GetEntryExtension(entry))));
+            
+            if (!outputFile.Directory.Exists)
+                outputFile.Directory.Create();
 
-            try
-            {
-                if (!outputFile.Directory.Exists)
-                    outputFile.Directory.Create();
+            if (outputFile.Exists)
+                outputFile.Delete();
 
-                if (outputFile.Exists)
-                    outputFile.Delete();
-            }
-            catch
-            {
-                return null;
-            }
+            using MemoryStream entryStream = GetEntryStream(entry);
+            using FileStream outputStream = outputFile.OpenWrite();
 
-            try
-            {
-                using MemoryStream entryStream = GetEntryStream(entry);
-                using FileStream outputStream = outputFile.OpenWrite();
+            ZlibHeader zlibHeader = new(entryStream.ReadByte(), entryStream.ReadByte());
 
-                ZlibHeader zlibHeader = new(entryStream.ReadByte(), entryStream.ReadByte());
+            entryStream.Seek(0, SeekOrigin.Begin);
 
-                entryStream.Seek(0, SeekOrigin.Begin);
-
-                if (zlibHeader.IsValid())
-                {
-                    using ZLibStream zlibStream = new(entryStream, CompressionMode.Decompress);
+            if (zlibHeader.IsValid())
+                using (ZLibStream zlibStream = new(entryStream, CompressionMode.Decompress))
                     zlibStream.CopyTo(outputStream);
-                }
-                else
-                    entryStream.CopyTo(outputStream);
-            }
-            catch
-            {
-                return null;
-            }
+            else
+                entryStream.CopyTo(outputStream);
 
             return new()
             {
@@ -152,10 +132,11 @@ namespace ARCVX.Formats
             stream.Write(Bytes.GetValueBytes(Header.Count));
 
             stream.Seek(0, SeekOrigin.Begin);
+
             return stream;
         }
 
-        public MemoryStream CreateEntriesStream(List<ARCEntry> entries)
+        public static MemoryStream CreateEntriesStream(List<ARCEntry> entries)
         {
             MemoryStream stream = new();
 
@@ -172,6 +153,7 @@ namespace ARCVX.Formats
             }
 
             stream.Seek(0, SeekOrigin.Begin);
+
             return stream;
         }
 
@@ -248,6 +230,7 @@ namespace ARCVX.Formats
             newStream.CopyTo(outputStream);
 
             outputStream.Seek(0, SeekOrigin.Begin);
+
             return outputStream;
         }
 

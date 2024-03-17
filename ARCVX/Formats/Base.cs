@@ -30,6 +30,9 @@ namespace ARCVX.Formats
         {
             get
             {
+                if (_isValid == null)
+                    File.Refresh();
+
                 _isValid ??= File.Exists &&
                     File.Length > HEADER_SIZE &&
                     (Magic == MAGIC || Magic == MAGIC_LE);
@@ -53,7 +56,8 @@ namespace ARCVX.Formats
         {
             get
             {
-                _header ??= GetHeader();
+                if (IsValid)
+                    _header ??= GetHeader();
                 return (T)_header;
             }
         }

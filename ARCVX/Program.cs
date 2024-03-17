@@ -236,6 +236,7 @@ namespace ARCVX
             if (!arc.IsValid)
             {
                 Console.WriteLine($"{file.FullName} is not a supported ARC file.");
+                Console.ReadLine();
                 return;
             }
 
@@ -247,19 +248,20 @@ namespace ARCVX
                 if (export == null)
                 {
                     Console.Error.WriteLine($"Failed {export.File}");
+                    Console.ReadLine();
                     continue;
                 }
 
                 Console.WriteLine($"Extracted {export.File}");
 
-                if (file.Extension == ".tex")
-                    ConvertTexture(file);
+                if (export.File.Extension == ".tex")
+                    ConvertTexture(export.File);
 
-                /*if (file.Extension == ".mes")
-                    ConvertMessage(file);
+                /*if (export.File.Extension == ".mes")
+                    ConvertMessage(export.File);
 
-                if (file.Extension == ".evt")
-                    ConvertScript(file);*/
+                if (export.File.Extension == ".evt")
+                    ConvertScript(export.File);*/
             }
 
             Console.WriteLine("---------------------------------");
@@ -299,9 +301,20 @@ namespace ARCVX
             using Tex tex = hfs.IsValid ? new(file, hfs.GetDataStream()) : new(file);
             hfs.Dispose();
 
-            FileInfo output;
-            if ((output = tex.Export()) != null)
-                Console.WriteLine("Converted " + output.FullName);
+            try
+            {
+                FileInfo output = tex.Export();
+
+                if (output != null)
+                    Console.WriteLine("Converted " + output.FullName);
+                else
+                    Console.WriteLine($"Unsupported " + file.FullName);
+            }
+            catch
+            {
+                Console.WriteLine("Failed " + file.FullName);
+                Console.ReadLine();
+            }
         }
 
         public static void ConvertMessage(FileInfo file)
