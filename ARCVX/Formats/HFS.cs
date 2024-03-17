@@ -97,29 +97,43 @@ namespace ARCVX.Formats
             return stream;
         }
 
-        public FileInfo SaveStream(MemoryStream stream) =>
+        public FileInfo SaveStream(Stream stream) =>
             SaveStream(stream, File);
 
-        public FileInfo SaveStream(MemoryStream stream, FileInfo file)
+        public FileInfo SaveStream(Stream stream, FileInfo file)
         {
-            FileInfo tempFile = new(Path.Join(File.DirectoryName, "_" + Path.GetRandomFileName()));
+            FileInfo outputFile = new(Path.Join(File.DirectoryName, "_" + Path.GetRandomFileName()));
             
             try
             {
-                if (!tempFile.Directory.Exists)
-                    tempFile.Directory.Create();
+                if (!outputFile.Directory.Exists)
+                    outputFile.Directory.Create();
 
-                using (MemoryStream verifiedStream = Hash.Helper.WriteVerification(stream))
-                    using (FileStream tempStream = tempFile.OpenWrite())
-                        verifiedStream.CopyTo(tempStream);
+                using MemoryStream headerStream = CreateHeaderStream(stream.Length);
 
-                tempFile.MoveTo(file.FullName, true);
+                if (stream.Length % 0x10 > 0)
+                {
+                    stream.Seek(0, SeekOrigin.End);
+                    stream.Write(new byte[(int)(0x10 - stream.Length % 0x10)]);
+                    stream.Seek(0, SeekOrigin.Begin);
+                }
+
+                using MemoryStream verifiedStream = Hash.Helper.WriteVerification(stream);
+
+                using (FileStream outputStream = outputFile.OpenWrite())
+                {
+                    headerStream.CopyTo(outputStream);
+                    verifiedStream.CopyTo(outputStream);
+                }
+
+                outputFile.Refresh();
+                outputFile.MoveTo(file.FullName, true);
 
                 return file;
             }
             catch
             {
-                try { tempFile.Delete(); } catch { }
+                try { outputFile.Delete(); } catch { }
                 return null;
             }
         }

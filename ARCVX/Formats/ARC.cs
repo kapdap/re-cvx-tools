@@ -241,9 +241,6 @@ namespace ARCVX.Formats
             newStream.Seek(0, SeekOrigin.Begin);
             newStream.CopyTo(outputStream);
 
-            if (outputStream.Position % 0x10 > 0)
-                outputStream.Write(new byte[(int)(0x10 - outputStream.Position % 0x10)]);
-
             outputStream.Seek(0, SeekOrigin.Begin);
 
             return outputStream;

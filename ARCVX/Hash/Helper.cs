@@ -29,7 +29,7 @@ namespace ARCVX.Hash
 {
     public static class Helper
     {
-        public static MemoryStream WriteVerification(MemoryStream stream)
+        public static MemoryStream WriteVerification(Stream stream)
         {
             MemoryStream ms = new();
 
