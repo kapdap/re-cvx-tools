@@ -140,15 +140,15 @@ namespace ARCVX.Formats
             MemoryStream stream = new();
 
             stream.Write(Bytes.GetValueBytes(Header.Magic, ByteOrder.LittleEndian));
-            stream.Write(Bytes.GetValueBytes(Header.Version));
-            stream.Write(Bytes.GetValueBytes(Header.Count));
+            stream.Write(Bytes.GetValueBytes(Header.Version, Reader.ByteOrder));
+            stream.Write(Bytes.GetValueBytes(Header.Count, Reader.ByteOrder));
 
             stream.Seek(0, SeekOrigin.Begin);
 
             return stream;
         }
 
-        public static MemoryStream CreateEntriesStream(List<ARCEntry> entries)
+        public MemoryStream CreateEntriesStream(List<ARCEntry> entries)
         {
             MemoryStream stream = new();
 
@@ -158,10 +158,10 @@ namespace ARCVX.Formats
                 flags |= entry.FileSize & 0x00FFFFFF;
 
                 stream.Write(Bytes.GetStringBytes(entry.Path, 0x40));
-                stream.Write(Bytes.GetValueBytes(entry.TypeHash));
-                stream.Write(Bytes.GetValueBytes(entry.DataSize));
-                stream.Write(Bytes.GetValueBytes(flags));
-                stream.Write(Bytes.GetValueBytes(entry.Offset));
+                stream.Write(Bytes.GetValueBytes(entry.TypeHash, Reader.ByteOrder));
+                stream.Write(Bytes.GetValueBytes(entry.DataSize, Reader.ByteOrder));
+                stream.Write(Bytes.GetValueBytes(flags, Reader.ByteOrder));
+                stream.Write(Bytes.GetValueBytes(entry.Offset, Reader.ByteOrder));
             }
 
             stream.Seek(0, SeekOrigin.Begin);

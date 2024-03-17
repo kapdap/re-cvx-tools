@@ -140,6 +140,21 @@ namespace ARCVX.Formats
 
         public bool VerifyBlockChecksum(Span<byte> buffer, Span<byte> checksum) =>
             checksum.SequenceEqual(Hash.Helper.ComputeVerification(buffer));
+
+        public MemoryStream CreateHeaderStream(long length)
+        {
+            MemoryStream ms = new();
+
+            ms.Write(Bytes.GetValueBytes(Header.Magic, ByteOrder.LittleEndian));
+            ms.Write(Bytes.GetValueBytes(Header.Version, Reader.ByteOrder));
+            ms.Write(Bytes.GetValueBytes(Header.Type, Reader.ByteOrder));
+            ms.Write(Bytes.GetValueBytes((int)length, Reader.ByteOrder));
+            ms.Write(Bytes.GetValueBytes(Header.Padding, Reader.ByteOrder));
+
+            ms.Position = 0;
+
+            return ms;
+        }
     }
 
     public struct HFSHeader
