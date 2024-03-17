@@ -58,6 +58,7 @@ namespace ARCVX
                     }
                 }
             );
+            arcOption.IsRequired = true;
 
             Option<string> pathOption = new(
                 aliases: ["-p", "--path"],
@@ -81,6 +82,7 @@ namespace ARCVX
                     }
                 }
             );
+            pathOption.IsRequired = true;
 
             Option<DirectoryInfo> extractOption = new(
                 aliases: ["-e", "--extract"],
@@ -92,7 +94,7 @@ namespace ARCVX
                 description: $"Optional path to folder with content to rebuild .arc container (<path>{EXTRACT})"
             );
 
-            RootCommand rootCommand = new("Extract and rebuild Resident Evil: Code: Veronica X HD .arc files");
+            RootCommand rootCommand = new("Extract and rebuild Resident Evil/Biohazard: Code: Veronica X HD .arc files");
 
             Command extractCommand = new("extract", "Extract .arc container") { arcOption, extractOption };
             extractCommand.SetHandler((path, extract) => { ExtractCommand(path!, extract!); }, arcOption, extractOption);
