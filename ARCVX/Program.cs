@@ -304,9 +304,9 @@ namespace ARCVX
                 Console.WriteLine("Converted " + output.FullName);
         }
 
-        // TODO: Convert message files.
         public static void ConvertMessage(FileInfo file)
         {
+            // TODO: Convert message files.
             using Mes mes = new(file);
 
             FileInfo output;
@@ -314,9 +314,9 @@ namespace ARCVX
                 Console.WriteLine("Converted " + output.FullName);
         }
 
-        // TODO: Convert script files.
         public static void ConvertScript(FileInfo file)
         {
+            // TODO: Convert script files.
             using Evt evt = new(file);
 
             FileInfo output;

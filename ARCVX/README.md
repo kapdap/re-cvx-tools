@@ -4,19 +4,19 @@ A command line tool to extract Resident Evil/Biohazard: Code: Veronica X HD .arc
 
 # Usage
 
-To extract drag and drop a .arc file or a folder containing .arc files onto ARCVX.exe.
+To extract drag and drop a .arc file or a folder containing .arc files onto ARCVX.exe.<br>
 Files will extract to a folder named "\<file/folder name\>.extract".
 
 # Features
 
 - Extract HFS containers
 - Extract ARC containers
+- Rebuild ARC containers
 - Convert textures to .dds
 
 # TODO
 
 - Rebuild HFS containers
-- Rebuild ARC containers
 - Convert messages
 - Convert scripts
 - Repack messages
