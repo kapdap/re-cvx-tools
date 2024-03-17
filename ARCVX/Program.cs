@@ -12,18 +12,28 @@ namespace ARCVX
     {
         private const string EXTRACT = ".extract";
 
-        private static HashSet<string> Convert { get; } = [EXTRACT, ".tex", ".mes", ".evt"];
+        private static HashSet<string> Convert { get; } = [".tex", ".mes", ".evt"];
 
         private static async Task<int> Main(string[] args)
         {
+            // Detect path type and set default arguments
             if (args.Length > 0 && Path.Exists(args[0]))
             {
                 string ext = Path.GetExtension(args[0]);
 
-                if (Convert.Contains(ext))
-                    args = ["convert", "--path", ..args];
+                if (ext == EXTRACT)
+                {
+                    DirectoryInfo folder = new(Path.ChangeExtension(args[0], null));
+
+                    if (folder.Exists)
+                        args = ["rebuild", "--path", folder.FullName];
+                    else
+                        args = ["convert", "--path", .. args];
+                }
+                else if (Convert.Contains(ext))
+                    args = ["convert", "--path", .. args];
                 else
-                    args = ["extract", "--path", ..args];
+                    args = ["extract", "--path", .. args];
             }
 
             Option<string> arcOption = new(
@@ -37,13 +47,13 @@ namespace ARCVX
                         string path = result.Tokens.Single().Value;
 
                         if (!Path.Exists(path))
-                            throw new Exception();
+                            throw new Exception("Path does not exist");
 
                         return path;
                     }
-                    catch
+                    catch(Exception e)
                     {
-                        result.ErrorMessage = "Path does not exist";
+                        result.ErrorMessage = e.Message;
                         return null;
                     }
                 }
@@ -60,13 +70,13 @@ namespace ARCVX
                         string path = result.Tokens.Single().Value;
 
                         if (!Path.Exists(path))
-                            throw new Exception();
+                            throw new Exception("Path does not exist");
 
                         return path;
                     }
-                    catch
+                    catch (Exception e)
                     {
-                        result.ErrorMessage = "Path does not exist";
+                        result.ErrorMessage = e.Message;
                         return null;
                     }
                 }
@@ -74,12 +84,12 @@ namespace ARCVX
 
             Option<DirectoryInfo> extractOption = new(
                 aliases: ["-e", "--extract"],
-                description: $"Optional path to extract .arc contents (<name>{EXTRACT})"
+                description: $"Optional path to extract .arc contents (<path>{EXTRACT})"
             );
 
             Option<DirectoryInfo> rebuildOption = new(
                 aliases: ["-r", "--rebuild"], 
-                description: $"Optional path to folder with content to rebuild .arc container (<name>{EXTRACT})"
+                description: $"Optional path to folder with content to rebuild .arc container (<path>{EXTRACT})"
             );
 
             RootCommand rootCommand = new("Extract and rebuild Resident Evil: Code: Veronica X HD .arc files");
@@ -155,7 +165,7 @@ namespace ARCVX
                 return;
             }
 
-            Console.WriteLine($"Rebuild {files.Count} files...");
+            Console.WriteLine($"Rebuilding {files.Count} files...");
             Console.WriteLine();
 
             foreach (FileInfo file in files)
@@ -184,7 +194,7 @@ namespace ARCVX
             List<FileInfo> files = [];
 
             if (folder.Exists)
-                files = [.. new DirectoryInfo(path).GetFiles(".tex;*.mes;*.evt", SearchOption.AllDirectories)];
+                files = [.. new DirectoryInfo(path).GetFiles("*.*", SearchOption.AllDirectories)];
             else
                 files.Add(new(path));
 
@@ -195,7 +205,7 @@ namespace ARCVX
                 return;
             }
 
-            Console.WriteLine($"Converting {files.Count} files...");
+            Console.WriteLine($"Converting files...");
             Console.WriteLine();
 
             foreach (FileInfo file in files)
@@ -264,8 +274,7 @@ namespace ARCVX
                 return;
             }
 
-            Console.WriteLine($"Rebuilding {file.FullName}");
-            Console.WriteLine();
+            Console.Write($"Rebuilding {file.FullName}... ");
 
             if (hfs.IsValid)
             {
@@ -278,6 +287,8 @@ namespace ARCVX
                 //_ = arc.Save(folder);
                 _ = arc.Save(folder, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
             }
+
+            Console.WriteLine("done!");
         }
 
         public static void ConvertTexture(FileInfo file)
