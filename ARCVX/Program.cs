@@ -16,7 +16,7 @@ namespace ARCVX
 
         private static async Task<int> Main(string[] args)
         {
-            if (Path.Exists(args[0]))
+            if (args.Length > 0 && Path.Exists(args[0]))
             {
                 string ext = Path.GetExtension(args[0]);
 
