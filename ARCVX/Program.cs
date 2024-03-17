@@ -28,7 +28,7 @@ namespace ARCVX
                     if (folder.Exists)
                         args = ["rebuild", "--path", folder.FullName];
                     else
-                        args = ["convert", "--path", .. args];
+                        args = ["rebuild", "--path", $"{folder.FullName}.arc", "--rebuild", folder.FullName];
                 }
                 else if (Convert.Contains(ext))
                     args = ["convert", "--path", .. args];
@@ -276,9 +276,9 @@ namespace ARCVX
 
             if (hfs.IsValid)
             {
-                //using MemoryStream stream = arc.CreateNewStream(folder);
-                //_ = hfs.Save(stream);
-                _ = arc.Save(folder, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
+                using MemoryStream stream = arc.CreateNewStream(folder);
+                //_ = hfs.SaveStream(stream);
+                _ = hfs.SaveStream(stream, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
             }
             else
             {

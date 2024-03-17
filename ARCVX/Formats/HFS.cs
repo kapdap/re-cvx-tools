@@ -9,9 +9,9 @@ namespace ARCVX.Formats
         public override int MAGIC { get; } = 0x48465300; // "HFS."
         public override int MAGIC_LE { get; } = 0x00534648; // ".SFH"
 
-        public const int CHECK_SIZE = 0x10;
-        public const int CHUNK_SIZE = 0x20000;
-        public const int BLOCK_SIZE = CHUNK_SIZE - CHECK_SIZE;
+        public static int CHECK_SIZE = 0x10;
+        public static int CHUNK_SIZE = 0x20000;
+        public static int BLOCK_SIZE = CHUNK_SIZE - CHECK_SIZE;
 
         private long? _dataLength;
         public long DataLength
@@ -64,33 +64,55 @@ namespace ARCVX.Formats
         {
             MemoryStream stream = new();
 
-            Reader.SetPosition(HEADER_SIZE);
+            Stream.Position = HEADER_SIZE;
 
-            long read = 0;
-            while (read < DataLength)
+            while (Stream.Position < RawDataLength)
             {
-                int size = (int)(read + BLOCK_SIZE > RawDataLength ? RawDataLength - Reader.GetPosition() : BLOCK_SIZE);
+                int size = (int)(Stream.Position + BLOCK_SIZE > RawDataLength ? RawDataLength - Stream.Position - CHECK_SIZE : BLOCK_SIZE);
 
-                ReadOnlySpan<byte> data = Reader.ReadBytes(size);
-                read += size;
+                Span<byte> buffer = Reader.ReadBytes(size);
 
-                if (read + CHECK_SIZE <= RawDataLength)
-                    _ = Reader.ReadBytes(CHECK_SIZE);
+                if (Stream.Position + CHECK_SIZE <= RawDataLength)
+                {
+                    Span<byte> checksum = Reader.ReadBytes(CHECK_SIZE);
+                    _ = VerifyBlockChecksum(buffer, checksum);
+                }
 
-                stream.Write(data);
+                stream.Write(buffer);
             }
 
             return stream;
         }
 
-        public FileInfo Save(MemoryStream stream) =>
-            throw new NotImplementedException("Save has not been implemented");
+        public FileInfo SaveStream(MemoryStream stream) =>
+            SaveStream(stream, File);
 
-        public ReadOnlySpan<byte> GenerateBlockChecksum(ReadOnlySpan<byte> data) =>
-            throw new NotImplementedException("GenerateBlockChecksum has not been implemented");
+        public FileInfo SaveStream(MemoryStream stream, FileInfo file)
+        {
+            FileInfo tempFile = new(Path.Join(File.DirectoryName, "_" + Path.GetRandomFileName()));
+            
+            try
+            {
+                if (!tempFile.Directory.Exists)
+                    tempFile.Directory.Create();
 
-        public bool VerifyBlockChecksum(ReadOnlySpan<byte> data, ReadOnlySpan<byte> checksum) =>
-            true;
+                using (MemoryStream verifiedStream = Hash.Helper.WriteVerification(stream))
+                    using (FileStream tempStream = tempFile.OpenWrite())
+                        verifiedStream.CopyTo(tempStream);
+
+                tempFile.MoveTo(file.FullName, true);
+
+                return file;
+            }
+            catch
+            {
+                try { tempFile.Delete(); } catch { }
+                return null;
+            }
+        }
+
+        public bool VerifyBlockChecksum(Span<byte> buffer, Span<byte> checksum) =>
+            checksum.SequenceEqual(Hash.Helper.ComputeVerification(buffer));
     }
 
     public struct HFSHeader
