@@ -58,7 +58,6 @@ namespace ARCVX
                     try
                     {
                         string path = result.Tokens.Single().Value;
-
                         return !Path.Exists(path) ? throw new Exception("Path does not exist") : path;
                     }
                     catch (Exception e)
@@ -79,7 +78,6 @@ namespace ARCVX
                     try
                     {
                         string path = result.Tokens.Single().Value;
-
                         return !Path.Exists(path) ? throw new Exception("Path does not exist") : path;
                     }
                     catch (Exception e)
@@ -101,14 +99,20 @@ namespace ARCVX
                 description: $"Optional path to folder with content to rebuild .arc container (<path>{EXTRACT})"
             );
 
+            Option<bool> overwriteOption = new(
+                aliases: ["-o", "--overwrite"],
+                description: "Overwrite existing .arc files when rebuilding",
+                getDefaultValue: () => false
+            );
+
             RootCommand rootCommand = new("Extract and rebuild Resident Evil/Biohazard: Code: Veronica X HD .arc files");
 
             Command extractCommand = new("extract", "Extract .arc container") { arcOption, extractOption };
             extractCommand.SetHandler((path, extract) => { ExtractCommand(path!, extract!); }, arcOption, extractOption);
             rootCommand.AddCommand(extractCommand);
 
-            Command rebuildCommand = new("rebuild", "Rebuild .arc container") { arcOption, rebuildOption, };
-            rebuildCommand.SetHandler((path, rebuild) => { RebuildCommand(path!, rebuild!); }, arcOption, rebuildOption);
+            Command rebuildCommand = new("rebuild", "Rebuild .arc container") { arcOption, rebuildOption, overwriteOption, };
+            rebuildCommand.SetHandler((path, rebuild, overwrite) => { RebuildCommand(path!, rebuild!, overwrite!); }, arcOption, rebuildOption, overwriteOption);
             rootCommand.AddCommand(rebuildCommand);
 
             Command convertCommand = new("convert", "Convert files to readable formats") { pathOption };
@@ -157,9 +161,9 @@ namespace ARCVX
             Console.ReadLine();
         }
 
-        public static void RebuildCommand(string path, DirectoryInfo rebuild = null)
+        public static void RebuildCommand(string path, DirectoryInfo rebuild = null, bool overwrite = false)
         {
-            if (!CLI.Confirm("Rebuilding will destroy existing .arc files. Are you sure you want to continue? [y/n] "))
+            if (overwrite && !CLI.Confirm("Rebuilding will destroy existing .arc files. Are you sure you want to continue? [y/n] "))
                 return;
 
             DirectoryInfo folder = new(path);
