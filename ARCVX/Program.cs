@@ -229,9 +229,7 @@ namespace ARCVX
 
         public static void ExtractARC(FileInfo file, DirectoryInfo folder)
         {
-            HFS hfs = new(file);
-            using ARC arc = hfs.IsValid ? new(file, hfs.GetDataStream()) : new(file);
-            hfs.Dispose();
+            using ARC arc = (ARC)HFS.Unpack(file);
 
             if (!arc.IsValid)
             {
@@ -297,9 +295,7 @@ namespace ARCVX
 
         public static void ConvertTexture(FileInfo file)
         {
-            HFS hfs = new(file);
-            using Tex tex = hfs.IsValid ? new(file, hfs.GetDataStream()) : new(file);
-            hfs.Dispose();
+            using Tex tex = (Tex)HFS.Unpack(file);
 
             try
             {

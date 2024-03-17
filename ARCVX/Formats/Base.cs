@@ -5,7 +5,47 @@ using System.Runtime.InteropServices;
 
 namespace ARCVX.Formats
 {
-    public class Base<T> : IBase<T>, IDisposable
+    public class Base : IBase, IDisposable
+    {
+        public FileInfo File { get; }
+        public Stream Stream { get; private set; }
+        public EndianReader Reader { get; private set; }
+
+        public Base(FileInfo file) =>
+            File = file;
+
+        public Base(FileInfo file, Stream stream)
+        {
+            File = file;
+            Stream = stream;
+        }
+
+        public virtual void OpenReader()
+        {
+            if (Stream == null && File != null)
+                Stream = File.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+
+            if (Reader == null && Stream != null)
+                Reader = new(Stream);
+        }
+
+        public virtual void CloseReader()
+        {
+            Reader?.Close();
+            Stream?.Close();
+        }
+
+        public virtual void Dispose()
+        {
+            if (Reader != null)
+                ((IDisposable)Reader).Dispose();
+
+            if (Stream != null)
+                ((IDisposable)Stream).Dispose();
+        }
+    }
+
+    public class Base<T> : Base, IBase<T>
         where T : struct
     {
         public virtual int MAGIC => throw new NotImplementedException("MAGIC has not been implemented");
@@ -20,10 +60,6 @@ namespace ARCVX.Formats
                 return (int)_HEADER_SIZE;
             }
         }
-
-        public FileInfo File { get; }
-        public Stream Stream { get; private set; }
-        public EndianReader Reader { get; private set; }
 
         private bool? _isValid = null;
         public virtual bool IsValid
@@ -62,14 +98,8 @@ namespace ARCVX.Formats
             }
         }
 
-        public Base(FileInfo file) =>
-            File = file;
-
-        public Base(FileInfo file, Stream stream)
-        {
-            File = file;
-            Stream = stream;
-        }
+        public Base(FileInfo file) : base(file) { }
+        public Base(FileInfo file, Stream stream) : base(file, stream) { }
 
         public virtual int GetMagic()
         {
@@ -88,47 +118,13 @@ namespace ARCVX.Formats
 
         public virtual T GetHeader() =>
             throw new NotImplementedException("GetHeader has not been implemented");
-
-        public virtual void OpenReader()
-        {
-            if (Stream == null && File != null)
-                Stream = File.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-
-            if (Reader == null && Stream != null)
-                Reader = new(Stream);
-        }
-
-        public virtual void CloseReader()
-        {
-            Reader?.Close();
-            Stream?.Close();
-        }
-
-        public virtual void Dispose()
-        {
-            if (Reader != null)
-                ((IDisposable)Reader).Dispose();
-
-            if (Stream != null)
-                ((IDisposable)Stream).Dispose();
-        }
     }
 
     public interface IBase
     {
-        int MAGIC { get; }
-        int MAGIC_LE { get; }
-
-        int HEADER_SIZE { get; }
-
         FileInfo File { get; }
         Stream Stream { get; }
         EndianReader Reader { get; }
-
-        bool IsValid { get; }
-        int Magic { get; }
-
-        int GetMagic();
 
         void OpenReader();
         void CloseReader();
@@ -137,7 +133,17 @@ namespace ARCVX.Formats
     public interface IBase<T> : IBase
         where T : struct
     {
+        int MAGIC { get; }
+        int MAGIC_LE { get; }
+
+        int HEADER_SIZE { get; }
+
+        bool IsValid { get; }
+
+        int Magic { get; }
         T Header { get; }
+
+        int GetMagic();
         T GetHeader();
     }
 }
