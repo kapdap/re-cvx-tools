@@ -87,7 +87,7 @@ namespace ARCVX.Formats
         public ARCExport ExportEntryData(ARCEntry entry, DirectoryInfo folder)
         {
             FileInfo outputFile = new(Path.Join(folder.FullName, Path.ChangeExtension(entry.Path, GetEntryExtension(entry))));
-            
+
             if (!outputFile.Directory.Exists)
                 outputFile.Directory.Create();
 
@@ -257,6 +257,7 @@ namespace ARCVX.Formats
             catch
             {
                 try { tempFile.Delete(); } catch { }
+
                 return null;
             }
         }

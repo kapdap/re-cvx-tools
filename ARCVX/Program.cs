@@ -46,12 +46,9 @@ namespace ARCVX
                     {
                         string path = result.Tokens.Single().Value;
 
-                        if (!Path.Exists(path))
-                            throw new Exception("Path does not exist");
-
-                        return path;
+                        return !Path.Exists(path) ? throw new Exception("Path does not exist") : path;
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         result.ErrorMessage = e.Message;
                         return null;
@@ -70,10 +67,7 @@ namespace ARCVX
                     {
                         string path = result.Tokens.Single().Value;
 
-                        if (!Path.Exists(path))
-                            throw new Exception("Path does not exist");
-
-                        return path;
+                        return !Path.Exists(path) ? throw new Exception("Path does not exist") : path;
                     }
                     catch (Exception e)
                     {
@@ -90,7 +84,7 @@ namespace ARCVX
             );
 
             Option<DirectoryInfo> rebuildOption = new(
-                aliases: ["-r", "--rebuild"], 
+                aliases: ["-r", "--rebuild"],
                 description: $"Optional path to folder with content to rebuild .arc container (<path>{EXTRACT})"
             );
 
