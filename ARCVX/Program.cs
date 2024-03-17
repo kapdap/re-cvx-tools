@@ -257,11 +257,15 @@ namespace ARCVX
 
             if (hfs.IsValid)
             {
-                using MemoryStream stream = arc.CreateNewStream(folder);
+                //using MemoryStream stream = arc.CreateNewStream(folder);
                 //_ = hfs.Save(stream);
+                _ = arc.Save(folder, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
             }
             else
-                _ = arc.Save(folder);
+            {
+                //_ = arc.Save(folder);
+                _ = arc.Save(folder, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
+            }
         }
 
         public static void ConvertTexture(FileInfo file)
