@@ -93,7 +93,7 @@ namespace ARCVX
             rootCommand.AddCommand(rebuildCommand);
 
             Command convertCommand = new("convert", "Convert files to readable formats") { pathOption };
-            rebuildCommand.SetHandler((path) => { ConvertCommand(path!); }, pathOption);
+            convertCommand.SetHandler((path) => { ConvertCommand(path!); }, pathOption);
             rootCommand.AddCommand(convertCommand);
 
             return await rootCommand.InvokeAsync(args);
