@@ -1,4 +1,5 @@
 ﻿using ARCVX.Reader;
+using System;
 using System.IO;
 
 namespace ARCVX.Formats
@@ -8,16 +9,16 @@ namespace ARCVX.Formats
         public override int MAGIC { get; } = 0x48465300; // "HFS."
         public override int MAGIC_LE { get; } = 0x00534648; // ".SFH"
 
-        public const int HASH_SIZE = 0x10;
+        public const int CHECK_SIZE = 0x10;
         public const int CHUNK_SIZE = 0x20000;
-        public const int BLOCK_SIZE = CHUNK_SIZE - HASH_SIZE;
+        public const int BLOCK_SIZE = CHUNK_SIZE - CHECK_SIZE;
 
         private long? _dataLength;
         public long DataLength
         {
             get
             {
-                _dataLength ??= RawDataLength - (RawDataLength / CHUNK_SIZE * HASH_SIZE) - HEADER_SIZE;
+                _dataLength ??= RawDataLength - (RawDataLength / CHUNK_SIZE * CHECK_SIZE) - HEADER_SIZE;
                 return (long)_dataLength;
             }
         }
@@ -37,19 +38,16 @@ namespace ARCVX.Formats
 
         public override HFSHeader GetHeader()
         {
-            if (!IsValid)
-                return new HFSHeader { };
-
             Reader.SetPosition(0);
 
-            return new HFSHeader
+            return IsValid ? new HFSHeader
             {
                 Magic = Reader.ReadInt32(ByteOrder.LittleEndian),
                 Version = Reader.ReadInt16(),
                 Type = Reader.ReadInt16(),
                 Size = Reader.ReadInt32(),
                 Padding = Reader.ReadInt32(),
-            };
+            } : new();
         }
 
         public long GetRawDataLength()
@@ -71,17 +69,29 @@ namespace ARCVX.Formats
             long read = 0;
             while (read < DataLength)
             {
-                byte[] data = new byte[read + BLOCK_SIZE > RawDataLength ? RawDataLength - Reader.GetPosition() : BLOCK_SIZE];
+                ReadOnlySpan<byte> data;
+                int size = (int)(read + BLOCK_SIZE > RawDataLength ? RawDataLength - Reader.GetPosition() : BLOCK_SIZE);
 
-                data = Reader.ReadBytes(data.Length);
-                stream.Write(data, 0, data.Length);
-                read += data.Length;
+                data = Reader.ReadBytes(size);
+                read += size;
 
-                _ = Reader.ReadBytes(HASH_SIZE);
+                if (read + CHECK_SIZE <= RawDataLength)
+                    _ = Reader.ReadBytes(CHECK_SIZE);
+
+                stream.Write(data);
             }
 
             return stream;
         }
+
+        public FileInfo Save(MemoryStream stream) =>
+            throw new NotImplementedException("Save has not been implemented");
+
+        public ReadOnlySpan<byte> GenerateBlockChecksum(ReadOnlySpan<byte> data) =>
+            throw new NotImplementedException("GenerateBlockChecksum has not been implemented");
+
+        public bool VerifyBlockChecksum(ReadOnlySpan<byte> data, ReadOnlySpan<byte> checksum) =>
+            true;
     }
 
     public struct HFSHeader

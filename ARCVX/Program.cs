@@ -37,9 +37,9 @@ namespace ARCVX
             foreach (FileInfo file in files)
             {
                 if (file.Extension == ".tex")
-                    ConvertTex(file);
+                    ConvertTexture(file);
                 else
-                    ExtractFile(file, folder.Exists ?
+                    ExtractARC(file, folder.Exists ?
                         new($"{folder.FullName}.export") :
                         new(Path.Combine(file.Directory.FullName,
                             Path.ChangeExtension(file.Name, ".export"))));
@@ -50,7 +50,27 @@ namespace ARCVX
             Console.ReadLine();
         }
 
-        public static void ExtractFile(FileInfo file, DirectoryInfo folder)
+        public static void RebuildARC(FileInfo file, DirectoryInfo folder)
+        {
+            using HFS hfs = new(file);
+            using ARC arc = hfs.IsValid ? new(file, hfs.GetDataStream()) : new(file);
+
+            if (!arc.IsValid)
+            {
+                Console.WriteLine($"{file.FullName} is not a supported ARC file.");
+                return;
+            }
+
+            if (hfs.IsValid)
+            {
+                using MemoryStream stream = arc.CreateNewStream(folder);
+                //_ = hfs.Save(stream);
+            }
+            else
+                _ = arc.Save(folder);
+        }
+
+        public static void ExtractARC(FileInfo file, DirectoryInfo folder)
         {
             HFS hfs = new(file);
             using ARC arc = hfs.IsValid ? new(file, hfs.GetDataStream()) : new(file);
@@ -67,16 +87,24 @@ namespace ARCVX
 
             foreach (ARCExport export in arc.ExportAllEntries(folder))
             {
-                Console.WriteLine($"Extracted {export.Path}");
+                Console.WriteLine($"Extracted {export.File}");
 
                 if (export.Entry.TypeHash == 0x241F5DEB)
-                    ConvertTex(new(export.Path));
+                    ConvertTexture(export.File);
+
+                // TODO: Convert more file formats
+                /*if (export.Entry.TypeHash == 0x46C78353 ||
+                    export.Entry.TypeHash == 0x6A76E771)
+                    ConvertTexture(new(export.Path));
+
+                if (export.Entry.TypeHash == 0x375F06DA)
+                    ConvertTexture(new(export.Path));*/
             }
 
             Console.WriteLine("---------------------------------");
         }
 
-        public static void ConvertTex(FileInfo file)
+        public static void ConvertTexture(FileInfo file)
         {
             HFS hfs = new(file);
             using Tex tex = hfs.IsValid ? new(file, hfs.GetDataStream()) : new(file);
@@ -84,6 +112,26 @@ namespace ARCVX
 
             FileInfo output;
             if ((output = tex.Export()) != null)
+                Console.WriteLine("Converted " + output.FullName);
+        }
+
+        // TODO: Convert script files.
+        public static void ConvertScript(FileInfo file)
+        {
+            using Evt evt = new(file);
+
+            FileInfo output;
+            if ((output = evt.Export()) != null)
+                Console.WriteLine("Converted " + output.FullName);
+        }
+
+        // TODO: Convert message files.
+        public static void ConvertMessage(FileInfo file)
+        {
+            using Mes mes = new(file);
+
+            FileInfo output;
+            if ((output = mes.Export()) != null)
                 Console.WriteLine("Converted " + output.FullName);
         }
     }

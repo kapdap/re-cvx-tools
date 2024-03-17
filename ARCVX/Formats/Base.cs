@@ -111,8 +111,7 @@ namespace ARCVX.Formats
         }
     }
 
-    public interface IBase<T>
-        where T : struct
+    public interface IBase
     {
         int MAGIC { get; }
         int MAGIC_LE { get; }
@@ -125,12 +124,17 @@ namespace ARCVX.Formats
 
         bool IsValid { get; }
         int Magic { get; }
-        T Header { get; }
 
         int GetMagic();
-        T GetHeader();
 
         void OpenReader();
         void CloseReader();
+    }
+
+    public interface IBase<T> : IBase
+        where T : struct
+    {
+        T Header { get; }
+        T GetHeader();
     }
 }

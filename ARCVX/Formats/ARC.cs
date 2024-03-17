@@ -1,8 +1,11 @@
-﻿using ARCVX.Reader;
-using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
+﻿using ARCVX.Extensions;
+using ARCVX.Reader;
+using ARCVX.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
+using ZLibDotNet;
 
 namespace ARCVX.Formats
 {
@@ -26,27 +29,20 @@ namespace ARCVX.Formats
 
         public override ARCHeader GetHeader()
         {
-            if (!IsValid)
-                return new ARCHeader { };
-
-            OpenReader();
-
             Reader.SetPosition(0);
 
-            return new ARCHeader
+            return IsValid ? new ARCHeader
             {
                 Magic = Reader.ReadInt32(ByteOrder.LittleEndian),
                 Version = Reader.ReadInt16(),
                 Count = Reader.ReadInt16(),
-            };
+            } : new();
         }
 
         public List<ARCEntry> GetEntries()
         {
             if (!IsValid)
                 return null;
-
-            OpenReader();
 
             Reader.SetPosition(8);
 
@@ -82,12 +78,9 @@ namespace ARCVX.Formats
             if (!IsValid)
                 return null;
 
-            OpenReader();
-
             Reader.SetPosition(entry.Offset);
 
             MemoryStream stream = new();
-
             Stream.CopyTo(stream);
             stream.SetLength((int)entry.DataSize);
             stream.Seek(0, SeekOrigin.Begin);
@@ -95,43 +88,59 @@ namespace ARCVX.Formats
             return stream;
         }
 
+        public string GetEntryPath(ARCEntry entry) =>
+            Path.ChangeExtension(entry.Path, GetEntryExtension(entry));
+
         public string GetEntryExtension(ARCEntry entry) =>
             GetTypeExtension(entry.TypeHash);
 
         public string GetTypeExtension(int hash) =>
             TypeMap.ContainsKey(hash) ? TypeMap[hash] : hash.ToString("X8");
 
-        public FileInfo ExportEntryData(ARCEntry entry, DirectoryInfo folder)
+        public ARCExport ExportEntryData(ARCEntry entry, DirectoryInfo folder)
         {
             FileInfo outputFile = new(Path.Join(folder.FullName, Path.ChangeExtension(entry.Path, GetEntryExtension(entry))));
 
-            if (!outputFile.Directory.Exists)
-                outputFile.Directory.Create();
-
-            if (outputFile.Exists)
-                outputFile.Delete();
-
-            using MemoryStream entryStream = GetEntryStream(entry);
-            using FileStream outputStream = outputFile.OpenWrite();
-
-            int magic = entryStream.ReadByte();
-
-            entryStream.Seek(0, SeekOrigin.Begin);
-
             try
             {
-                if (magic != 0x68 && magic != 0x78)
-                    throw new Exception();
+                if (!outputFile.Directory.Exists)
+                    outputFile.Directory.Create();
 
-                using InflaterInputStream zlibStream = new(entryStream);
-                zlibStream.CopyTo(outputStream);
+                if (outputFile.Exists)
+                    outputFile.Delete();
             }
             catch
             {
-                entryStream.CopyTo(outputStream);
+                return null;
             }
 
-            return outputFile;
+            try
+            {
+                using MemoryStream entryStream = GetEntryStream(entry);
+                using FileStream outputStream = outputFile.OpenWrite();
+
+                ZlibHeader zlibHeader = new(entryStream.ReadByte(), entryStream.ReadByte());
+
+                entryStream.Seek(0, SeekOrigin.Begin);
+
+                if (!zlibHeader.IsValid())
+                {
+                    using ZLibStream zlibStream = new(entryStream, CompressionMode.Decompress);
+                    zlibStream.CopyTo(outputStream);
+                }
+                else
+                    entryStream.CopyTo(outputStream);
+            }
+            catch
+            {
+                return null;
+            }
+
+            return new()
+            {
+                File = outputFile,
+                Entry = entry,
+            };
         }
 
         public IEnumerable<ARCExport> ExportAllEntries() =>
@@ -140,14 +149,141 @@ namespace ARCVX.Formats
         public IEnumerable<ARCExport> ExportAllEntries(DirectoryInfo folder)
         {
             foreach (ARCEntry entry in Entries)
-            {
-                FileInfo path = ExportEntryData(entry, folder);
+                yield return ExportEntryData(entry, folder);
+        }
 
-                yield return new()
+        public MemoryStream CreateHeaderStream()
+        {
+            MemoryStream stream = new();
+
+            stream.Write(Bytes.GetValueBytes(Header.Magic, ByteOrder.LittleEndian));
+            stream.Write(Bytes.GetValueBytes(Header.Version));
+            stream.Write(Bytes.GetValueBytes(Header.Count));
+
+            stream.Seek(0, SeekOrigin.Begin);
+            return stream;
+        }
+
+        public MemoryStream CreateEntriesStream(List<ARCEntry> entries)
+        {
+            MemoryStream stream = new();
+
+            foreach (ARCEntry entry in entries)
+            {
+                uint flags = (uint)entry.Flags << 24;
+                flags |= entry.FileSize & 0x00FFFFFF;
+
+                stream.Write(Bytes.GetStringBytes(entry.Path, 0x40));
+                stream.Write(Bytes.GetValueBytes(entry.TypeHash));
+                stream.Write(Bytes.GetValueBytes(entry.DataSize));
+                stream.Write(Bytes.GetValueBytes(flags));
+                stream.Write(Bytes.GetValueBytes(entry.Offset));
+            }
+
+            stream.Seek(0, SeekOrigin.Begin);
+            return stream;
+        }
+
+        public MemoryStream CreateNewStream(DirectoryInfo folder)
+        {
+            using MemoryStream newStream = new();
+            List<ARCEntry> newEntries = new();
+
+            long offset = HEADER_SIZE + (Entries.Count * 0x50);
+            foreach (ARCEntry entry in Entries)
+            {
+                using MemoryStream dataStream = new();
+                using MemoryStream entryStream = GetEntryStream(entry);
+
+                ARCEntry newEntry = entry;
+                FileInfo inputFile = new(Path.Join(folder.FullName, GetEntryPath(entry)));
+
+                if (inputFile.Exists)
                 {
-                    Path = path.FullName,
-                    Entry = entry,
-                };
+                    using FileStream inputStream = inputFile.OpenReadShared();
+                    ZlibHeader zlibHeader = new(entryStream.ReadByte(), entryStream.ReadByte());
+
+                    if (zlibHeader.IsValid())
+                    {
+                        ZLib zlib = new();
+
+                        uint length = zlib.CompressBound((uint)inputFile.Length);
+
+                        Span<byte> compressedData = new byte[length];
+                        Span<byte> uncompressedData = new byte[inputFile.Length];
+
+                        inputStream.Read(uncompressedData);
+
+                        ZStream zStream = new()
+                        {
+                            Input = uncompressedData,
+                            Output = compressedData
+                        };
+
+                        _ = zlib.DeflateInit(ref zStream, ZLib.Z_DEFAULT_COMPRESSION, ZLib.Z_DEFLATED, zlibHeader.CINFO + 8, 8, ZLib.Z_DEFAULT_STRATEGY);
+                        _ = zlib.Deflate(ref zStream, ZLib.Z_FULL_FLUSH);
+                        _ = zlib.DeflateEnd(ref zStream);
+
+                        dataStream.Write(compressedData.Slice(0, (int)zStream.TotalOut));
+                    }
+                    else
+                        inputStream.CopyTo(dataStream);
+
+                    newEntry.FileSize = (uint)inputFile.Length;
+                    newEntry.DataSize = (uint)dataStream.Length;
+                }
+                else
+                    entryStream.CopyTo(dataStream);
+
+                newEntry.Offset = (uint)offset;
+
+                offset += dataStream.Length;
+
+                newEntries.Add(newEntry);
+
+                dataStream.Seek(0, SeekOrigin.Begin);
+                dataStream.CopyTo(newStream);
+            }
+
+            MemoryStream outputStream = new();
+
+            using (MemoryStream stream = CreateHeaderStream())
+                stream.CopyTo(outputStream);
+
+            using (MemoryStream stream = CreateEntriesStream(newEntries))
+                stream.CopyTo(outputStream);
+
+            newStream.Seek(0, SeekOrigin.Begin);
+            newStream.CopyTo(outputStream);
+
+            outputStream.Seek(0, SeekOrigin.Begin);
+            return outputStream;
+        }
+
+        public FileInfo Save(DirectoryInfo folder) =>
+            Save(folder, File);
+
+        public FileInfo Save(DirectoryInfo folder, FileInfo file)
+        {
+            FileInfo tempFile = new(Path.Join(File.DirectoryName, "_" + Path.GetRandomFileName()));
+
+            try
+            {
+                if (!tempFile.Directory.Exists)
+                    tempFile.Directory.Create();
+
+                using (FileStream tempStream = tempFile.OpenWrite())
+                    using (MemoryStream newStream = CreateNewStream(folder))
+                        newStream.CopyTo(tempStream);
+
+                tempFile.MoveTo(file.FullName, true);
+
+                return file;
+            }
+            catch
+            {
+                try { tempFile.Delete(); } catch { }
+                return null;
             }
         }
 
@@ -214,9 +350,9 @@ namespace ARCVX.Formats
         public uint Offset;
     }
 
-    public struct ARCExport
+    public class ARCExport
     {
-        public string Path;
+        public FileInfo File;
         public ARCEntry Entry;
     }
 }
