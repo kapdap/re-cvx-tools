@@ -11,6 +11,7 @@
  */
 
 using ARCVX.Formats;
+using ARCVX.Utilities;
 using System;
 using System.Collections.Generic;
 using System.CommandLine;
@@ -158,6 +159,9 @@ namespace ARCVX
 
         public static void RebuildCommand(string path, DirectoryInfo rebuild = null)
         {
+            if (!CLI.Confirm("Rebuilding will destroy existing .arc files. Are you sure you want to continue? [y/n] "))
+                return;
+
             DirectoryInfo folder = new(path);
             List<FileInfo> files = [];
 
