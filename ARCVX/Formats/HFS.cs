@@ -23,10 +23,10 @@ namespace ARCVX.Formats
         public override int MAGIC { get; } = 0x48465300; // "HFS."
         public override int MAGIC_LE { get; } = 0x00534648; // ".SFH"
 
-        public static int ALIGN_SIZE = 0x10;
-        public static int CHECK_SIZE = 0x10;
-        public static int CHUNK_SIZE = 0x20000;
-        public static int BLOCK_SIZE = CHUNK_SIZE - CHECK_SIZE;
+        public static int ALIGN_SIZE { get; } = 0x10;
+        public static int CHECK_SIZE { get; } = 0x10;
+        public static int CHUNK_SIZE { get; } = 0x20000;
+        public static int BLOCK_SIZE { get; } = CHUNK_SIZE - CHECK_SIZE;
 
         private long? _dataLength;
         public long DataLength

@@ -185,8 +185,16 @@ namespace ARCVX.Formats
 
                 if (inputFile.Exists)
                 {
+                    if (inputFile.Extension == ".mes")
+                    {
+                        using Mes mes = new(inputFile);
+                        _ = mes.Save();
+                    }
+
+                    inputFile.Refresh();
+
                     using FileStream inputStream = inputFile.OpenReadShared();
-                    ZlibHeader zlibHeader = new(entryStream.ReadByte(), entryStream.ReadByte());
+                        ZlibHeader zlibHeader = new(entryStream.ReadByte(), entryStream.ReadByte());
 
                     if (zlibHeader.IsValid())
                     {
@@ -221,7 +229,6 @@ namespace ARCVX.Formats
                     entryStream.CopyTo(dataStream);
 
                 newEntry.Offset = (uint)offset;
-
                 newEntries.Add(newEntry);
 
                 dataStream.Seek(0, SeekOrigin.Begin);
@@ -259,8 +266,8 @@ namespace ARCVX.Formats
                     outputFile.Directory.Create();
 
                 using (FileStream ouputStream = outputFile.OpenWrite())
-                    using (MemoryStream newStream = CreateNewStream(folder))
-                        newStream.CopyTo(ouputStream);
+                using (MemoryStream newStream = CreateNewStream(folder))
+                    newStream.CopyTo(ouputStream);
 
                 if (file.FullName == File.FullName)
                     CloseReader();

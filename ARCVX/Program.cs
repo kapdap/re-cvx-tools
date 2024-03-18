@@ -11,6 +11,7 @@
  */
 
 using ARCVX.Formats;
+using ARCVX.Reader;
 using ARCVX.Utilities;
 using System;
 using System.Collections.Generic;
@@ -108,18 +109,30 @@ namespace ARCVX
                 getDefaultValue: () => false
             );
 
+            Option<Region> languageOption = new(
+                aliases: ["-l", "--lang", "--language"],
+                description: "Language table to use when decoding and encoding messages",
+                getDefaultValue: () => Region.US
+            );
+
+            Option<ByteOrder> byteOrderOption = new(
+                aliases: ["-b", "--bytes", "--byteorder"],
+                description: "Byte order to use when reading and writing files",
+                getDefaultValue: () => ByteOrder.BigEndian
+            );
+
             RootCommand rootCommand = new("Extract and rebuild Resident Evil/Biohazard: Code: Veronica X HD .arc files");
 
-            Command extractCommand = new("extract", "Extract .arc container") { arcOption, extractOption };
-            extractCommand.SetHandler((path, extract) => { ExtractCommand(path!, extract!); }, arcOption, extractOption);
+            Command extractCommand = new("extract", "Extract .arc container") { arcOption, extractOption, languageOption };
+            extractCommand.SetHandler((path, extract, language) => { ExtractCommand(path!, extract!); }, arcOption, extractOption, languageOption);
             rootCommand.AddCommand(extractCommand);
 
-            Command rebuildCommand = new("rebuild", "Rebuild .arc container") { arcOption, rebuildOption, overwriteOption, };
-            rebuildCommand.SetHandler((path, rebuild, overwrite) => { RebuildCommand(path!, rebuild!, overwrite!); }, arcOption, rebuildOption, overwriteOption);
+            Command rebuildCommand = new("rebuild", "Rebuild .arc container") { arcOption, rebuildOption, overwriteOption, languageOption };
+            rebuildCommand.SetHandler((path, rebuild, overwrite, language) => { RebuildCommand(path!, rebuild!, overwrite!); }, arcOption, rebuildOption, overwriteOption, languageOption);
             rootCommand.AddCommand(rebuildCommand);
 
-            Command convertCommand = new("convert", "Convert files to readable formats") { pathOption };
-            convertCommand.SetHandler((path) => { ConvertCommand(path!); }, pathOption);
+            Command convertCommand = new("convert", "Convert files to readable formats") { pathOption, languageOption };
+            convertCommand.SetHandler((path, language) => { ConvertCommand(path!); }, pathOption, languageOption);
             rootCommand.AddCommand(convertCommand);
 
             return await rootCommand.InvokeAsync(args);
@@ -365,9 +378,20 @@ namespace ARCVX
             // TODO: Convert script files.
             using Evt evt = new(file);
 
-            FileInfo output;
-            if ((output = evt.Export()) != null)
-                Console.WriteLine("Converted " + output.FullName);
+            try
+            {
+                FileInfo output = evt.Export();
+
+                if (output != null)
+                    Console.WriteLine("Converted " + file.FullName);
+                else
+                    Console.WriteLine("Unsupported " + file.FullName);
+            }
+            catch
+            {
+                Console.WriteLine("Failed " + file.FullName);
+                Console.ReadLine();
+            }
         }
     }
 }

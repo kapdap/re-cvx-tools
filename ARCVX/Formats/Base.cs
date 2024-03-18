@@ -23,6 +23,12 @@ namespace ARCVX.Formats
         public Stream Stream { get; private set; }
         public EndianReader Reader { get; private set; }
 
+        public ByteOrder ByteOrder
+        {
+            get => Reader.ByteOrder;
+            set => Reader.ByteOrder = value;
+        }
+
         public Base(FileInfo file) =>
             File = file;
 
