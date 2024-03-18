@@ -121,19 +121,26 @@ namespace ARCVX
                 getDefaultValue: () => ByteOrder.BigEndian
             );
 
-            RootCommand rootCommand = new("Extract and rebuild Resident Evil/Biohazard: Code: Veronica X HD .arc files");
+            string description = "Extract and rebuild Resident Evil/Biohazard: Code: Veronica X HD .arc files" + Environment.NewLine + Environment.NewLine;
+            description += "To extract drag and drop a .arc file or a folder containing .arc files onto ARCVX.exe" + Environment.NewLine;
+            description += "To rebuild drag and drop the \"<name>.extract\" folder onto ARCVX.exe";
 
-            Command extractCommand = new("extract", "Extract .arc container") { arcOption, extractOption, languageOption };
-            extractCommand.SetHandler((path, extract, language) => { ExtractCommand(path!, extract!); }, arcOption, extractOption, languageOption);
+            RootCommand rootCommand = new(description);
+
+            Command extractCommand = new("extract", "Extract .arc container") { arcOption, extractOption };
+            extractCommand.SetHandler((path, extract, language, byteOrder) => { ExtractCommand(path!, extract!); }, arcOption, extractOption, languageOption, byteOrderOption);
             rootCommand.AddCommand(extractCommand);
 
-            Command rebuildCommand = new("rebuild", "Rebuild .arc container") { arcOption, rebuildOption, overwriteOption, languageOption };
-            rebuildCommand.SetHandler((path, rebuild, overwrite, language) => { RebuildCommand(path!, rebuild!, overwrite!); }, arcOption, rebuildOption, overwriteOption, languageOption);
+            Command rebuildCommand = new("rebuild", "Rebuild .arc container") { arcOption, rebuildOption, overwriteOption };
+            rebuildCommand.SetHandler((path, rebuild, overwrite, language, byteOrder) => { RebuildCommand(path!, rebuild!, overwrite!); }, arcOption, rebuildOption, overwriteOption, languageOption, byteOrderOption);
             rootCommand.AddCommand(rebuildCommand);
 
-            Command convertCommand = new("convert", "Convert files to readable formats") { pathOption, languageOption };
-            convertCommand.SetHandler((path, language) => { ConvertCommand(path!); }, pathOption, languageOption);
+            Command convertCommand = new("convert", "Convert files to readable formats") { pathOption };
+            convertCommand.SetHandler((path, language, byteOrder) => { ConvertCommand(path!); }, pathOption, languageOption, byteOrderOption);
             rootCommand.AddCommand(convertCommand);
+
+            rootCommand.AddGlobalOption(languageOption);
+            rootCommand.AddGlobalOption(byteOrderOption);
 
             return await rootCommand.InvokeAsync(args);
         }

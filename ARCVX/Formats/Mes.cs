@@ -53,7 +53,7 @@ namespace ARCVX.Formats
             { Region.JP, Language.JP },
             { Region.US, Language.US },
             { Region.GB, Language.GB },
-            { Region.SP, Language.SP },
+            { Region.ES, Language.ES },
             { Region.DE, Language.DE },
             { Region.FR, Language.FR },
         };
@@ -474,7 +474,7 @@ namespace ARCVX.Formats
             };
 
             // TODO: Spanish language table
-            public static Dictionary<ushort, string> SP = new()
+            public static Dictionary<ushort, string> ES = new()
             {
             };
 
@@ -508,7 +508,7 @@ namespace ARCVX.Formats
         JP,
         US,
         GB,
-        SP,
+        ES,
         DE,
         FR,
     }
