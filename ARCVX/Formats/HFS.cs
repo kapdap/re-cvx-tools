@@ -23,6 +23,7 @@ namespace ARCVX.Formats
         public override int MAGIC { get; } = 0x48465300; // "HFS."
         public override int MAGIC_LE { get; } = 0x00534648; // ".SFH"
 
+        public static int ALIGN_SIZE = 0x10;
         public static int CHECK_SIZE = 0x10;
         public static int CHUNK_SIZE = 0x20000;
         public static int BLOCK_SIZE = CHUNK_SIZE - CHECK_SIZE;
@@ -112,18 +113,18 @@ namespace ARCVX.Formats
 
                 using (MemoryStream headerStream = CreateHeaderStream(stream.Length))
                 {
-                    if (stream.Length % 0x10 > 0)
+                    if (stream.Length % ALIGN_SIZE > 0)
                     {
                         stream.Position = stream.Length;
-                        stream.Write(new byte[(int)(0x10 - stream.Length % 0x10)]);
+                        stream.Write(new byte[(int)(ALIGN_SIZE - stream.Length % ALIGN_SIZE)]);
                         stream.Position = 0;
                     }
 
-                    using MemoryStream verifiedStream = Helper.WriteVerification(stream);
+                    using MemoryStream verifyStream = Helper.WriteVerification(stream);
                     using (FileStream outputStream = outputFile.OpenWrite())
                     {
                         headerStream.CopyTo(outputStream);
-                        verifiedStream.CopyTo(outputStream);
+                        verifyStream.CopyTo(outputStream);
                     }
                 }
 
