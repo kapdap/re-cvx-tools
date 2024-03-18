@@ -37,11 +37,14 @@ namespace ARCVX
                 if (ext == EXTRACT)
                 {
                     DirectoryInfo folder = new(Path.ChangeExtension(args[0], null));
+                    FileInfo file = new(Path.ChangeExtension(args[0], "arc"));
 
                     if (folder.Exists)
-                        args = ["rebuild", "--path", folder.FullName];
+                        args = ["rebuild", "--path", folder.FullName, "--rebuild", .. args];
+                    else if (file.Exists)
+                        args = ["rebuild", "--path", file.FullName, "--rebuild", .. args];
                     else
-                        args = ["rebuild", "--path", $"{folder.FullName}.arc", "--rebuild", folder.FullName];
+                        args = ["convert", "--path", .. args];
                 }
                 else if (Convert.Contains(ext))
                     args = ["convert", "--path", .. args];
@@ -134,7 +137,7 @@ namespace ARCVX
 
             if (files.Count < 1)
             {
-                Console.WriteLine($"No .arc files found in directory.");
+                Console.WriteLine("No .arc files found in directory.");
                 Console.ReadLine();
                 return;
             }
@@ -157,13 +160,14 @@ namespace ARCVX
             }
 
             Console.WriteLine();
-            Console.WriteLine($"ARC extraction complete.");
+            Console.WriteLine("ARC extraction complete.");
             Console.ReadLine();
         }
 
         public static void RebuildCommand(string path, DirectoryInfo rebuild = null, bool overwrite = false)
         {
-            if (overwrite && !CLI.Confirm("Rebuilding will destroy existing .arc files. Are you sure you want to continue? [y/n] "))
+            if (overwrite && !CLI.Confirm($"Rebuilding will destroy existing .arc files.{Environment.NewLine}" + 
+                $"Ensure you have backups avaliable.{Environment.NewLine}Are you sure you want to continue?"))
                 return;
 
             DirectoryInfo folder = new(path);
@@ -176,7 +180,7 @@ namespace ARCVX
 
             if (files.Count < 1)
             {
-                Console.WriteLine($"No .arc files found in directory.");
+                Console.WriteLine("No .arc files found in directory.");
                 Console.ReadLine();
                 return;
             }
@@ -196,11 +200,11 @@ namespace ARCVX
                         Path.ChangeExtension(file.Name, EXTRACT)));
 
                 if (input.Exists)
-                    RebuildARC(file, input);
+                    RebuildARC(file, input, overwrite);
             }
 
             Console.WriteLine();
-            Console.WriteLine($"ARC rebuild complete.");
+            Console.WriteLine("ARC rebuild complete.");
             Console.ReadLine();
         }
 
@@ -216,12 +220,12 @@ namespace ARCVX
 
             if (files.Count < 1)
             {
-                Console.WriteLine($"No convertable files found in directory.");
+                Console.WriteLine("No convertable files found in directory.");
                 Console.ReadLine();
                 return;
             }
 
-            Console.WriteLine($"Converting files...");
+            Console.WriteLine("Converting files...");
             Console.WriteLine();
 
             foreach (FileInfo file in files)
@@ -237,7 +241,7 @@ namespace ARCVX
             }
 
             Console.WriteLine();
-            Console.WriteLine($"File conversion complete.");
+            Console.WriteLine("File conversion complete.");
             Console.ReadLine();
         }
 
@@ -281,7 +285,7 @@ namespace ARCVX
             Console.WriteLine("---------------------------------");
         }
 
-        public static void RebuildARC(FileInfo file, DirectoryInfo folder)
+        public static void RebuildARC(FileInfo file, DirectoryInfo folder, bool overwrite = false)
         {
             using HFS hfs = new(file);
             using ARC arc = hfs.IsValid ? new(file, hfs.GetDataStream()) : new(file);
@@ -297,13 +301,18 @@ namespace ARCVX
             if (hfs.IsValid)
             {
                 using MemoryStream stream = arc.CreateNewStream(folder);
-                //_ = hfs.SaveStream(stream);
-                _ = hfs.SaveStream(stream, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
+
+                if (overwrite)
+                    _ = hfs.SaveStream(stream);
+                else
+                    _ = hfs.SaveStream(stream, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
             }
             else
             {
-                //_ = arc.Save(folder);
-                _ = arc.Save(folder, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
+                if (overwrite)
+                    _ = arc.Save(folder);
+                else
+                    _ = arc.Save(folder, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
             }
 
             Console.WriteLine("done!");

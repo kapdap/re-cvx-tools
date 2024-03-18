@@ -21,7 +21,6 @@
  */
 
 using ARCVX.Formats;
-using Microsoft.Toolkit.HighPerformance;
 using System;
 using System.IO;
 
@@ -35,7 +34,7 @@ namespace ARCVX.Hash
 
             byte[] block = new byte[HFS.BLOCK_SIZE];
 
-            stream.Seek(0, SeekOrigin.Begin);
+            stream.Position = 0;
 
             for (int i = 0; i < stream.Length; i += HFS.BLOCK_SIZE)
             {
@@ -49,7 +48,7 @@ namespace ARCVX.Hash
                 ms.Write(hash);
             }
 
-            ms.Seek(0, SeekOrigin.Begin);
+            ms.Position = 0;
 
             return ms;
         }
