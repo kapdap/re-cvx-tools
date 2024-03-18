@@ -21,10 +21,10 @@ Entries in archives will be replaced if a file exists with the same relative pat
 - Rebuild HFS containers
 - Rebuild ARC containers
 - Convert textures to .dds
+- Convert messages to .txt
 
 ## TODO
 
-- Convert messages
 - Convert scripts
 - Repack messages
 - Repack scripts

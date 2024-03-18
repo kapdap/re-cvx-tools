@@ -233,10 +233,10 @@ namespace ARCVX
                 if (file.Extension == ".tex")
                     ConvertTexture(file);
 
-                /*if (file.Extension == ".mes")
+                if (file.Extension == ".mes")
                     ConvertMessage(file);
 
-                if (file.Extension == ".evt")
+                /*if (file.Extension == ".evt")
                     ConvertScript(file);*/
             }
 
@@ -275,10 +275,10 @@ namespace ARCVX
                 if (export.File.Extension == ".tex")
                     ConvertTexture(export.File);
 
-                /*if (export.File.Extension == ".mes")
+                if (export.File.Extension == ".mes")
                     ConvertMessage(export.File);
 
-                if (export.File.Extension == ".evt")
+                /*if (export.File.Extension == ".evt")
                     ConvertScript(export.File);*/
             }
 
@@ -342,12 +342,22 @@ namespace ARCVX
 
         public static void ConvertMessage(FileInfo file)
         {
-            // TODO: Convert message files.
             using Mes mes = new(file);
 
-            FileInfo output;
-            if ((output = mes.Export()) != null)
-                Console.WriteLine("Converted " + output.FullName);
+            try
+            {
+                List<FileInfo> output = mes.Export();
+
+                if (output.Count > 0)
+                    Console.WriteLine("Converted " + file.FullName);
+                else
+                    Console.WriteLine("Unsupported " + file.FullName);
+            }
+            catch
+            {
+                Console.WriteLine("Failed " + file.FullName);
+                Console.ReadLine();
+            }
         }
 
         public static void ConvertScript(FileInfo file)

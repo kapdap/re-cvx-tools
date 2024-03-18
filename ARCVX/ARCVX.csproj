@@ -40,6 +40,9 @@
   </ItemGroup>
   
   <ItemGroup>
+    <None Update="Data\ASCII\BIOCV_USA.tbl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="LICENSE">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
