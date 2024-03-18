@@ -10,6 +10,7 @@
  *  https://opensource.org/licenses/MIT.
  */
 
+using ARCVX.Hash;
 using ARCVX.Reader;
 using ARCVX.Utilities;
 using System;
@@ -97,10 +98,10 @@ namespace ARCVX.Formats
             return stream;
         }
 
-        public FileInfo SaveStream(Stream stream) =>
+        public HFS SaveStream(Stream stream) =>
             SaveStream(stream, File);
 
-        public FileInfo SaveStream(Stream stream, FileInfo file)
+        public HFS SaveStream(Stream stream, FileInfo file)
         {
             FileInfo outputFile = new(Path.Join(File.DirectoryName, "_" + Path.GetRandomFileName()));
             
@@ -109,27 +110,30 @@ namespace ARCVX.Formats
                 if (!outputFile.Directory.Exists)
                     outputFile.Directory.Create();
 
-                using MemoryStream headerStream = CreateHeaderStream(stream.Length);
-
-                if (stream.Length % 0x10 > 0)
+                using (MemoryStream headerStream = CreateHeaderStream(stream.Length))
                 {
-                    stream.Seek(0, SeekOrigin.End);
-                    stream.Write(new byte[(int)(0x10 - stream.Length % 0x10)]);
-                    stream.Seek(0, SeekOrigin.Begin);
+                    if (stream.Length % 0x10 > 0)
+                    {
+                        stream.Position = stream.Length;
+                        stream.Write(new byte[(int)(0x10 - stream.Length % 0x10)]);
+                        stream.Position = 0;
+                    }
+
+                    using MemoryStream verifiedStream = Helper.WriteVerification(stream);
+                    using (FileStream outputStream = outputFile.OpenWrite())
+                    {
+                        headerStream.CopyTo(outputStream);
+                        verifiedStream.CopyTo(outputStream);
+                    }
                 }
 
-                using MemoryStream verifiedStream = Hash.Helper.WriteVerification(stream);
-
-                using (FileStream outputStream = outputFile.OpenWrite())
-                {
-                    headerStream.CopyTo(outputStream);
-                    verifiedStream.CopyTo(outputStream);
-                }
+                if (file.FullName == File.FullName)
+                    CloseReader();
 
                 outputFile.Refresh();
                 outputFile.MoveTo(file.FullName, true);
 
-                return file;
+                return new(outputFile);
             }
             catch
             {
@@ -139,7 +143,7 @@ namespace ARCVX.Formats
         }
 
         public bool VerifyBlockChecksum(Span<byte> buffer, Span<byte> checksum) =>
-            checksum.SequenceEqual(Hash.Helper.ComputeVerification(buffer));
+            checksum.SequenceEqual(Helper.ComputeVerification(buffer));
 
         public MemoryStream CreateHeaderStream(long length)
         {

@@ -246,30 +246,33 @@ namespace ARCVX.Formats
             return outputStream;
         }
 
-        public FileInfo Save(DirectoryInfo folder) =>
+        public ARC Save(DirectoryInfo folder) =>
             Save(folder, File);
 
-        public FileInfo Save(DirectoryInfo folder, FileInfo file)
+        public ARC Save(DirectoryInfo folder, FileInfo file)
         {
-            FileInfo tempFile = new(Path.Join(File.DirectoryName, "_" + Path.GetRandomFileName()));
+            FileInfo outputFile = new(Path.Join(File.DirectoryName, "_" + Path.GetRandomFileName()));
 
             try
             {
-                if (!tempFile.Directory.Exists)
-                    tempFile.Directory.Create();
+                if (!outputFile.Directory.Exists)
+                    outputFile.Directory.Create();
 
-                using (FileStream tempStream = tempFile.OpenWrite())
+                using (FileStream ouputStream = outputFile.OpenWrite())
                     using (MemoryStream newStream = CreateNewStream(folder))
-                        newStream.CopyTo(tempStream);
+                        newStream.CopyTo(ouputStream);
 
-                tempFile.MoveTo(file.FullName, true);
+                if (file.FullName == File.FullName)
+                    CloseReader();
 
-                return file;
+                outputFile.Refresh();
+                outputFile.MoveTo(file.FullName, true);
+
+                return new(outputFile);
             }
             catch
             {
-                try { tempFile.Delete(); } catch { }
-
+                try { outputFile.Delete(); } catch { }
                 return null;
             }
         }
