@@ -21,14 +21,16 @@ Entries in archives will be replaced if a file exists with the same relative pat
 - Rebuild HFS containers
 - Rebuild ARC containers
 - Convert textures to .dds
-- Convert messages to .txt
+- Convert messages to .txt (US-only)
+- Rebuild messages from .txt (US-only)
 
 ## TODO
 
 - Convert scripts
-- Repack messages
-- Repack scripts
-- Repack textures
+- Rebuild scripts
+- Rebuild textures
+- Convert non-US messages
+- Custom language tables
 
 # Links
 
