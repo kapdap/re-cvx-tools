@@ -63,7 +63,7 @@ namespace ARCVX.Formats
         public virtual int MAGIC => throw new NotImplementedException("MAGIC has not been implemented");
         public virtual int MAGIC_LE => throw new NotImplementedException("MAGIC_LE has not been implemented");
 
-        private int? _HEADER_SIZE;
+        protected int? _HEADER_SIZE;
         public int HEADER_SIZE
         {
             get
@@ -73,7 +73,7 @@ namespace ARCVX.Formats
             }
         }
 
-        private bool? _isValid = null;
+        protected bool? _isValid = null;
         public virtual bool IsValid
         {
             get
@@ -89,7 +89,7 @@ namespace ARCVX.Formats
             }
         }
 
-        private int? _magic;
+        protected int? _magic;
         public virtual int Magic
         {
             get
@@ -99,7 +99,7 @@ namespace ARCVX.Formats
             }
         }
 
-        private T? _header;
+        protected T? _header;
         public virtual T Header
         {
             get

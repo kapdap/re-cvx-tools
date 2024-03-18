@@ -91,5 +91,10 @@ namespace ARCVX.Utilities
 
             return buffer;
         }
+        public static ushort SwapBytes(ushort value) =>
+            (ushort)((ushort)((value & 0xff) << 8) | ((value >> 8) & 0xff));
+
+        public static uint SwapBytes(uint value) =>
+             ((value & 0x000000ff) << 24) + ((value & 0x0000ff00) << 8) + ((value & 0x00ff0000) >> 8) + ((value & 0xff000000) >> 24);
     }
 }
