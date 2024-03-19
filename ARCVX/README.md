@@ -2,6 +2,10 @@
 
 ARCVX is a command line utility for extracting and repacking Resident Evil/Biohazard: Code: Veronica X HD .arc files.
 
+## Releases
+
+Download latest release [here](https://github.com/kapdap/re-cvx-tools/releases/download/arcvx/arcvx-snapshot-2024.03.19.1.zip).
+
 ## Usage
 
 ### Extracting
