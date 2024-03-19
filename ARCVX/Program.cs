@@ -43,9 +43,9 @@ namespace ARCVX
                     FileInfo file = new(Path.ChangeExtension(args[0], "arc"));
 
                     if (folder.Exists)
-                        args = ["rebuild", "--path", folder.FullName, "--rebuild", .. args];
+                        args = ["repack", "--path", folder.FullName, "--folder", .. args];
                     else if (file.Exists)
-                        args = ["rebuild", "--path", file.FullName, "--rebuild", .. args];
+                        args = ["repack", "--path", file.FullName, "--folder", .. args];
                     else
                         args = ["convert", "--path", .. args];
                 }
