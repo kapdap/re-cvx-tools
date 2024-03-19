@@ -17,7 +17,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ARCVX.Formats
 {
@@ -76,11 +75,7 @@ namespace ARCVX.Formats
 
         public void LoadLanguage(Region table)
         {
-            if (Languages.ContainsKey(table))
-                DecodeMap = Languages[table];
-            else
-                DecodeMap = Languages[Region.US];
-
+            DecodeMap = Languages.ContainsKey(table) ? Languages[table] : Languages[Region.US];
             EncodeMap = DecodeMap.ToDictionary(x => x.Value, x => x.Key);
         }
 
@@ -293,12 +288,12 @@ namespace ARCVX.Formats
                     else if (text.StartsWith("[WAIT:") && text.Length > 7)
                     {
                         entryWriter.Write((ushort)0xFF02);
-                        entryWriter.Write(ushort.Parse(text.Substring(6, text.Length - 7)));
+                        entryWriter.Write(ushort.Parse(text[6..^1]));
                     }
                     else if (text.StartsWith("[ITEM:") && text.Length > 7)
                     {
                         entryWriter.Write((ushort)0xFF03);
-                        entryWriter.Write(ushort.Parse(text.Substring(6, text.Length - 7)));
+                        entryWriter.Write(ushort.Parse(text[6..^1]));
                     }
                     else
                     {

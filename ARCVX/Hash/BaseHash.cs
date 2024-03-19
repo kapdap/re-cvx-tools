@@ -29,38 +29,23 @@ namespace ARCVX.Hash
     public abstract class BaseHash<T> : IHash
     {
         /// <inheritdoc cref="Compute(string)"/>
-        public byte[] Compute(string input)
-        {
-            return Compute(input, Encoding.ASCII);
-        }
+        public byte[] Compute(string input) => Compute(input, Encoding.ASCII);
 
         /// <inheritdoc cref="Compute(string,Encoding)"/>
-        public byte[] Compute(string input, Encoding enc)
-        {
-            return Compute(enc.GetBytes(input));
-        }
+        public byte[] Compute(string input, Encoding enc) => Compute(enc.GetBytes(input));
 
         /// <inheritdoc cref="Compute(Span{byte})"/>
-        public byte[] Compute(Span<byte> input)
-        {
-            return ConvertResult(ComputeValue(input));
-        }
+        public byte[] Compute(Span<byte> input) => ConvertResult(ComputeValue(input));
 
         /// <inheritdoc cref="Compute(Stream)"/>
-        public byte[] Compute(Stream input)
-        {
-            return ConvertResult(ComputeValue(input));
-        }
+        public byte[] Compute(Stream input) => ConvertResult(ComputeValue(input));
 
         /// <summary>
         /// Computes a hash from a string encoded in ASCII.
         /// </summary>
         /// <param name="input">The string to compute the hash to.</param>
         /// <returns>The computed hash.</returns>
-        public T ComputeValue(string input)
-        {
-            return ComputeValue(input, Encoding.ASCII);
-        }
+        public T ComputeValue(string input) => ComputeValue(input, Encoding.ASCII);
 
         /// <summary>
         /// Computes a hash from a string.
@@ -68,10 +53,7 @@ namespace ARCVX.Hash
         /// <param name="input">The string to compute the hash to.</param>
         /// <param name="enc">The encoding the string should be encoded in.</param>
         /// <returns>The computed hash.</returns>
-        public T ComputeValue(string input, Encoding enc)
-        {
-            return ComputeValue(enc.GetBytes(input));
-        }
+        public T ComputeValue(string input, Encoding enc) => ComputeValue(enc.GetBytes(input));
 
         /// <summary>
         /// Computes a hash over a stream of data.
@@ -80,7 +62,7 @@ namespace ARCVX.Hash
         /// <returns>The computed hash.</returns>
         public T ComputeValue(Span<byte> input)
         {
-            var result = CreateInitialValue();
+            T result = CreateInitialValue();
             ComputeInternal(input, ref result);
 
             FinalizeResult(ref result);
@@ -94,9 +76,9 @@ namespace ARCVX.Hash
         /// <returns>The computed hash.</returns>
         public T ComputeValue(Stream input)
         {
-            var result = CreateInitialValue();
+            T result = CreateInitialValue();
 
-            var buffer = new byte[4096];
+            byte[] buffer = new byte[4096];
             int readSize;
             do
             {

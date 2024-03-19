@@ -28,7 +28,7 @@ namespace ARCVX.Utilities
                     Console.WriteLine();
             } while (response != ConsoleKey.Y && response != ConsoleKey.N);
 
-            return (response == ConsoleKey.Y);
+            return response == ConsoleKey.Y;
         }
     }
 }

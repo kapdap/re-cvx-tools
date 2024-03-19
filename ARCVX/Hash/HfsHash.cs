@@ -24,14 +24,14 @@ using System;
 
 namespace ARCVX.Hash
 {
-    class HfsHash : BaseHash<byte[]>
+    internal class HfsHash : BaseHash<byte[]>
     {
         private static readonly byte[] InitValues = { 0x87, 0x55, 0x07, 0xB5, 0x4B, 0x04, 0xA5, 0xAE, 0xC7, 0x67, 0xBE, 0xCB, 0x01, 0x50, 0x58, 0x44 };
         private static readonly int[] RotValues = { 1, 6, 3, 4, 2, 5, 7, 4, 6, 2, 1, 5, 3, 1, 7, 3 };
 
         protected override byte[] CreateInitialValue()
         {
-            var buffer = new byte[16];
+            byte[] buffer = new byte[16];
             Array.Copy(InitValues, buffer, 16);
 
             return buffer;
@@ -39,20 +39,17 @@ namespace ARCVX.Hash
 
         protected override void FinalizeResult(ref byte[] result)
         {
-            for (var i = 0; i < 16; i++)
+            for (int i = 0; i < 16; i++)
                 result[i] = Rot(result[i], RotValues[i]);
         }
 
         protected override void ComputeInternal(Span<byte> input, ref byte[] result)
         {
-            for (var i = 0; i < input.Length; i++)
+            for (int i = 0; i < input.Length; i++)
                 result[i % 16] += input[i];
         }
 
-        protected override byte[] ConvertResult(byte[] result)
-        {
-            return result;
-        }
+        protected override byte[] ConvertResult(byte[] result) => result;
 
         private static byte Rot(byte value, int rot) => (byte)((value >> rot) | (value << (8 - rot)));
     }

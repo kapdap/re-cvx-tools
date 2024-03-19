@@ -12,7 +12,6 @@
 
 using ARCVX.Hash;
 using ARCVX.Reader;
-using ARCVX.Utilities;
 using System;
 using System.IO;
 
@@ -105,7 +104,7 @@ namespace ARCVX.Formats
         public HFS SaveStream(Stream stream, FileInfo file)
         {
             FileInfo outputFile = new(Path.Join(File.DirectoryName, "_" + Path.GetRandomFileName()));
-            
+
             try
             {
                 if (!outputFile.Directory.Exists)
@@ -116,16 +115,14 @@ namespace ARCVX.Formats
                     if (stream.Length % ALIGN_SIZE > 0)
                     {
                         stream.Position = stream.Length;
-                        stream.Write(new byte[(int)(ALIGN_SIZE - stream.Length % ALIGN_SIZE)]);
+                        stream.Write(new byte[(int)(ALIGN_SIZE - (stream.Length % ALIGN_SIZE))]);
                         stream.Position = 0;
                     }
 
-                    using (MemoryStream verifyStream = Helper.WriteVerification(stream))
-                    using (FileStream outputStream = outputFile.OpenWrite())
-                    {
-                        headerStream.CopyTo(outputStream);
-                        verifyStream.CopyTo(outputStream);
-                    }
+                    using MemoryStream verifyStream = Helper.WriteVerification(stream);
+                    using FileStream outputStream = outputFile.OpenWrite();
+                    headerStream.CopyTo(outputStream);
+                    verifyStream.CopyTo(outputStream);
                 }
 
                 if (file.FullName == File.FullName)

@@ -192,7 +192,7 @@ namespace ARCVX
 
         public static void RebuildCommand(string path, DirectoryInfo rebuild = null, bool overwrite = false)
         {
-            if (overwrite && !CLI.Confirm($"Rebuilding will destroy existing .arc files.{Environment.NewLine}" + 
+            if (overwrite && !CLI.Confirm($"Rebuilding will destroy existing .arc files.{Environment.NewLine}" +
                 $"Ensure you have backups avaliable.{Environment.NewLine}Are you sure you want to continue?"))
                 return;
 
@@ -328,17 +328,11 @@ namespace ARCVX
             {
                 using MemoryStream stream = arc.CreateNewStream(folder);
 
-                if (overwrite)
-                    _ = hfs.SaveStream(stream);
-                else
-                    _ = hfs.SaveStream(stream, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
+                _ = overwrite ? hfs.SaveStream(stream) : hfs.SaveStream(stream, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
             }
             else
             {
-                if (overwrite)
-                    _ = arc.Save(folder);
-                else
-                    _ = arc.Save(folder, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
+                _ = overwrite ? arc.Save(folder) : arc.Save(folder, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
             }
 
             Console.WriteLine("done!");
