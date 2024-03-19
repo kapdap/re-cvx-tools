@@ -56,6 +56,7 @@ namespace ARCVX.Formats
             { Region.ES, Language.ES },
             { Region.DE, Language.DE },
             { Region.FR, Language.FR },
+            { Region.IT, Language.IT },
         };
 
         public Mes(FileInfo file) : base(file) =>
@@ -123,6 +124,8 @@ namespace ARCVX.Formats
 
         public Span<byte> GetEntryBytes(MesEntry entry)
         {
+            OpenReader();
+
             long position = Stream.Position;
             Stream.Position = entry.Offset;
 
@@ -838,6 +841,11 @@ namespace ARCVX.Formats
             public static Dictionary<ushort, string> FR = new()
             {
             };
+
+            // TODO: Italian language table
+            public static Dictionary<ushort, string> IT = new()
+            {
+            };
         }
     }
 
@@ -862,5 +870,6 @@ namespace ARCVX.Formats
         ES,
         DE,
         FR,
+        IT,
     }
 }

@@ -52,6 +52,8 @@ namespace ARCVX.Formats
 
         public override HFSHeader GetHeader()
         {
+            OpenReader();
+
             Reader.SetPosition(0);
 
             return IsValid ? new HFSHeader
@@ -66,16 +68,20 @@ namespace ARCVX.Formats
 
         public long GetRawDataLength()
         {
+            OpenReader();
+
             long position = Stream.Position;
 
             Stream.Seek(0, SeekOrigin.End);
             Stream.Seek(position, SeekOrigin.Begin);
 
-            return Reader.GetLength();
+            return Stream.Length;
         }
 
         public MemoryStream GetDataStream()
         {
+            OpenReader();
+
             MemoryStream stream = new();
 
             Stream.Position = HEADER_SIZE;
@@ -84,16 +90,23 @@ namespace ARCVX.Formats
             {
                 int size = (int)(Stream.Position + BLOCK_SIZE > RawDataLength ? RawDataLength - Stream.Position - CHECK_SIZE : BLOCK_SIZE);
 
-                Span<byte> buffer = Reader.ReadBytes(size);
+                Span<byte> buffer = new byte[size];
+
+                Stream.Read(buffer);
 
                 if (Stream.Position + CHECK_SIZE <= RawDataLength)
                 {
-                    Span<byte> checksum = Reader.ReadBytes(CHECK_SIZE);
+                    Span<byte> checksum = new byte[CHECK_SIZE];
+
+                    Stream.Read(checksum);
+
                     _ = VerifyBlockChecksum(buffer, checksum);
                 }
 
                 stream.Write(buffer);
             }
+
+            stream.Position = 0;
 
             return stream;
         }
@@ -121,6 +134,7 @@ namespace ARCVX.Formats
 
                     using MemoryStream verifyStream = Helper.WriteVerification(stream);
                     using FileStream outputStream = outputFile.OpenWrite();
+
                     headerStream.CopyTo(outputStream);
                     verifyStream.CopyTo(outputStream);
                 }
@@ -141,9 +155,6 @@ namespace ARCVX.Formats
             }
         }
 
-        public bool VerifyBlockChecksum(Span<byte> buffer, Span<byte> checksum) =>
-            checksum.SequenceEqual(Helper.ComputeVerification(buffer));
-
         public MemoryStream CreateHeaderStream(long length)
         {
             MemoryStream stream = new();
@@ -159,6 +170,9 @@ namespace ARCVX.Formats
 
             return stream;
         }
+
+        public bool VerifyBlockChecksum(Span<byte> buffer, Span<byte> checksum) =>
+            checksum.SequenceEqual(Helper.ComputeVerification(buffer));
     }
 
     public struct HFSHeader

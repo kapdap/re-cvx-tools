@@ -33,6 +33,8 @@ namespace ARCVX.Formats
 
         public override TexHeader GetHeader()
         {
+            OpenReader();
+
             Reader.SetPosition(0);
 
             TexHeader header = new();
@@ -74,12 +76,20 @@ namespace ARCVX.Formats
 
         public ReadOnlySpan<byte> GetPixelBytes()
         {
-            Reader.SetPosition(GetPixelOffset());
-            return IsValid ? Reader.ReadBytes((int)(File.Length - Reader.GetPosition())) : null;
+            OpenReader();
+
+            Stream.Position = GetPixelOffset();
+
+            Span<byte> buffer = new byte[File.Length - Stream.Position];
+
+            Stream.Read(buffer);
+
+            return buffer;
         }
 
         public MemoryStream ConvertARGBToDSS()
         {
+            MemoryStream stream = new();
             BcEncoder encoder = new();
 
             encoder.OutputOptions.GenerateMipMaps = true;
@@ -87,10 +97,9 @@ namespace ARCVX.Formats
             encoder.OutputOptions.Format = CompressionFormat.Bc3;
             encoder.OutputOptions.FileFormat = OutputFileFormat.Dds;
 
-            MemoryStream stream = new();
-
             encoder.EncodeToStream(GetPixelBytes(), Header.Width, Header.Height, PixelFormat.Argb32, stream);
-            stream.Seek(0, SeekOrigin.Begin);
+
+            stream.Position = 0;
 
             return stream;
         }

@@ -56,6 +56,8 @@ namespace ARCVX.Formats
 
         public List<ARCEntry> GetEntries()
         {
+            OpenReader();
+
             Reader.SetPosition(8);
 
             List<ARCEntry> entries = [];
@@ -85,14 +87,23 @@ namespace ARCVX.Formats
             return entries;
         }
 
+        public ReadOnlySpan<byte> GetEntryBytes(ARCEntry entry)
+        {
+            OpenReader();
+
+            Span<byte> buffer = new byte[entry.DataSize];
+
+            Stream.Position = entry.Offset;
+            Stream.Read(buffer);
+
+            return buffer;
+        }
+
         public MemoryStream GetEntryStream(ARCEntry entry)
         {
             MemoryStream stream = new();
 
-            Stream.Position = entry.Offset;
-            Stream.CopyTo(stream);
-
-            stream.SetLength((int)entry.DataSize);
+            stream.Write(GetEntryBytes(entry));
             stream.Position = 0;
 
             return stream;
@@ -291,8 +302,7 @@ namespace ARCVX.Formats
             catch
             {
                 try { outputFile.Delete(); } catch { }
-
-                return null;
+                throw;
             }
         }
 

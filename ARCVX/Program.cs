@@ -150,6 +150,8 @@ namespace ARCVX
             }, new ConfigBinder(arcOption, extractOption, overwriteOption, languageOption, languageFileOption, byteOrderOption));
             extractCommand.AddOption(arcOption);
             extractCommand.AddOption(extractOption);
+            extractCommand.AddOption(languageOption);
+            extractCommand.AddOption(languageFileOption);
 
             Command repackCommand = new("repack", "Repack .arc container");
             repackCommand.SetHandler((config) =>
@@ -160,6 +162,8 @@ namespace ARCVX
             repackCommand.AddOption(arcOption);
             repackCommand.AddOption(repackOption);
             repackCommand.AddOption(overwriteOption);
+            repackCommand.AddOption(languageOption);
+            repackCommand.AddOption(languageFileOption);
 
             Command convertCommand = new("convert", "Convert files to readable formats");
             convertCommand.SetHandler((config) =>
@@ -169,14 +173,23 @@ namespace ARCVX
             }, new ConfigBinder(pathOption, repackOption, rebuildOption, languageOption, languageFileOption, byteOrderOption));
             convertCommand.AddOption(pathOption);
             convertCommand.AddOption(rebuildOption);
+            convertCommand.AddOption(languageOption);
+            convertCommand.AddOption(languageFileOption);
+
+            Command unpackCommand = new("unpack", "Unpack file from HFS container");
+            unpackCommand.SetHandler((config) =>
+            {
+                Config = config;
+                UnpackCommand();
+            }, new ConfigBinder(pathOption, extractOption, overwriteOption, languageOption, languageFileOption, byteOrderOption));
+            unpackCommand.AddOption(pathOption);
+
+            rootCommand.AddGlobalOption(byteOrderOption);
 
             rootCommand.AddCommand(extractCommand);
             rootCommand.AddCommand(repackCommand);
             rootCommand.AddCommand(convertCommand);
-
-            rootCommand.AddGlobalOption(languageOption);
-            rootCommand.AddGlobalOption(languageFileOption);
-            rootCommand.AddGlobalOption(byteOrderOption);
+            rootCommand.AddCommand(unpackCommand);
 
             return await rootCommand.InvokeAsync(args);
         }
@@ -203,16 +216,25 @@ namespace ARCVX
 
             foreach (FileInfo file in files)
             {
-                DirectoryInfo output =
-                    Config.Folder != null && Config.Folder.Exists ?
-                    Config.Folder :
+                try
+                {
+                    DirectoryInfo output =
+                        Config.Folder != null && Config.Folder.Exists ?
+                        Config.Folder :
 
-                    folder.Exists ?
-                    new($"{folder.FullName}{EXTRACT}") :
-                    new(Path.Combine(file.Directory.FullName,
-                        Path.ChangeExtension(file.Name, EXTRACT)));
+                        folder.Exists ?
+                        new($"{folder.FullName}{EXTRACT}") :
+                        new(Path.Combine(file.Directory.FullName,
+                            Path.ChangeExtension(file.Name, EXTRACT)));
 
-                ExtractARC(file, output);
+                    ExtractARC(file, output);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Failed " + file.FullName);
+                    Console.WriteLine(e.Message);
+                    Console.ReadLine();
+                }
             }
 
             Console.WriteLine();
@@ -248,21 +270,88 @@ namespace ARCVX
 
             foreach (FileInfo file in files)
             {
-                DirectoryInfo input =
-                    Config.Folder != null && Config.Folder.Exists ?
-                    Config.Folder :
+                try
+                {
+                    DirectoryInfo input =
+                        Config.Folder != null && Config.Folder.Exists ?
+                        Config.Folder :
 
-                    folder.Exists ?
-                    new($"{folder.FullName}{EXTRACT}") :
-                    new(Path.Combine(file.Directory.FullName,
-                        Path.ChangeExtension(file.Name, EXTRACT)));
+                        folder.Exists ?
+                        new($"{folder.FullName}{EXTRACT}") :
+                        new(Path.Combine(file.Directory.FullName,
+                            Path.ChangeExtension(file.Name, EXTRACT)));
 
-                if (input.Exists)
-                    RebuildARC(file, input);
+                    if (input.Exists)
+                        RepackARC(file, input);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Failed " + file.FullName);
+                    Console.WriteLine(e.Message);
+                    Console.ReadLine();
+                }
             }
 
             Console.WriteLine();
             Console.WriteLine("ARC repacking complete.");
+            Console.ReadLine();
+
+            return Task.FromResult(0);
+        }
+
+        public static Task<int> UnpackCommand()
+        {
+            DirectoryInfo folder = new(Config.Path);
+            List<FileInfo> files = [];
+
+            if (folder.Exists)
+                files = [.. folder.GetFiles("*.*", SearchOption.AllDirectories)];
+            else
+                files.Add(new(Config.Path));
+
+            if (files.Count < 1)
+            {
+                Console.WriteLine("No files found in directory.");
+                Console.ReadLine();
+                return Task.FromResult(1);
+            }
+
+            Console.WriteLine($"Unpacking HFS files...");
+            Console.WriteLine();
+
+            foreach (FileInfo file in files)
+            {
+                try
+                {
+                    FileInfo outputFile = new(Path.Join(file.DirectoryName, "_" + Path.GetRandomFileName()));
+
+                    using HFS hfs = new(file);
+
+                    if (!hfs.IsValid)
+                        continue;
+
+                    using (MemoryStream dataStream = hfs.GetDataStream())
+                    {
+                        hfs.Dispose();
+                        using (FileStream outputStream = outputFile.OpenWrite())
+                            dataStream.CopyTo(outputStream);
+                    }
+
+                    outputFile.Refresh();
+                    outputFile.MoveTo(Path.ChangeExtension(file.FullName, "unhfs") + file.Extension, true);
+
+                    Console.WriteLine($"Unpacked {file.FullName}");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Failed {file.FullName}");
+                    Console.WriteLine(e.Message);
+                    Console.ReadLine();
+                }
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("HFS unpack complete.");
             Console.ReadLine();
 
             return Task.FromResult(0);
@@ -349,7 +438,7 @@ namespace ARCVX
             Console.WriteLine("---------------------------------");
         }
 
-        public static void RebuildARC(FileInfo file, DirectoryInfo folder)
+        public static void RepackARC(FileInfo file, DirectoryInfo folder)
         {
             using HFS hfs = new(file) { ByteOrder = Config.ByteOrder };
             using ARC arc = hfs.IsValid ? new(file, hfs.GetDataStream()) : new(file);
@@ -367,14 +456,25 @@ namespace ARCVX
             arc.Language = Config.Language;
             arc.LanguageFile = Config.LanguageFile;
 
-            if (hfs.IsValid)
+            try
             {
-                using MemoryStream stream = arc.CreateNewStream(folder);
-                _ = Config.Overwrite ? hfs.SaveStream(stream) : hfs.SaveStream(stream, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
+                if (hfs.IsValid)
+                {
+                    using MemoryStream stream = arc.CreateNewStream(folder);
+                    _ = Config.Overwrite ? hfs.SaveStream(stream) : hfs.SaveStream(stream, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
+                }
+                else
+                {
+                    _ = Config.Overwrite ? arc.Save(folder) : arc.Save(folder, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
+                }
             }
-            else
+            catch (Exception e)
             {
-                _ = Config.Overwrite ? arc.Save(folder) : arc.Save(folder, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
+                Console.WriteLine("Failed " + file.FullName);
+                Console.WriteLine(e.Message);
+                Console.ReadLine();
+
+                return;
             }
 
             Console.WriteLine("done!");
@@ -397,9 +497,10 @@ namespace ARCVX
                 else
                     Console.WriteLine("Unsupported " + file.FullName);
             }
-            catch
+            catch (Exception e)
             {
                 Console.WriteLine("Failed " + file.FullName);
+                Console.WriteLine(e.Message);
                 Console.ReadLine();
             }
         }
@@ -430,9 +531,10 @@ namespace ARCVX
                         Console.WriteLine("Unsupported " + file.FullName);
                 }
             }
-            catch
+            catch (Exception e)
             {
                 Console.WriteLine("Failed " + file.FullName);
+                Console.WriteLine(e.Message);
                 Console.ReadLine();
             }
         }
@@ -451,9 +553,10 @@ namespace ARCVX
                 else
                     Console.WriteLine("Unsupported " + file.FullName);
             }
-            catch
+            catch (Exception e)
             {
                 Console.WriteLine("Failed " + file.FullName);
+                Console.WriteLine(e.Message);
                 Console.ReadLine();
             }
         }
