@@ -343,12 +343,18 @@ namespace ARCVX.Formats
         {
             FileInfo outputFile = new(Path.Join(File.DirectoryName, "_" + Path.GetRandomFileName()));
 
+            if (!outputFile.Directory.Exists)
+                outputFile.Directory.Create();
+
             using (FileStream outputStream = outputFile.OpenWrite())
             using (MemoryStream newStream = CreateNewStream(folder))
                 newStream.CopyTo(outputStream);
 
             if (file.FullName == File.FullName)
                 CloseReader();
+
+            if (!file.Directory.Exists)
+                file.Directory.Create();
 
             outputFile.Refresh();
             outputFile.MoveTo(file.FullName, true);

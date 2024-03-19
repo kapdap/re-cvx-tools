@@ -23,7 +23,7 @@ Entries in archives will be replaced if a file exists with the same relative pat
 - Extract HFS containers
 - Extract ARC containers
 - Repack ARC containers
-- Repack ARC into HFS containers
+- Repack ARC into HFS container
 - Convert textures to .dds
 - Convert messages to .txt (US, GB, ES and custom languages supported)
 - Rebuild messages from .txt

@@ -294,6 +294,9 @@ namespace ARCVX.Formats
                 if (file.FullName == File.FullName)
                     CloseReader();
 
+                if (!file.Directory.Exists)
+                    file.Directory.Create();
+
                 outputFile.Refresh();
                 outputFile.MoveTo(file.FullName, true);
 
@@ -302,6 +305,7 @@ namespace ARCVX.Formats
             catch
             {
                 try { outputFile.Delete(); } catch { }
+
                 throw;
             }
         }

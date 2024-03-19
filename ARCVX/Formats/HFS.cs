@@ -116,6 +116,8 @@ namespace ARCVX.Formats
 
         public HFS SaveStream(Stream stream, FileInfo file)
         {
+            OpenReader();
+
             FileInfo outputFile = new(Path.Join(File.DirectoryName, "_" + Path.GetRandomFileName()));
 
             try
@@ -142,6 +144,9 @@ namespace ARCVX.Formats
                 if (file.FullName == File.FullName)
                     CloseReader();
 
+                if (!file.Directory.Exists)
+                    file.Directory.Create();
+
                 outputFile.Refresh();
                 outputFile.MoveTo(file.FullName, true);
 
@@ -151,7 +156,7 @@ namespace ARCVX.Formats
             {
                 try { outputFile.Delete(); } catch { }
 
-                return null;
+                throw;
             }
         }
 
@@ -160,11 +165,22 @@ namespace ARCVX.Formats
             MemoryStream stream = new();
             EndianWriter writer = new(stream, ByteOrder);
 
-            writer.Write(Header.Magic, ByteOrder.LittleEndian);
-            writer.Write(Header.Version);
-            writer.Write(Header.Type);
-            writer.Write((int)length);
-            writer.Write(Header.Padding);
+            try
+            {
+                writer.Write(Header.Magic, ByteOrder.LittleEndian);
+                writer.Write(Header.Version);
+                writer.Write(Header.Type);
+                writer.Write((int)length);
+                writer.Write(Header.Padding);
+            }
+            catch
+            {
+                writer.Write(MAGIC, ByteOrder);
+                writer.Write(1);
+                writer.Write(1);
+                writer.Write((int)length);
+                writer.Write(0);
+            }
 
             writer.SetPosition(0);
 

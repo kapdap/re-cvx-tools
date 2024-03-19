@@ -10,6 +10,7 @@
  *  https://opensource.org/licenses/MIT.
  */
 
+using ARCVX.Extensions;
 using ARCVX.Formats;
 using ARCVX.Reader;
 using ARCVX.Utilities;
@@ -70,6 +71,7 @@ namespace ARCVX
                     catch (Exception e)
                     {
                         result.ErrorMessage = e.Message;
+
                         return null;
                     }
                 }
@@ -91,6 +93,7 @@ namespace ARCVX
                     catch (Exception e)
                     {
                         result.ErrorMessage = e.Message;
+
                         return null;
                     }
                 }
@@ -99,17 +102,17 @@ namespace ARCVX
 
             Option<DirectoryInfo> extractOption = new(
                 aliases: ["-f", "--folder"],
-                description: $"Optional folder extract .arc contents (<path>{EXTRACT})"
+                description: $"Optional folder to extract contents (<path>{EXTRACT})"
             );
 
             Option<DirectoryInfo> repackOption = new(
                 aliases: ["-f", "--folder"],
-                description: $"Optional folder with content to repack .arc container (<path>{EXTRACT})"
+                description: $"Optional folder with content to repack (<path>{EXTRACT})"
             );
 
             Option<bool> overwriteOption = new(
                 aliases: ["-o", "--overwrite"],
-                description: "Overwrite existing .arc files after repacking",
+                description: "Overwrite existing files after repacking",
                 getDefaultValue: () => false
             );
 
@@ -181,8 +184,10 @@ namespace ARCVX
             {
                 Config = config;
                 UnpackCommand();
-            }, new ConfigBinder(pathOption, extractOption, overwriteOption, languageOption, languageFileOption, byteOrderOption));
+            }, new ConfigBinder(pathOption, repackOption, rebuildOption, languageOption, languageFileOption, byteOrderOption));
             unpackCommand.AddOption(pathOption);
+            unpackCommand.AddOption(repackOption);
+            unpackCommand.AddOption(rebuildOption);
 
             rootCommand.AddGlobalOption(byteOrderOption);
 
@@ -319,28 +324,55 @@ namespace ARCVX
             Console.WriteLine($"Unpacking HFS files...");
             Console.WriteLine();
 
+            DirectoryInfo outputFolder = Config.Folder != null && 
+                Config.Folder.Exists ? Config.Folder : 
+                Config.Overwrite ? new($"{folder.FullName.Replace(".unhfs", string.Empty)}.rehfs") : new($"{folder.FullName}.unhfs");
+
             foreach (FileInfo file in files)
             {
                 try
                 {
-                    FileInfo outputFile = new(Path.Join(file.DirectoryName, "_" + Path.GetRandomFileName()));
-
-                    using HFS hfs = new(file);
-
-                    if (!hfs.IsValid)
-                        continue;
-
-                    using (MemoryStream dataStream = hfs.GetDataStream())
+                    if (Config.Overwrite)
                     {
-                        hfs.Dispose();
-                        using (FileStream outputStream = outputFile.OpenWrite())
-                            dataStream.CopyTo(outputStream);
+                        FileInfo outputFile = new(Path.Join(outputFolder.FullName, file.Name));
+
+                        using (HFS hfs = new(file) { ByteOrder = Config.ByteOrder })
+                        {
+                            if (hfs.IsValid)
+                                continue;
+
+                            using FileStream inputStream = file.OpenReadShared();
+                            _ = hfs.SaveStream(inputStream, outputFile);
+                        }
+
+                        Console.WriteLine($"Repacked {file.FullName}");
                     }
+                    else
+                    {
+                        FileInfo outputFile = new(Path.Join(outputFolder.FullName, "_" + Path.GetRandomFileName()));
 
-                    outputFile.Refresh();
-                    outputFile.MoveTo(Path.ChangeExtension(file.FullName, "unhfs") + file.Extension, true);
+                        if (!outputFile.Directory.Exists)
+                            outputFile.Directory.Create();
 
-                    Console.WriteLine($"Unpacked {file.FullName}");
+                        using HFS hfs = new(file) { ByteOrder = Config.ByteOrder };
+
+                        if (!hfs.IsValid)
+                            continue;
+
+                        using (MemoryStream dataStream = hfs.GetDataStream())
+                        {
+                            hfs.Dispose();
+
+                            using FileStream outputStream = outputFile.OpenWrite();
+
+                            dataStream.CopyTo(outputStream);
+                        }
+
+                        outputFile.Refresh();
+                        outputFile.MoveTo(Path.Join(outputFile.Directory.FullName, file.Name), true);
+
+                        Console.WriteLine($"Unpacked {file.FullName}");
+                    }
                 }
                 catch (Exception e)
                 {
