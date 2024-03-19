@@ -9,17 +9,17 @@ ARCVX is a command line utility for extracting and rebuilding Resident Evil/Bioh
 Simply drag and drop a .arc file or a folder containing .arc files onto **ARCVX.exe**.<br>
 Extracted files will be placed in a folder named "**\<file/folder name\>.extract**".
 
-### Rebuilding
+### Repacking
 
-Drag and drop the "**\<file/folder name\>.extract**" folder onto **ARCVX.exe** to rebuild.<br>
+Drag and drop the "**\<file/folder name\>.extract**" folder onto **ARCVX.exe** to repack.<br>
 Entries in archives will be replaced if a file exists with the same relative path in the extract folder.
 
 ## Features
 
 - Extract HFS containers
 - Extract ARC containers
-- Rebuild HFS containers
-- Rebuild ARC containers
+- Repack HFS containers
+- Repack ARC containers
 - Convert textures to .dds
 - Convert messages to .txt (US-only)
 - Rebuild messages from .txt (US-only)
