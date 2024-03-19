@@ -136,6 +136,7 @@ namespace ARCVX.Formats
             catch
             {
                 try { outputFile.Delete(); } catch { }
+
                 return null;
             }
         }

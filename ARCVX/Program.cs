@@ -65,10 +65,7 @@ namespace ARCVX
                     {
                         string path = result.Tokens.Single().Value;
 
-                        if (!Path.Exists(path))
-                            throw new Exception("Path does not exist");
-
-                        return path;
+                        return !Path.Exists(path) ? throw new Exception("Path does not exist") : path;
                     }
                     catch (Exception e)
                     {
@@ -89,10 +86,7 @@ namespace ARCVX
                     {
                         string path = result.Tokens.Single().Value;
 
-                        if (!Path.Exists(path))
-                            throw new Exception("Path does not exist");
-
-                        return path;
+                        return !Path.Exists(path) ? throw new Exception("Path does not exist") : path;
                     }
                     catch (Exception e)
                     {
@@ -149,7 +143,8 @@ namespace ARCVX
             RootCommand rootCommand = new(description);
 
             Command extractCommand = new("extract", "Extract .arc container");
-            extractCommand.SetHandler((config) => {
+            extractCommand.SetHandler((config) =>
+            {
                 Config = config;
                 ExtractCommand();
             }, new ConfigBinder(arcOption, extractOption, overwriteOption, languageOption, languageFileOption, byteOrderOption));
@@ -157,7 +152,8 @@ namespace ARCVX
             extractCommand.AddOption(extractOption);
 
             Command repackCommand = new("repack", "Repack .arc container");
-            repackCommand.SetHandler((config) => {
+            repackCommand.SetHandler((config) =>
+            {
                 Config = config;
                 RepackCommand();
             }, new ConfigBinder(arcOption, repackOption, overwriteOption, languageOption, languageFileOption, byteOrderOption));
@@ -166,7 +162,8 @@ namespace ARCVX
             repackCommand.AddOption(overwriteOption);
 
             Command convertCommand = new("convert", "Convert files to readable formats");
-            convertCommand.SetHandler((config) => {
+            convertCommand.SetHandler((config) =>
+            {
                 Config = config;
                 ConvertCommand();
             }, new ConfigBinder(pathOption, repackOption, rebuildOption, languageOption, languageFileOption, byteOrderOption));

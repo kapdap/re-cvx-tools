@@ -12,8 +12,8 @@
 
 using ARCVX.Formats;
 using ARCVX.Reader;
-using System.CommandLine.Binding;
 using System.CommandLine;
+using System.CommandLine.Binding;
 using System.IO;
 
 namespace ARCVX
@@ -54,7 +54,7 @@ namespace ARCVX
         }
 
         protected override Config GetBoundValue(BindingContext bindingContext) =>
-            new Config
+            new()
             {
                 Path = bindingContext.ParseResult.GetValueForOption(_pathOption),
                 Folder = bindingContext.ParseResult.GetValueForOption(_folderOption),
