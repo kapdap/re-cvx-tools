@@ -22,18 +22,19 @@ Entries in archives will be replaced if a file exists with the same relative pat
 
 - Extract HFS containers
 - Extract ARC containers
-- Repack HFS containers
 - Repack ARC containers
+- Repack ARC into HFS containers
 - Convert textures to .dds
 - Convert messages to .txt (US, GB, ES and custom languages supported)
 - Rebuild messages from .txt
 
 ## TODO
 
+- Repack non-ARC HFS containers
 - Convert scripts
 - Rebuild scripts
 - Rebuild textures from .dds
-- Decode JP, DE, FR messages
+- Decode/encode JP, DE, FR, IT messages
 
 # Links
 
