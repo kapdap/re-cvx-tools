@@ -28,6 +28,8 @@ namespace ARCVX
 
         private static HashSet<string> Convert { get; } = [".tex", ".mes", ".evt"];
 
+        private static Config Config { get; set; }
+
         private static async Task<int> Main(string[] args)
         {
             // Detect path type and set default arguments
@@ -62,7 +64,11 @@ namespace ARCVX
                     try
                     {
                         string path = result.Tokens.Single().Value;
-                        return !Path.Exists(path) ? throw new Exception("Path does not exist") : path;
+
+                        if (!Path.Exists(path))
+                            throw new Exception("Path does not exist");
+
+                        return path;
                     }
                     catch (Exception e)
                     {
@@ -82,7 +88,11 @@ namespace ARCVX
                     try
                     {
                         string path = result.Tokens.Single().Value;
-                        return !Path.Exists(path) ? throw new Exception("Path does not exist") : path;
+
+                        if (!Path.Exists(path))
+                            throw new Exception("Path does not exist");
+
+                        return path;
                     }
                     catch (Exception e)
                     {
@@ -94,54 +104,77 @@ namespace ARCVX
             pathOption.IsRequired = true;
 
             Option<DirectoryInfo> extractOption = new(
-                aliases: ["-e", "--extract"],
-                description: $"Optional path to extract .arc contents (<path>{EXTRACT})"
+                aliases: ["-f", "--folder"],
+                description: $"Optional folder extract .arc contents (<path>{EXTRACT})"
             );
 
-            Option<DirectoryInfo> rebuildOption = new(
-                aliases: ["-r", "--rebuild"],
-                description: $"Optional path to folder with content to rebuild .arc container (<path>{EXTRACT})"
+            Option<DirectoryInfo> repackOption = new(
+                aliases: ["-f", "--folder"],
+                description: $"Optional folder with content to repack .arc container (<path>{EXTRACT})"
             );
 
             Option<bool> overwriteOption = new(
                 aliases: ["-o", "--overwrite"],
-                description: "Overwrite existing .arc files when rebuilding",
+                description: "Overwrite existing .arc files after repacking",
+                getDefaultValue: () => false
+            );
+
+            Option<bool> rebuildOption = new(
+                aliases: ["-r", "--rebuild"],
+                description: "Use with convert command to rebuild content file",
                 getDefaultValue: () => false
             );
 
             Option<Region> languageOption = new(
-                aliases: ["-l", "--lang", "--language"],
+                aliases: ["-l", "--lang"],
                 description: "Language table to use when decoding and encoding messages",
                 getDefaultValue: () => Region.US
             );
 
             Option<FileInfo> languageFileOption = new(
-                aliases: ["-lf", "--langFile", "--languageFile"],
-                description: "Path to language table file to use when decoding and encoding messages"
+                aliases: ["-g", "--langFile"],
+                description: "Path to custom language table file to use when decoding and encoding messages"
             );
 
             Option<ByteOrder> byteOrderOption = new(
-                aliases: ["-b", "--bytes", "--byteorder"],
+                aliases: ["-b", "--byteorder"],
                 description: "Byte order to use when reading and writing files",
                 getDefaultValue: () => ByteOrder.BigEndian
             );
 
-            string description = "Extract and rebuild Resident Evil/Biohazard: Code: Veronica X HD .arc files" + Environment.NewLine + Environment.NewLine;
+            string description = "Extract and repack Resident Evil/Biohazard: Code: Veronica X HD .arc files" + Environment.NewLine + Environment.NewLine;
             description += "To extract drag and drop a .arc file or a folder containing .arc files onto ARCVX.exe" + Environment.NewLine;
-            description += "To rebuild drag and drop the \"<name>.extract\" folder onto ARCVX.exe";
+            description += "To repack drag and drop the \"<name>.extract\" folder onto ARCVX.exe";
 
             RootCommand rootCommand = new(description);
 
-            Command extractCommand = new("extract", "Extract .arc container") { arcOption, extractOption };
-            extractCommand.SetHandler((path, extract, language, byteOrder) => { ExtractCommand(path!, extract!); }, arcOption, extractOption, languageOption, byteOrderOption);
+            Command extractCommand = new("extract", "Extract .arc container");
+            extractCommand.SetHandler((config) => {
+                Config = config;
+                ExtractCommand();
+            }, new ConfigBinder(arcOption, extractOption, overwriteOption, languageOption, languageFileOption, byteOrderOption));
+            extractCommand.AddOption(arcOption);
+            extractCommand.AddOption(extractOption);
+
+            Command repackCommand = new("repack", "Repack .arc container");
+            repackCommand.SetHandler((config) => {
+                Config = config;
+                RepackCommand();
+            }, new ConfigBinder(arcOption, repackOption, overwriteOption, languageOption, languageFileOption, byteOrderOption));
+            repackCommand.AddOption(arcOption);
+            repackCommand.AddOption(repackOption);
+            repackCommand.AddOption(overwriteOption);
+
+            Command convertCommand = new("convert", "Convert files to readable formats");
+            convertCommand.SetHandler((config) => {
+                Config = config;
+                ConvertCommand();
+            }, new ConfigBinder(pathOption, repackOption, rebuildOption, languageOption, languageFileOption, byteOrderOption));
+            convertCommand.AddOption(pathOption);
+            convertCommand.AddOption(rebuildOption);
+
             rootCommand.AddCommand(extractCommand);
-
-            Command rebuildCommand = new("rebuild", "Rebuild .arc container") { arcOption, rebuildOption, overwriteOption };
-            rebuildCommand.SetHandler((path, rebuild, overwrite, language, byteOrder) => { RebuildCommand(path!, rebuild!, overwrite!); }, arcOption, rebuildOption, overwriteOption, languageOption, byteOrderOption);
-            rootCommand.AddCommand(rebuildCommand);
-
-            Command convertCommand = new("convert", "Convert files to readable formats") { pathOption };
-            convertCommand.SetHandler((path, language, byteOrder) => { ConvertCommand(path!); }, pathOption, languageOption, byteOrderOption);
+            rootCommand.AddCommand(repackCommand);
             rootCommand.AddCommand(convertCommand);
 
             rootCommand.AddGlobalOption(languageOption);
@@ -151,21 +184,21 @@ namespace ARCVX
             return await rootCommand.InvokeAsync(args);
         }
 
-        public static void ExtractCommand(string path, DirectoryInfo extract = null)
+        public static Task<int> ExtractCommand()
         {
-            DirectoryInfo folder = new(path);
+            DirectoryInfo folder = new(Config.Path);
             List<FileInfo> files = [];
 
             if (folder.Exists)
-                files = [.. new DirectoryInfo(path).GetFiles("*.arc", SearchOption.AllDirectories)];
+                files = [.. folder.GetFiles("*.arc", SearchOption.AllDirectories)];
             else
-                files.Add(new(path));
+                files.Add(new(Config.Path));
 
             if (files.Count < 1)
             {
                 Console.WriteLine("No .arc files found in directory.");
                 Console.ReadLine();
-                return;
+                return Task.FromResult(1);
             }
 
             Console.WriteLine($"Extracting {files.Count} files...");
@@ -174,8 +207,8 @@ namespace ARCVX
             foreach (FileInfo file in files)
             {
                 DirectoryInfo output =
-                    extract != null && extract.Exists ?
-                    extract :
+                    Config.Folder != null && Config.Folder.Exists ?
+                    Config.Folder :
 
                     folder.Exists ?
                     new($"{folder.FullName}{EXTRACT}") :
@@ -188,37 +221,39 @@ namespace ARCVX
             Console.WriteLine();
             Console.WriteLine("ARC extraction complete.");
             Console.ReadLine();
+
+            return Task.FromResult(0);
         }
 
-        public static void RebuildCommand(string path, DirectoryInfo rebuild = null, bool overwrite = false)
+        public static Task<int> RepackCommand()
         {
-            if (overwrite && !CLI.Confirm($"Rebuilding will destroy existing .arc files.{Environment.NewLine}" +
+            if (Config.Overwrite && !CLI.Confirm($"Rebuilding will destroy existing .arc files.{Environment.NewLine}" +
                 $"Ensure you have backups avaliable.{Environment.NewLine}Are you sure you want to continue?"))
-                return;
+                return Task.FromResult(2);
 
-            DirectoryInfo folder = new(path);
+            DirectoryInfo folder = new(Config.Path);
             List<FileInfo> files = [];
 
             if (folder.Exists)
-                files = [.. new DirectoryInfo(path).GetFiles("*.arc", SearchOption.AllDirectories)];
+                files = [.. folder.GetFiles("*.arc", SearchOption.AllDirectories)];
             else
-                files.Add(new(path));
+                files.Add(new(Config.Path));
 
             if (files.Count < 1)
             {
                 Console.WriteLine("No .arc files found in directory.");
                 Console.ReadLine();
-                return;
+                return Task.FromResult(1);
             }
 
-            Console.WriteLine($"Rebuilding {files.Count} files...");
+            Console.WriteLine($"Repacking {files.Count} files...");
             Console.WriteLine();
 
             foreach (FileInfo file in files)
             {
                 DirectoryInfo input =
-                    rebuild != null && rebuild.Exists ?
-                    rebuild :
+                    Config.Folder != null && Config.Folder.Exists ?
+                    Config.Folder :
 
                     folder.Exists ?
                     new($"{folder.FullName}{EXTRACT}") :
@@ -226,29 +261,31 @@ namespace ARCVX
                         Path.ChangeExtension(file.Name, EXTRACT)));
 
                 if (input.Exists)
-                    RebuildARC(file, input, overwrite);
+                    RebuildARC(file, input);
             }
 
             Console.WriteLine();
-            Console.WriteLine("ARC rebuild complete.");
+            Console.WriteLine("ARC repacking complete.");
             Console.ReadLine();
+
+            return Task.FromResult(0);
         }
 
-        public static void ConvertCommand(string path)
+        public static Task<int> ConvertCommand()
         {
-            DirectoryInfo folder = new(path);
+            DirectoryInfo folder = new(Config.Path);
             List<FileInfo> files = [];
 
             if (folder.Exists)
-                files = [.. new DirectoryInfo(path).GetFiles("*.*", SearchOption.AllDirectories)];
+                files = [.. folder.GetFiles("*.*", SearchOption.AllDirectories)];
             else
-                files.Add(new(path));
+                files.Add(new(Config.Path));
 
             if (files.Count < 1)
             {
                 Console.WriteLine("No convertable files found in directory.");
                 Console.ReadLine();
-                return;
+                return Task.FromResult(1);
             }
 
             Console.WriteLine("Converting files...");
@@ -269,13 +306,17 @@ namespace ARCVX
             Console.WriteLine();
             Console.WriteLine("File conversion complete.");
             Console.ReadLine();
+
+            return Task.FromResult(0);
         }
 
         public static void ExtractARC(FileInfo file, DirectoryInfo folder)
         {
-            HFS hfs = new(file);
+            HFS hfs = new(file) { ByteOrder = Config.ByteOrder };
             using ARC arc = hfs.IsValid ? new(file, hfs.GetDataStream()) : new(file);
             hfs.Dispose();
+
+            arc.ByteOrder = Config.ByteOrder;
 
             if (!arc.IsValid)
             {
@@ -311,10 +352,12 @@ namespace ARCVX
             Console.WriteLine("---------------------------------");
         }
 
-        public static void RebuildARC(FileInfo file, DirectoryInfo folder, bool overwrite = false)
+        public static void RebuildARC(FileInfo file, DirectoryInfo folder)
         {
-            using HFS hfs = new(file);
+            using HFS hfs = new(file) { ByteOrder = Config.ByteOrder };
             using ARC arc = hfs.IsValid ? new(file, hfs.GetDataStream()) : new(file);
+
+            arc.ByteOrder = Config.ByteOrder;
 
             if (!arc.IsValid)
             {
@@ -324,15 +367,17 @@ namespace ARCVX
 
             Console.Write($"Rebuilding {file.FullName}... ");
 
+            arc.Language = Config.Language;
+            arc.LanguageFile = Config.LanguageFile;
+
             if (hfs.IsValid)
             {
                 using MemoryStream stream = arc.CreateNewStream(folder);
-
-                _ = overwrite ? hfs.SaveStream(stream) : hfs.SaveStream(stream, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
+                _ = Config.Overwrite ? hfs.SaveStream(stream) : hfs.SaveStream(stream, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
             }
             else
             {
-                _ = overwrite ? arc.Save(folder) : arc.Save(folder, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
+                _ = Config.Overwrite ? arc.Save(folder) : arc.Save(folder, new(Path.ChangeExtension(arc.File.FullName, ".tmp")));
             }
 
             Console.WriteLine("done!");
@@ -340,9 +385,11 @@ namespace ARCVX
 
         public static void ConvertTexture(FileInfo file)
         {
-            HFS hfs = new(file);
+            HFS hfs = new(file) { ByteOrder = Config.ByteOrder };
             using Tex tex = hfs.IsValid ? new(file, hfs.GetDataStream()) : new(file);
             hfs.Dispose();
+
+            tex.ByteOrder = Config.ByteOrder;
 
             try
             {
@@ -362,16 +409,29 @@ namespace ARCVX
 
         public static void ConvertMessage(FileInfo file)
         {
-            using Mes mes = new(file);
+            using Mes mes = new(file) { ByteOrder = Config.ByteOrder };
 
             try
             {
-                List<FileInfo> output = mes.Export();
-
-                if (output.Count > 0)
-                    Console.WriteLine("Converted " + file.FullName);
+                if (Config.LanguageFile != null)
+                    mes.LoadLanguage(Config.LanguageFile);
                 else
-                    Console.WriteLine("Unsupported " + file.FullName);
+                    mes.LoadLanguage(Config.Language);
+
+                if (Config.Overwrite)
+                {
+                    _ = mes.Save();
+                    Console.WriteLine("Rebuilt " + file.FullName);
+                }
+                else
+                {
+                    List<FileInfo> output = mes.Export();
+
+                    if (output.Count > 0)
+                        Console.WriteLine("Converted " + file.FullName);
+                    else
+                        Console.WriteLine("Unsupported " + file.FullName);
+                }
             }
             catch
             {
@@ -383,7 +443,7 @@ namespace ARCVX
         public static void ConvertScript(FileInfo file)
         {
             // TODO: Convert script files.
-            using Evt evt = new(file);
+            using Evt evt = new(file) { ByteOrder = Config.ByteOrder };
 
             try
             {

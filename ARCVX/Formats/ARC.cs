@@ -36,6 +36,9 @@ namespace ARCVX.Formats
             }
         }
 
+        public Region Language { get; set; }
+        public FileInfo LanguageFile { get; set; }
+
         public ARC(FileInfo file) : base(file) { }
         public ARC(FileInfo file, Stream stream) : base(file, stream) { }
 
@@ -188,7 +191,13 @@ namespace ARCVX.Formats
                 {
                     if (inputFile.Extension == ".mes")
                     {
-                        using Mes mes = new(inputFile);
+                        using Mes mes = new(inputFile) { ByteOrder = ByteOrder };
+
+                        if (LanguageFile != null)
+                            mes.LoadLanguage(LanguageFile);
+                        else
+                            mes.LoadLanguage(Language);
+
                         _ = mes.Save();
                     }
 
