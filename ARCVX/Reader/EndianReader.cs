@@ -86,6 +86,7 @@ namespace ARCVX.Reader
             if ((order ?? ByteOrder) == ByteOrder.BigEndian) Array.Reverse(data);
             return BitConverter.ToUInt64(data, 0);
         }
+
         public float ReadFloat(ByteOrder? order = null)
         {
             byte[] data = BaseReader.ReadBytes(4);
@@ -126,11 +127,5 @@ namespace ARCVX.Reader
             BaseReader.BaseStream.Length;
 
         public void Dispose() => ((IDisposable)BaseReader).Dispose();
-    }
-
-    public enum ByteOrder
-    {
-        LittleEndian,
-        BigEndian
     }
 }

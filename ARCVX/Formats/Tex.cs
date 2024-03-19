@@ -106,29 +106,29 @@ namespace ARCVX.Formats
 
         public FileInfo ExportDDS()
         {
-            FileInfo output = new(Path.ChangeExtension(File.FullName, "dds"));
+            FileInfo outputFile = new(Path.ChangeExtension(File.FullName, "dds"));
 
-            using (FileStream stream = output.OpenWrite())
+            using (FileStream outputStream = outputFile.OpenWrite())
             {
                 ReadOnlySpan<byte> head = Bytes.GetStructBytes(GetDDSHeader());
                 ReadOnlySpan<byte> data = GetPixelBytes();
 
-                stream.Write(head);
-                stream.Write(data);
+                outputStream.Write(head);
+                outputStream.Write(data);
             }
 
-            return output;
+            return outputFile;
         }
 
         public FileInfo ExportARGB()
         {
-            FileInfo output = new(Path.ChangeExtension(File.FullName, "dds"));
+            FileInfo outputFile = new(Path.ChangeExtension(File.FullName, "dds"));
 
-            using (FileStream stream = output.OpenWrite())
-                using (MemoryStream pixelStream = ConvertARGBToDSS())
-                    pixelStream.CopyTo(stream);
+            using (FileStream outputStream = outputFile.OpenWrite())
+            using (MemoryStream pixelStream = ConvertARGBToDSS())
+                pixelStream.CopyTo(outputStream);
 
-            return output;
+            return outputFile;
         }
     }
 

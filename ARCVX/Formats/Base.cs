@@ -23,10 +23,17 @@ namespace ARCVX.Formats
         public Stream Stream { get; private set; }
         public EndianReader Reader { get; private set; }
 
-        public ByteOrder ByteOrder
+        protected ByteOrder _byteOrder = ByteOrder.BigEndian;
+        public virtual ByteOrder ByteOrder
         {
-            get => Reader.ByteOrder;
-            set => Reader.ByteOrder = value;
+            get => _byteOrder;
+            set
+            {
+                _byteOrder = value;
+
+                if (Reader != null)
+                    Reader.ByteOrder = _byteOrder;
+            }
         }
 
         public Base(FileInfo file) =>
@@ -44,7 +51,7 @@ namespace ARCVX.Formats
                 Stream = File.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 
             if (Reader == null && Stream != null)
-                Reader = new(Stream);
+                Reader = new(Stream, ByteOrder);
         }
 
         public virtual void CloseReader()
@@ -143,6 +150,8 @@ namespace ARCVX.Formats
         FileInfo File { get; }
         Stream Stream { get; }
         EndianReader Reader { get; }
+
+        ByteOrder ByteOrder { get; }
 
         void OpenReader();
         void CloseReader();

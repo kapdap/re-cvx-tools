@@ -115,6 +115,11 @@ namespace ARCVX
                 getDefaultValue: () => Region.US
             );
 
+            Option<FileInfo> languageFileOption = new(
+                aliases: ["-lf", "--langFile", "--languageFile"],
+                description: "Path to language table file to use when decoding and encoding messages"
+            );
+
             Option<ByteOrder> byteOrderOption = new(
                 aliases: ["-b", "--bytes", "--byteorder"],
                 description: "Byte order to use when reading and writing files",
@@ -140,6 +145,7 @@ namespace ARCVX
             rootCommand.AddCommand(convertCommand);
 
             rootCommand.AddGlobalOption(languageOption);
+            rootCommand.AddGlobalOption(languageFileOption);
             rootCommand.AddGlobalOption(byteOrderOption);
 
             return await rootCommand.InvokeAsync(args);

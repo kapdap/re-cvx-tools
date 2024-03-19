@@ -120,7 +120,7 @@ namespace ARCVX.Formats
                         stream.Position = 0;
                     }
 
-                    using MemoryStream verifyStream = Helper.WriteVerification(stream);
+                    using (MemoryStream verifyStream = Helper.WriteVerification(stream))
                     using (FileStream outputStream = outputFile.OpenWrite())
                     {
                         headerStream.CopyTo(outputStream);
@@ -148,17 +148,18 @@ namespace ARCVX.Formats
 
         public MemoryStream CreateHeaderStream(long length)
         {
-            MemoryStream ms = new();
+            MemoryStream stream = new();
+            EndianWriter writer = new(stream, ByteOrder);
 
-            ms.Write(Bytes.GetValueBytes(Header.Magic, ByteOrder.LittleEndian));
-            ms.Write(Bytes.GetValueBytes(Header.Version, Reader.ByteOrder));
-            ms.Write(Bytes.GetValueBytes(Header.Type, Reader.ByteOrder));
-            ms.Write(Bytes.GetValueBytes((int)length, Reader.ByteOrder));
-            ms.Write(Bytes.GetValueBytes(Header.Padding, Reader.ByteOrder));
+            writer.Write(Header.Magic, ByteOrder.LittleEndian);
+            writer.Write(Header.Version);
+            writer.Write(Header.Type);
+            writer.Write((int)length);
+            writer.Write(Header.Padding);
 
-            ms.Position = 0;
+            writer.SetPosition(0);
 
-            return ms;
+            return stream;
         }
     }
 

@@ -10,13 +10,14 @@
  *  https://opensource.org/licenses/MIT.
  */
 
-using ARCVX.Utilities;
+using ARCVX.Reader;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ARCVX.Formats
 {
@@ -81,6 +82,30 @@ namespace ARCVX.Formats
                 DecodeMap = Languages[Region.US];
 
             EncodeMap = DecodeMap.ToDictionary(x => x.Value, x => x.Key);
+        }
+
+        public void LoadLanguage(FileInfo file)
+        {
+            try
+            {
+                DecodeMap = new();
+
+                string[] lines = System.IO.File.ReadAllLines(file.FullName);
+
+                foreach (string line in lines)
+                {
+                    string[] parts = line.Split("=");
+
+                    if (parts.Length >= 2)
+                        DecodeMap.Add(ushort.Parse(parts[0], NumberStyles.HexNumber), parts[1]);
+                }
+
+                EncodeMap = DecodeMap.ToDictionary(x => x.Value, x => x.Key);
+            }
+            catch
+            {
+                LoadLanguage();
+            }
         }
 
         public override int GetMagic()
@@ -183,6 +208,7 @@ namespace ARCVX.Formats
                     outputFile.Directory.Create();
 
                 System.IO.File.WriteAllText(outputFile.FullName, entry.Message);
+
                 list.Add(outputFile);
             }
 
@@ -192,35 +218,35 @@ namespace ARCVX.Formats
         public MemoryStream CreateHeaderStream(List<MesEntry> entries)
         {
             MemoryStream stream = new();
+            EndianWriter writer = new(stream, ByteOrder);
 
-            stream.Write(Bytes.GetValueBytes(entries.Count, ByteOrder));
+            writer.Write(entries.Count);
 
             foreach (MesEntry entry in entries)
-                stream.Write(Bytes.GetValueBytes(entry.Offset, ByteOrder));
+                writer.Write(entry.Offset);
 
-            stream.Position = 0;
+            writer.SetPosition(0);
 
             return stream;
         }
 
         public MemoryStream CreateNewStream(DirectoryInfo folder)
         {
-            HashSet<string> newline = new() { "\r", "\n" };
-
-            using MemoryStream entryStream = new();
-
             List<MesEntry> newEntries = new();
 
-            long length = 4 + (Entries.Count * 4);
-            long offset = length;
+            using MemoryStream entryStream = new();
+            using EndianWriter entryWriter = new(entryStream, ByteOrder);
+
+            uint length = (uint)(4 + (Entries.Count * 4));
+            uint offset = length;
+
             foreach (MesEntry entry in Entries)
             {
-                MesEntry newEntry = entry;
                 FileInfo inputFile = GetEntryFile(entry, folder);
 
                 if (!inputFile.Exists)
                 {
-                    entryStream.Write(GetEntryBytes(entry));
+                    entryWriter.Write(GetEntryBytes(entry));
                     continue;
                 }
 
@@ -231,18 +257,19 @@ namespace ARCVX.Formats
                     int start = i;
                     char character = message[i];
 
-                    if (newline.Contains(character.ToString()))
+                    // Skip next character if Windows newline
+                    if (character == '\r' && message[i + 1] == '\n')
+                        ++i;
+
+                    if (character == '\r' || character == '\n')
                     {
-                        character = message[i + 1];
-                        if (newline.Contains(character.ToString()))
-                            ++i;
-                        entryStream.Write(Bytes.GetValueBytes((ushort)0xFF00, ByteOrder));
+                        entryWriter.Write((ushort)0xFF00);
                         continue;
                     }
 
                     StringBuilder builder = new();
 
-                    if (character.ToString() == "[")
+                    if (character == '[')
                     {
                         do
                         {
@@ -253,41 +280,43 @@ namespace ARCVX.Formats
                             character = message[++i];
                         }
                         while (character.ToString() != "]");
-
-                        builder.Append(character);
                     }
-                    else
-                        builder.Append(character);
+
+                    builder.Append(character);
 
                     string text = builder.ToString();
 
-                    if (text.StartsWith("[0x") && text.Length == 6)
-                        entryStream.Write(Bytes.GetValueBytes(byte.Parse(text.Substring(3, 2), NumberStyles.HexNumber)));
-                    if (text.StartsWith("[WAIT:") && text.Length > 8)
+                    if (text.StartsWith("[0x") && text.Length == 8)
                     {
-                        entryStream.Write(Bytes.GetValueBytes(0xFF02, ByteOrder));
-                        entryStream.Write(Bytes.GetValueBytes(ushort.Parse(text.Substring(6, text.Length - 7)), ByteOrder));
+                        entryWriter.Write(ushort.Parse(text.Substring(3, 4), NumberStyles.HexNumber));
                     }
-                    if (text.StartsWith("[ITEM:") && text.Length > 8)
+                    else if (text.StartsWith("[WAIT:") && text.Length > 7)
                     {
-                        entryStream.Write(Bytes.GetValueBytes(0xFF03, ByteOrder));
-                        entryStream.Write(Bytes.GetValueBytes(ushort.Parse(text.Substring(6, text.Length - 7)), ByteOrder));
+                        entryWriter.Write((ushort)0xFF02);
+                        entryWriter.Write(ushort.Parse(text.Substring(6, text.Length - 7)));
+                    }
+                    else if (text.StartsWith("[ITEM:") && text.Length > 7)
+                    {
+                        entryWriter.Write((ushort)0xFF03);
+                        entryWriter.Write(ushort.Parse(text.Substring(6, text.Length - 7)));
                     }
                     else
                     {
-                        try { entryStream.Write(Bytes.GetValueBytes(EncodeCharacter(text), ByteOrder)); }
-                        catch { }
+                        try { entryWriter.Write(EncodeCharacter(text)); }
+                        catch { } // Ignore unknown characters
                     }
                 }
 
-                entryStream.Write(Bytes.GetValueBytes((ushort)0xFFFF));
+                entryWriter.Write((ushort)0xFFFF);
 
-                newEntry.Offset = (uint)offset;
-                newEntry.Length = (uint)(offset - entryStream.Position);
+                MesEntry newEntry = entry;
+
+                newEntry.Offset = offset;
+                newEntry.Length = offset - (uint)entryWriter.GetPosition();
 
                 newEntries.Add(newEntry);
 
-                offset = length + entryStream.Position;
+                offset = length + (uint)entryWriter.GetPosition();
             }
 
             MemoryStream outputStream = new();
@@ -299,6 +328,7 @@ namespace ARCVX.Formats
             entryStream.CopyTo(outputStream);
 
             outputStream.Position = 0;
+
             return outputStream;
         }
 
@@ -344,7 +374,7 @@ namespace ARCVX.Formats
             EncodeMap.ContainsKey(value) ? EncodeMap[value] : throw new Exception($"Character not supported {value}");
 
         public static string DecodeCharacter(ushort value) =>
-            DecodeMap.ContainsKey(value) ? DecodeMap[value] : $"[0x{value}]";
+            DecodeMap.ContainsKey(value) ? DecodeMap[value] : $"[0x{value:X4}]";
 
         public static Dictionary<ushort, string> DecodeMap { get; private set; }
         public static Dictionary<string, ushort> EncodeMap { get; private set; }

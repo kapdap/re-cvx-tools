@@ -9,7 +9,7 @@
     <Authors>Kapdap</Authors>
     <Company>Kapdap</Company>
     <Product>ARCVX</Product>
-    <Description>A simple tool to extract Resident Evil/Biohazard: Code: Veronica HD ARC files.</Description>
+    <Description>ARCVX is a command line utility for extracting and rebuilding Resident Evil/Biohazard: Code: Veronica X HD .arc files.</Description>
     <Copyright>Copyright © 2024 Kapdap</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/kapdap/re-cvx-tools</RepositoryUrl>

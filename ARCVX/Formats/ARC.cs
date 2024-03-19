@@ -84,14 +84,13 @@ namespace ARCVX.Formats
 
         public MemoryStream GetEntryStream(ARCEntry entry)
         {
-            Reader.SetPosition(entry.Offset);
-
             MemoryStream stream = new();
 
+            Stream.Position = entry.Offset;
             Stream.CopyTo(stream);
 
             stream.SetLength((int)entry.DataSize);
-            stream.Seek(0, SeekOrigin.Begin);
+            stream.Position = 0;
 
             return stream;
         }
@@ -111,7 +110,7 @@ namespace ARCVX.Formats
 
             ZlibHeader zlibHeader = new(entryStream.ReadByte(), entryStream.ReadByte());
 
-            entryStream.Seek(0, SeekOrigin.Begin);
+            entryStream.Position = 0;
 
             if (zlibHeader.IsValid())
                 using (ZLibStream zlibStream = new(entryStream, CompressionMode.Decompress))
@@ -138,12 +137,13 @@ namespace ARCVX.Formats
         public MemoryStream CreateHeaderStream()
         {
             MemoryStream stream = new();
+            EndianWriter writer = new(stream, ByteOrder);
 
-            stream.Write(Bytes.GetValueBytes(Header.Magic, ByteOrder.LittleEndian));
-            stream.Write(Bytes.GetValueBytes(Header.Version, Reader.ByteOrder));
-            stream.Write(Bytes.GetValueBytes(Header.Count, Reader.ByteOrder));
+            writer.Write(Header.Magic, ByteOrder.LittleEndian);
+            writer.Write(Header.Version);
+            writer.Write(Header.Count);
 
-            stream.Seek(0, SeekOrigin.Begin);
+            writer.SetPosition(0);
 
             return stream;
         }
@@ -151,20 +151,21 @@ namespace ARCVX.Formats
         public MemoryStream CreateEntriesStream(List<ARCEntry> entries)
         {
             MemoryStream stream = new();
+            EndianWriter writer = new(stream, ByteOrder);
 
             foreach (ARCEntry entry in entries)
             {
                 uint flags = (uint)entry.Flags << 24;
                 flags |= entry.FileSize & 0x00FFFFFF;
 
-                stream.Write(Bytes.GetStringBytes(entry.Path, 0x40));
-                stream.Write(Bytes.GetValueBytes(entry.TypeHash, Reader.ByteOrder));
-                stream.Write(Bytes.GetValueBytes(entry.DataSize, Reader.ByteOrder));
-                stream.Write(Bytes.GetValueBytes(flags, Reader.ByteOrder));
-                stream.Write(Bytes.GetValueBytes(entry.Offset, Reader.ByteOrder));
+                writer.Write(Bytes.GetStringBytes(entry.Path, 0x40));
+                writer.Write(entry.TypeHash);
+                writer.Write(entry.DataSize);
+                writer.Write(flags);
+                writer.Write(entry.Offset);
             }
 
-            stream.Seek(0, SeekOrigin.Begin);
+            writer.SetPosition(0);
 
             return stream;
         }
@@ -194,7 +195,8 @@ namespace ARCVX.Formats
                     inputFile.Refresh();
 
                     using FileStream inputStream = inputFile.OpenReadShared();
-                        ZlibHeader zlibHeader = new(entryStream.ReadByte(), entryStream.ReadByte());
+
+                    ZlibHeader zlibHeader = new(entryStream.ReadByte(), entryStream.ReadByte());
 
                     if (zlibHeader.IsValid())
                     {
@@ -231,7 +233,7 @@ namespace ARCVX.Formats
                 newEntry.Offset = (uint)offset;
                 newEntries.Add(newEntry);
 
-                dataStream.Seek(0, SeekOrigin.Begin);
+                dataStream.Position = 0;
                 dataStream.CopyTo(newStream);
 
                 offset += dataStream.Length;
@@ -239,16 +241,16 @@ namespace ARCVX.Formats
 
             MemoryStream outputStream = new();
 
-            using (MemoryStream stream = CreateHeaderStream())
-                stream.CopyTo(outputStream);
+            using (MemoryStream headerStream = CreateHeaderStream())
+                headerStream.CopyTo(outputStream);
 
-            using (MemoryStream stream = CreateEntriesStream(newEntries))
-                stream.CopyTo(outputStream);
+            using (MemoryStream entriesStream = CreateEntriesStream(newEntries))
+                entriesStream.CopyTo(outputStream);
 
-            newStream.Seek(0, SeekOrigin.Begin);
+            newStream.Position = 0;
             newStream.CopyTo(outputStream);
 
-            outputStream.Seek(0, SeekOrigin.Begin);
+            outputStream.Position = 0;
 
             return outputStream;
         }
@@ -265,9 +267,9 @@ namespace ARCVX.Formats
                 if (!outputFile.Directory.Exists)
                     outputFile.Directory.Create();
 
-                using (FileStream ouputStream = outputFile.OpenWrite())
+                using (FileStream outputStream = outputFile.OpenWrite())
                 using (MemoryStream newStream = CreateNewStream(folder))
-                    newStream.CopyTo(ouputStream);
+                    newStream.CopyTo(outputStream);
 
                 if (file.FullName == File.FullName)
                     CloseReader();
