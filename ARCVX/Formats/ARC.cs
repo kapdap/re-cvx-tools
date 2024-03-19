@@ -309,7 +309,7 @@ namespace ARCVX.Formats
         {
             {0x02358E1A, "spkg"},
             {0x051BE0EC, "rut"},
-            {0x070078B5, "mnt"},
+            {0x070078B5, "rmt"},
             {0x0949A1DA, "adl"},
             {0x09C48A11, "unk"},
             {0x0A736313, "mdl"}, // wpn mdl
