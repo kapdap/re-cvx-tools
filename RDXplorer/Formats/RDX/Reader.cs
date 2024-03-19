@@ -908,8 +908,8 @@ namespace RDXplorer.Formats.RDX
             {
                 if (_characterMap.Count == 0)
                 {
-                    // TODO: Create Tables for JPN and EUR releases
-                    FileInfo file = new(Path.Combine(AppContext.BaseDirectory, "Data\\ASCII\\BIOCV_USA.tbl"));
+                    // TODO: Create language tables non-US releases
+                    FileInfo file = new(Path.Combine(AppContext.BaseDirectory, "Data\\Language\\US.tbl"));
 
                     if (file.Exists)
                     {
