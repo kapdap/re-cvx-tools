@@ -4,7 +4,7 @@ ARCVX is a command line utility for extracting and repacking Resident Evil/Bioha
 
 ## Releases
 
-Download latest release [here](https://github.com/kapdap/re-cvx-tools/releases/download/arcvx-snapshot-2024.3.20.1/arcvx-snapshot-2024.3.20.1.zip).
+Download latest release [here](https://github.com/kapdap/re-cvx-tools/releases).
 
 ## Usage
 
