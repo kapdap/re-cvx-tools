@@ -102,17 +102,17 @@ namespace ARCVX
 
             Option<DirectoryInfo> extractOption = new(
                 aliases: ["-f", "--folder"],
-                description: $"Optional folder to extract contents (<path>{EXTRACT})"
+                description: $"Optional folder to extract .arc contents (<path>{EXTRACT})"
             );
 
             Option<DirectoryInfo> repackOption = new(
                 aliases: ["-f", "--folder"],
-                description: $"Optional folder with content to repack (<path>{EXTRACT})"
+                description: $"Optional folder to use when unpacking or repacking content"
             );
 
             Option<bool> overwriteOption = new(
                 aliases: ["-o", "--overwrite"],
-                description: "Overwrite existing files after repacking",
+                description: "Overwrite existing .arc files when repacking",
                 getDefaultValue: () => false
             );
 
