@@ -330,18 +330,27 @@ namespace ARCVX
 
             foreach (FileInfo file in files)
             {
+                string path = file.Name;
+
+                if (file.FullName.StartsWith(folder.FullName))
+                    path = file.FullName.Substring(folder.FullName.Length);
+
+                FileInfo outputFile = new(Path.Join(outputFolder.FullName, path));
+
+                if (!outputFile.Directory.Exists)
+                    outputFile.Directory.Create();
+
                 try
                 {
                     if (Config.Overwrite)
                     {
-                        FileInfo outputFile = new(Path.Join(outputFolder.FullName, file.Name));
-
                         using (HFS hfs = new(file) { ByteOrder = Config.ByteOrder })
                         {
                             if (hfs.IsValid)
                                 continue;
 
                             using FileStream inputStream = file.OpenReadShared();
+
                             _ = hfs.SaveStream(inputStream, outputFile);
                         }
 
@@ -349,11 +358,6 @@ namespace ARCVX
                     }
                     else
                     {
-                        FileInfo outputFile = new(Path.Join(outputFolder.FullName, "_" + Path.GetRandomFileName()));
-
-                        if (!outputFile.Directory.Exists)
-                            outputFile.Directory.Create();
-
                         using HFS hfs = new(file) { ByteOrder = Config.ByteOrder };
 
                         if (!hfs.IsValid)
@@ -367,9 +371,6 @@ namespace ARCVX
 
                             dataStream.CopyTo(outputStream);
                         }
-
-                        outputFile.Refresh();
-                        outputFile.MoveTo(Path.Join(outputFile.Directory.FullName, file.Name), true);
 
                         Console.WriteLine($"Unpacked {file.FullName}");
                     }
@@ -403,6 +404,7 @@ namespace ARCVX
             {
                 Console.WriteLine("No convertable files found in directory.");
                 Console.ReadLine();
+
                 return Task.FromResult(1);
             }
 
@@ -440,6 +442,7 @@ namespace ARCVX
             {
                 Console.WriteLine($"{file.FullName} is not a supported ARC file.");
                 Console.ReadLine();
+
                 return;
             }
 
@@ -452,6 +455,7 @@ namespace ARCVX
                 {
                     Console.Error.WriteLine($"Failed {export.File}");
                     Console.ReadLine();
+
                     continue;
                 }
 
