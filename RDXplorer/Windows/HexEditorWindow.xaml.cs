@@ -141,7 +141,7 @@ namespace RDXplorer
             MemoryStream stream = new();
 
             using (FileStream fileStream = path.OpenReadShared())
-                path.OpenReadShared().CopyTo(stream);
+                fileStream.CopyTo(stream);
 
             stream.Position = 0;
 
