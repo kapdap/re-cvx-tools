@@ -7,6 +7,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using WpfHexaEditor;
 using WpfHexaEditor.Core;
 using WpfHexaEditor.Core.CharacterTable;
 using WpfHexaEditor.Dialog;
@@ -137,7 +138,14 @@ namespace RDXplorer
             if (path == null)
                 return;
 
-            HexEdit.Stream = path.OpenReadShared();
+            MemoryStream stream = new();
+
+            using (FileStream fileStream = path.OpenReadShared())
+                path.OpenReadShared().CopyTo(stream);
+
+            stream.Position = 0;
+
+            HexEdit.Stream = stream;
         }
 
         public void SetPosition(long offset, long length = 1)

@@ -1,4 +1,5 @@
-﻿using RDXplorer.Formats.RDX;
+﻿using RDXplorer.Extensions;
+using RDXplorer.Formats.RDX;
 using System.Collections.Generic;
 using System.IO;
 
@@ -20,6 +21,13 @@ namespace RDXplorer.Models.RDX
             private set => SetField(ref _prsFileInfo, value);
         }
 
+        private MemoryStream _rdxStream;
+        public MemoryStream RDXStream
+        {
+            get => _rdxStream;
+            private set => SetField(ref _rdxStream, value);
+        }
+
         private HeaderModel _header;
         public HeaderModel Header
         {
@@ -33,7 +41,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_model == null)
-                    SetField(ref _model, Reader.ReadModels(RDXFileInfo, Header));
+                    SetField(ref _model, Reader.ReadModels(RDXStream, Header));
                 return _model;
             }
 
@@ -46,7 +54,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_motion == null)
-                    SetField(ref _motion, Reader.ReadMotions(RDXFileInfo, Header));
+                    SetField(ref _motion, Reader.ReadMotions(RDXStream, Header));
                 return _motion;
             }
 
@@ -59,7 +67,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_script == null)
-                    SetField(ref _script, Reader.ReadScripts(RDXFileInfo, Header));
+                    SetField(ref _script, Reader.ReadScripts(RDXStream, Header));
                 return _script;
             }
 
@@ -72,7 +80,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_texture == null)
-                    SetField(ref _texture, Reader.ReadTextures(RDXFileInfo, Header));
+                    SetField(ref _texture, Reader.ReadTextures(RDXStream, Header));
                 return _texture;
             }
 
@@ -85,7 +93,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_camera == null)
-                    SetField(ref _camera, Reader.ReadCamera(RDXFileInfo, Header));
+                    SetField(ref _camera, Reader.ReadCamera(RDXStream, Header));
                 return _camera;
             }
 
@@ -98,7 +106,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_lighting == null)
-                    SetField(ref _lighting, Reader.ReadLighting(RDXFileInfo, Header));
+                    SetField(ref _lighting, Reader.ReadLighting(RDXStream, Header));
                 return _lighting;
             }
 
@@ -111,7 +119,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_enemy == null)
-                    SetField(ref _enemy, Reader.ReadEnemy(RDXFileInfo, Header));
+                    SetField(ref _enemy, Reader.ReadEnemy(RDXStream, Header));
                 return _enemy;
             }
 
@@ -124,7 +132,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_object == null)
-                    SetField(ref _object, Reader.ReadObject(RDXFileInfo, Header));
+                    SetField(ref _object, Reader.ReadObject(RDXStream, Header));
                 return _object;
             }
 
@@ -137,7 +145,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_item == null)
-                    SetField(ref _item, Reader.ReadItem(RDXFileInfo, Header));
+                    SetField(ref _item, Reader.ReadItem(RDXStream, Header));
                 return _item;
             }
 
@@ -150,7 +158,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_effect == null)
-                    SetField(ref _effect, Reader.ReadEffect(RDXFileInfo, Header));
+                    SetField(ref _effect, Reader.ReadEffect(RDXStream, Header));
                 return _effect;
             }
 
@@ -163,7 +171,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_boundary == null)
-                    SetField(ref _boundary, Reader.ReadBoundary(RDXFileInfo, Header));
+                    SetField(ref _boundary, Reader.ReadBoundary(RDXStream, Header));
                 return _boundary;
             }
 
@@ -176,7 +184,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_aot == null)
-                    SetField(ref _aot, Reader.ReadAOT(RDXFileInfo, Header));
+                    SetField(ref _aot, Reader.ReadAOT(RDXStream, Header));
                 return _aot;
             }
 
@@ -189,7 +197,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_trigger == null)
-                    SetField(ref _trigger, Reader.ReadTrigger(RDXFileInfo, Header));
+                    SetField(ref _trigger, Reader.ReadTrigger(RDXStream, Header));
                 return _trigger;
             }
 
@@ -202,7 +210,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_player == null)
-                    SetField(ref _player, Reader.ReadPlayer(RDXFileInfo, Header));
+                    SetField(ref _player, Reader.ReadPlayer(RDXStream, Header));
                 return _player;
             }
 
@@ -215,7 +223,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_event == null)
-                    SetField(ref _event, Reader.ReadEvent(RDXFileInfo, Header));
+                    SetField(ref _event, Reader.ReadEvent(RDXStream, Header));
                 return _event;
             }
 
@@ -228,7 +236,7 @@ namespace RDXplorer.Models.RDX
             get
             {
                 if (_text == null)
-                    SetField(ref _text, Reader.ReadTexts(RDXFileInfo, Header));
+                    SetField(ref _text, Reader.ReadTexts(RDXStream, Header));
                 return _text;
             }
 
@@ -238,14 +246,24 @@ namespace RDXplorer.Models.RDX
         public DocumentModel(FileInfo file)
         {
             RDXFileInfo = file;
-            Header = Reader.ReadHeader(file);
+            RDXStream = new();
+
+            using (FileStream fileStream = file.OpenReadShared())
+                fileStream.CopyTo(RDXStream);
+
+            Header = Reader.ReadHeader(RDXStream);
         }
 
         public DocumentModel(FileInfo file, FileInfo prs)
         {
             RDXFileInfo = file;
             PRSFileInfo = prs;
-            Header = Reader.ReadHeader(file);
+            RDXStream = new();
+
+            using (FileStream fileStream = file.OpenReadShared())
+                fileStream.CopyTo(RDXStream);
+            
+            Header = Reader.ReadHeader(RDXStream);
         }
     }
 }
