@@ -181,6 +181,7 @@ namespace RDXplorer
                 if (_actors.Count == 0)
                 {
                     _actors.Add(EnemyEnumeration.None, "None");
+                    _actors.Add(EnemyEnumeration.ExplosiveBarrel, "Explosive Barrel");
                     _actors.Add(EnemyEnumeration.Zombie, "Zombie");
                     _actors.Add(EnemyEnumeration.GlupWorm, "Glup Worm");
                     _actors.Add(EnemyEnumeration.BlackWidow, "Black Widow");
@@ -189,36 +190,35 @@ namespace RDXplorer
                     _actors.Add(EnemyEnumeration.Moth, "Moth");
                     _actors.Add(EnemyEnumeration.Bat, "Bat");
                     _actors.Add(EnemyEnumeration.Bandersnatch, "Bandersnatch");
-                    _actors.Add(EnemyEnumeration.AlexiaAshford, "Alexia Ashford");
+                    _actors.Add(EnemyEnumeration.Ant, "Ant");
+                    _actors.Add(EnemyEnumeration.Spotter, "Spotter");
+                    _actors.Add(EnemyEnumeration.AlexiaAshfordA, "Alexia Ashford First Stage");
                     _actors.Add(EnemyEnumeration.AlexiaAshfordB, "Alexia Ashford Second Stage");
                     _actors.Add(EnemyEnumeration.AlexiaAshfordC, "Alexia Ashford Final Stage");
                     _actors.Add(EnemyEnumeration.Nosferatu, "Nosferatu");
+                    _actors.Add(EnemyEnumeration.SniperRifle, "Sniper Rifle");
                     _actors.Add(EnemyEnumeration.MutatedSteve, "Mutated Steve");
                     _actors.Add(EnemyEnumeration.Tyrant, "Tyrant");
                     _actors.Add(EnemyEnumeration.AlbinoidInfant, "Albinoid Infant");
                     _actors.Add(EnemyEnumeration.AlbinoidAdult, "Albinoid Adult");
                     _actors.Add(EnemyEnumeration.GiantBlackWidow, "Giant Black Widow");
+                    _actors.Add(EnemyEnumeration.BabyBlackWidow, "Baby Black Widow");
                     _actors.Add(EnemyEnumeration.AnatomistZombie, "Anatomist Zombie");
                     _actors.Add(EnemyEnumeration.Tenticle, "Tenticle");
                     _actors.Add(EnemyEnumeration.AlexiaBaby, "Alexia Baby");
 
-                    // TODO: Label Unknown Enemies/Cinematic models
-                    _actors.Add(EnemyEnumeration.Unknown0, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown8, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown10, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown11, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown16, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown20, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown24, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown25, "Unknown");
 
                     _actors.Add(EnemyEnumeration.Unknown42, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown43, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown44, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown47, "Unknown");
+                    _actors.Add(EnemyEnumeration.Unknown49, "Unknown");
 
-                    _actors.Add(EnemyEnumeration.Unknown51, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown52, "Unknown");
+                    _actors.Add(EnemyEnumeration.FatherBurnside, "Father Burnside");
+                    _actors.Add(EnemyEnumeration.AlexanderAshford, "Alexander Ashford (Nosferatu)");
                     _actors.Add(EnemyEnumeration.Unknown53, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown54, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown55, "Unknown");
@@ -232,9 +232,9 @@ namespace RDXplorer
                     _actors.Add(EnemyEnumeration.Unknown63, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown65, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown66, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown67, "Unknown");
+                    _actors.Add(EnemyEnumeration.Cockroach, "Cockroach");
                     _actors.Add(EnemyEnumeration.Unknown68, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown69, "Unknown");
+                    _actors.Add(EnemyEnumeration.Rat, "Rat (D.I.J)");
 
                     _actors.Add(EnemyEnumeration.Unknown70, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown71, "Unknown");
@@ -252,20 +252,20 @@ namespace RDXplorer
                     _actors.Add(EnemyEnumeration.Unknown83, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown84, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown85, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown87, "Unknown");
+                    _actors.Add(EnemyEnumeration.BodyBag, "Body Bag");
                     _actors.Add(EnemyEnumeration.Unknown88, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown89, "Unknown");
 
                     _actors.Add(EnemyEnumeration.Unknown90, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown91, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown92, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown93, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown94, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown95, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown96, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown97, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown98, "Unknown");
-                    _actors.Add(EnemyEnumeration.Unknown99, "Unknown");
+                    _actors.Add(EnemyEnumeration.Claire, "Claire Redfield");
+                    _actors.Add(EnemyEnumeration.Chris, "Chris Redfield");
+                    _actors.Add(EnemyEnumeration.Steve, "Steve Burnside");
+                    _actors.Add(EnemyEnumeration.Alfred, "Alfred Ashford");
+                    _actors.Add(EnemyEnumeration.Alexia, "Alexia Ashford");
+                    _actors.Add(EnemyEnumeration.AlfredMakeup, "Alfred Ashford (Makeup)");
+                    _actors.Add(EnemyEnumeration.Wesker, "Albert Wesker");
+                    _actors.Add(EnemyEnumeration.Rodrigo, "Rodrigo Raval");
+                    _actors.Add(EnemyEnumeration.Scientist, "Scientist");
                 }
 
                 return _actors;

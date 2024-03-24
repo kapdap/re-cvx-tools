@@ -4,6 +4,7 @@
     {
         Unknown = -2,
         None = -1,
+        ExplosiveBarrel = 0,
         Zombie = 1,
         GlupWorm = 2, // Boss
         BlackWidow = 3,
@@ -14,10 +15,11 @@
         Bandersnatch = 9,
         Ant = 10,
         Spotter = 11,
-        AlexiaAshford = 12, // Boss
+        AlexiaAshfordA = 12, // Boss
         AlexiaAshfordB = 13, // Boss
         AlexiaAshfordC = 14, // Boss
         Nosferatu = 15, // Boss
+        SniperRifle = 16,
         MutatedSteve = 17, // Boss
         Tyrant = 19, // Boss
         AlbinoidInfant = 21,
@@ -28,24 +30,18 @@
         Tenticle = 29,
         AlexiaBaby = 30,
 
-        // Normal enemies?
-        Unknown0 = 0,
         Unknown8 = 8,
-        Unknown10 = 10,
-        Unknown11 = 11,
-        Unknown16 = 16,
         Unknown20 = 20,
-        Unknown24 = 24,
         Unknown25 = 25,
 
-        // Cinematic models
         Unknown43 = 43,
         Unknown42 = 42,
         Unknown44 = 44,
         Unknown47 = 47,
+        Unknown49 = 49,
 
-        Unknown51 = 51,
-        Unknown52 = 52,
+        FatherBurnside = 51,
+        AlexanderAshford = 52,
         Unknown53 = 53,
         Unknown54 = 54,
         Unknown55 = 55,
@@ -59,9 +55,9 @@
         Unknown63 = 63,
         Unknown65 = 65,
         Unknown66 = 66,
-        Unknown67 = 67,
+        Cockroach = 67,
         Unknown68 = 68,
-        Unknown69 = 69,
+        Rat = 69,
 
         Unknown70 = 70,
         Unknown71 = 71,
@@ -79,20 +75,20 @@
         Unknown83 = 83,
         Unknown84 = 84,
         Unknown85 = 85,
-        Unknown87 = 87,
+        BodyBag = 87,
         Unknown88 = 88,
         Unknown89 = 89,
 
         Unknown90 = 90,
-        Unknown91 = 91,
-        Unknown92 = 92,
-        Unknown93 = 93,
-        Unknown94 = 94,
-        Unknown95 = 95,
-        Unknown96 = 96,
-        Unknown97 = 97,
-        Unknown98 = 98,
-        Unknown99 = 99,
+        Claire = 91,
+        Chris = 92,
+        Steve = 93,
+        Alfred = 94,
+        Alexia = 95,
+        AlfredMakeup = 96,
+        Wesker = 97,
+        Rodrigo = 98,
+        Scientist = 99,
 
     }
 }
