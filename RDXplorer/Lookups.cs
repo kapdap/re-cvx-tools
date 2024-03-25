@@ -189,6 +189,7 @@ namespace RDXplorer
                     _actors.Add(EnemyEnumeration.Hunter, "Hunter");
                     _actors.Add(EnemyEnumeration.Moth, "Moth");
                     _actors.Add(EnemyEnumeration.Bat, "Bat");
+                    _actors.Add(EnemyEnumeration.Fish, "Fish");
                     _actors.Add(EnemyEnumeration.Bandersnatch, "Bandersnatch");
                     _actors.Add(EnemyEnumeration.Ant, "Ant");
                     _actors.Add(EnemyEnumeration.Spotter, "Spotter");
@@ -207,7 +208,6 @@ namespace RDXplorer
                     _actors.Add(EnemyEnumeration.Tenticle, "Tenticle");
                     _actors.Add(EnemyEnumeration.AlexiaBaby, "Alexia Baby");
 
-                    _actors.Add(EnemyEnumeration.Fish, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown20, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown25, "Unknown");
 
