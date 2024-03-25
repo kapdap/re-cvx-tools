@@ -30,7 +30,7 @@ namespace RDXplorer
             Close();
 
         private void ToolsHexEditorMenu_Click(object sender, RoutedEventArgs e) =>
-            Program.Windows.HexEditor.ShowFile(AppViewModel?.CurrentFileInfo);
+            Program.Windows.HexEditor.ShowFile(AppViewModel?.RDXDocument?.RDXFileInfo);
 
         private void HelpAboutMenu_Click(object sender, RoutedEventArgs e) =>
             Program.Windows.About.Show();

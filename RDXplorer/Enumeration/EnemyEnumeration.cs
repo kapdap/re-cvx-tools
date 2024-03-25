@@ -12,6 +12,7 @@
         Hunter = 5,
         Moth = 6,
         Bat = 7,
+        Fish = 8,
         Bandersnatch = 9,
         Ant = 10,
         Spotter = 11,
@@ -30,7 +31,6 @@
         Tenticle = 29,
         AlexiaBaby = 30,
 
-        Unknown8 = 8,
         Unknown20 = 20,
         Unknown25 = 25,
 
@@ -89,6 +89,5 @@
         Wesker = 97,
         Rodrigo = 98,
         Scientist = 99,
-
     }
 }

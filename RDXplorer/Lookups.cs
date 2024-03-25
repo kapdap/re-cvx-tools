@@ -207,7 +207,7 @@ namespace RDXplorer
                     _actors.Add(EnemyEnumeration.Tenticle, "Tenticle");
                     _actors.Add(EnemyEnumeration.AlexiaBaby, "Alexia Baby");
 
-                    _actors.Add(EnemyEnumeration.Unknown8, "Unknown");
+                    _actors.Add(EnemyEnumeration.Fish, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown20, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown25, "Unknown");
 
