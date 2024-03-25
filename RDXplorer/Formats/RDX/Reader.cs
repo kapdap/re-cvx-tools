@@ -569,7 +569,8 @@ namespace RDXplorer.Formats.RDX
                 model.Fields.Header.SetValue(stream.Position, br.ReadBytes(4));
                 model.Fields.Type.SetValue(stream.Position, br.ReadBytes(2));
                 model.Fields.Effect.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.Variant.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Flags.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Variant.SetValue(stream.Position, br.ReadBytes(1));
                 model.Fields.Index.SetValue(stream.Position, br.ReadBytes(2));
                 model.Fields.X.SetValue(stream.Position, br.ReadBytes(4));
                 model.Fields.Y.SetValue(stream.Position, br.ReadBytes(4));
