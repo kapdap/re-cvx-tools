@@ -1019,7 +1019,7 @@ namespace RDXplorer.Formats.RDX
 
         private static string DecodeText(ushort value)
         {
-            string key = Utilities.SwapBytes(value).ToString("X4");
+            string key = value.ToString("X4");
 
             return CharacterMap.ContainsKey(key) ? CharacterMap[key] : $"[0x{key}]";
         }

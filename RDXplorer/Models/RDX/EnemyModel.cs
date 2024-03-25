@@ -7,7 +7,8 @@
         public DataEntryModel<int> Header { get; set; } = new();
         public DataEntryModel<short> Type { get; set; } = new();
         public DataEntryModel<short> Effect { get; set; } = new();
-        public DataEntryModel<short> Variant { get; set; } = new();
+        public DataEntryModel<byte> Flags { get; set; } = new();
+        public DataEntryModel<byte> Variant { get; set; } = new();
         public DataEntryModel<short> Index { get; set; } = new();
         public DataEntryModel<float> X { get; set; } = new();
         public DataEntryModel<float> Y { get; set; } = new();
