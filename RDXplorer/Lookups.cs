@@ -219,7 +219,7 @@ namespace RDXplorer
 
                     _actors.Add(EnemyEnumeration.FatherBurnside, "Father Burnside");
                     _actors.Add(EnemyEnumeration.AlexanderAshford, "Alexander Ashford (Nosferatu)");
-                    _actors.Add(EnemyEnumeration.Unknown53, "Unknown");
+                    _actors.Add(EnemyEnumeration.NosferatuCore, "Nosferatu Core");
                     _actors.Add(EnemyEnumeration.Unknown54, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown55, "Unknown");
                     _actors.Add(EnemyEnumeration.Unknown56, "Unknown");
@@ -266,6 +266,17 @@ namespace RDXplorer
                     _actors.Add(EnemyEnumeration.Wesker, "Albert Wesker");
                     _actors.Add(EnemyEnumeration.Rodrigo, "Rodrigo Raval");
                     _actors.Add(EnemyEnumeration.Scientist, "Scientist");
+
+                    // Survivor 2
+                    _actors.Add(EnemyEnumeration.Coin, "Coin");
+                    _actors.Add(EnemyEnumeration.DrainDeimos, "Drain Deimos");
+                    _actors.Add(EnemyEnumeration.Licker, "Licker");
+                    _actors.Add(EnemyEnumeration.NemesisCutscene, "Nemesis (Cutscene)");
+                    _actors.Add(EnemyEnumeration.Nemesis, "Nemesis");
+                    _actors.Add(EnemyEnumeration.DestructibleObject, "Destructible Object");
+                    _actors.Add(EnemyEnumeration.Unknown107, "Unknown");
+                    _actors.Add(EnemyEnumeration.EnemySpawnerPipe, "Enemy Spawner (Pipe)");
+                    _actors.Add(EnemyEnumeration.EnemySpawnerBox, "Enemy Spawner (Box)");
                 }
 
                 return _actors;
