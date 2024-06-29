@@ -274,9 +274,9 @@ namespace RDXplorer
                     _actors.Add(EnemyEnumeration.NemesisCutscene, "Nemesis (Cutscene)");
                     _actors.Add(EnemyEnumeration.Nemesis, "Nemesis");
                     _actors.Add(EnemyEnumeration.DestructibleObject, "Destructible Object");
-                    _actors.Add(EnemyEnumeration.Unknown107, "Unknown");
+                    _actors.Add(EnemyEnumeration.EnemySpawnerWoodenBox, "Enemy Spawner (Wooden Box)");
                     _actors.Add(EnemyEnumeration.EnemySpawnerPipe, "Enemy Spawner (Pipe)");
-                    _actors.Add(EnemyEnumeration.EnemySpawnerBox, "Enemy Spawner (Box)");
+                    _actors.Add(EnemyEnumeration.EnemySpawnerMetalBox, "Enemy Spawner (Metal Box)");
                 }
 
                 return _actors;

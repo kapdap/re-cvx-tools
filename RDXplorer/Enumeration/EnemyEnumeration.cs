@@ -97,8 +97,8 @@
         NemesisCutscene = 103,
         Nemesis = 104,
         DestructibleObject = 105, // doesn't include crates, which are a variant of explosive barrel
-        Unknown107 = 107,
+        EnemySpawnerWoodenBox = 107,
         EnemySpawnerPipe = 108,
-        EnemySpawnerBox = 109,
+        EnemySpawnerMetalBox = 109,
     }
 }
