@@ -42,7 +42,7 @@
 
         FatherBurnside = 51,
         AlexanderAshford = 52,
-        Unknown53 = 53,
+        NosferatuCore = 53,
         Unknown54 = 54,
         Unknown55 = 55,
         Unknown56 = 56,
@@ -89,5 +89,16 @@
         Wesker = 97,
         Rodrigo = 98,
         Scientist = 99,
+
+        // Survivor 2
+        Coin = 100,
+        DrainDeimos = 101,
+        Licker = 102,
+        NemesisCutscene = 103,
+        Nemesis = 104,
+        DestructibleObject = 105, // doesn't include crates, which are a variant of explosive barrel
+        EnemySpawnerWoodenBox = 107,
+        EnemySpawnerPipe = 108,
+        EnemySpawnerMetalBox = 109,
     }
 }
