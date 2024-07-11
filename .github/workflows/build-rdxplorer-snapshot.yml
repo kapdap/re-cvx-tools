@@ -26,15 +26,19 @@ jobs:
       Asset_Name: rdxplorer-snapshot
       
     steps:
+    - name: Get date
+      id: date
+      uses: Kaven-Universe/github-action-current-date-time@v1
+      with:
+        format: "YYYY.MM.DD"
+        
     - name: Generate version
       id: version
-      uses: amitsingh-007/next-release-tag@v4.2.0
+      uses: prompt/actions-commit-hash@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        tag_prefix: ''
-        tag_template: 'yyyy.mm.dd.i'
-
-    - name: Checkout
+        prefix: ${{ steps.date.outputs.time }}.
+    
+    - name: Checkout repository
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
@@ -60,8 +64,8 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         file: ./release.zip
-        asset_name: ${{ env.Asset_Name }}-${{ steps.version.outputs.next_release_tag }}.zip
-        release_name: ${{ env.Release_Name }} (${{ steps.version.outputs.next_release_tag }})
-        body: ${{ env.Release_Body }} ${{ steps.version.outputs.next_release_tag }}
-        tag: ${{ steps.version.outputs.next_release_tag }}
+        asset_name: ${{ env.Asset_Name }}-${{ steps.version.outputs.short }}.zip
+        release_name: ${{ env.Release_Name }} (${{ steps.version.outputs.short }})
+        body: ${{ env.Release_Body }} ${{ steps.version.outputs.short }}
+        tag: ${{ env.Asset_Name }}-${{ steps.version.outputs.short }}
         overwrite: true
