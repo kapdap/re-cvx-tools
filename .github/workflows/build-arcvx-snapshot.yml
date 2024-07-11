@@ -36,6 +36,7 @@ jobs:
       id: version
       uses: prompt/actions-commit-hash@v3
       with:
+        commit: "${{ github.event.workflow_run.head_sha }}"
         prefix: ${{ steps.date.outputs.time }}.
     
     - name: Checkout repository
