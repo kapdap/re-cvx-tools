@@ -394,15 +394,15 @@ namespace RDXplorer.Formats.RDX
 
                     blockModel.Fields.Type.SetValue(stream.Position, br.ReadBytes(4));
 
+                    // 0xFFFFFFFF is the end of the block
                     if (blockModel.Fields.Type.Value == 0xFFFFFFFF)
                         break;
 
                     blockModel.Fields.Size.SetValue(stream.Position, br.ReadBytes(4));
+                    blockModel.Fields.Head.SetValue(stream.Position, br.ReadBytes(24));
+                    blockModel.Fields.Data.SetValue(stream.Position, br.ReadBytes((int)blockModel.Fields.Size.Value));
 
                     tableModel.Blocks.Add(blockModel);
-
-                    stream.Seek(24, SeekOrigin.Current);
-                    stream.Seek(blockModel.Fields.Size.Value, SeekOrigin.Current);
                 }
             }
 
