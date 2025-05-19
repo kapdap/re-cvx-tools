@@ -342,6 +342,18 @@ namespace RDXplorer.Views
                 set => _scripting = value;
             }
 
+            private static BitmapWindow _bitmap;
+            public static BitmapWindow Bitmap
+            {
+                get
+                {
+                    _bitmap ??= new();
+                    return _bitmap;
+                }
+
+                set => _bitmap = value;
+            }
+
             private static AboutWindow _about;
             public static AboutWindow About
             {

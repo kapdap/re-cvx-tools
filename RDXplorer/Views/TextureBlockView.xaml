@@ -21,6 +21,8 @@
             <DataGridTextColumn Header="Group" Binding="{Binding Model.Table.Fields.Pointer.Value, StringFormat=X8}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Size" Binding="{Binding Model.Fields.Size}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Type" Binding="{Binding Model.Fields.Type.Text}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Head" Binding="{Binding Model.Fields.Head.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Data" Binding="{Binding Model.Fields.Data.Value, StringFormat=X8}" FontFamily="Consolas"/>
         </DataGrid.Columns>
     </DataGrid>
 </local:View>
