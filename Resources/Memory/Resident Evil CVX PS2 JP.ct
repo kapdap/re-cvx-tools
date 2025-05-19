@@ -18,8 +18,6 @@ local ProcLst =
 }
 
 PS2mem = 0x20000000
-unregisterSymbol("PS2mem")
-registerSymbol("PS2mem", PS2mem, true)
 
 function AttachProcess(name)
   if getProcessIDFromProcessName(name) ~= nil then
@@ -49,6 +47,9 @@ if not AttachPCSX2() then
   showMessage("Unable to find PCSX2 process.")
   error()
 end
+
+unregisterSymbol("PS2mem")
+registerSymbol("PS2mem", PS2mem, true)
 
 [DISABLE]
 
@@ -226,6 +227,179 @@ end
       <VariableType>Custom</VariableType>
       <CustomType>2 Byte Big Endian</CustomType>
       <Address>PS2mem+04314B4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5648</ID>
+      <Description>"Next"</Description>
+      <DropDownList DisplayValueAsItem="1">00000000:Prison B1 Cells
+00000001:Prison B1 Entry
+00000002:Prison 1F Graveyard
+00000003:Prison 1F Yard
+00000004:Prison 1F Computer Room
+00000005:Prison 1F Barracks Yard
+00000006:Prison 1F Barracks
+00000007:Prison 1F Bunkhouse
+00000008:Prison 1F Execution Yard
+00000009:Prison 1F Security Corridor
+0000000A:Prison Iron Bridge
+0000000B:Prison 1F Clinic
+0000000C:Prison 1F Cremetorium
+0000000D:Prison 1F Secret Corridor
+0000000E:Prison 1F Torture Chamber
+0000000F:Prison 1F Statue Room
+00000010:Prison 1F Backyard
+00000100:Palace Courtyard
+00000102:Palace Entrance Hall
+00000103:Palace 1F Bathroom
+00000104:Palace 1F Portrait Room
+00000105:Palace 1F Display Room
+00000106:Palace 1F Umbrella Meeting Room
+00000107:Palace 1F Corridor
+00000108:Palace 2F Secretarys Office
+00000109:Palace 2F Alfreds Office
+0000010A:Palace 2F Residence Bridge
+0000010B:Palace 2F Casino Lounge
+0000010C:Palace Passage
+0000010D:Palace B1 Dock
+0000010E:Palace B1 Submarine
+00000200:Private Residence Courtyard
+00000201:Private Residence Entrance Hall
+00000202:Private Residence 1F Dining Room
+00000203:Private Residence 2F Bedroom Corridor
+00000204:Private Residence 2F Alfreds Bedroom
+00000205:Private Residence 2F Alexias Bedroom
+00000206:Private Residence 3F Play Room
+00000207:Private Residence 4F Private Study
+00000300:Military Training Facility Garage
+00000301:Military Training Facility Back Courtyard
+00000302:Military Training Facility 1F Tank Yard
+00000303:Military Training Facility 1F Elevator Corridor
+00000304:Military Training Facility 1F Diorama Room
+00000305:Military Training Facility 1F Lockers
+00000306:Military Training Facility 1F Swimming Pool
+00000307:Military Training Facility 1F Front Office
+00000308:Military Training Facility Lobby
+00000309:Military Training Facility 1F Excercise Yard
+0000030A:Military Training Facility Warehouse
+0000030B:Military Training Facility 2F Warehouse Managers Room
+0000030C:Military Training Facility 2F Command Center
+0000030D:Military Training Facility 2F Emergency Door
+0000030F:Military Training Facility 2F Warehouse Corridor
+00000310:Military Training Facility B1 Basement Storehouse
+00000311:Military Training Facility B1 Boiler Room
+00000314:Military Training Facility B1 Weapon Repair Shop
+00000315:Military Training Facility B1 Iron Walkway
+00000316:Military Training Facility Elevator
+00000317:Military Training Facility Cargo Elevator
+00000318:Military Training Facility Jet Hangar Corridor
+00000400:Airport Check-in
+00000401:Airport Bridge
+00000402:Airport Cargo Bay
+00000403:Airport Entry
+00000404:Airport Cargo Transport
+00000405:Airport Submarine
+00000500:Transport Plane Cockpit
+00000501:Transport Plane Cargo Hold
+00000600:Antartic Transport Terminal B1 Silo
+00000601:Antartic Transport Terminal B1 Workmans Bunkhouse
+00000602:Antartic Transport Terminal B1 Tool Storeroom
+00000603:Antartic Transport Terminal B2 Frozen Corridor
+00000604:Antartic Transport Terminal B2 Office
+00000605:Antartic Transport Terminal Sorting Room
+00000606:Antartic Transport Terminal Mining Room
+00000607:Antartic Transport Terminal Power Room
+00000608:Antartic Transport Terminal B2 Weapon Room
+00000609:Antartic Transport Terminal B2 B.O.W. Room
+0000060A:Antartic Transport Terminal 1F Helipad
+00000700:Military Training Facility 1F Tank Yard
+00000701:Military Training Facility Elevator
+00000702:Military Training Facility 1F Diorama Room
+00000703:Military Training Facility 2F Command Center
+00000704:Military Training Facility B1 Weapon Repair Shop
+00000705:Military Training Facility B1 Chemical Storage Room
+00000706:Military Training Facility Iron Walkway
+00000707:Military Training Facility Specimen Lab
+00000708:Military Training Facility B2 Jet Hangar Corridor
+00000709:Military Training Facility B2 Captins Room
+0000070A:Military Training Facility B2 Water Pool
+0000070B:Military Training Facility B1 Turn Table Room
+0000070C:Military Training Facility Garage
+0000070D:Military Training Facility 1F Excercise Yard
+0000070E:Military Training Facility Back Courtyard
+0000070F:Military Training Facility 1F Front Office
+00000710:Military Training Facility 1F Lobby
+00000711:Military Training Facility 2F Lobby
+00000712:Military Training Facility 2F Warehouse Corridor
+00000713:Military Training Facility 1F Elevator Corridor
+00000714:Military Training Facility B1 Basement Storehouse
+00000715:Military Training Facility B1 Boiler Room
+00000716:Military Training Facility B3 Cave
+00000717:Military Training Facility B3 Tomb
+00000719:Military Training Facility B1 Underground Passage
+00000800:Airport Check-in
+00000801:Airport Bridge
+00000802:Airport Cargo Bay
+00000804:Airport Cargo Transport
+00000805:Airport Entry
+00000900:Antartic Transport Terminal B1 Silo
+00000901:Antartic Transport Terminal B1 Workmans Bunkhouse
+00000902:Antartic Transport Terminal B1 Tool Storeroom
+00000903:Antartic Transport Terminal B2 Frozen Corridor
+00000904:Antartic Transport Terminal B2 Office
+00000905:Antartic Transport Terminal B1 Sorting Room
+00000906:Antartic Transport Terminal B1 Mining Room
+00000907:Antartic Transport Terminal B1 Power Room
+00000908:Antartic Transport Terminal B2 Weapon Room
+00000909:Antartic Transport Terminal B1 Jet Hanger
+0000090A:Antartic Transport Terminal B1 Corridor
+0000090B:Antartic Transport Terminal B1 Water Tank Room
+0000090C:Antartic Transport Terminal B5 Icy Corridor
+0000090D:Antartic Transport Terminal B5 Mansion Courtyard
+0000090E:Antartic Transport Terminal B5 High Voltage Room
+0000090F:Antartic Transport Terminal B5 Main Hall
+00000910:Antartic Transport Terminal B5 Art Room
+00000911:Antartic Transport Terminal B6 Ant Farm
+00000912:Antartic Transport Terminal B6 Alexias Lab
+00000913:Antartic Transport Terminal B6 Alexias Study
+00000914:Antartic Transport Terminal B4 Bedroom Corridor
+00000915:Antartic Transport Terminal B4 Study
+00000916:Antartic Transport Terminal B4 T-Veronica Lab
+00000917:Antartic Transport Terminal B4 Alfreds Bedroom
+00000918:Antartic Transport Terminal B4 Alexias Bedroom
+00000919:Antartic Transport Terminal B3 Conference Room
+0000091A:Antartic Transport Terminal B4 Sitting Room
+0000091B:Antartic Transport Terminal B4 L Corridor
+0000091C:Antartic Transport Terminal B4 Hall of Armors
+0000091D:Antartic Transport Terminal B4 Detention Center
+0000091E:Antartic Transport Terminal B4 Upper Ant Farm
+0000091F:Antartic Transport Terminal B4 Reactor Core
+00000920:Antartic Transport Terminal B5 Main Hall Destroyed
+00000922:Antartic Transport Terminal End Cinematic 1
+00000923:Antartic Transport Terminal End Cinematic 2
+00000924:Antartic Transport Terminal End Cinematic 3
+00000925:Antartic Transport Terminal End Cinematic 4
+00000534:1 Battle Time Room
+00000535:2 Battle Time Room
+00000536:3 Battle Time Room
+00000537:4 Battle Time Room
+0000053A:5 Battle Time Room
+0000053B:6 Battle Time Room
+0000053C:7 Battle Time Room
+0000053F:8 Battle Time Room
+00000540:9 Battle Time Room
+00000541:10 Battle Time Room
+00000542:11 Battle Time Room
+00000543:12 Battle Time Room
+00000544:13 Battle Time Room
+00000545:14 Battle Time Room
+00000546:15 Battle Time Room
+00000547:16 Battle Time Room
+00000550:17 Battle Time "Boss"
+</DropDownList>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>PS2mem+045B290</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>1312</ID>
@@ -12658,6 +12832,4 @@ US  -&gt; US = +780418
             +780518
             +7AC320
 </Comments>
-  <LuaScript>
-</LuaScript>
 </CheatTable>

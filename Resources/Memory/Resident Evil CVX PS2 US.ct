@@ -176,6 +176,29 @@ writeBytes(PS2mem+0x02C42AC, 0x9A, 0x00, 0x14, 0xA2, 0x30, 0x00, 0x01, 0x3C, 0x9
       <Address>PS2mem+043318C</Address>
     </CheatEntry>
     <CheatEntry>
+      <ID>5747</ID>
+      <Description>"Menu"</Description>
+      <DropDownList DisplayValueAsItem="1">0:Inactive
+2:Fade In
+4:Loading
+5:Capcom
+6:Press Start
+8:Press Start to Main Menu
+9:Main Menu
+11:Main Menu to Mode Select
+12:Mode Select
+13:Mode Select to Main Menu
+14:Main Menu to Alt. Battle Mode Menu
+15:Alt. Battle Mode Menu
+16:Alt. Battle Mode Menu to Main Menu
+17:Fade Out
+18:Logos
+</DropDownList>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>PS2mem+04F8824</Address>
+    </CheatEntry>
+    <CheatEntry>
       <ID>2620</ID>
       <Description>"Status"</Description>
       <Options moAlwaysHideChildren="1" moManualExpandCollapse="1"/>
