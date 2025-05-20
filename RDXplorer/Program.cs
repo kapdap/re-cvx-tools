@@ -370,6 +370,7 @@ namespace RDXplorer.Views
             {
                 _hexEditor?.Close();
                 _scripting?.Close();
+                _bitmap?.Close();
                 _about?.Close();
             }
         }
