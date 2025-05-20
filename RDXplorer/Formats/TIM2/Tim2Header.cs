@@ -22,7 +22,8 @@ namespace RDXplorer.Formats.TIM2
             PictureCount = reader.ReadInt16();
             Reserved1 = reader.ReadInt32();
             Reserved2 = reader.ReadInt32(); 
-            reader.BaseStream.Seek(112, SeekOrigin.Current);
+            if (Format == 1)
+                reader.BaseStream.Seek(112, SeekOrigin.Current);
         }
     }
 }

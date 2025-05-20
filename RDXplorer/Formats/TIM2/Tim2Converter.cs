@@ -7,7 +7,7 @@ namespace RDXplorer.Formats.TIM2
 {
     public static class Tim2Converter
     {
-        public static BitmapSource Decode(byte[] data, int index = 0)
+        public static BitmapSource Decode(byte[] data, int index = 0, bool disableAlpha = false)
         {
             Tim2Document document = new(data);
             Tim2Picture picture = document.Pictures[index];
@@ -19,41 +19,49 @@ namespace RDXplorer.Formats.TIM2
                 96,
                 PixelFormats.Bgra32,
                 null,
-                ConvertToBgra32(picture.ImageData, picture.ClutData, picture.ImageColorType, picture.Width, picture.Height),
+                ConvertToBgra32(picture, disableAlpha),
                 picture.Width * 4);
         }
 
-        private static byte[] ConvertToBgra32(byte[] input, byte[] clut, Tim2ColorType colors, int width, int height)
+        private static byte[] ConvertToBgra32(Tim2Picture picture, bool disableAlpha)
         {
-            byte[] output = new byte[width * height * 4];
+            byte[] output = new byte[picture.Width * picture.Height * 4];
+            byte[] clut = null;
 
-            switch (colors)
+            if (picture.ClutData != null)
+                clut = ImageConversion.FixPalettePS2(picture.ClutData, (byte)picture.ClutColorType, (byte)picture.ImageColorType);
+
+            switch (picture.ImageColorType)
             {
                 case Tim2ColorType.RGBA32_A8B8G8R8:
-                    ImageConversion.Rgba32ToBgra32(input, output, width * height);
+                    ImageConversion.Rgba32ToBgra32(picture.ImageData, output, picture.Width * picture.Height);
                     break;
 
                 case Tim2ColorType.RGB32_X8B8G8R8:
-                    ImageConversion.Rgb32ToBgra32(input, output, width * height);
+                    ImageConversion.Rgb32ToBgra32(picture.ImageData, output, picture.Width * picture.Height);
                     break;
 
                 case Tim2ColorType.RGBA16_A1B5G5R5:
-                    ImageConversion.Rgba16ToBgra32(input, output, width * height);
+                    ImageConversion.Rgba16ToBgra32(picture.ImageData, output, picture.Width * picture.Height);
                     break;
 
                 case Tim2ColorType.Indexed8Bit:
-                    ImageConversion.Indexed8ToBgra32(input, clut, output, width * height);
+                    ImageConversion.Indexed8ToBgra32(picture.ImageData, clut, output, picture.Width * picture.Height);
                     break;
 
                 case Tim2ColorType.Indexed4Bit:
-                    ImageConversion.Indexed4ToBgra32(input, clut, output, width * height);
+                    ImageConversion.Indexed4ToBgra32(picture.ImageData, clut, output, picture.Width * picture.Height);
                     break;
 
                 default:
-                    if (input != null)
-                        Array.Copy(input, output, Math.Min(input.Length, output.Length));
+                    if (picture.ImageData != null)
+                        Array.Copy(picture.ImageData, output, Math.Min(picture.ImageData.Length, output.Length));
                     break;
             }
+
+            if (disableAlpha)
+                for (int i = 0; i < output.Length; i += 4)
+                    output[i + 3] = 255;
 
             return output;
         }

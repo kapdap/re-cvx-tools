@@ -28,7 +28,7 @@ namespace RDXplorer.Views
 
                 if (entry.Model.Fields.Type.Text == "TIM2")
                 {
-                    Program.Windows.Bitmap.BitmapImage.Source = Tim2Converter.Decode(entry.Model.Fields.Data.Data);
+                    Program.Windows.Bitmap.BitmapImage.Source = Tim2Converter.Decode(entry.Model.Fields.Data.Data, 0, true);
                     Program.Windows.Bitmap.Show();
 
                     return;

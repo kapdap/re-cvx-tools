@@ -1,3 +1,5 @@
+using System;
+
 namespace RDXplorer.Helpers
 {
     public static class ImageConversion
@@ -106,6 +108,40 @@ namespace RDXplorer.Helpers
                     output[dst + 3] = 0; // A
                 }
             }
+        }
+
+        public static byte[] FixPalettePS2(byte[] paletteData, byte clutColourType, byte imageColourType)
+        {
+            if (paletteData == null || !((clutColourType & 0x80) == 0 && imageColourType == 5))
+                return paletteData;
+
+            if (paletteData.Length % 4 != 0)
+                throw new ArgumentException("Palette data length must be a multiple of 4.");
+
+            byte[] result = new byte[paletteData.Length];
+            int numColors = paletteData.Length / 4;
+            if (numColors == 0) return result;
+
+            int parts = numColors / 32;
+            if (parts == 0) return result;
+
+            int index = 0;
+            int end = result.Length - 3;
+            for (int part = 0; part < parts && index < end; part++)
+                for (int block = 0; block < 2 && index < end; block++)
+                    for (int stripe = 0; stripe < 2 && index < end; stripe++)
+                        for (int color = 0; color < 8 && index < end; color++)
+                        {
+                            int srcIndex = ((part * 32) + (block * 8) + (stripe * 16) + color) * 4;
+                            if (srcIndex < paletteData.Length - 3)
+                                Array.Copy(paletteData, srcIndex, result, index, 4);
+                            index += 4;
+                        }
+
+            if (index < result.Length && paletteData.Length % 128 != 0 && parts > 0)
+                Array.Copy(paletteData, index, result, index, paletteData.Length - index);
+
+            return result;
         }
     }
 }
