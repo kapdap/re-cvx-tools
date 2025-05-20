@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography;
+using System.Windows;
+using System.Windows.Media;
 
 namespace RDXplorer
 {
@@ -63,5 +65,28 @@ namespace RDXplorer
 
         public static ushort SwapBytes(ushort value) =>
             (ushort)((ushort)((value & 0xff) << 8) | ((value >> 8) & 0xff));
+
+        public static string FormatFileSize(int bytes)
+        {
+            string[] suffix = { "B", "KB", "MB", "GB" };
+            double size = bytes;
+            int i = 0;
+
+            while (size >= 1024 && i < suffix.Length - 1)
+            {
+                size /= 1024;
+                i++;
+            }
+
+            return i == 0 ? $"{size:0} {suffix[i]}" : $"{size:0.0} {suffix[i]}";
+        }
+
+        public static T FindParent<T>(DependencyObject child) where T : DependencyObject
+        {
+            DependencyObject parent = VisualTreeHelper.GetParent(child);
+            while (parent != null && parent is not T)
+                parent = VisualTreeHelper.GetParent(parent);
+            return (T)parent;
+        }
     }
 }

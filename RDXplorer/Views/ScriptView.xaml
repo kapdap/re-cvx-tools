@@ -22,6 +22,17 @@
             <DataGridTextColumn Header="Offset" Binding="{Binding Model.Fields.Offset.Value, StringFormat=X8}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Data" Binding="{Binding Model.Fields.Data.Value, StringFormat=X8}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Size" Binding="{Binding Model.Size}" FontFamily="Consolas"/>
+            <DataGridTemplateColumn Header="View">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button Content="Open"
+                                Click="ViewButton_Click"
+                                Padding="9,1"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
         </DataGrid.Columns>
     </DataGrid>
 </local:View>

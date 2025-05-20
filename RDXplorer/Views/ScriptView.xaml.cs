@@ -1,6 +1,7 @@
 ﻿using RDXplorer.Formats.RDX;
 using RDXplorer.Models.RDX;
 using RDXplorer.ViewModels;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -19,17 +20,24 @@ namespace RDXplorer.Views
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             DataGrid grid = (DataGrid)sender;
-
-            string binding = GetDataGridColumnBinding(grid);
-
-            if (binding != "Model.Fields.Data")
+            if (GetDataGridColumnName(grid) != "View")
                 OpenHexEditorFromDataGrid<ScriptViewModelEntry, ScriptModel>(grid);
+        }
 
-            ScriptViewModelEntry entry = (ScriptViewModelEntry)grid.SelectedItem;
+        private void ViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            DataGrid grid = Utilities.FindParent<DataGrid>(button);
+            ScriptViewModelEntry entry = (ScriptViewModelEntry)button.DataContext;
 
-            Program.Windows.Scripting.DecompiledText.Text = new Scripting().Decompile(entry.Model.Fields.Data.Data);
-            Program.Windows.Scripting.DecodedText.Text = new Scripting().Decode(entry.Model.Fields.Data.Data);
-            Program.Windows.Scripting.Show();
+            if (grid != null && entry != null)
+            {
+                grid.SelectedItem = entry;
+
+                Program.Windows.Scripting.DecompiledText.Text = new Scripting().Decompile(entry.Model.Fields.Data.Data);
+                Program.Windows.Scripting.DecodedText.Text = new Scripting().Decode(entry.Model.Fields.Data.Data);
+                Program.Windows.Scripting.Show();
+            }
         }
     }
 }

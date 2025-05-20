@@ -15,14 +15,26 @@
               BorderThickness="0"
               CanUserAddRows="False"
               IsReadOnly="True"
-              ItemsSource="{Binding Entries}" MouseDoubleClick="DataGrid_MouseDoubleClick">
+              ItemsSource="{Binding Entries}"
+              MouseDoubleClick="DataGrid_MouseDoubleClick" >
         <DataGrid.Columns>
-            <DataGridTextColumn Header="Position" Binding="{Binding Model.Position, StringFormat=X8}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Group" Binding="{Binding Model.Table.Fields.Pointer.Value, StringFormat=X8}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Size" Binding="{Binding Model.Fields.Size}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Position" Binding="{Binding Model.Position, StringFormat=X8}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Type" Binding="{Binding Model.Fields.Type.Text}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Size" Binding="{Binding Model.Fields.Size}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Head" Binding="{Binding Model.Fields.Head.Value, StringFormat=X8}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Data" Binding="{Binding Model.Fields.Data.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTemplateColumn Header="View">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button Content="Open"
+                                Click="ViewButton_Click"
+                                Padding="9,1"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
         </DataGrid.Columns>
     </DataGrid>
 </local:View>

@@ -1,7 +1,7 @@
-using System;
-using System.Windows.Media.Imaging;
-using System.Windows.Media;
 using RDXplorer.Helpers;
+using System;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace RDXplorer.Formats.TIM2
 {
@@ -11,8 +11,14 @@ namespace RDXplorer.Formats.TIM2
         {
             Tim2Document document = new(data);
             Tim2Picture picture = document.Pictures[index];
+            return Decode(picture, disableAlpha);
+        }
 
-            return BitmapSource.Create(
+        public static BitmapSource Decode(Tim2Document document, int index = 0, bool disableAlpha = false) =>
+            Decode(document.Pictures[index], disableAlpha);
+
+        public static BitmapSource Decode(Tim2Picture picture, bool disableAlpha = false) =>
+            BitmapSource.Create(
                 picture.Width,
                 picture.Height,
                 96,
@@ -21,7 +27,6 @@ namespace RDXplorer.Formats.TIM2
                 null,
                 ConvertToBgra32(picture, disableAlpha),
                 picture.Width * 4);
-        }
 
         private static byte[] ConvertToBgra32(Tim2Picture picture, bool disableAlpha)
         {
