@@ -36,7 +36,7 @@ jobs:
       id: version
       uses: prompt/actions-commit-hash@v3
       with:
-        prefix: ${{ github.ref_name }}+${{ steps.date.outputs.date }}.
+        prefix: ${{ steps.date.outputs.time }}.
         
     - name: Checkout repository
       uses: actions/checkout@v3
