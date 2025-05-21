@@ -43,7 +43,7 @@
                             Click="ZoomOutButton_Click"
                             ToolTip="Zoom Out"
                             Width="22" Height="22">
-                        <TextBlock Text="&#xE71E;"
+                        <TextBlock Text="&#xE71F;"
                                  FontFamily="Segoe MDL2 Assets"
                                  FontSize="16"
                                  HorizontalAlignment="Center"
@@ -57,7 +57,7 @@
                             Click="ZoomInButton_Click"
                             ToolTip="Zoom In"
                             Width="22" Height="22">
-                        <TextBlock Text="&#xE71F;"
+                        <TextBlock Text="&#xE71E;"
                                  FontFamily="Segoe MDL2 Assets"
                                  FontSize="16"
                                  HorizontalAlignment="Center"
