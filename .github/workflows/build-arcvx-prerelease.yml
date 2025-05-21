@@ -1,0 +1,83 @@
+name: Build ARCVX prerelease
+
+on:
+  push:
+    tags:
+      - arcvx-alpha
+      - arcvx-beta
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        configuration: [Release]
+
+    runs-on: windows-latest
+
+    permissions:
+      contents: write
+      id-token: write
+
+    env:
+      Project_Name: ARCVX
+      Release_Name: ARCVX
+      Release_Body: ARCVX
+      Asset_Name: arcvx
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get project version
+        id: csproj
+        uses: chiefnoir/gaction-version-getter@v1
+        with:
+          projectPath: ${{ env.Project_Name }}/${{ env.Project_Name }}.csproj
+
+      - name: Get release phase
+        id: phase
+        shell: pwsh
+        run: |
+          $phase = $env:GITHUB_REF_NAME -replace "^$($env:Asset_Name)-", ''
+          echo "name=$phase" >> $env:GITHUB_OUTPUT
+
+      - name: Get release date
+        id: date
+        uses: Kaven-Universe/github-action-current-date-time@v1
+        with:
+          format: "YYYYMMDDHHmmss"
+
+      - name: Generate version
+        id: version
+        uses: prompt/actions-commit-hash@v3
+        with:
+          prefix: ${{ steps.csproj.outputs.projectVersion }}-${{ steps.phase.outputs.name }}+${{ steps.date.outputs.time }}.
+
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install dependencies
+        run: dotnet restore ${{ env.Project_Name }}
+
+      - name: Build release
+        run: dotnet build ${{ env.Project_Name }} -c Release --no-restore
+
+      - name: Publish release
+        run: dotnet publish ${{ env.Project_Name }} -c Release -o .\publish --no-restore --no-build
+
+      - name: Create zip
+        run: Compress-Archive -Path .\publish\* -Destination release.zip
+
+      - name: Upload zip to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file: ./release.zip
+          asset_name: ${{ env.Asset_Name }}-${{ steps.version.outputs.short }}.zip
+          release_name: ${{ env.Release_Name }} (${{ steps.version.outputs.short }})
+          body: ${{ env.Release_Body }} ${{ steps.version.outputs.short }}
+          tag: ${{ env.Asset_Name }}-${{ steps.version.outputs.short }}
+          overwrite: true
