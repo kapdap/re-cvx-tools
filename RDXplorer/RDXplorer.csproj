@@ -11,7 +11,7 @@
     <Company>Kapdap</Company>
     <Product>RDXplorer</Product>
     <Description>A simple tool to browse Resident Evil/Biohazard: Code: Veronica RDX files.</Description>
-    <Copyright>Copyright © 2024 Kapdap</Copyright>
+    <Copyright>Copyright © 2025 Kapdap</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/kapdap/re-cvx-tools</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -31,9 +31,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PRS" Version="1.1.0" />
+    <PackageReference Include="PRS" Version="1.1.2" />
     <PackageReference Include="WPFHexaEditor" Version="2.1.7" />
-    <PackageReference Include="YamlDotNet" Version="15.1.2" />
+    <PackageReference Include="YamlDotNet" Version="16.3.0" />
   </ItemGroup>
 
   <ItemGroup>

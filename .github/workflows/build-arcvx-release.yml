@@ -30,17 +30,14 @@ jobs:
           fetch-depth: 0
 
       # TODO: Confirm that the project version has been increased before proceeding
-      - name: Get project version
-        id: csproj
-        uses: chiefnoir/gaction-version-getter@v1
-        with:
-          projectPath: ${{ env.Project_Name }}/${{ env.Project_Name }}.csproj
-
-      - name: Generate version
-        id: version
-        uses: prompt/actions-commit-hash@v3
-        with:
-          prefix: ${{ steps.csproj.outputs.projectVersion }}.
+      - name: Get release info
+        id: info
+        shell: pwsh
+        run: |
+          [xml]$proj = Get-Content "${{ env.Project_Name }}/${{ env.Project_Name }}.csproj"
+          $projVersion = $proj.Project.PropertyGroup.AssemblyVersion
+          $version = "$projVersion".Trim()
+          echo "release=$version" >> $env:GITHUB_OUTPUT
 
       - name: Install .NET Core
         uses: actions/setup-dotnet@v3
@@ -63,8 +60,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           file: ./release.zip
-          asset_name: ${{ env.Asset_Name }}-${{ steps.version.outputs.short }}.zip
-          release_name: ${{ env.Release_Name }} (${{ steps.version.outputs.short }})
-          body: ${{ env.Release_Body }} ${{ steps.version.outputs.short }}
-          tag: ${{ env.Asset_Name }}-${{ steps.version.outputs.short }}
+          asset_name: ${{ env.Asset_Name }}-${{ steps.info.outputs.release }}.zip
+          release_name: ${{ env.Release_Name }} (${{ steps.info.outputs.release }})
+          body: ${{ env.Release_Body }} ${{ steps.info.outputs.release }}
+          tag: ${{ env.Asset_Name }}-${{ steps.info.outputs.release }}
           overwrite: true

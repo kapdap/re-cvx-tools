@@ -30,30 +30,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get project version
-        id: csproj
-        uses: chiefnoir/gaction-version-getter@v1
-        with:
-          projectPath: ${{ env.Project_Name }}/${{ env.Project_Name }}.csproj
-
-      - name: Get release phase
-        id: phase
+      - name: Get release info
+        id: info
         shell: pwsh
         run: |
+          [xml]$proj = Get-Content "${{ env.Project_Name }}/${{ env.Project_Name }}.csproj"
+          $projVersion = $proj.Project.PropertyGroup.AssemblyVersion
+          $version = "$projVersion".Trim()
+
+          $date = Get-Date -Format "yyyyMMddHHmmss"
           $phase = $env:GITHUB_REF_NAME -replace "^$($env:Asset_Name)-", ''
-          echo "name=$phase" >> $env:GITHUB_OUTPUT
+          $short = git rev-parse --short $env:GITHUB_REF_NAME
+          $prefix = "$version-$phase+$date"
+          $release = "$prefix.$short"
 
-      - name: Get release date
-        id: date
-        uses: Kaven-Universe/github-action-current-date-time@v1
-        with:
-          format: "YYYYMMDDHHmmss"
-
-      - name: Generate version
-        id: version
-        uses: prompt/actions-commit-hash@v3
-        with:
-          prefix: ${{ steps.csproj.outputs.projectVersion }}-${{ steps.phase.outputs.name }}+${{ steps.date.outputs.time }}.
+          echo "prefix=$prefix" >> $env:GITHUB_OUTPUT
+          echo "release=$release" >> $env:GITHUB_OUTPUT
 
       - name: Install .NET Core
         uses: actions/setup-dotnet@v3
@@ -64,7 +56,7 @@ jobs:
         run: dotnet restore ${{ env.Project_Name }}
 
       - name: Build release
-        run: dotnet build ${{ env.Project_Name }} -c Release --no-restore
+        run: dotnet build ${{ env.Project_Name }} -c Release --no-restore /p:InformationalVersion=${{ steps.info.outputs.prefix }}
 
       - name: Publish release
         run: dotnet publish ${{ env.Project_Name }} -c Release -o .\publish --no-restore --no-build
@@ -76,8 +68,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           file: ./release.zip
-          asset_name: ${{ env.Asset_Name }}-${{ steps.version.outputs.short }}.zip
-          release_name: ${{ env.Release_Name }} (${{ steps.version.outputs.short }})
-          body: ${{ env.Release_Body }} ${{ steps.version.outputs.short }}
-          tag: ${{ env.Asset_Name }}-${{ steps.version.outputs.short }}
+          asset_name: ${{ env.Asset_Name }}-${{ steps.info.outputs.release }}.zip
+          release_name: ${{ env.Release_Name }} (${{ steps.info.outputs.release }})
+          body: ${{ env.Release_Body }} ${{ steps.info.outputs.release }}
+          tag: ${{ env.Asset_Name }}-${{ steps.info.outputs.release }}
           overwrite: true
