@@ -36,8 +36,6 @@ RDX files are compressed with PRS. Use [prsutil](https://github.com/essen/prsuti
   - [trigger](#trigger)
   - [player](#player)
   - [event](#event)
-- [Instance Table Mapping](#instance-table-mapping)
-- [Notes](#notes)
 - [References](#references)
 
 ---
@@ -86,7 +84,7 @@ The `ofs_sections` array starts at offset `0x10` and contains pointers to the st
 
 ---
 
-### Tables Offsets
+### Table Offsets
 
 The `ofs_tables` and `num_tables` arrays each contain 16 entries.
 
