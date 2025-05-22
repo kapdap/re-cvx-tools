@@ -61,9 +61,9 @@ The header is a fixed-size block that contains offsets and counts needed to loca
 | 0x1C0  | dummy_4                          | u1     |  632 | Dummy       |
 | 0x438  | unknown_1                        | u1     |    1 |             |
 | 0x439  | unknown_2                        | u1     |    1 |             |
-| 0x432  | unknown_3                        | u1     |    1 |             |
-| 0x433  | unknown_4                        | u1     |    1 |             |
-| 0x434  | unknown_5                        | f4[12] |   48 |             |
+| 0x43A  | unknown_3                        | u1     |    1 |             |
+| 0x43B  | unknown_4                        | u1     |    1 |             |
+| 0x43C  | unknown_5                        | f4[12] |   48 |             |
 
 ---
 
