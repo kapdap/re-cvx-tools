@@ -11,11 +11,11 @@ Reference: [openkh.dev/common/tm2.html](https://openkh.dev/common/tm2.html)
 | Offset | Size | Name           | Type  | Description                                |
 | -----: | ---: | -------------- | ----- | ------------------------------------------ |
 |   0x00 |    4 | file_id        | ASCII | File signature: `"TIM2"` or `"CLT2"`       |
-|   0x04 |    1 | format_version | u1    | Format version (usually `4`)               |
+|   0x04 |    1 | format_version | u1    | Format version                             |
 |   0x05 |    1 | format_id      | u1    | Alignment: `0` = 16 bytes, `1` = 128 bytes |
 |   0x06 |    2 | pictures       | u2    | Number of picture entries in the file      |
-|   0x08 |    4 | reserved_1     | u4    | Reserved (always zero)                     |
-|   0x0C |    4 | reserved_2     | u4    | Reserved (always zero)                     |
+|   0x08 |    4 | reserved_1     | u4    | Reserved                                   |
+|   0x0C |    4 | reserved_2     | u4    | Reserved                                   |
 |   0x10 |  112 | padding        | bytes | If format_id = 1                           |
 
 ---
@@ -25,8 +25,8 @@ Reference: [openkh.dev/common/tm2.html](https://openkh.dev/common/tm2.html)
 | Offset | Size | Name            | Type  | Description                                                                                 |
 | -----: | ---: | --------------- | ----- | ------------------------------------------------------------------------------------------- |
 |   0x00 |    4 | total_size      | u4    | Total size of this picture block                                                            |
-|   0x04 |    4 | clut_size       | u4    | Size in bytes of CLUT (palette) data (0 if none)                                            |
-|   0x08 |    4 | image_size      | u4    | Size in bytes of image data (0 in CLT2)                                                     |
+|   0x04 |    4 | clut_size       | u4    | Size in bytes of CLUT (palette) data                                                        |
+|   0x08 |    4 | image_size      | u4    | Size in bytes of image data                                                                 |
 |   0x0C |    2 | header_size     | u2    | Size in bytes of the picture header                                                         |
 |   0x0E |    2 | clut_colors     | u2    | Number of colors in the CLUT (palette)                                                      |
 |   0x10 |    1 | pict_format     | u1    | Picture format flags                                                                        |
