@@ -1,6 +1,6 @@
-# Sony PlayStation 2 TIM2 Binary Format Specification
+#  TIM2 Format Specification
 
-This table describes the binary layout for TIM2 files, commonly used for textures in PlayStation 2 games.
+This table describes the binary layout for TIM2 files, commonly used for textures in Sony PlayStation 2 games.
 
 Reference: [openkh.dev/common/tm2.html](https://openkh.dev/common/tm2.html)
 
