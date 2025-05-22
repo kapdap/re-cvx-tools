@@ -22,34 +22,34 @@ Reference: [openkh.dev/common/tm2.html](https://openkh.dev/common/tm2.html)
 
 ## Picture Entry Header (repeats `pictures` times)
 
-| Offset | Size | Name            | Type  | Description                                                                                 |
-| -----: | ---: | --------------- | ----- | ------------------------------------------------------------------------------------------- |
-|   0x00 |    4 | total_size      | u4    | Total size of this picture block                                                            |
-|   0x04 |    4 | clut_size       | u4    | Size in bytes of CLUT (palette) data                                                        |
-|   0x08 |    4 | image_size      | u4    | Size in bytes of image data                                                                 |
-|   0x0C |    2 | header_size     | u2    | Size in bytes of the picture header                                                         |
-|   0x0E |    2 | clut_colors     | u2    | Number of colors in the CLUT (palette)                                                      |
-|   0x10 |    1 | pict_format     | u1    | Picture format flags                                                                        |
-|   0x11 |    1 | mipmap_textures | u1    | Number of mipmaps (1 = none)                                                                |
-|   0x12 |    1 | clut_type       | u1    | Bit 7: [CSM](#csm-clut-storage-mode), Bit 6: compound, Bits 5..0: [color_type](#color_type) |
-|   0x13 |    1 | image_type      | u1    | Image pixel format (see: [color_type](#color_type))                                         |
-|   0x14 |    2 | image_width     | u2    | Width in pixels                                                                             |
-|   0x16 |    2 | image_height    | u2    | Height in pixels                                                                            |
-|   0x18 |    8 | gs_tex_0        | u8    | GS TEX0 register (see: [GSTex Register](#gstex-register))                                   |
-|   0x20 |    8 | gs_tex_1        | u8    | GS TEX1 register (see: [GSTex Register](#gstex-register))                                   |
-|   0x28 |    4 | gs_tex_flags    | u4    | GS TEXA/FBA/PABE flags                                                                      |
-|   0x2C |    4 | gs_tex_clut     | u4    | GS TEXCLUT register                                                                         |
-|    ... |  ... | mipmap_header   | ...   | If mipmap_textures > 1 (see: [Mipmap Header](#mipmap-header-optional))                      |
-|    ... |  ... | ex_header       | ...   | Optional extended header (see: [Extended Header](#extended-header-optional))                |
-|    ... |  ... | clut_data       | bytes | CLUT (palette) data, size = clut_size                                                       |
-|    ... |  ... | image_data      | bytes | Image data, size = image_size                                                               |
+| Offset |       Size | Name            | Type  | Description                                                                                 |
+| -----: | ---------: | --------------- | ----- | ------------------------------------------------------------------------------------------- |
+|   0x00 |          4 | total_size      | u4    | Total size of this picture block                                                            |
+|   0x04 |          4 | clut_size       | u4    | Size in bytes of CLUT (palette) data                                                        |
+|   0x08 |          4 | image_size      | u4    | Size in bytes of image data                                                                 |
+|   0x0C |          2 | header_size     | u2    | Size in bytes of the picture header                                                         |
+|   0x0E |          2 | clut_colors     | u2    | Number of colors in the CLUT (palette)                                                      |
+|   0x10 |          1 | pict_format     | u1    | Picture format flags                                                                        |
+|   0x11 |          1 | mipmap_textures | u1    | Number of mipmaps (1 = none)                                                                |
+|   0x12 |          1 | clut_type       | u1    | Bit 7: [CSM](#csm-clut-storage-mode), Bit 6: compound, Bits 5..0: [color_type](#color_type) |
+|   0x13 |          1 | image_type      | u1    | Image pixel format (see: [color_type](#color_type))                                         |
+|   0x14 |          2 | image_width     | u2    | Width in pixels                                                                             |
+|   0x16 |          2 | image_height    | u2    | Height in pixels                                                                            |
+|   0x18 |          8 | gs_tex_0        | u8    | GS TEX0 register (see: [GSTex Register](#gstex-register))                                   |
+|   0x20 |          8 | gs_tex_1        | u8    | GS TEX1 register (see: [GSTex Register](#gstex-register))                                   |
+|   0x28 |          4 | gs_tex_flags    | u4    | GS TEXA/FBA/PABE flags                                                                      |
+|   0x2C |          4 | gs_tex_clut     | u4    | GS TEXCLUT register                                                                         |
+|    ... |        ... | mipmap_header   | ...   | If mipmap_textures > 1 (see: [Mipmap Header](#mipmap-header-optional))                      |
+|    ... |        ... | ex_header       | ...   | Optional extended header (see: [Extended Header](#extended-header-optional))                |
+|    ... |  clut_size | clut_data       | bytes | CLUT (palette) data                                                                         |
+|    ... | image_size | image_data      | bytes | Image data                                                                                  |
 
 ---
 
 ## GSTex Register
 
 |  Bits | Name | Type | Description                                                  |
-| ----: | :--- | :--- | :----------------------------------------------------------- |
+| ----: | ---- | ---- | ------------------------------------------------------------ |
 |  0–13 | tbp0 | u14  | Texture buffer pointer, tbp0 \* 0x100 = VRAM address         |
 | 14–19 | tbw  | u6   | Texture buffer width                                         |
 | 20–25 | psm  | u6   | Pixel storage format (see: [psf](#psf-pixel-storage-format)) |
@@ -77,13 +77,14 @@ Reference: [openkh.dev/common/tm2.html](https://openkh.dev/common/tm2.html)
 
 ## Extended Header (optional)
 
-| Offset | Size | Name            | Type  | Description                         |
-| -----: | ---: | --------------- | ----- | ----------------------------------- |
-|   0x00 |    4 | ex_header_id    | ASCII | Extended header signature ("eXt\0") |
-|   0x04 |    4 | user_space_size | u4    |                                     |
-|   0x08 |    4 | user_data_size  | u4    |                                     |
-|   0x0C |    4 | reserved        | u4    | Reserved                            |
-|   0x10 |   64 | ext_data        | bytes | Extended data                       |
+|              Offset |           Size | Name            | Type  | Description                                     |
+| ------------------: | -------------: | --------------- | ----- | ----------------------------------------------- |
+|                0x00 |              4 | ex_header_id    | ASCII | Extended header signature "eXt\0"               |
+|                0x04 |              4 | user_space_size | u4    | Total size of the user space (including header) |
+|                0x08 |              4 | user_data_size  | u4    | Size of the user data section                   |
+|                0x0C |              4 | reserved        | u4    | Reserved                                        |
+|                0x10 | user_data_size | user_data       | bytes | Optional user data section                      |
+| 0x10+user_data_size |            ... | comment         | ASCII | Optional null-terminated comment string         |
 
 ---
 

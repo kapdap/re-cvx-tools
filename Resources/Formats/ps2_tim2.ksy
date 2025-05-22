@@ -89,10 +89,10 @@ types:
         type: u4
       - id: reserved_2
         type: u4
-      - id: ext_data
+      - id: padding
         size: 0x70
         if: format_id == format_id::align128
-        doc: 'Padding/extended data for 128-byte alignment'
+        doc: 'Padding for 128-byte alignment'
 
   picture:
     seq:
@@ -107,7 +107,20 @@ types:
         doc: 'Size of the image data'
       - id: header_size
         type: u2
-        doc: 'Size of the picture header'
+        doc: 'Size of the picture header (includes size fields)'
+      - id: picture_header
+        type: picture_header
+        size: header_size - 14
+        doc: 'Picture header fields'
+      - id: clut_data
+        size: clut_size
+        doc: 'CLUT (palette) data'
+      - id: image_data
+        size: image_size
+        doc: 'Main image data'
+
+  picture_header:
+    seq:
       - id: clut_colors
         type: u2
         doc: 'Number of colors in the CLUT'
@@ -148,28 +161,8 @@ types:
         doc: 'Mipmap header, only present if mipmap_textures > 1'
       - id: ex_header
         type: ex_header
-        if: _io.pos < (_io.size - image_size - clut_size)
+        if: _io.pos < _io.size
         doc: 'Optional extended header'
-      - id: clut_data
-        size: clut_size
-        if: clut_size > 0
-        doc: 'CLUT (palette) data'
-      - id: image_data
-        size: image_size
-        doc: 'Main image data'
-
-    instances:
-      clut_type_csm:
-        value: (clut_type & 0x80) >> 7
-        enum: csm
-        doc: '0: CSM1 (swizzled), 1: CSM2 (sequential)'
-      clut_type_compound:
-        value: (clut_type & 0x40) >> 6
-        doc: 'Compound flag (valid only for CSM1, 16 colors)'
-      clut_type_pixel:
-        value: clut_type & 0x3f
-        enum: color_type
-        doc: 'Palette pixel format'
 
   gs_tex:
     seq:
@@ -244,13 +237,20 @@ types:
         type: str
         size: 4
         encoding: ASCII
-        doc: 'Extended header signature ("eXt\\x00")'
+        doc: 'Extended header signature "eXt"'
       - id: user_space_size
         type: u4
+        doc: 'Total size of the user space (including header)'
       - id: user_data_size
         type: u4
+        doc: 'Size of the user data secton'
       - id: reserved
         type: u4
-      - id: ext_data
-        size: 64
-        doc: 'Extended data (typically comment string or tool-specific data)'
+      - id: user_data
+        size: user_data_size
+        doc: 'Optional user data section'
+      - id: comment
+        type: strz
+        encoding: ASCII
+        if: user_space_size > (16 + user_data_size)
+        doc: 'Optional null-terminated comment string'
