@@ -58,7 +58,7 @@ The header is a fixed-size block that contains offsets and counts needed to loca
 | 0x100  | [num_tables](#table-offsets)     | s4[16] |   64 |             |
 | 0x140  | dummy_3                          | u1     |   64 | Dummy       |
 | 0x180  | unknown_0                        | f4[16] |   64 |             |
-| 0x1C0  | dummy_7                          | u1     |  632 | Dummy       |
+| 0x1C0  | dummy_4                          | u1     |  632 | Dummy       |
 | 0x438  | unknown_1                        | u1     |    1 |             |
 | 0x439  | unknown_2                        | u1     |    1 |             |
 | 0x432  | unknown_3                        | u1     |    1 |             |
@@ -102,7 +102,7 @@ The `ofs_tables` and `num_tables` arrays each contain 16 entries.
 | 5     | [effects](#effect)     | effect   |         68 | Effects         |
 | 6     | [boundaries](#boundry) | boundry  |         36 | Room geometry   |
 | 7     | [aots](#aot)           | aot      |         36 | AOTs            |
-| s     | [triggers](#trigger)   | trigger  |         36 | Triggers        |
+| 8     | [triggers](#trigger)   | trigger  |         36 | Triggers        |
 | 9     | [players](#player)     | player   |         16 | Player spawns   |
 | 10    | [events](#event)       | event    |         36 | Events          |
 | 11    | unknown_0              | ?        |          ? | Unknown         |
