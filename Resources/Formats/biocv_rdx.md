@@ -8,7 +8,7 @@ RDX file format is used in Biohazard/Resident Evil: Code Veronica to store geome
 
 RDX files are compressed with PRS. Use [prsutil](https://github.com/essen/prsutil/tree/master/bin) to extract the RDT content.
 
-[RDXplorer](https://github.com/nickworonekin/puyotools/tree/master/tools/RDXplorer) can open compressed and uncompressed files.
+[RDXplorer](https://github.com/kapdap/re-cvx-tools/tree/master/RDXplorer) can open compressed and uncompressed files.
 
 ---
 
@@ -421,6 +421,5 @@ If `head_0 << 8 != 0x4C444D00` and `head_0 != 0x4E494B53`, then `head_1` is pres
 ## References
 
 - [biocv_rdx.ksy](https://github.com/kapdap/re-cvx-tools/blob/master/Resources/Formats/biocv_rdx.ksy)
-- [RDXplorer](https://github.com/nickworonekin/puyotools/tree/master/tools/RDXplorer)
+- [RDXplorer](https://github.com/kapdap/re-cvx-tools/tree/master/RDXplorer)
 - [prsutil](https://github.com/essen/prsutil/tree/master/bin)
-
