@@ -6,53 +6,102 @@
       <Description>"Attach PCSX2"</Description>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{$lua}
+
+-- Cheat Engine Lua script to assist with attaching PCSX2 and setting Emulator Memory Base Address.
+-- -
+-- PCSX2 1.6 and earlier use a static base memory address at `0x20000000`.
+-- PCSX2 1.7+ uses dynamic memory allocation and exports the base address as the symbol `EEmem`.
+-- -
+-- https://cheatengine.org/forum/viewtopic.php?t=623748
+-- https://github.com/cheat-engine/cheat-engine/blob/master/Cheat%20Engine/bin/autorun/emurpm.lua#L256
+-- -
+-- Author: Kapdap (https://github.com/kapdap)
+-- Created: 2026-06-07
+-- License: MIT
+
+BasePtr = 0x20000000
+EmuBase = BasePtr
+EmuName = nil
+
+local load_fn = loadstring or load
+
+function opnProc(name)
+	local pid = getProcessIDFromProcessName(name)
+
+	if pid ~= nil then
+		openProcess(pid)
+		return pid
+	end
+
+	return nil
+end
+
+function opnEmu(procs)
+	for i, name in pairs(procs) do
+		local pid = opnProc(name)
+
+		if pid ~= nil then
+			EmuName = name
+			return pid
+		end
+	end
+
+	return nil
+end
+
+-- Updates the `Set Base Address` form text fields to emulator memory values,
+-- then calls `emurpm.emuSetAddress` to set the Emulator Memory Base Address.
+-- emurpm.lua and emurpm.frm must be installed Cheat Engines `autoruns` folder.
+function setEmuBase(base, size, virtual)
+	if frmEmuMemory and emurpm then
+		frmEmuMemory.edtAddress.Text = string.format("%#x", getAddressSafe(base))
+		frmEmuMemory.edtVirtual0.Text = string.format("%#x", virtual)
+		frmEmuMemory.edtMemsize.Text = load_fn("return " .. size)()
+
+		getLuaEngine().cbShowOnPrint.Checked = false
+		emurpm.emuSetAddress(nil)
+		getLuaEngine().cbShowOnPrint.Checked = true
+
+		EmuBase = 0
+	end
+end
+
+function updEmuBase()
+	if EmuName ~= "pcsx2.exe" then
+		EmuBase = readPointer(getAddressSafe("EEmem"))
+	else
+		EmuBase = BasePtr
+	end
+
+	if not EmuBase then
+		showMessage("Failed to read base memory address from emulator process. Restart Cheat Engine and try again.")
+		error()
+	end
+
+	unregisterSymbol("EmuBase")
+	registerSymbol("EmuBase", EmuBase, true)
+
+	setEmuBase(EmuBase, 0x2000000, 0)
+end
+
 [ENABLE]
-local ProcLst =
-{
-  "pcsx2.exe",
-  "pcsx2-qtx64.exe",
-  "pcsx2-qtx64-avx2.exe",
-  "pcsx2-qt.exe",
-  "pcsx2x64.exe",
-  "pcsx2x64-avx2.exe",
+local procList = {
+	"pcsx2.exe", -- Standard exe name for PCSX2 1.6 and earlier.
+	"pcsx2-qt.exe", -- Possible exe names for PCSX2 1.7+.
+	"pcsx2-qtx64.exe",
+	"pcsx2-qtx64-avx2.exe",
+	"pcsx2x64.exe",
+	"pcsx2x64-avx2.exe",
 }
 
-PS2mem = 0x20000000
-
-function AttachProcess(name)
-  if getProcessIDFromProcessName(name) ~= nil then
-    openProcess(name)
-
-    if name ~= "pcsx2.exe" then
-        PS2mem = readPointer(getAddress("EEmem"))
-    end
-
-    return true
-  end
-
-  return false
+if not opnEmu(procList) then
+	showMessage("Unable to find emulator process.")
+	error()
 end
 
-function AttachPCSX2()
-  for i,name in pairs(ProcLst) do
-    if AttachProcess(name) then
-      return true
-    end
-  end
-
-  return false
-end
-
-if not AttachPCSX2() then
-  showMessage("Unable to find PCSX2 process.")
-  error()
-end
-
-unregisterSymbol("PS2mem")
-registerSymbol("PS2mem", PS2mem, true)
+updEmuBase();
 
 [DISABLE]
-
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
