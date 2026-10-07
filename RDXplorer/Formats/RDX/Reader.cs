@@ -13,8 +13,10 @@ namespace RDXplorer.Formats.RDX
     {
         public const int RDX_MAGIC_1 = 0x41200000;
         public const int RDX_MAGIC_2 = 0x40051EB8;
+        public const int RDX_MAGIC_3 = 0x40028F5C;
         public const int RDX_MAGIC_PRS_1 = 0x200000DF;
         public const int RDX_MAGIC_PRS_2 = 0x051EB8DF;
+        public const int RDX_MAGIC_PRS_3 = 0x028F5CDF;
 
         public static DocumentModel LoadFile(FileInfo file) =>
             LoadFile(file, Program.TempPath);
@@ -38,7 +40,7 @@ namespace RDXplorer.Formats.RDX
 
             int magic = br.ReadInt32();
 
-            return magic == RDX_MAGIC_1 || magic == RDX_MAGIC_2;
+            return magic == RDX_MAGIC_1 || magic == RDX_MAGIC_2 || magic == RDX_MAGIC_3;
         }
 
         public static bool IsPRS(FileInfo file)
@@ -48,7 +50,7 @@ namespace RDXplorer.Formats.RDX
 
             int magic = br.ReadInt32();
 
-            return magic == RDX_MAGIC_PRS_1 || magic == RDX_MAGIC_PRS_2;
+            return magic == RDX_MAGIC_PRS_1 || magic == RDX_MAGIC_PRS_2 || magic == RDX_MAGIC_PRS_3;
         }
 
         public static FileInfo ExtractPRS(FileInfo prs, DirectoryInfo output)
@@ -86,7 +88,8 @@ namespace RDXplorer.Formats.RDX
             header.Version.SetValue(stream.Position, br.ReadBytes(4));
 
             if (header.Version.Value == 0x41200000 ||
-                header.Version.Value == 0x40051EB8)
+                header.Version.Value == 0x40051EB8 ||
+                header.Version.Value == 0x40028F5C)
             {
                 stream.Seek(16, SeekOrigin.Begin);
                 header.Tables.SetValue(stream.Position, br.ReadBytes(4));
