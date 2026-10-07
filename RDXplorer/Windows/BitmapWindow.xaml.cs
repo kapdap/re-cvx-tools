@@ -1,7 +1,9 @@
-﻿using RDXplorer.Formats.TIM2;
+﻿using RDXplorer.Formats.Textures;
 using RDXplorer.ViewModels;
 using RDXplorer.Views;
+using System;
 using System.ComponentModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -24,9 +26,7 @@ namespace RDXplorer
 
         public TextureBlockViewModelEntry CurrentEntry { get; set; }
 
-        // TODO: Implement generic interface for textures
-        public Tim2Document CurrentDocument { get; set; }
-        public Tim2Picture CurrentPicture { get; set; }
+        public ITexturePicture CurrentPicture { get; set; }
 
         public BitmapWindow()
         {
@@ -55,13 +55,21 @@ namespace RDXplorer
 
             CurrentIndex = index;
             CurrentEntry = (TextureBlockViewModelEntry)ImageGrid.Items[CurrentIndex];
+            CurrentPicture = null;
+            BitmapImage.Source = null;
 
-            if (CurrentEntry.Model.Fields.Type.Text == "TIM2")
+            try
             {
-                CurrentDocument = new(CurrentEntry.Model.Fields.Data.Data);
-                CurrentPicture = CurrentDocument.Pictures[0];
-
-                BitmapImage.Source = Tim2Converter.Decode(CurrentPicture, true);
+                if (TextureLoader.TryGetPicture(CurrentEntry.Model, out ITexturePicture picture))
+                {
+                    CurrentPicture = picture;
+                    BitmapImage.Source = picture.Decode(true);
+                }
+            }
+            catch (Exception ex) when (ex is InvalidDataException || ex is ArgumentException || ex is IndexOutOfRangeException)
+            {
+                CurrentPicture = null;
+                BitmapImage.Source = null;
             }
 
             UpdateInterface();
@@ -79,7 +87,11 @@ namespace RDXplorer
             PreviousButton.IsEnabled = CurrentIndex > 0;
             NextButton.IsEnabled = CurrentIndex < ImageGrid.Items.Count - 1;
 
-            ImageStatusBar.Text = $"{CurrentPicture.Width} × {CurrentPicture.Height} ({Utilities.FormatFileSize(CurrentPicture.ImageSize)}) ({CurrentPicture.ImageColorType}) ({CurrentPicture.ClutColorType})"; ;
+            if (CurrentPicture != null)
+                ImageStatusBar.Text = $"{CurrentPicture.Width} × {CurrentPicture.Height} {CurrentPicture.Description}";
+            else
+                ImageStatusBar.Text = string.Empty;
+
             IndexStatusBar.Text = $"{CurrentIndex + 1} / {ImageGrid.Items.Count}";
         }
 

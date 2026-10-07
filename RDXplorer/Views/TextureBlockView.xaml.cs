@@ -32,7 +32,8 @@ namespace RDXplorer.Views
             {
                 grid.SelectedItem = entry;
 
-                if (entry.Model.Fields.Type.Text == "TIM2")
+                if (entry.Model.Fields.Type.Text == "TIM2" ||
+                    entry.Model.Fields.Type.Text.Contains("PVR"))
                 {
                     Program.Windows.Bitmap.DataContext = grid;
                     Program.Windows.Bitmap.Render();
