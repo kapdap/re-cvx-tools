@@ -169,6 +169,11 @@ namespace RDXplorer.Formats.RDX
                     tableModel.Fields.Pointer.Text.StartsWith("MDL"))
                     break;
 
+                if (tableModel.Fields.Pointer.Value <= header.Model.Value ||
+                    tableModel.Fields.Pointer.Value >= header.Motion.Value ||
+                    (list.Count > 0 && tableModel.Fields.Pointer.Value <= list[^1].Fields.Pointer.Value))
+                    break;
+
                 list.Add(tableModel);
             }
 
@@ -290,9 +295,19 @@ namespace RDXplorer.Formats.RDX
                     blockModel.Fields.Size.SetValue(stream.Position, br.ReadBytes(4));
                     blockModel.Fields.Type.SetValue(stream.Position, br.ReadBytes(4));
 
+                    uint size = blockModel.Fields.Size.Value;
+
+                    if (size == 0 ||
+                        (ulong)stream.Position - 4 + size > nextOffset ||
+                        (ulong)stream.Position - 4 + size > (ulong)stream.Length)
+                    {
+                        tableModel.Blocks.Remove(blockModel);
+                        break;
+                    }
+
                     stream.Seek(-4, SeekOrigin.Current);
 
-                    blockModel.Fields.Data.SetValue(stream.Position, br.ReadBytes((int)blockModel.Fields.Size.Value));
+                    blockModel.Fields.Data.SetValue(stream.Position, br.ReadBytes((int)size));
 
                     while (stream.Position < nextOffset)
                     {
@@ -402,8 +417,20 @@ namespace RDXplorer.Formats.RDX
                         break;
 
                     blockModel.Fields.Size.SetValue(stream.Position, br.ReadBytes(4));
+
+                    uint size = blockModel.Fields.Size.Value;
+
+                    if (blockModel.Fields.Type.Value == 0 && size == 0)
+                        break;
+
+                    if ((ulong)stream.Position + 24 + size > nextOffset ||
+                        (ulong)stream.Position + 24 + size > (ulong)stream.Length)
+                        break;
+
                     blockModel.Fields.Head.SetValue(stream.Position, br.ReadBytes(24));
-                    blockModel.Fields.Data.SetValue(stream.Position, br.ReadBytes((int)blockModel.Fields.Size.Value));
+
+                    if (size > 0)
+                        blockModel.Fields.Data.SetValue(stream.Position, br.ReadBytes((int)size));
 
                     tableModel.Blocks.Add(blockModel);
                 }
