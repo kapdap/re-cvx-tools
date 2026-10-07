@@ -1,4 +1,5 @@
-﻿using RDXplorer.Models;
+﻿using RDXplorer.Enumerations;
+using RDXplorer.Models;
 using RDXplorer.Models.RDX;
 
 namespace RDXplorer.ViewModels
@@ -17,5 +18,12 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class TriggerViewModelEntry(TriggerModel model) : PageViewModelEntry<TriggerModel>(model) { }
+    public class TriggerViewModelEntry : PageViewModelEntry<TriggerModel>
+    {
+        private string _triggertype;
+        public string TriggerType => _triggertype;
+
+        public TriggerViewModelEntry(TriggerModel model) : base(model) =>
+            Lookups.TriggerTypes.TryGetValue((TriggerTypeEnumeration)model.Fields.Type.Value, out _triggertype);
+    }
 }

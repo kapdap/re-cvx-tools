@@ -98,11 +98,20 @@
                 <TabItem Header="Players">
                     <Frame Source="Views/PlayerView.xaml"/>
                 </TabItem>
-                <TabItem Header="Events">
-                    <Frame Source="Views/EventView.xaml"/>
+                <TabItem Header="Routes">
+                    <Frame Source="Views/RouteView.xaml"/>
+                </TabItem>
+                <TabItem Header="Route Table">
+                    <Frame Source="Views/RouteTableView.xaml"/>
+                </TabItem>
+                <TabItem Header="Event Cameras">
+                    <Frame Source="Views/EventCameraBlockView.xaml"/>
                 </TabItem>
                 <TabItem Header="Texts">
                     <Frame Source="Views/TextView.xaml"/>
+                </TabItem>
+                <TabItem Header="Event Lights">
+                    <Frame Source="Views/EventLightView.xaml"/>
                 </TabItem>
             </TabControl>
         </Grid>

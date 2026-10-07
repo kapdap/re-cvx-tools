@@ -3,7 +3,7 @@ using RDXplorer.Models.RDX;
 
 namespace RDXplorer.ViewModels
 {
-    public class EventViewModel : PageViewModel<EventViewModelEntry>
+    public class RouteViewModel : PageViewModel<RouteViewModelEntry>
     {
         public override void LoadData()
         {
@@ -12,10 +12,10 @@ namespace RDXplorer.ViewModels
             if (AppViewModel.RDXDocument == null)
                 return;
 
-            foreach (EventModel item in AppViewModel.RDXDocument.Event)
+            foreach (RouteModel item in AppViewModel.RDXDocument.Route)
                 Entries.Add(new(item));
         }
     }
 
-    public class EventViewModelEntry(EventModel model) : PageViewModelEntry<EventModel>(model) { }
+    public class RouteViewModelEntry(RouteModel model) : PageViewModelEntry<RouteModel>(model) { }
 }

@@ -1,0 +1,26 @@
+<local:View 
+      x:TypeArguments="models:RouteTableViewModel, models:RouteTableViewModelEntry"
+      x:Class="RDXplorer.Views.RouteTableView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RDXplorer.Views"
+      xmlns:models="clr-namespace:RDXplorer.ViewModels"
+      mc:Ignorable="d" 
+      d:DataContext="{d:DesignInstance Type=models:RouteTableViewModel}"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Route Table">
+    <DataGrid AutoGenerateColumns="False"
+              BorderThickness="0"
+              CanUserAddRows="False"
+              IsReadOnly="True"
+              ItemsSource="{Binding Entries}" MouseDoubleClick="DataGrid_MouseDoubleClick">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Position" Binding="{Binding Model.Position, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="From" Binding="{Binding From}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="To" Binding="{Binding To}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Next" Binding="{Binding Next}" FontFamily="Consolas"/>
+        </DataGrid.Columns>
+    </DataGrid>
+</local:View>

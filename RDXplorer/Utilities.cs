@@ -19,6 +19,9 @@ namespace RDXplorer
             if (type == typeof(byte))
                 return bytes[0];
 
+            if (type == typeof(sbyte))
+                return (sbyte)bytes[0];
+
             if (type == typeof(double))
                 return BitConverter.ToDouble(bytes, 0);
 

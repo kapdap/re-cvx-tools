@@ -1,13 +1,13 @@
-﻿using RDXplorer.Models.RDX;
+using RDXplorer.Models.RDX;
 using RDXplorer.ViewModels;
 using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace RDXplorer.Views
 {
-    public partial class TriggerView : View<TriggerViewModel, TriggerViewModelEntry>
+    public partial class EventCameraBlockView : View<EventCameraBlockViewModel, EventCameraBlockViewModelEntry>
     {
-        public TriggerView()
+        public EventCameraBlockView()
         {
             InitializeComponent();
             LoadModel();
@@ -16,6 +16,6 @@ namespace RDXplorer.Views
         }
 
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e) =>
-            OpenHexEditorFromDataGrid<TriggerViewModelEntry, TriggerModel>((DataGrid)sender);
+            OpenHexEditorFromDataGrid<EventCameraBlockViewModelEntry, EventCameraBlockModel>((DataGrid)sender);
     }
 }

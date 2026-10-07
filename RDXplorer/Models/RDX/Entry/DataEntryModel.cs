@@ -49,6 +49,9 @@ namespace RDXplorer.Models.RDX
             if (type == typeof(byte))
                 return Convert.ToByte(Value).ToString(format, NumberFormatInfo.CurrentInfo);
 
+            if (type == typeof(sbyte))
+                return Convert.ToSByte(Value).ToString(format, NumberFormatInfo.CurrentInfo);
+
             if (type == typeof(decimal))
                 return Convert.ToDecimal(Value).ToString(format, NumberFormatInfo.CurrentInfo);
 

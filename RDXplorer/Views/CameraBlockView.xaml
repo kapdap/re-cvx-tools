@@ -10,7 +10,7 @@
       mc:Ignorable="d" 
       d:DataContext="{d:DesignInstance Type=models:CameraBlockViewModel}"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Model Sections">
+      Title="Camera Blocks">
     <DataGrid AutoGenerateColumns="False"
               BorderThickness="0"
               CanUserAddRows="False"
@@ -19,55 +19,62 @@
         <DataGrid.Columns>
             <DataGridTextColumn Header="Position" Binding="{Binding Model.Position, StringFormat=X8}" FontFamily="Consolas"/>
             <DataGridTextColumn Header="Group" Binding="{Binding Model.Header.Position, StringFormat=X8}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown1" Binding="{Binding Model.Fields.Unknown1}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown2" Binding="{Binding Model.Fields.Unknown2}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown3" Binding="{Binding Model.Fields.Unknown3}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown4" Binding="{Binding Model.Fields.Unknown4}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown5" Binding="{Binding Model.Fields.Unknown5}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown6" Binding="{Binding Model.Fields.Unknown6}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown7" Binding="{Binding Model.Fields.Unknown7}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="X" Binding="{Binding Model.Fields.X}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Y" Binding="{Binding Model.Fields.Y}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Z" Binding="{Binding Model.Fields.Z}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown11" Binding="{Binding Model.Fields.Unknown11}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown12" Binding="{Binding Model.Fields.Unknown12}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown13" Binding="{Binding Model.Fields.Unknown13}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown14" Binding="{Binding Model.Fields.Unknown14}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown15" Binding="{Binding Model.Fields.Unknown15}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown16" Binding="{Binding Model.Fields.Unknown16}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown17" Binding="{Binding Model.Fields.Unknown17}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown18" Binding="{Binding Model.Fields.Unknown18}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown19" Binding="{Binding Model.Fields.Unknown19}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="X Rot." Binding="{Binding Model.Fields.XRotation}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Y Rot." Binding="{Binding Model.Fields.YRotation}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Z Rot." Binding="{Binding Model.Fields.ZRotation}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown23" Binding="{Binding Model.Fields.Unknown23}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown24" Binding="{Binding Model.Fields.Unknown24}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown25" Binding="{Binding Model.Fields.Unknown25}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown26" Binding="{Binding Model.Fields.Unknown26}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown27" Binding="{Binding Model.Fields.Unknown27}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Perspective" Binding="{Binding Model.Fields.Perspective}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown29" Binding="{Binding Model.Fields.Unknown29}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown30" Binding="{Binding Model.Fields.Unknown30}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown31" Binding="{Binding Model.Fields.Unknown31}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown32" Binding="{Binding Model.Fields.Unknown32}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown33" Binding="{Binding Model.Fields.Unknown33}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown34" Binding="{Binding Model.Fields.Unknown34}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown35" Binding="{Binding Model.Fields.Unknown35}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown36" Binding="{Binding Model.Fields.Unknown36}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown37" Binding="{Binding Model.Fields.Unknown37}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown38" Binding="{Binding Model.Fields.Unknown38}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown39" Binding="{Binding Model.Fields.Unknown39}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown40" Binding="{Binding Model.Fields.Unknown40}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown41" Binding="{Binding Model.Fields.Unknown41}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown42" Binding="{Binding Model.Fields.Unknown42}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown43" Binding="{Binding Model.Fields.Unknown43}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown44" Binding="{Binding Model.Fields.Unknown44}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown45" Binding="{Binding Model.Fields.Unknown45}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown46" Binding="{Binding Model.Fields.Unknown46}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown47" Binding="{Binding Model.Fields.Unknown47}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown48" Binding="{Binding Model.Fields.Unknown48}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Unknown49" Binding="{Binding Model.Fields.Unknown49}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Flg" Binding="{Binding Model.Fields.Flg}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="LgtClip" Binding="{Binding Model.Fields.LgtClip}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Spd" Binding="{Binding Model.Fields.Spd}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Px" Binding="{Binding Model.Fields.Px}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Py" Binding="{Binding Model.Fields.Py}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Pz" Binding="{Binding Model.Fields.Pz}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Ln" Binding="{Binding Model.Fields.Ln}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="W" Binding="{Binding Model.Fields.W}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="H" Binding="{Binding Model.Fields.H}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="D" Binding="{Binding Model.Fields.D}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Y0" Binding="{Binding Model.Fields.Y0}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Y1" Binding="{Binding Model.Fields.Y1}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Y2" Binding="{Binding Model.Fields.Y2}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Y3" Binding="{Binding Model.Fields.Y3}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="AmSpd" Binding="{Binding Model.Fields.AmSpd}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Ax" Binding="{Binding Model.Fields.Ax}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Ay" Binding="{Binding Model.Fields.Ay}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Az" Binding="{Binding Model.Fields.Az}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Lax" Binding="{Binding Model.Fields.Lax}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Lay" Binding="{Binding Model.Fields.Lay}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Laz0" Binding="{Binding Model.Fields.Laz0}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Laz1" Binding="{Binding Model.Fields.Laz1}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Laz2" Binding="{Binding Model.Fields.Laz2}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Laz3" Binding="{Binding Model.Fields.Laz3}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="AaSpd" Binding="{Binding Model.Fields.AaSpd}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="FilNo" Binding="{Binding Model.Fields.FilNo}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="FilRt" Binding="{Binding Model.Fields.FilRt}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Reserve" Binding="{Binding Model.Fields.Reserve}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Pers" Binding="{Binding Model.Fields.Pers}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj0" Binding="{Binding Model.Fields.HidObj0.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj1" Binding="{Binding Model.Fields.HidObj1.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj2" Binding="{Binding Model.Fields.HidObj2.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj3" Binding="{Binding Model.Fields.HidObj3.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj4" Binding="{Binding Model.Fields.HidObj4.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj5" Binding="{Binding Model.Fields.HidObj5.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj6" Binding="{Binding Model.Fields.HidObj6.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj7" Binding="{Binding Model.Fields.HidObj7.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj8" Binding="{Binding Model.Fields.HidObj8.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj9" Binding="{Binding Model.Fields.HidObj9.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj10" Binding="{Binding Model.Fields.HidObj10.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj11" Binding="{Binding Model.Fields.HidObj11.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj12" Binding="{Binding Model.Fields.HidObj12.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj13" Binding="{Binding Model.Fields.HidObj13.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj14" Binding="{Binding Model.Fields.HidObj14.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj15" Binding="{Binding Model.Fields.HidObj15.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidLgt0" Binding="{Binding Model.Fields.HidLgt0.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidLgt1" Binding="{Binding Model.Fields.HidLgt1.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidLgt2" Binding="{Binding Model.Fields.HidLgt2.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidLgt3" Binding="{Binding Model.Fields.HidLgt3.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidLgt4" Binding="{Binding Model.Fields.HidLgt4.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidLgt5" Binding="{Binding Model.Fields.HidLgt5.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidLgt6" Binding="{Binding Model.Fields.HidLgt6.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidLgt7" Binding="{Binding Model.Fields.HidLgt7.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="FogCol" Binding="{Binding Model.Fields.FogCol.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="FogNr" Binding="{Binding Model.Fields.FogNr}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="FogFr" Binding="{Binding Model.Fields.FogFr}" FontFamily="Consolas"/>
         </DataGrid.Columns>
     </DataGrid>
 </local:View>

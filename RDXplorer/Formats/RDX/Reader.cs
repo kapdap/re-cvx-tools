@@ -112,12 +112,12 @@ namespace RDXplorer.Formats.RDX
                 header.AOT.SetValue(stream.Position, br.ReadBytes(4));
                 header.Trigger.SetValue(stream.Position, br.ReadBytes(4));
                 header.Player.SetValue(stream.Position, br.ReadBytes(4));
-                header.Event.SetValue(stream.Position, br.ReadBytes(4));
-                header.Unknown1.SetValue(stream.Position, br.ReadBytes(4));
-                header.Unknown2.SetValue(stream.Position, br.ReadBytes(4));
-                header.Action.SetValue(stream.Position, br.ReadBytes(4));
+                header.Route.SetValue(stream.Position, br.ReadBytes(4));
+                header.RouteTable.SetValue(stream.Position, br.ReadBytes(4));
+                header.EventScript.SetValue(stream.Position, br.ReadBytes(4));
+                header.EventCamera.SetValue(stream.Position, br.ReadBytes(4));
                 header.Text.SetValue(stream.Position, br.ReadBytes(4));
-                header.Sysmes.SetValue(stream.Position, br.ReadBytes(4));
+                header.EventLight.SetValue(stream.Position, br.ReadBytes(4));
 
                 stream.Seek(256, SeekOrigin.Begin);
                 header.Camera.Count.SetValue(stream.Position, br.ReadBytes(4));
@@ -130,11 +130,11 @@ namespace RDXplorer.Formats.RDX
                 header.AOT.Count.SetValue(stream.Position, br.ReadBytes(4));
                 header.Trigger.Count.SetValue(stream.Position, br.ReadBytes(4));
                 header.Player.Count.SetValue(stream.Position, br.ReadBytes(4));
-                header.Event.Count.SetValue(stream.Position, br.ReadBytes(4));
-                header.Unknown1.Count.SetValue(stream.Position, br.ReadBytes(4));
+                header.Route.Count.SetValue(stream.Position, br.ReadBytes(4));
+                header.EventCamera.Count.SetValue(stream.Position, br.ReadBytes(4));
 
                 header.Text.Count.SetValue(stream.Position, br.ReadBytes(4));
-                header.Action.Count.SetValue(stream.Position, br.ReadBytes(4));
+                header.EventLight.Count.SetValue(stream.Position, br.ReadBytes(4));
 
                 stream.Seek(header.Texture.Value, SeekOrigin.Begin);
                 header.Texture.Count.SetValue(stream.Position, br.ReadBytes(4));
@@ -459,73 +459,86 @@ namespace RDXplorer.Formats.RDX
 
                 camera.Position = (nint)stream.Position;
 
-                camera.Fields.Flag1.SetValue(stream.Position, br.ReadBytes(1));
-                camera.Fields.Flag2.SetValue(stream.Position, br.ReadBytes(1));
-                camera.Fields.Flag3.SetValue(stream.Position, br.ReadBytes(1));
-                camera.Fields.Flag4.SetValue(stream.Position, br.ReadBytes(1));
-                camera.Fields.Pointer.SetValue(stream.Position, br.ReadBytes(4));
+                camera.Fields.Flg.SetValue(stream.Position, br.ReadBytes(1));
+                camera.Fields.Type.SetValue(stream.Position, br.ReadBytes(1));
+                camera.Fields.FlrNo.SetValue(stream.Position, br.ReadBytes(1));
+                camera.Fields.CTabN.SetValue(stream.Position, br.ReadBytes(1));
+                camera.Fields.Cuttp.SetValue(stream.Position, br.ReadBytes(4));
+                camera.Fields.Cx.SetValue(stream.Position, br.ReadBytes(4));
+                camera.Fields.Cy.SetValue(stream.Position, br.ReadBytes(4));
+                camera.Fields.Cz.SetValue(stream.Position, br.ReadBytes(4));
+                camera.Fields.Cw.SetValue(stream.Position, br.ReadBytes(4));
+                camera.Fields.Ch.SetValue(stream.Position, br.ReadBytes(4));
+                camera.Fields.Cd.SetValue(stream.Position, br.ReadBytes(4));
 
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < 2; j++)
                 {
                     CameraBlockModel model = new();
 
                     model.Position = (nint)stream.Position;
                     model.Header = camera;
 
-                    model.Fields.Unknown1.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown2.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown3.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown4.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown6.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown7.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.X.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Y.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Z.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown11.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown12.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown13.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown14.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown15.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown16.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown17.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown18.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown19.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.XRotation.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.YRotation.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.ZRotation.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown23.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown24.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown25.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown26.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown27.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Perspective.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown29.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown30.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown31.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown32.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown33.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown34.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown35.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown36.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown37.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown38.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown39.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown40.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown41.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown42.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown43.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown44.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown45.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown46.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown47.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown48.SetValue(stream.Position, br.ReadBytes(4));
-                    model.Fields.Unknown49.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Flg.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Fields.LgtClip.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Fields.Spd.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Fields.Px.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Py.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Pz.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Ln.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.W.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.H.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.D.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Y0.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Y1.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Y2.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Y3.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.AmSpd.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Ax.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Ay.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Az.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Lax.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Lay.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Laz0.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Fields.Laz1.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Fields.Laz2.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Fields.Laz3.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Fields.AaSpd.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Fields.FilNo.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Fields.FilRt.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Fields.Reserve.SetValue(stream.Position, br.ReadBytes(1));
+                    model.Fields.Pers.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj0.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj1.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj2.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj3.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj4.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj5.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj6.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj7.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj8.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj9.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj10.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj11.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj12.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj13.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj14.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj15.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidLgt0.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidLgt1.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidLgt2.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidLgt3.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidLgt4.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidLgt5.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidLgt6.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidLgt7.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.FogCol.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.FogNr.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.FogFr.SetValue(stream.Position, br.ReadBytes(4));
 
                     camera.Blocks.Add(model);
                 }
 
-                stream.Seek(84, SeekOrigin.Current);
+                camera.Fields.Exd.SetValue(stream.Position, br.ReadBytes(0x100));
 
                 list.Add(camera);
             }
@@ -553,22 +566,62 @@ namespace RDXplorer.Formats.RDX
 
                 model.Position = (nint)stream.Position;
 
-                model.Fields.Unknown1.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.Unknown2.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.Unknown3.SetValue(stream.Position, br.ReadBytes(4));
-
-                model.Fields.Unknown4.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown6.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown7.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown8.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown9.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown10.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown11.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown12.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown13.SetValue(stream.Position, br.ReadBytes(4));
-
-                model.Fields.Data.SetValue(stream.Position, br.ReadBytes(0xB0));
+                model.Fields.Flg.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Type.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Aspd.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.LkFlg.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.LkNo.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.LkOno.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Lsrc.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Px.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Py.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Pz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Lx.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ly.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Lz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Vx.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Vy.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Vz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Spc.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Dif.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Amb.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.R.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.G.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.B.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Nr.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Fr.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Iang.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Oang.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ax.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ay.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Az.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Mode.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ct0.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ct1.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ct2.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ct3.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wpx.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wpy.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wpz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wvx.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wvy.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wvz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wspc.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wdif.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wamb.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wr.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wg.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wb.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wnr.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wfr.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wiang.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Woang.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wax.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Way.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Waz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Lkwkp.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Exp.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Light.SetValue(stream.Position, br.ReadBytes(4));
 
                 list.Add(model);
             }
@@ -596,18 +649,24 @@ namespace RDXplorer.Formats.RDX
 
                 model.Position = (nint)stream.Position;
 
-                model.Fields.Header.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Flg.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Id.SetValue(stream.Position, br.ReadBytes(2));
                 model.Fields.Type.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.Effect.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.Flags.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Variant.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Index.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.X.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Y.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Z.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.XRotation.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.YRotation.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.ZRotation.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.FlrNo.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.MdlVer.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.WrkNo.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Prm1.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Px.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Py.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Pz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ax.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Az.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Ay.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Aspd.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Hide0.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Hide1.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Hide2.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Hide3.SetValue(stream.Position, br.ReadBytes(1));
 
                 list.Add(model);
             }
@@ -635,28 +694,24 @@ namespace RDXplorer.Formats.RDX
 
                 model.Position = (nint)stream.Position;
 
-                model.Fields.Visible.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Flg.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Id.SetValue(stream.Position, br.ReadBytes(2));
                 model.Fields.Type.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown5.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown6.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown7.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown8.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown9.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.X.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Y.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Z.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.XRot.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.YRot.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.ZRot.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.Unknown10.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.Unknown11.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown12.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown13.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown14.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.FlrNo.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.MdlVer.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.WrkNo.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Prm1.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Px.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Py.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Pz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ax.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Az.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Ay.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Aspd.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Hide0.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Hide1.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Hide2.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Hide3.SetValue(stream.Position, br.ReadBytes(1));
 
                 list.Add(model);
             }
@@ -684,23 +739,24 @@ namespace RDXplorer.Formats.RDX
 
                 model.Position = (nint)stream.Position;
 
-                model.Fields.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Type.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.X.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Y.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Z.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.XRot.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.YRot.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.ZRot.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.Unknown6.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.Unknown7.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown8.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown9.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown10.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Flg.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Id.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Type.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.FlrNo.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.MdlVer.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.WrkNo.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Prm1.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Px.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Py.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Pz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ax.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Az.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Ay.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Aspd.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Hide0.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Hide1.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Hide2.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Hide3.SetValue(stream.Position, br.ReadBytes(1));
 
                 list.Add(model);
             }
@@ -728,24 +784,26 @@ namespace RDXplorer.Formats.RDX
 
                 model.Position = (nint)stream.Position;
 
-                model.Fields.Unknown1.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown2.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.Unknown3.SetValue(stream.Position, br.ReadBytes(2));
-                model.Fields.Unknown4.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.X.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Y.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Z.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Width.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Height.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Length.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown11.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown12.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown13.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown14.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown15.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown16.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown17.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown18.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Flg.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Id.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Type.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.FlrNo.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.MdlVer.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Px.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Py.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Pz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Sx.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Sy.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Sz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ay.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.Ax.SetValue(stream.Position, br.ReadBytes(2));
+                model.Fields.LkFlg.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.LkNo.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.LkOno.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Lx.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ly.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Lz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Param.SetValue(stream.Position, br.ReadBytes(4));
 
                 list.Add(model);
             }
@@ -773,21 +831,21 @@ namespace RDXplorer.Formats.RDX
 
                 model.Position = (nint)stream.Position;
 
-                model.Fields.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.X.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Y.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Z.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Width.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Height.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Length.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown12.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown13.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown14.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown15.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Flg.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Type.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Id.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.FlrNo.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Attr.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Px.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Py.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Pz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.W.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.H.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.D.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Prm0.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Prm1.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Prm2.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Prm3.SetValue(stream.Position, br.ReadBytes(1));
 
                 list.Add(model);
             }
@@ -815,21 +873,21 @@ namespace RDXplorer.Formats.RDX
 
                 model.Position = (nint)stream.Position;
 
-                model.Fields.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Flg.SetValue(stream.Position, br.ReadBytes(1));
                 model.Fields.Type.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.X.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Y.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Z.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Width.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Height.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Length.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown12.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown13.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown14.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown15.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Id.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.FlrNo.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Attr.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Px.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Py.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Pz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.W.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.H.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.D.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Prm0.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Prm1.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Prm2.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Prm3.SetValue(stream.Position, br.ReadBytes(1));
 
                 list.Add(model);
             }
@@ -857,21 +915,21 @@ namespace RDXplorer.Formats.RDX
 
                 model.Position = (nint)stream.Position;
 
-                model.Fields.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.X.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Y.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Z.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Width.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Height.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Length.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown12.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown13.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown14.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown15.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Flg.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Type.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Id.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.FlrNo.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Attr.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Px.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Py.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Pz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.W.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.H.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.D.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Prm0.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Prm1.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Prm2.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Prm3.SetValue(stream.Position, br.ReadBytes(1));
 
                 list.Add(model);
             }
@@ -899,10 +957,10 @@ namespace RDXplorer.Formats.RDX
 
                 model.Position = (nint)stream.Position;
 
-                model.Fields.X.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Y.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Z.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Rotation.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Px.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Py.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Pz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ay.SetValue(stream.Position, br.ReadBytes(4));
 
                 list.Add(model);
             }
@@ -910,41 +968,236 @@ namespace RDXplorer.Formats.RDX
             return list;
         }
 
-        public static List<EventModel> ReadEvent(FileInfo file, HeaderModel header)
+        public static List<RouteModel> ReadRoute(FileInfo file, HeaderModel header)
         {
             using FileStream stream = file.OpenReadShared();
-            return ReadEvent(stream, header);
+            return ReadRoute(stream, header);
         }
 
-        public static List<EventModel> ReadEvent(Stream stream, HeaderModel header)
+        public static List<RouteModel> ReadRoute(Stream stream, HeaderModel header)
         {
             using BinaryReader br = new(stream, Encoding.Default, true);
 
-            List<EventModel> list = new();
+            List<RouteModel> list = new();
 
-            stream.Seek(header.Event.Value, SeekOrigin.Begin);
+            stream.Seek(header.Route.Value, SeekOrigin.Begin);
 
-            for (int i = 0; i < header.Event.Count.Value; i++)
+            for (int i = 0; i < header.Route.Count.Value; i++)
             {
-                EventModel model = new();
+                RouteModel model = new();
 
                 model.Position = (nint)stream.Position;
 
-                model.Fields.Unknown1.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown2.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown3.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown4.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown5.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.X.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Y.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Z.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Width.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Height.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Length.SetValue(stream.Position, br.ReadBytes(4));
-                model.Fields.Unknown12.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown13.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown14.SetValue(stream.Position, br.ReadBytes(1));
-                model.Fields.Unknown15.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Flg.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Type.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Id.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.FlrNo.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Attr.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Px.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Py.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Pz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.W.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.H.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.D.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Prm0.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Prm1.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Prm2.SetValue(stream.Position, br.ReadBytes(1));
+                model.Fields.Prm3.SetValue(stream.Position, br.ReadBytes(1));
+
+                list.Add(model);
+            }
+
+            return list;
+        }
+
+        public static List<RouteTableModel> ReadRouteTable(FileInfo file, HeaderModel header)
+        {
+            using FileStream stream = file.OpenReadShared();
+            return ReadRouteTable(stream, header);
+        }
+
+        public static List<RouteTableModel> ReadRouteTable(Stream stream, HeaderModel header)
+        {
+            using BinaryReader br = new(stream, Encoding.Default, true);
+
+            List<RouteTableModel> list = new();
+
+            int count = (int)header.Route.Count.Value;
+
+            if (header.RouteTable.Value == 0 || count == 0)
+                return list;
+
+            stream.Seek(header.RouteTable.Value, SeekOrigin.Begin);
+
+            for (int i = 0; i < count * count; i++)
+            {
+                RouteTableModel model = new();
+
+                model.Position = (nint)stream.Position;
+
+                model.Fields.Value.SetValue(stream.Position, br.ReadBytes(1));
+
+                list.Add(model);
+            }
+
+            return list;
+        }
+
+        public static List<EventCameraModel> ReadEventCamera(FileInfo file, HeaderModel header)
+        {
+            using FileStream stream = file.OpenReadShared();
+            return ReadEventCamera(stream, header);
+        }
+
+        public static List<EventCameraModel> ReadEventCamera(Stream stream, HeaderModel header)
+        {
+            using BinaryReader br = new(stream, Encoding.Default, true);
+
+            List<EventCameraModel> list = new();
+
+            stream.Seek(header.EventCamera.Value, SeekOrigin.Begin);
+
+            for (int i = 0; i < header.EventCamera.Count.Value; i++)
+            {
+                EventCameraModel camera = new();
+
+                camera.Position = (nint)stream.Position;
+
+                camera.Fields.Flg.SetValue(stream.Position, br.ReadBytes(2));
+                camera.Fields.Type.SetValue(stream.Position, br.ReadBytes(2));
+                camera.Fields.NxtNo.SetValue(stream.Position, br.ReadBytes(2));
+                camera.Fields.KeyfN.SetValue(stream.Position, br.ReadBytes(2));
+
+                for (int j = 0; j < 16; j++)
+                {
+                    EventCameraBlockModel model = new();
+
+                    model.Position = (nint)stream.Position;
+                    model.Header = camera;
+
+                    model.Fields.Flg.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Fields.Frame.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Fields.Px.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Py.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Pz.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Ax.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Fields.Ay.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Fields.Az.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Fields.Pers.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Fields.HidObj0.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj1.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj2.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj3.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj4.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj5.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj6.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidObj7.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidLgt0.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidLgt1.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidLgt2.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.HidLgt3.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.FogCol.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.FogNr.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.FogFr.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.LkFlg.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Fields.LkNo.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Fields.LkOno.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Fields.NxtNo.SetValue(stream.Position, br.ReadBytes(2));
+                    model.Fields.Lx.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Ly.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Lz.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Prm0.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Prm1.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Prm2.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Prm3.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Prm4.SetValue(stream.Position, br.ReadBytes(4));
+                    model.Fields.Recp.SetValue(stream.Position, br.ReadBytes(4));
+
+                    camera.Blocks.Add(model);
+                }
+
+                list.Add(camera);
+            }
+
+            return list;
+        }
+
+        public static List<EventLightModel> ReadEventLight(FileInfo file, HeaderModel header)
+        {
+            using FileStream stream = file.OpenReadShared();
+            return ReadEventLight(stream, header);
+        }
+
+        public static List<EventLightModel> ReadEventLight(Stream stream, HeaderModel header)
+        {
+            using BinaryReader br = new(stream, Encoding.Default, true);
+
+            List<EventLightModel> list = new();
+
+            stream.Seek(header.EventLight.Value, SeekOrigin.Begin);
+
+            for (int i = 0; i < header.EventLight.Count.Value; i++)
+            {
+                EventLightModel model = new();
+
+                model.Position = (nint)stream.Position;
+
+                model.Fields.Flg.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Type.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Aspd.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.LkFlg.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.LkNo.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.LkOno.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Lsrc.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Px.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Py.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Pz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Lx.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ly.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Lz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Vx.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Vy.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Vz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Spc.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Dif.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Amb.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.R.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.G.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.B.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Nr.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Fr.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Iang.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Oang.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ax.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ay.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Az.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Mode.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ct0.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ct1.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ct2.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Ct3.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wpx.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wpy.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wpz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wvx.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wvy.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wvz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wspc.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wdif.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wamb.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wr.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wg.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wb.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wnr.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wfr.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wiang.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Woang.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Wax.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Way.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Waz.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Lkwkp.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Exp.SetValue(stream.Position, br.ReadBytes(4));
+                model.Fields.Light.SetValue(stream.Position, br.ReadBytes(4));
 
                 list.Add(model);
             }
@@ -983,7 +1236,7 @@ namespace RDXplorer.Formats.RDX
                 list.Add(model);
             }
 
-            uint nextSection = header.Sysmes.Value != 0 ? header.Sysmes.Value : header.Model.Value;
+            uint nextSection = header.EventLight.Value != 0 ? header.EventLight.Value : header.Model.Value;
 
             for (int i = 0; i < list.Count; i++)
             {

@@ -1,4 +1,5 @@
-﻿using RDXplorer.Models;
+﻿using RDXplorer.Enumerations;
+using RDXplorer.Models;
 using RDXplorer.Models.RDX;
 
 namespace RDXplorer.ViewModels
@@ -17,5 +18,12 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class BoundaryViewModelEntry(BoundaryModel model) : PageViewModelEntry<BoundaryModel>(model) { }
+    public class BoundaryViewModelEntry : PageViewModelEntry<BoundaryModel>
+    {
+        private string _boundarytype;
+        public string BoundaryType => _boundarytype;
+
+        public BoundaryViewModelEntry(BoundaryModel model) : base(model) =>
+            Lookups.BoundaryTypes.TryGetValue((BoundaryTypeEnumeration)model.Fields.Type.Value, out _boundarytype);
+    }
 }

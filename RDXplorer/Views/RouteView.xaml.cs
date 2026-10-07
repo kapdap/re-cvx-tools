@@ -5,9 +5,9 @@ using System.Windows.Input;
 
 namespace RDXplorer.Views
 {
-    public partial class EventView : View<EventViewModel, EventViewModelEntry>
+    public partial class RouteView : View<RouteViewModel, RouteViewModelEntry>
     {
-        public EventView()
+        public RouteView()
         {
             InitializeComponent();
             LoadModel();
@@ -16,6 +16,6 @@ namespace RDXplorer.Views
         }
 
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e) =>
-            OpenHexEditorFromDataGrid<EventViewModelEntry, EventModel>((DataGrid)sender);
+            OpenHexEditorFromDataGrid<RouteViewModelEntry, RouteModel>((DataGrid)sender);
     }
 }

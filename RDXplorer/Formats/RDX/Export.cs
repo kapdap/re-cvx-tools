@@ -52,12 +52,12 @@ namespace RDXplorer.Formats.RDX
                 document.Header.AOT,
                 document.Header.Trigger,
                 document.Header.Player,
-                document.Header.Event,
-                document.Header.Unknown1,
-                //document.Header.Unknown2,
-                document.Header.Action,
+                document.Header.Route,
+                document.Header.RouteTable,
+                //document.Header.EventScript,
+                document.Header.EventCamera,
                 document.Header.Text,
-                document.Header.Sysmes,
+                document.Header.EventLight,
             };
 
             for (int i = 0; i < properties.Count; i++)

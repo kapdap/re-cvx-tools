@@ -217,17 +217,56 @@ namespace RDXplorer.Models.RDX
             private set => SetField(ref _player, value);
         }
 
-        private List<EventModel> _event;
-        public List<EventModel> Event
+        private List<RouteModel> _route;
+        public List<RouteModel> Route
         {
             get
             {
-                if (_event == null)
-                    SetField(ref _event, Reader.ReadEvent(RDXStream, Header));
-                return _event;
+                if (_route == null)
+                    SetField(ref _route, Reader.ReadRoute(RDXStream, Header));
+                return _route;
             }
 
-            private set => SetField(ref _event, value);
+            private set => SetField(ref _route, value);
+        }
+
+        private List<RouteTableModel> _routetable;
+        public List<RouteTableModel> RouteTable
+        {
+            get
+            {
+                if (_routetable == null)
+                    SetField(ref _routetable, Reader.ReadRouteTable(RDXStream, Header));
+                return _routetable;
+            }
+
+            private set => SetField(ref _routetable, value);
+        }
+
+        private List<EventCameraModel> _eventcamera;
+        public List<EventCameraModel> EventCamera
+        {
+            get
+            {
+                if (_eventcamera == null)
+                    SetField(ref _eventcamera, Reader.ReadEventCamera(RDXStream, Header));
+                return _eventcamera;
+            }
+
+            private set => SetField(ref _eventcamera, value);
+        }
+
+        private List<EventLightModel> _eventlight;
+        public List<EventLightModel> EventLight
+        {
+            get
+            {
+                if (_eventlight == null)
+                    SetField(ref _eventlight, Reader.ReadEventLight(RDXStream, Header));
+                return _eventlight;
+            }
+
+            private set => SetField(ref _eventlight, value);
         }
 
         private List<TextModel> _text;

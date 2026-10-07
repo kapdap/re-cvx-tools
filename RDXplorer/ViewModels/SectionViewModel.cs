@@ -37,12 +37,12 @@ namespace RDXplorer.ViewModels
                 new(header.AOT),
                 new(header.Trigger),
                 new(header.Player),
-                new(header.Event),
-                new(header.Unknown1),
-                new(header.Unknown2),
-                new(header.Action),
+                new(header.Route),
+                new(header.RouteTable),
+                new(header.EventScript),
+                new(header.EventCamera),
                 new(header.Text),
-                new(header.Sysmes)
+                new(header.EventLight)
             };
         }
     }

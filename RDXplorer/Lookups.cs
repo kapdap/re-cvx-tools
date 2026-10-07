@@ -291,13 +291,80 @@ namespace RDXplorer
                 if (_aottypes.Count == 0)
                 {
                     _aottypes.Add(AOTTypeEnumeration.Door, "Door");
-                    _aottypes.Add(AOTTypeEnumeration.Unknown1, "Unknown1");
-                    _aottypes.Add(AOTTypeEnumeration.Unknown2, "Unknown2");
+                    _aottypes.Add(AOTTypeEnumeration.Stairs, "Stairs");
+                    _aottypes.Add(AOTTypeEnumeration.Step, "Step");
                     _aottypes.Add(AOTTypeEnumeration.Message, "Message");
                     _aottypes.Add(AOTTypeEnumeration.Item, "Item");
                 }
 
                 return _aottypes;
+            }
+        }
+
+        private static Dictionary<TriggerTypeEnumeration, string> _triggertypes = new();
+        public static Dictionary<TriggerTypeEnumeration, string> TriggerTypes
+        {
+            get
+            {
+                if (_triggertypes.Count == 0)
+                {
+                    _triggertypes.Add(TriggerTypeEnumeration.Collision, "Collision");
+                    _triggertypes.Add(TriggerTypeEnumeration.Sound, "Sound");
+                    _triggertypes.Add(TriggerTypeEnumeration.Enemy, "Enemy");
+                    _triggertypes.Add(TriggerTypeEnumeration.Effect, "Effect");
+                }
+
+                return _triggertypes;
+            }
+        }
+
+        private static Dictionary<BoundaryTypeEnumeration, string> _boundarytypes = new();
+        public static Dictionary<BoundaryTypeEnumeration, string> BoundaryTypes
+        {
+            get
+            {
+                if (_boundarytypes.Count == 0)
+                {
+                    _boundarytypes.Add(BoundaryTypeEnumeration.Box, "Box");
+                    _boundarytypes.Add(BoundaryTypeEnumeration.BoxConditional, "Box (Conditional)");
+                    _boundarytypes.Add(BoundaryTypeEnumeration.Cylinder, "Cylinder");
+                    _boundarytypes.Add(BoundaryTypeEnumeration.CylinderConditional, "Cylinder (Conditional)");
+                    _boundarytypes.Add(BoundaryTypeEnumeration.Slope, "Slope");
+                    _boundarytypes.Add(BoundaryTypeEnumeration.SlopeConditional, "Slope (Conditional)");
+                    _boundarytypes.Add(BoundaryTypeEnumeration.Region, "Region");
+                    _boundarytypes.Add(BoundaryTypeEnumeration.Step, "Step");
+                }
+
+                return _boundarytypes;
+            }
+        }
+
+        private static Dictionary<LightingTypeEnumeration, string> _lightingtypes = new();
+        public static Dictionary<LightingTypeEnumeration, string> LightingTypes
+        {
+            get
+            {
+                if (_lightingtypes.Count == 0)
+                {
+                    _lightingtypes.Add(LightingTypeEnumeration.Static, "Static");
+                    _lightingtypes.Add(LightingTypeEnumeration.PulseSoft, "Pulse (Soft)");
+                    _lightingtypes.Add(LightingTypeEnumeration.PulseHalf, "Pulse (Half)");
+                    _lightingtypes.Add(LightingTypeEnumeration.PulseFull, "Pulse (Full)");
+                    _lightingtypes.Add(LightingTypeEnumeration.FlickerSoft, "Flicker (Soft)");
+                    _lightingtypes.Add(LightingTypeEnumeration.FlickerHalf, "Flicker (Half)");
+                    _lightingtypes.Add(LightingTypeEnumeration.FlickerFull, "Flicker (Full)");
+                    _lightingtypes.Add(LightingTypeEnumeration.Thunder, "Thunder");
+                    _lightingtypes.Add(LightingTypeEnumeration.RotateNegative, "Rotate (-)");
+                    _lightingtypes.Add(LightingTypeEnumeration.RotatePositive, "Rotate (+)");
+                    _lightingtypes.Add(LightingTypeEnumeration.Fluorescent, "Fluorescent");
+                    _lightingtypes.Add(LightingTypeEnumeration.FluorescentAlt, "Fluorescent (Alt)");
+                    _lightingtypes.Add(LightingTypeEnumeration.Blink, "Blink");
+                    _lightingtypes.Add(LightingTypeEnumeration.FadeOut, "Fade Out");
+                    _lightingtypes.Add(LightingTypeEnumeration.Flash, "Flash");
+                    _lightingtypes.Add(LightingTypeEnumeration.FlashDecay, "Flash (Decay)");
+                }
+
+                return _lightingtypes;
             }
         }
     }

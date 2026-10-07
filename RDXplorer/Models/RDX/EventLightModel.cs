@@ -1,8 +1,8 @@
-﻿namespace RDXplorer.Models.RDX
+namespace RDXplorer.Models.RDX
 {
-    public class LightingModel : DataModel<LightingModelFields> { }
+    public class EventLightModel : DataModel<EventLightModelFields> { }
 
-    public class LightingModelFields : IFieldsModel
+    public class EventLightModelFields : IFieldsModel
     {
         public DataEntryModel<uint> Flg { get; set; } = new();
         public DataEntryModel<uint> Type { get; set; } = new();

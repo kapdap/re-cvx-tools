@@ -1,0 +1,60 @@
+<local:View 
+      x:TypeArguments="models:EventCameraBlockViewModel, models:EventCameraBlockViewModelEntry"
+      x:Class="RDXplorer.Views.EventCameraBlockView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RDXplorer.Views"
+      xmlns:models="clr-namespace:RDXplorer.ViewModels"
+      mc:Ignorable="d" 
+      d:DataContext="{d:DesignInstance Type=models:EventCameraBlockViewModel}"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Event Camera Keys">
+    <DataGrid AutoGenerateColumns="False"
+              BorderThickness="0"
+              CanUserAddRows="False"
+              IsReadOnly="True"
+              ItemsSource="{Binding Entries}" MouseDoubleClick="DataGrid_MouseDoubleClick">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Position" Binding="{Binding Model.Position, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Flg" Binding="{Binding Model.Fields.Flg}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Frame" Binding="{Binding Model.Fields.Frame}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Px" Binding="{Binding Model.Fields.Px}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Py" Binding="{Binding Model.Fields.Py}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Pz" Binding="{Binding Model.Fields.Pz}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Ax" Binding="{Binding Model.Fields.Ax}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Ay" Binding="{Binding Model.Fields.Ay}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Az" Binding="{Binding Model.Fields.Az}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Pers" Binding="{Binding Model.Fields.Pers}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj0" Binding="{Binding Model.Fields.HidObj0.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj1" Binding="{Binding Model.Fields.HidObj1.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj2" Binding="{Binding Model.Fields.HidObj2.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj3" Binding="{Binding Model.Fields.HidObj3.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj4" Binding="{Binding Model.Fields.HidObj4.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj5" Binding="{Binding Model.Fields.HidObj5.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj6" Binding="{Binding Model.Fields.HidObj6.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidObj7" Binding="{Binding Model.Fields.HidObj7.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidLgt0" Binding="{Binding Model.Fields.HidLgt0.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidLgt1" Binding="{Binding Model.Fields.HidLgt1.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidLgt2" Binding="{Binding Model.Fields.HidLgt2.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="HidLgt3" Binding="{Binding Model.Fields.HidLgt3.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="FogCol" Binding="{Binding Model.Fields.FogCol.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="FogNr" Binding="{Binding Model.Fields.FogNr}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="FogFr" Binding="{Binding Model.Fields.FogFr}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="LkFlg" Binding="{Binding Model.Fields.LkFlg}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="LkNo" Binding="{Binding Model.Fields.LkNo}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="LkOno" Binding="{Binding Model.Fields.LkOno}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="NxtNo" Binding="{Binding Model.Fields.NxtNo}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Lx" Binding="{Binding Model.Fields.Lx}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Ly" Binding="{Binding Model.Fields.Ly}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Lz" Binding="{Binding Model.Fields.Lz}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Prm0" Binding="{Binding Model.Fields.Prm0}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Prm1" Binding="{Binding Model.Fields.Prm1}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Prm2" Binding="{Binding Model.Fields.Prm2}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Prm3" Binding="{Binding Model.Fields.Prm3}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Prm4" Binding="{Binding Model.Fields.Prm4}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Recp" Binding="{Binding Model.Fields.Recp.Value, StringFormat=X8}" FontFamily="Consolas"/>
+        </DataGrid.Columns>
+    </DataGrid>
+</local:View>

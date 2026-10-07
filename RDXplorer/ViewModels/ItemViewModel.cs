@@ -24,6 +24,6 @@ namespace RDXplorer.ViewModels
         public string Name => _name;
 
         public ItemViewModelEntry(ItemModel model) : base(model) =>
-            Lookups.Items.TryGetValue((ItemEnumeration)model.Fields.Type.Value, out _name);
+            Lookups.Items.TryGetValue((ItemEnumeration)model.Fields.Id.Value, out _name);
     }
 }

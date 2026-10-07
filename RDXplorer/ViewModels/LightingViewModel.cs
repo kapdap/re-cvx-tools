@@ -1,4 +1,5 @@
-﻿using RDXplorer.Models;
+﻿using RDXplorer.Enumerations;
+using RDXplorer.Models;
 using RDXplorer.Models.RDX;
 
 namespace RDXplorer.ViewModels
@@ -17,5 +18,12 @@ namespace RDXplorer.ViewModels
         }
     }
 
-    public class LightingViewModelEntry(LightingModel model) : PageViewModelEntry<LightingModel>(model) { }
+    public class LightingViewModelEntry : PageViewModelEntry<LightingModel>
+    {
+        private string _lightingtype;
+        public string LightingType => _lightingtype;
+
+        public LightingViewModelEntry(LightingModel model) : base(model) =>
+            Lookups.LightingTypes.TryGetValue((LightingTypeEnumeration)model.Fields.Type.Value, out _lightingtype);
+    }
 }

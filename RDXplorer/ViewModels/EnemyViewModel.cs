@@ -24,6 +24,6 @@ namespace RDXplorer.ViewModels
         public string Name => _name;
 
         public EnemyViewModelEntry(EnemyModel model) : base(model) =>
-            Lookups.Enemys.TryGetValue((EnemyEnumeration)model.Fields.Type.Value, out _name);
+            Lookups.Enemys.TryGetValue((EnemyEnumeration)model.Fields.Id.Value, out _name);
     }
 }

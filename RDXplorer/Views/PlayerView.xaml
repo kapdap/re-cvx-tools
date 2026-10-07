@@ -18,10 +18,10 @@
               ItemsSource="{Binding Entries}" MouseDoubleClick="DataGrid_MouseDoubleClick">
         <DataGrid.Columns>
             <DataGridTextColumn Header="Position" Binding="{Binding Model.Position, StringFormat=X8}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="X" Binding="{Binding Model.Fields.X}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Y" Binding="{Binding Model.Fields.Y}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Z" Binding="{Binding Model.Fields.Z}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Rotation" Binding="{Binding Model.Fields.Rotation}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Px" Binding="{Binding Model.Fields.Px}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Py" Binding="{Binding Model.Fields.Py}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Pz" Binding="{Binding Model.Fields.Pz}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Ay" Binding="{Binding Model.Fields.Ay}" FontFamily="Consolas"/>
         </DataGrid.Columns>
     </DataGrid>
 </local:View>

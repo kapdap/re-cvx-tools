@@ -1,26 +1,30 @@
 ﻿namespace RDXplorer.Models.RDX
 {
+    // On-disk layout: EF_WRK (types.h) — 0x44 bytes.
+    // NOTE: file order is Ay then Ax (not Ax then Ay).
     public class EffectModel : DataModel<EffectModelFields> { }
 
     public class EffectModelFields : IFieldsModel
     {
-        public DataEntryModel<int> Unknown1 { get; set; } = new();
-        public DataEntryModel<short> Unknown2 { get; set; } = new();
-        public DataEntryModel<short> Unknown3 { get; set; } = new();
-        public DataEntryModel<int> Unknown4 { get; set; } = new();
-        public DataEntryModel<float> X { get; set; } = new();
-        public DataEntryModel<float> Y { get; set; } = new();
-        public DataEntryModel<float> Z { get; set; } = new();
-        public DataEntryModel<float> Width { get; set; } = new();
-        public DataEntryModel<float> Height { get; set; } = new();
-        public DataEntryModel<float> Length { get; set; } = new();
-        public DataEntryModel<int> Unknown11 { get; set; } = new();
-        public DataEntryModel<int> Unknown12 { get; set; } = new();
-        public DataEntryModel<int> Unknown13 { get; set; } = new();
-        public DataEntryModel<int> Unknown14 { get; set; } = new();
-        public DataEntryModel<float> Unknown15 { get; set; } = new();
-        public DataEntryModel<float> Unknown16 { get; set; } = new();
-        public DataEntryModel<float> Unknown17 { get; set; } = new();
-        public DataEntryModel<int> Unknown18 { get; set; } = new();
+        public DataEntryModel<uint> Flg { get; set; } = new();
+        public DataEntryModel<ushort> Id { get; set; } = new();
+        public DataEntryModel<ushort> Type { get; set; } = new();
+        public DataEntryModel<short> FlrNo { get; set; } = new();
+        public DataEntryModel<ushort> MdlVer { get; set; } = new();
+        public DataEntryModel<float> Px { get; set; } = new();
+        public DataEntryModel<float> Py { get; set; } = new();
+        public DataEntryModel<float> Pz { get; set; } = new();
+        public DataEntryModel<float> Sx { get; set; } = new();
+        public DataEntryModel<float> Sy { get; set; } = new();
+        public DataEntryModel<float> Sz { get; set; } = new();
+        public DataEntryModel<short> Ay { get; set; } = new();
+        public DataEntryModel<short> Ax { get; set; } = new();
+        public DataEntryModel<int> LkFlg { get; set; } = new();
+        public DataEntryModel<int> LkNo { get; set; } = new();
+        public DataEntryModel<int> LkOno { get; set; } = new();
+        public DataEntryModel<float> Lx { get; set; } = new();
+        public DataEntryModel<float> Ly { get; set; } = new();
+        public DataEntryModel<float> Lz { get; set; } = new();
+        public DataEntryModel<int> Param { get; set; } = new();
     }
 }

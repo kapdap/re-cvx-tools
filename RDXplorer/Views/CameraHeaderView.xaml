@@ -18,11 +18,18 @@
               ItemsSource="{Binding Entries}" MouseDoubleClick="DataGrid_MouseDoubleClick">
         <DataGrid.Columns>
             <DataGridTextColumn Header="Position" Binding="{Binding Model.Position, StringFormat=X8}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Flag1" Binding="{Binding Model.Fields.Flag1}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Flag2" Binding="{Binding Model.Fields.Flag2}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Flag3" Binding="{Binding Model.Fields.Flag3}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Flag4" Binding="{Binding Model.Fields.Flag4}" FontFamily="Consolas"/>
-            <DataGridTextColumn Header="Pointer" Binding="{Binding Model.Fields.Pointer.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Flg" Binding="{Binding Model.Fields.Flg}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Type" Binding="{Binding Model.Fields.Type}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="FlrNo" Binding="{Binding Model.Fields.FlrNo}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="CTabN" Binding="{Binding Model.Fields.CTabN}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Cuttp" Binding="{Binding Model.Fields.Cuttp.Value, StringFormat=X8}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Cx" Binding="{Binding Model.Fields.Cx}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Cy" Binding="{Binding Model.Fields.Cy}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Cz" Binding="{Binding Model.Fields.Cz}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Cw" Binding="{Binding Model.Fields.Cw}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Ch" Binding="{Binding Model.Fields.Ch}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Cd" Binding="{Binding Model.Fields.Cd}" FontFamily="Consolas"/>
+            <DataGridTextColumn Header="Exd" Binding="{Binding Model.Fields.Exd.Value, StringFormat=X8}" FontFamily="Consolas"/>
         </DataGrid.Columns>
     </DataGrid>
 </local:View>

@@ -1,9 +1,8 @@
 ﻿namespace RDXplorer.Models.RDX
 {
-    // On-disk layout: ATR_WORK (types.h) — 0x24 bytes.
-    public class BoundaryModel : DataModel<BoundaryModelFields> { }
+    public class RouteModel : DataModel<RouteModelFields> { }
 
-    public class BoundaryModelFields : IFieldsModel
+    public class RouteModelFields : IFieldsModel
     {
         public DataEntryModel<byte> Flg { get; set; } = new();
         public DataEntryModel<byte> Type { get; set; } = new();

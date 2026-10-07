@@ -1,5 +1,6 @@
 ﻿namespace RDXplorer.Models.RDX
 {
+    // On-disk layout: CAM_WRK (types.h) — 0xC4 bytes.
     public class CameraBlockModel : DataModel<CameraModelFields>
     {
         public CameraHeaderModel Header { get; set; }
@@ -7,54 +8,61 @@
 
     public class CameraModelFields : IFieldsModel
     {
-        public DataEntryModel<float> Unknown1 { get; set; } = new();
-        public DataEntryModel<float> Unknown2 { get; set; } = new();
-        public DataEntryModel<float> Unknown3 { get; set; } = new();
-        public DataEntryModel<float> Unknown4 { get; set; } = new();
-        public DataEntryModel<float> Unknown5 { get; set; } = new();
-        public DataEntryModel<float> Unknown6 { get; set; } = new();
-        public DataEntryModel<float> Unknown7 { get; set; } = new();
-        public DataEntryModel<float> X { get; set; } = new();
-        public DataEntryModel<float> Y { get; set; } = new();
-        public DataEntryModel<float> Z { get; set; } = new();
-        public DataEntryModel<float> Unknown11 { get; set; } = new();
-        public DataEntryModel<float> Unknown12 { get; set; } = new();
-        public DataEntryModel<float> Unknown13 { get; set; } = new();
-        public DataEntryModel<float> Unknown14 { get; set; } = new();
-        public DataEntryModel<float> Unknown15 { get; set; } = new();
-        public DataEntryModel<float> Unknown16 { get; set; } = new();
-        public DataEntryModel<float> Unknown17 { get; set; } = new();
-        public DataEntryModel<float> Unknown18 { get; set; } = new();
-        public DataEntryModel<float> Unknown19 { get; set; } = new();
-        public DataEntryModel<int> XRotation { get; set; } = new();
-        public DataEntryModel<int> YRotation { get; set; } = new();
-        public DataEntryModel<int> ZRotation { get; set; } = new();
-        public DataEntryModel<float> Unknown23 { get; set; } = new();
-        public DataEntryModel<float> Unknown24 { get; set; } = new();
-        public DataEntryModel<float> Unknown25 { get; set; } = new();
-        public DataEntryModel<float> Unknown26 { get; set; } = new();
-        public DataEntryModel<int> Unknown27 { get; set; } = new();
-        public DataEntryModel<int> Perspective { get; set; } = new();
-        public DataEntryModel<int> Unknown29 { get; set; } = new();
-        public DataEntryModel<int> Unknown30 { get; set; } = new();
-        public DataEntryModel<int> Unknown31 { get; set; } = new();
-        public DataEntryModel<int> Unknown32 { get; set; } = new();
-        public DataEntryModel<int> Unknown33 { get; set; } = new();
-        public DataEntryModel<int> Unknown34 { get; set; } = new();
-        public DataEntryModel<int> Unknown35 { get; set; } = new();
-        public DataEntryModel<int> Unknown36 { get; set; } = new();
-        public DataEntryModel<int> Unknown37 { get; set; } = new();
-        public DataEntryModel<int> Unknown38 { get; set; } = new();
-        public DataEntryModel<int> Unknown39 { get; set; } = new();
-        public DataEntryModel<int> Unknown40 { get; set; } = new();
-        public DataEntryModel<int> Unknown41 { get; set; } = new();
-        public DataEntryModel<int> Unknown42 { get; set; } = new();
-        public DataEntryModel<int> Unknown43 { get; set; } = new();
-        public DataEntryModel<int> Unknown44 { get; set; } = new();
-        public DataEntryModel<int> Unknown45 { get; set; } = new();
-        public DataEntryModel<int> Unknown46 { get; set; } = new();
-        public DataEntryModel<int> Unknown47 { get; set; } = new();
-        public DataEntryModel<int> Unknown48 { get; set; } = new();
-        public DataEntryModel<int> Unknown49 { get; set; } = new();
+        public DataEntryModel<ushort> Flg { get; set; } = new();
+        public DataEntryModel<byte> LgtClip { get; set; } = new();
+        public DataEntryModel<sbyte> Spd { get; set; } = new();
+        public DataEntryModel<float> Px { get; set; } = new();
+        public DataEntryModel<float> Py { get; set; } = new();
+        public DataEntryModel<float> Pz { get; set; } = new();
+        public DataEntryModel<float> Ln { get; set; } = new();
+        public DataEntryModel<float> W { get; set; } = new();
+        public DataEntryModel<float> H { get; set; } = new();
+        public DataEntryModel<float> D { get; set; } = new();
+        public DataEntryModel<float> Y0 { get; set; } = new();
+        public DataEntryModel<float> Y1 { get; set; } = new();
+        public DataEntryModel<float> Y2 { get; set; } = new();
+        public DataEntryModel<float> Y3 { get; set; } = new();
+        public DataEntryModel<float> AmSpd { get; set; } = new();
+        public DataEntryModel<int> Ax { get; set; } = new();
+        public DataEntryModel<int> Ay { get; set; } = new();
+        public DataEntryModel<int> Az { get; set; } = new();
+        public DataEntryModel<int> Lax { get; set; } = new();
+        public DataEntryModel<int> Lay { get; set; } = new();
+        public DataEntryModel<short> Laz0 { get; set; } = new();
+        public DataEntryModel<short> Laz1 { get; set; } = new();
+        public DataEntryModel<short> Laz2 { get; set; } = new();
+        public DataEntryModel<short> Laz3 { get; set; } = new();
+        public DataEntryModel<sbyte> AaSpd { get; set; } = new();
+        public DataEntryModel<sbyte> FilNo { get; set; } = new();
+        public DataEntryModel<sbyte> FilRt { get; set; } = new();
+        public DataEntryModel<sbyte> Reserve { get; set; } = new();
+        public DataEntryModel<int> Pers { get; set; } = new();
+        public DataEntryModel<uint> HidObj0 { get; set; } = new();
+        public DataEntryModel<uint> HidObj1 { get; set; } = new();
+        public DataEntryModel<uint> HidObj2 { get; set; } = new();
+        public DataEntryModel<uint> HidObj3 { get; set; } = new();
+        public DataEntryModel<uint> HidObj4 { get; set; } = new();
+        public DataEntryModel<uint> HidObj5 { get; set; } = new();
+        public DataEntryModel<uint> HidObj6 { get; set; } = new();
+        public DataEntryModel<uint> HidObj7 { get; set; } = new();
+        public DataEntryModel<uint> HidObj8 { get; set; } = new();
+        public DataEntryModel<uint> HidObj9 { get; set; } = new();
+        public DataEntryModel<uint> HidObj10 { get; set; } = new();
+        public DataEntryModel<uint> HidObj11 { get; set; } = new();
+        public DataEntryModel<uint> HidObj12 { get; set; } = new();
+        public DataEntryModel<uint> HidObj13 { get; set; } = new();
+        public DataEntryModel<uint> HidObj14 { get; set; } = new();
+        public DataEntryModel<uint> HidObj15 { get; set; } = new();
+        public DataEntryModel<uint> HidLgt0 { get; set; } = new();
+        public DataEntryModel<uint> HidLgt1 { get; set; } = new();
+        public DataEntryModel<uint> HidLgt2 { get; set; } = new();
+        public DataEntryModel<uint> HidLgt3 { get; set; } = new();
+        public DataEntryModel<uint> HidLgt4 { get; set; } = new();
+        public DataEntryModel<uint> HidLgt5 { get; set; } = new();
+        public DataEntryModel<uint> HidLgt6 { get; set; } = new();
+        public DataEntryModel<uint> HidLgt7 { get; set; } = new();
+        public DataEntryModel<uint> FogCol { get; set; } = new();
+        public DataEntryModel<float> FogNr { get; set; } = new();
+        public DataEntryModel<float> FogFr { get; set; } = new();
     }
 }
