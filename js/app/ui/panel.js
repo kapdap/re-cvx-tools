@@ -13,6 +13,7 @@
     g.AppTriggerPanel.register();
     g.AppRoutePanel.register();
     g.AppHelpPanel.register();
+    g.AppAboutPanel.register();
     g.AppExportPanel.register();
   }
   g.AppPanel = { registerPanels: registerPanels };

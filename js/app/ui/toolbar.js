@@ -171,6 +171,11 @@
       g.Panels.setVisible("help", true);
       closeMenus();
     };
+    document.getElementById("menu-about").onclick = function (e) {
+      e.preventDefault();
+      g.Panels.setVisible("about", true);
+      closeMenus();
+    };
   }
   g.AppToolbar = { initToolbar: initToolbar };
 })(window);

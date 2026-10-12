@@ -278,11 +278,13 @@ body {
   font-size: 13px;
   overflow: auto;
 }
-#panel-help {
+#panel-help,
+#panel-about {
   width: 360px;
   max-width: calc(100vw - 20px);
 }
-#panel-help .panel-body {
+#panel-help .panel-body,
+#panel-about .panel-body {
   gap: 12px;
   font-size: 12px;
   line-height: 1.45;
@@ -315,6 +317,9 @@ body {
 .help-section p {
   margin: 0;
   color: #bbb;
+}
+.help-section a {
+  color: #7ab8ff;
 }
 .filerow {
   gap: 6px;
