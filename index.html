@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>RDX Web Viewer</title>
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+
+  <body id="drop">
+    <div id="toolbar">
+      <span id="apptitle">RDX Web Viewer</span>
+      <div class="menu">
+        <button class="menubtn">File</button>
+        <div class="dropdown menu-surface">
+          <a class="menu-item" href="#" id="menu-open">Open</a>
+          <div class="hassub">
+            <a class="menu-item" href="#" id="menu-open-recent"
+              >Open Recent ›</a
+            >
+            <div class="submenu menu-surface" id="menu-open-recent-sub"></div>
+          </div>
+          <div class="sep"></div>
+          <a class="menu-item" href="#" id="menu-close">Close</a>
+          <a class="menu-item" href="#" id="menu-closeall">Close all</a>
+          <div class="sep"></div>
+          <div class="hassub">
+            <a class="menu-item" href="#" id="menu-export">Export ›</a>
+            <div class="submenu menu-surface">
+              <div class="hassub">
+                <a class="menu-item" href="#" id="menu-export-models"
+                  >Models ›</a
+                >
+                <div class="submenu menu-surface">
+                  <a class="menu-item" href="#" id="menu-export-gltf"
+                    >glTF 2.0 (.glb)</a
+                  >
+                </div>
+              </div>
+              <div class="hassub">
+                <a class="menu-item" href="#" id="menu-export-textures"
+                  >Textures ›</a
+                >
+                <div
+                  class="submenu menu-surface"
+                  id="menu-export-textures-sub"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu">
+        <button class="menubtn">View</button>
+        <div class="dropdown menu-surface">
+          <div class="hassub">
+            <a class="menu-item" href="#" id="menu-camera">Camera ›</a>
+            <div class="submenu menu-surface">
+              <a class="menu-item" href="#" id="menu-orbit">Orbit</a>
+              <a class="menu-item" href="#" id="menu-fps">FPV</a>
+              <a class="menu-item" href="#" id="menu-reset">Reset</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu">
+        <button class="menubtn">Render</button>
+        <div class="dropdown menu-surface">
+          <a class="menu-item" href="#" id="menu-textured">Textured</a>
+          <a class="menu-item" href="#" id="menu-wireframe">Wireframe</a>
+          <a class="menu-item" href="#" id="menu-lighting">Lighting</a>
+        </div>
+      </div>
+      <div class="menu">
+        <button class="menubtn">Panels</button>
+        <div class="dropdown menu-surface" id="panelsmenu"></div>
+      </div>
+      <div class="menu">
+        <button class="menubtn">Help</button>
+        <div class="dropdown menu-surface">
+          <a class="menu-item" href="#" id="menu-help">Controls</a>
+        </div>
+      </div>
+      <input
+        type="file"
+        id="pick"
+        multiple
+        accept=".rdx,.rdt"
+        style="display: none"
+      />
+    </div>
+    <div id="main">
+      <div id="view"></div>
+      <div id="panels"></div>
+      <div id="fpshint"></div>
+    </div>
+    <script src="js/lib/three/0.147.0/three.min.js"></script>
+    <script src="js/lib/three/0.147.0/OrbitControls.js"></script>
+    <script src="js/rdx/prs.js"></script>
+    <script src="js/rdx/nj.js"></script>
+    <script src="js/rdx/mlb.js"></script>
+    <script src="js/rdx/tim2.js"></script>
+    <script src="js/rdx/pvr.js"></script>
+    <script src="js/rdx/rdx.js"></script>
+    <script src="js/rdx/lookups.js"></script>
+    <script src="js/rdx/scene.js"></script>
+    <script src="js/export_gltf.js"></script>
+    <script src="js/panels.js"></script>
+    <script src="js/contextmenu.js"></script>
+    <script src="js/fps.js"></script>
+    <script src="js/app/state/store.js"></script>
+    <script src="js/app/state/setting.js"></script>
+    <script src="js/app/viewport/viewport.js"></script>
+    <script src="js/app/viewport/navigation.js"></script>
+    <script src="js/app/selection/selection.js"></script>
+    <script src="js/app/selection/highlight.js"></script>
+    <script src="js/app/selection/picking.js"></script>
+    <script src="js/app/builder/material.js"></script>
+    <script src="js/app/builder/model.js"></script>
+    <script src="js/app/builder/light.js"></script>
+    <script src="js/app/builder/marker.js"></script>
+    <script src="js/app/builder/builder.js"></script>
+    <script src="js/app/file/file.js"></script>
+    <script src="js/app/detail/detail.js"></script>
+    <script src="js/app/detail/format.js"></script>
+    <script src="js/app/detail/rowinfo.js"></script>
+    <script src="js/app/detail/zone.js"></script>
+    <script src="js/app/detail/player.js"></script>
+    <script src="js/app/detail/camera.js"></script>
+    <script src="js/app/detail/light.js"></script>
+    <script src="js/app/export/export.js"></script>
+    <script src="js/app/export/textures.js"></script>
+    <script src="js/app/ui/menu.js"></script>
+    <script src="js/app/ui/toolbar.js"></script>
+    <script src="js/app/ui/tooltip.js"></script>
+    <script src="js/app/ui/panel/file.js"></script>
+    <script src="js/app/ui/panel/layer.js"></script>
+    <script src="js/app/ui/panel/model.js"></script>
+    <script src="js/app/ui/panel/textures.js"></script>
+    <script src="js/app/ui/panel/camera.js"></script>
+    <script src="js/app/ui/panel/light.js"></script>
+    <script src="js/app/ui/panel/player.js"></script>
+    <script src="js/app/ui/panel/boundary.js"></script>
+    <script src="js/app/ui/panel/aot.js"></script>
+    <script src="js/app/ui/panel/trigger.js"></script>
+    <script src="js/app/ui/panel/route.js"></script>
+    <script src="js/app/ui/panel/help.js"></script>
+    <script src="js/app/ui/panel/export.js"></script>
+    <script src="js/app/ui/panel.js"></script>
+    <script src="js/app/boot.js"></script>
+  </body>
+</html>
